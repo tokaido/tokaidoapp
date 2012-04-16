@@ -1,6 +1,17 @@
 #!/bin/sh
 
-tokaidoapp.install.dependencies()
+tokaido_install_package()
+{
+  typeset _lib
+  _lib=$1
+  includes ${_lib}
+  package is installed ${_lib} &&
+    log step "${_lib} already installed" true ||
+    package install name ${_lib} static
+  package reset
+}
+
+tokaidoapp_install_dependencies()
 {
   typeset _set _lib
 
@@ -9,11 +20,9 @@ tokaidoapp.install.dependencies()
     set_install ${_set}
   done
 
-  for _lib in libyaml #openssl
-  do
-    includes ${_lib}
-    package install name ${_lib} --disable-shared
-  done
+  tokaido_install_package libyaml
+  tokaido_install_package zlib
+  tokaido_install_package openssl version 0.9.8t
 }
 
 tokaidoapp_prefetch()

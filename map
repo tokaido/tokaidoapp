@@ -1,2 +1,2 @@
-dependencies=tokaidoapp.install.dependencies()
+dependencies=tokaidoapp_install_dependencies()
 
