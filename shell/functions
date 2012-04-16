@@ -1,0 +1,18 @@
+#!/usr/bin/env sm
+
+tokaidoapp.install.dependencies()
+{
+  typeset _set _lib
+
+  for _set in libraries
+  do
+    set_install ${_set}
+  done
+
+  for _lib in libyaml openssl
+  do
+    package init ${_lib}
+    package install ${_lib}
+  done
+}
+
