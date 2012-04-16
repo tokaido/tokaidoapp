@@ -1,4 +1,4 @@
-#!/usr/bin/env sm
+#!/bin/sh
 
 tokaidoapp.install.dependencies()
 {
@@ -9,10 +9,16 @@ tokaidoapp.install.dependencies()
     set_install ${_set}
   done
 
-  for _lib in libyaml openssl
+  for _lib in libyaml #openssl
   do
-    package init ${_lib}
-    package install ${_lib}
+    includes ${_lib}
+    package install name ${_lib} --disable-shared
   done
 }
 
+tokaidoapp_prefetch()
+{
+  package define \
+    file "ruby-${package_version}.${archive_format}" \
+    dir  "ruby-${package_version}"
+}

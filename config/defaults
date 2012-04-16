@@ -1,4 +1,4 @@
-package_version=1.9.3-p125
+version=1.9.3-p125
 package_extension=tar.bz2
 base_url=http://ftp.ruby-lang.org/pub/ruby/1.9/
 configure_flags=--enable-load-relative --with-static-linked-ext --disable-shared
