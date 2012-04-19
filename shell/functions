@@ -2,12 +2,10 @@
 
 tokaido_install_package()
 {
-  typeset _lib
-  _lib=$1
-  includes ${_lib}
-  package is installed ${_lib} &&
-    log step "${_lib} already installed" true ||
-    package install name ${_lib} static
+  includes $1
+  package is installed $1 &&
+    log step "$1 already installed" true ||
+    package install name $@ static
   package reset
 }
 
