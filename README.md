@@ -1,6 +1,6 @@
 Compiling static ruby:
 
-    git clone https://github.com/sm/sm.git && cd sm && ./install
+    curl -L https://raw.github.com/sm/sm/master/bin/sm-installer | sh
     echo "export PATH=\"$HOME/.sm/bin:$HOME/.sm/pkg/active/bin:\$PATH\"" >> .bashrc
     source ~/.bashrc
     sm ext install tokaidoapp tokaido/tokaidoapp
