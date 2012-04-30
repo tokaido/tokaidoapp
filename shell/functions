@@ -13,13 +13,16 @@ tokaidoapp_install_dependencies()
 {
   typeset _set _lib
 
-  for _set in libraries
+  for _set in libraries tools
   do
     set_install ${_set}
   done
 
-  tokaido_install_package libyaml
-  tokaido_install_package zlib
+  for _lib in pkg-config libyaml zlib
+  do
+    tokaido_install_package ${_lib}
+  done
+
   if os is darwin
   then
     # TODO: why limit openssl on osx ?
