@@ -20,7 +20,13 @@ tokaidoapp_install_dependencies()
 
   tokaido_install_package libyaml
   tokaido_install_package zlib
-  tokaido_install_package openssl version 0.9.8t
+  if os is darwin
+  then
+    # TODO: why limit openssl on osx ?
+    tokaido_install_package openssl version 0.9.8t
+  else
+    tokaido_install_package openssl
+  fi
 }
 
 tokaidoapp_prefetch()
@@ -28,4 +34,15 @@ tokaidoapp_prefetch()
   package define \
     file "ruby-${package_version}.${archive_format}" \
     dir  "ruby-${package_version}"
+}
+
+tokaidoapp_preconfigure()
+{
+  # only on osx, on linux it causes glibc conflicts
+  if os is darwin
+  then
+    LDFLAGS="-Bstatic $LDFLAGS"
+  else
+    LDFLAGS="-static $LDFLAGS"
+  fi
 }
