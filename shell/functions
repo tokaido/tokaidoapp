@@ -5,7 +5,7 @@ tokaido_install_package()
   includes $1
   package is installed $1 &&
     log step "$1 already installed" true ||
-    LDFLAGS="-fPIC" package install name $@ static
+    CFLAGS="-fPIC" LDFLAGS="-fPIC" package install name $@ static
   package reset
 }
 
@@ -46,7 +46,8 @@ tokaidoapp_preconfigure()
   then
     LDFLAGS="-Bstatic $LDFLAGS"
   else
-    LDFLAGS="-static-libgcc -static-libstdc++ $LDFLAGS"
+    CFLAGS="-fPIC $CFLAGS"
+    LDFLAGS="-fPIC -static-libgcc -static-libstdc++ $LDFLAGS"
   fi
 }
 
