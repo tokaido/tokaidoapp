@@ -5,7 +5,7 @@ tokaido_install_package()
   includes $1
   package is installed $1 &&
     log step "$1 already installed" true ||
-    package install name $@ static
+    LDFLAGS="-fPIC" package install name $@ static
   package reset
 }
 
@@ -46,6 +46,27 @@ tokaidoapp_preconfigure()
   then
     LDFLAGS="-Bstatic $LDFLAGS"
   else
-    LDFLAGS="-static $LDFLAGS"
+    LDFLAGS="-static-libgcc -static-libstdc++ $LDFLAGS"
   fi
+}
+
+tokaidoapp_ext_configure()
+{
+  if file contains in ext/Setup \
+    regex "$1"
+  then
+    file replace in ext/Setup \
+      regex "#$1" \
+      with  "$1"
+  else
+    file write append to ext/Setup \
+      content "$1"
+  fi
+}
+
+tokaidoapp_postconfigure()
+{
+  tokaidoapp_ext_configure openssl
+  tokaidoapp_ext_configure zlib
+  tokaidoapp_ext_configure psych
 }
