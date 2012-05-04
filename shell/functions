@@ -2,23 +2,28 @@
 
 tokaido_install_package()
 {
-  includes $1
-  package is installed $1 &&
-    log step "$1 already installed" true ||
-    CFLAGS="-fPIC" LDFLAGS="-fPIC" package install name $@ static
   package reset
+  includes $1
+  package is installed name $1 &&
+    log step "$1 ~ already installed" true ||
+    CFLAGS="-fPIC" LDFLAGS="-fPIC" package install name $@ static
 }
 
 tokaidoapp_install_dependencies()
 {
   typeset _set _lib
+  typeset -a _libs
 
-  for _set in libraries tools
+  for _set in libraries tools gnu
   do
     set_install ${_set}
   done
 
-  for _lib in pkg-config libyaml zlib
+  _libs=( pkg-config gdbm libyaml zlib ncurses )
+  os is darwin || _libs+=( ncursesw )
+  _libs+=( readline )
+
+  for _lib in ${_libs[@]}
   do
     tokaido_install_package ${_lib}
   done
@@ -67,7 +72,9 @@ tokaidoapp_ext_configure()
 
 tokaidoapp_postconfigure()
 {
-  tokaidoapp_ext_configure openssl
-  tokaidoapp_ext_configure zlib
-  tokaidoapp_ext_configure psych
+  typeset option
+  for option in curses openssl zlib psych readline
+  do
+    tokaidoapp_ext_configure ${option}
+  done
 }
