@@ -20,6 +20,7 @@
 		3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD693441637436E005AF81E /* TKDTokaidoController.m */; };
 		3AD6934B16374795005AF81E /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6934A16374795005AF81E /* ScriptingBridge.framework */; };
 		3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6934C16374989005AF81E /* SetupTokaido.sh */; };
+		3AD6935216375C98005AF81E /* 1.9.3-p194.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD6934F16375589005AF81E /* 1.9.3-p194.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,19 @@
 			remoteInfo = Tokaido;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3AD6935116375C8F005AF81E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Rubies;
+			dstSubfolderSpec = 7;
+			files = (
+				3AD6935216375C98005AF81E /* 1.9.3-p194.zip in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3AD6930716373C9F005AF81E /* Tokaido.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokaido.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +72,7 @@
 		3AD69349163746B7005AF81E /* Terminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terminal.h; sourceTree = "<group>"; };
 		3AD6934A16374795005AF81E /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		3AD6934C16374989005AF81E /* SetupTokaido.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SetupTokaido.sh; sourceTree = "<group>"; };
+		3AD6934F16375589005AF81E /* 1.9.3-p194.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "1.9.3-p194.zip"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +140,7 @@
 		3AD6931116373C9F005AF81E /* Tokaido */ = {
 			isa = PBXGroup;
 			children = (
+				3AD6934E1637557D005AF81E /* Ruby Bundles */,
 				3AD6934C16374989005AF81E /* SetupTokaido.sh */,
 				3AD69347163746A8005AF81E /* ScriptingBridge */,
 				3AD6931D16373C9F005AF81E /* TKDAppDelegate.h */,
@@ -177,6 +193,14 @@
 			name = ScriptingBridge;
 			sourceTree = "<group>";
 		};
+		3AD6934E1637557D005AF81E /* Ruby Bundles */ = {
+			isa = PBXGroup;
+			children = (
+				3AD6934F16375589005AF81E /* 1.9.3-p194.zip */,
+			);
+			name = "Ruby Bundles";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -187,6 +211,7 @@
 				3AD6930316373C9F005AF81E /* Sources */,
 				3AD6930416373C9F005AF81E /* Frameworks */,
 				3AD6930516373C9F005AF81E /* Resources */,
+				3AD6935116375C8F005AF81E /* CopyFiles */,
 			);
 			buildRules = (
 			);

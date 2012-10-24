@@ -12,8 +12,6 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
-+ (NSString *)documentsDirectory;
-
 - (void)openTerminal;
 
 @end
