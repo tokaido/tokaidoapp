@@ -16,6 +16,11 @@
     [self ensureTokaidoAppSupportDirectoryIsUpToDate];
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+    return YES;
+}
+
 - (void)ensureTokaidoAppSupportDirectoryIsUpToDate
 {
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -85,6 +90,15 @@
     }
 }
 
++ (NSString *)tokaidoInstalledGemsDirectoryForRuby:(NSString *)ruby;
+{
+    NSString *tokaidoInstalledGemsDirectory = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Gems"];
+    [self createDirectoryAtPathIfNonExistant:tokaidoInstalledGemsDirectory];
+    NSString *tokaidoInstalledGemsDirectoryForRuby = [tokaidoInstalledGemsDirectory stringByAppendingPathComponent:ruby];
+    [self createDirectoryAtPathIfNonExistant:tokaidoInstalledGemsDirectoryForRuby];
+    return tokaidoInstalledGemsDirectoryForRuby;
+}
+
 + (NSString *)tokaidoInstalledRubiesDirectory;
 {
     NSString *tokaidoInstalledRubiesDirectory = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Rubies"];
@@ -110,11 +124,15 @@
 
 - (void)openTerminal;
 {
-    NSBundle *appBundle = [NSBundle mainBundle];
-    NSString *setupTokaidoScriptPath = [NSString stringWithFormat:@"%@/SetupTokaido.sh", [appBundle resourcePath]];
+#warning This is hardcoded for now.
+    NSString *tokaidoSetupStep0 = [NSString stringWithFormat:@"export PATH=%@:$PATH", [[[TKDAppDelegate tokaidoInstalledRubiesDirectory] stringByReplacingOccurrencesOfString:@" " withString:@"\\ "] stringByAppendingPathComponent:@"1.9.3-p194/bin"]];
+    
+    NSString *gemsDir = [TKDAppDelegate tokaidoInstalledGemsDirectoryForRuby:@"1.9.3-p194"];
+    NSString *tokaidoSetupStep1 = [tokaidoSetupStep0 stringByAppendingFormat:@"; export GEM_HOME=%@", [gemsDir stringByReplacingOccurrencesOfString:@" " withString:@"\\ "]];
+    NSString *tokaidoSetupStep2 = [tokaidoSetupStep1 stringByAppendingFormat:@"; clear; echo \"This terminal is now ready use with Tokaido.\""];
     
     TerminalApplication *terminal = [SBApplication applicationWithBundleIdentifier:@"com.apple.Terminal"];
-    [terminal doScript:setupTokaidoScriptPath in:nil];
+    [terminal doScript:tokaidoSetupStep2 in:nil];
 }
 
 @end
