@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKDTokaidoController : NSObject
+@interface TKDTokaidoController : NSWindowController
 
 - (IBAction)openTerminalPressed:(id)sender;
+- (IBAction)addAppPressed:(id)sender;
 
 @end
