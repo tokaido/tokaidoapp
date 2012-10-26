@@ -7,7 +7,6 @@
 //
 
 #import "TKDRailsAppsIconsView.h"
-#import "TKDRailsAppIcon.h"
 
 @implementation TKDRailsAppsIconsView
 
