@@ -8,5 +8,6 @@
 
 export PATH=$TOKAIDO_PATH:$PATH
 export GEM_HOME=$TOKAIDO_GEM_HOME
+export GEM_PATH=$TOKAIDO_GEM_HOME
 
 clear; echo "This terminal is now ready use with Tokaido."
