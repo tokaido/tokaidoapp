@@ -14,6 +14,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self ensureTokaidoAppSupportDirectoryIsUpToDate];
+    
+    [self loadPrefs];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -60,6 +62,13 @@
     }
     
 }
+
+
+- (void)loadPrefs
+{
+    
+}
+
 
 - (void)installRubyWithName:(NSString *)rubyName
 {

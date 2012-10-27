@@ -21,10 +21,12 @@
 		3AD6934B16374795005AF81E /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6934A16374795005AF81E /* ScriptingBridge.framework */; };
 		3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6934C16374989005AF81E /* SetupTokaido.sh */; };
 		3AD6935216375C98005AF81E /* 1.9.3-p194.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD6934F16375589005AF81E /* 1.9.3-p194.zip */; };
-		3AD693911639DF8E005AF81E /* TKDRailsAppsIconsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD693901639DF8E005AF81E /* TKDRailsAppsIconsView.m */; };
 		3AD694DF1639E916005AF81E /* TKAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD694DD1639E916005AF81E /* TKAppIcon.png */; };
 		3AD694E01639E916005AF81E /* TKAppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD694DE1639E916005AF81E /* TKAppIcon@2x.png */; };
 		3AD694E21639F9D5005AF81E /* TKDRailsAppIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */; };
+		3AD694E6163A1475005AF81E /* TKDApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD694E5163A1475005AF81E /* TKDApp.m */; };
+		3AD69506163B0FC6005AF81E /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD694FA163B0F8D005AF81E /* Mantle.framework */; };
+		3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3AD6930616373C9F005AF81E;
 			remoteInfo = Tokaido;
+		};
+		3AD694F9163B0F8D005AF81E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC3C15F72B23004E8054;
+			remoteInfo = "Mantle Mac";
+		};
+		3AD694FB163B0F8D005AF81E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC5415F72B23004E8054;
+			remoteInfo = "Mantle Mac Tests";
+		};
+		3AD694FD163B0F8D005AF81E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC7915F72BC7004E8054;
+			remoteInfo = "Mantle iOS";
+		};
+		3AD694FF163B0F8D005AF81E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D042FC8715F72BC7004E8054;
+			remoteInfo = "Mantle iOS Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -77,11 +107,14 @@
 		3AD6934A16374795005AF81E /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		3AD6934C16374989005AF81E /* SetupTokaido.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SetupTokaido.sh; sourceTree = "<group>"; };
 		3AD6934F16375589005AF81E /* 1.9.3-p194.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "1.9.3-p194.zip"; sourceTree = "<group>"; };
-		3AD6938F1639DF8E005AF81E /* TKDRailsAppsIconsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppsIconsView.h; sourceTree = "<group>"; };
-		3AD693901639DF8E005AF81E /* TKDRailsAppsIconsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppsIconsView.m; sourceTree = "<group>"; };
 		3AD694DD1639E916005AF81E /* TKAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TKAppIcon.png; sourceTree = "<group>"; };
 		3AD694DE1639E916005AF81E /* TKAppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TKAppIcon@2x.png"; sourceTree = "<group>"; };
 		3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDRailsAppIcon.xib; sourceTree = "<group>"; };
+		3AD694E4163A1475005AF81E /* TKDApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDApp.h; sourceTree = "<group>"; };
+		3AD694E5163A1475005AF81E /* TKDApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDApp.m; sourceTree = "<group>"; };
+		3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = lib/Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
+		3AD69507163B4093005AF81E /* TKDRailsAppIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppIcon.h; sourceTree = "<group>"; };
+		3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppIcon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AD69506163B0FC6005AF81E /* Mantle.framework in Frameworks */,
 				3AD6934B16374795005AF81E /* ScriptingBridge.framework in Frameworks */,
 				3AD6930C16373C9F005AF81E /* Cocoa.framework in Frameworks */,
 			);
@@ -128,6 +162,7 @@
 		3AD6930A16373C9F005AF81E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */,
 				3AD6934A16374795005AF81E /* ScriptingBridge.framework */,
 				3AD6930B16373C9F005AF81E /* Cocoa.framework */,
 				3AD6932916373C9F005AF81E /* SenTestingKit.framework */,
@@ -149,16 +184,15 @@
 		3AD6931116373C9F005AF81E /* Tokaido */ = {
 			isa = PBXGroup;
 			children = (
-				3AD694DC1639E905005AF81E /* Images */,
-				3AD6935B1639C6FE005AF81E /* Custom Views */,
-				3AD6934E1637557D005AF81E /* Ruby Bundles */,
-				3AD6934C16374989005AF81E /* SetupTokaido.sh */,
-				3AD69347163746A8005AF81E /* ScriptingBridge */,
 				3AD6931D16373C9F005AF81E /* TKDAppDelegate.h */,
 				3AD6931E16373C9F005AF81E /* TKDAppDelegate.m */,
 				3AD693431637436E005AF81E /* TKDTokaidoController.h */,
 				3AD693441637436E005AF81E /* TKDTokaidoController.m */,
 				3AD6932016373C9F005AF81E /* MainMenu.xib */,
+				3AD694DC1639E905005AF81E /* Images */,
+				3AD694E3163A1457005AF81E /* Model */,
+				3AD6935B1639C6FE005AF81E /* Custom Views */,
+				3AD6934E1637557D005AF81E /* Ruby Bundles */,
 				3AD6931216373C9F005AF81E /* Supporting Files */,
 			);
 			path = Tokaido;
@@ -167,6 +201,8 @@
 		3AD6931216373C9F005AF81E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3AD69347163746A8005AF81E /* ScriptingBridge */,
+				3AD6934C16374989005AF81E /* SetupTokaido.sh */,
 				3AD6931316373C9F005AF81E /* Tokaido-Info.plist */,
 				3AD6931416373C9F005AF81E /* InfoPlist.strings */,
 				3AD6931716373C9F005AF81E /* main.m */,
@@ -215,9 +251,9 @@
 		3AD6935B1639C6FE005AF81E /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				3AD6938F1639DF8E005AF81E /* TKDRailsAppsIconsView.h */,
-				3AD693901639DF8E005AF81E /* TKDRailsAppsIconsView.m */,
 				3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */,
+				3AD69507163B4093005AF81E /* TKDRailsAppIcon.h */,
+				3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -229,6 +265,26 @@
 				3AD694DE1639E916005AF81E /* TKAppIcon@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		3AD694E3163A1457005AF81E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3AD694E4163A1475005AF81E /* TKDApp.h */,
+				3AD694E5163A1475005AF81E /* TKDApp.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3AD694E8163B0F8D005AF81E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AD694FA163B0F8D005AF81E /* Mantle.framework */,
+				3AD694FC163B0F8D005AF81E /* Mantle Mac Tests.octest */,
+				3AD694FE163B0F8D005AF81E /* libMantle.a */,
+				3AD69500163B0F8D005AF81E /* Mantle iOS Tests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +347,12 @@
 			mainGroup = 3AD692FC16373C9F005AF81E;
 			productRefGroup = 3AD6930816373C9F005AF81E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3AD694E8163B0F8D005AF81E /* Products */;
+					ProjectRef = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3AD6930616373C9F005AF81E /* Tokaido */,
@@ -298,6 +360,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3AD694FA163B0F8D005AF81E /* Mantle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Mantle.framework;
+			remoteRef = 3AD694F9163B0F8D005AF81E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3AD694FC163B0F8D005AF81E /* Mantle Mac Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Mantle Mac Tests.octest";
+			remoteRef = 3AD694FB163B0F8D005AF81E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3AD694FE163B0F8D005AF81E /* libMantle.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMantle.a;
+			remoteRef = 3AD694FD163B0F8D005AF81E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3AD69500163B0F8D005AF81E /* Mantle iOS Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Mantle iOS Tests.octest";
+			remoteRef = 3AD694FF163B0F8D005AF81E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3AD6930516373C9F005AF81E /* Resources */ = {
@@ -348,7 +441,8 @@
 				3AD6931816373C9F005AF81E /* main.m in Sources */,
 				3AD6931F16373C9F005AF81E /* TKDAppDelegate.m in Sources */,
 				3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */,
-				3AD693911639DF8E005AF81E /* TKDRailsAppsIconsView.m in Sources */,
+				3AD694E6163A1475005AF81E /* TKDApp.m in Sources */,
+				3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

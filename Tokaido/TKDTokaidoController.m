@@ -9,14 +9,22 @@
 #import "TKDAppDelegate.h"
 #import "TKDTokaidoController.h"
 
-#import "TKDRailsAppsIconsView.h"
+#import "TKDApp.h"
 
 @interface TKDTokaidoController ()
 @property NSOpenPanel *openPanel;
-@property TKDRailsAppsIconsView *railsAppsView;
 @end
 
 @implementation TKDTokaidoController
+
+- (void)awakeFromNib
+{
+    self.apps = [[NSMutableArray alloc] init];
+    CGSize size = CGSizeMake(150, 162);
+    [self.railsAppsView setMinItemSize:size];
+//    [self.railsAppsView setMaxItemSize:size];
+
+}
 
 - (IBAction)openTerminalPressed:(id)sender;
 {
@@ -28,19 +36,28 @@
 {
     if (!self.openPanel) {
         self.openPanel = [NSOpenPanel openPanel];
+        [self.openPanel setCanChooseDirectories:YES];
+        [self.openPanel setCanChooseFiles:NO];
+        [self.openPanel setCanCreateDirectories:NO];
+        [self.openPanel setAllowsMultipleSelection:NO];
     }
     
-    [NSApp beginSheet:self.openPanel
-       modalForWindow:self.window
-        modalDelegate:self
-       didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
-          contextInfo:nil];
-}
-
-- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
-{
-    [sheet orderOut:self];
-    self.openPanel = nil;
+    NSArrayController *ac = self.appsArrayController;
+    
+    [self.openPanel beginSheetModalForWindow:self.window
+                           completionHandler:^(NSInteger result) {
+                               
+                               NSURL *chosenURL = [self.openPanel directoryURL];
+                               
+                               if (result == NSFileHandlingPanelOKButton && chosenURL) {
+                                   TKDApp *newApp = [[TKDApp alloc] init];
+                                   newApp.appName = [chosenURL lastPathComponent];
+                                   newApp.appDirectoryPath = [chosenURL path];
+                                   newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
+                                   
+                                   [ac addObject:newApp];
+                               }
+                           }];
 }
 
 

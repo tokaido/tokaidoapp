@@ -10,6 +10,11 @@
 
 @interface TKDTokaidoController : NSWindowController
 
+@property IBOutlet NSCollectionView *railsAppsView;
+@property IBOutlet NSArrayController *appsArrayController;
+
+@property NSMutableArray *apps;
+
 - (IBAction)openTerminalPressed:(id)sender;
 - (IBAction)addAppPressed:(id)sender;
 
