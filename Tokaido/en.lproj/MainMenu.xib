@@ -1495,7 +1495,6 @@
 							<string key="NSFrame">{{465, 3}, {108, 25}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="392832137">
@@ -1610,6 +1609,8 @@
 													<reference key="NSColor" ref="13268217"/>
 												</object>
 											</array>
+											<bool key="NSSelectable">YES</bool>
+											<bool key="NSAllowsMultipleSelection">YES</bool>
 											<int key="NSDraggingSourceMaskForLocal">-1</int>
 											<int key="NSDraggingSourceMaskForNonLocal">0</int>
 										</object>
@@ -3827,20 +3828,31 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">TKDRailsAppIcon</string>
 					<string key="superclassName">NSCollectionViewItem</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">appController</string>
-						<string key="NS.object.0">NSObjectController</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">appController</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="appController">NSObjectController</string>
+						<string key="appIcon">TKDSelectableIcon</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="appController">
 							<string key="name">appController</string>
 							<string key="candidateClassName">NSObjectController</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="appIcon">
+							<string key="name">appIcon</string>
+							<string key="candidateClassName">TKDSelectableIcon</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/TKDRailsAppIcon.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TKDSelectableIcon</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TKDSelectableIcon.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

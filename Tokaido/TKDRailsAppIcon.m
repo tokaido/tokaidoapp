@@ -19,4 +19,11 @@
     self.appController.content = self.representedObject;
 }
 
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    [self.appIcon setSelected:selected];
+}
+
 @end

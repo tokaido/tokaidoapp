@@ -79,9 +79,9 @@
 #warning Assume NO for now.
 
     // If not, do the installation stuff.
-    if (YES) {
+    if (NO) {
         
-        NSString *executablePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-bootstrap"];
+//        NSString *executablePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-bootstrap"];
         NSString *tokaidoLabel = @"io.tilde.tokaido-bootstrap";
         
         AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };

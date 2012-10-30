@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCC163F5B5C0035ABA2 /* Security.framework */; };
 		3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */; };
+		3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A19ECE516406F5B0035ABA2 /* TKDSelectableIcon.m */; };
+		3A19ECE91640734F0035ABA2 /* TKAppIconBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECE71640734F0035ABA2 /* TKAppIconBackground.png */; };
+		3A19ECEA1640734F0035ABA2 /* TKAppIconBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECE81640734F0035ABA2 /* TKAppIconBackground@2x.png */; };
+		3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECEB1640777E0035ABA2 /* TKIconRuby.png */; };
+		3A19ECEE1640777E0035ABA2 /* TKIconRuby@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECEC1640777E0035ABA2 /* TKIconRuby@2x.png */; };
 		3AD6930C16373C9F005AF81E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6930B16373C9F005AF81E /* Cocoa.framework */; };
 		3AD6931616373C9F005AF81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6931416373C9F005AF81E /* InfoPlist.strings */; };
 		3AD6931816373C9F005AF81E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6931716373C9F005AF81E /* main.m */; };
@@ -23,8 +28,6 @@
 		3AD6934B16374795005AF81E /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6934A16374795005AF81E /* ScriptingBridge.framework */; };
 		3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6934C16374989005AF81E /* SetupTokaido.sh */; };
 		3AD6935216375C98005AF81E /* 1.9.3-p194.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD6934F16375589005AF81E /* 1.9.3-p194.zip */; };
-		3AD694DF1639E916005AF81E /* TKAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD694DD1639E916005AF81E /* TKAppIcon.png */; };
-		3AD694E01639E916005AF81E /* TKAppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD694DE1639E916005AF81E /* TKAppIcon@2x.png */; };
 		3AD694E21639F9D5005AF81E /* TKDRailsAppIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */; };
 		3AD694E6163A1475005AF81E /* TKDApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD694E5163A1475005AF81E /* TKDApp.m */; };
 		3AD69506163B0FC6005AF81E /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD694FA163B0F8D005AF81E /* Mantle.framework */; };
@@ -85,6 +88,12 @@
 /* Begin PBXFileReference section */
 		3A19ECCC163F5B5C0035ABA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSelectableIcon.h; sourceTree = "<group>"; };
+		3A19ECE516406F5B0035ABA2 /* TKDSelectableIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDSelectableIcon.m; sourceTree = "<group>"; };
+		3A19ECE71640734F0035ABA2 /* TKAppIconBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TKAppIconBackground.png; sourceTree = "<group>"; };
+		3A19ECE81640734F0035ABA2 /* TKAppIconBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TKAppIconBackground@2x.png"; sourceTree = "<group>"; };
+		3A19ECEB1640777E0035ABA2 /* TKIconRuby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TKIconRuby.png; sourceTree = "<group>"; };
+		3A19ECEC1640777E0035ABA2 /* TKIconRuby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TKIconRuby@2x.png"; sourceTree = "<group>"; };
 		3AD6930716373C9F005AF81E /* Tokaido.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokaido.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD6930B16373C9F005AF81E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3AD6930E16373C9F005AF81E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -111,8 +120,6 @@
 		3AD6934A16374795005AF81E /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		3AD6934C16374989005AF81E /* SetupTokaido.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SetupTokaido.sh; sourceTree = "<group>"; };
 		3AD6934F16375589005AF81E /* 1.9.3-p194.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "1.9.3-p194.zip"; sourceTree = "<group>"; };
-		3AD694DD1639E916005AF81E /* TKAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TKAppIcon.png; sourceTree = "<group>"; };
-		3AD694DE1639E916005AF81E /* TKAppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TKAppIcon@2x.png"; sourceTree = "<group>"; };
 		3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDRailsAppIcon.xib; sourceTree = "<group>"; };
 		3AD694E4163A1475005AF81E /* TKDApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDApp.h; sourceTree = "<group>"; };
 		3AD694E5163A1475005AF81E /* TKDApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDApp.m; sourceTree = "<group>"; };
@@ -262,6 +269,8 @@
 				3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */,
 				3AD69507163B4093005AF81E /* TKDRailsAppIcon.h */,
 				3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */,
+				3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */,
+				3A19ECE516406F5B0035ABA2 /* TKDSelectableIcon.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -269,8 +278,10 @@
 		3AD694DC1639E905005AF81E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				3AD694DD1639E916005AF81E /* TKAppIcon.png */,
-				3AD694DE1639E916005AF81E /* TKAppIcon@2x.png */,
+				3A19ECEB1640777E0035ABA2 /* TKIconRuby.png */,
+				3A19ECEC1640777E0035ABA2 /* TKIconRuby@2x.png */,
+				3A19ECE71640734F0035ABA2 /* TKAppIconBackground.png */,
+				3A19ECE81640734F0035ABA2 /* TKAppIconBackground@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -409,9 +420,11 @@
 				3AD6931C16373C9F005AF81E /* Credits.rtf in Resources */,
 				3AD6932216373C9F005AF81E /* MainMenu.xib in Resources */,
 				3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */,
-				3AD694DF1639E916005AF81E /* TKAppIcon.png in Resources */,
-				3AD694E01639E916005AF81E /* TKAppIcon@2x.png in Resources */,
 				3AD694E21639F9D5005AF81E /* TKDRailsAppIcon.xib in Resources */,
+				3A19ECE91640734F0035ABA2 /* TKAppIconBackground.png in Resources */,
+				3A19ECEA1640734F0035ABA2 /* TKAppIconBackground@2x.png in Resources */,
+				3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */,
+				3A19ECEE1640777E0035ABA2 /* TKIconRuby@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +464,7 @@
 				3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */,
 				3AD694E6163A1475005AF81E /* TKDApp.m in Sources */,
 				3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */,
+				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
