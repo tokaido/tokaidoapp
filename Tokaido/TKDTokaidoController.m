@@ -29,7 +29,12 @@
 - (IBAction)openTerminalPressed:(id)sender;
 {
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
-    [delegate openTerminal];
+    
+    if ([self.appsArrayController.selectedObjects count] > 0) {
+        TKDApp *selectedApp = [self.appsArrayController.selectedObjects objectAtIndex:0];
+        [delegate openTerminalWithPath:selectedApp.appDirectoryPath];
+    }
+
 }
 
 - (IBAction)addAppPressed:(id)sender;

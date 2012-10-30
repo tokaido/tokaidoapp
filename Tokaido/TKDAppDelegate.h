@@ -12,6 +12,6 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
-- (void)openTerminal;
+- (void)openTerminalWithPath:(NSString *)path;
 
 @end

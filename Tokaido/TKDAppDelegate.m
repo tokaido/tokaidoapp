@@ -195,7 +195,7 @@
     return tokaidoDirectory;
 }
 
-- (void)openTerminal;
+- (void)openTerminalWithPath:(NSString *)path;
 {
 #warning This is hardcoded for now.
     NSString *rubyVersion = @"1.9.3-p194";
@@ -209,16 +209,18 @@
     NSString *gemsDir = [TKDAppDelegate tokaidoInstalledGemsDirectoryForRuby:rubyVersion];
     NSString *tokaidoSetupStep1 = [tokaidoSetupStep0 stringByAppendingFormat:@"; export TOKAIDO_GEM_HOME=%@", [gemsDir stringByReplacingOccurrencesOfString:@" " withString:@"\\ "]];
     
+    // Third, set up the directory we will cd to
+    NSString *tokaidoSetupStep2 = [tokaidoSetupStep1 stringByAppendingFormat:@"; export TOKAIDO_APP_DIR=%@", [path stringByReplacingOccurrencesOfString:@" " withString:@"\\ "]];
     
-    // Third, source the SetupTokaido script, to load these variables into the shell and clear up the screen.
-    NSString *tokaidoSetupStep2 = [tokaidoSetupStep1 stringByAppendingFormat:@"; source %@/SetupTokaido.sh", [[NSBundle mainBundle] resourcePath]];
+    
+    // Forth, source the SetupTokaido script, to load these variables into the shell and clear up the screen.
+    NSString *tokaidoSetupStep3 = [tokaidoSetupStep2 stringByAppendingFormat:@"; source %@/SetupTokaido.sh", [[NSBundle mainBundle] resourcePath]];
     
 
     // Finally run everything.
     TerminalApplication *terminal = [SBApplication applicationWithBundleIdentifier:@"com.apple.Terminal"];
-    [terminal doScript:tokaidoSetupStep2 in:nil];
+    [terminal doScript:tokaidoSetupStep3 in:nil];
     [terminal activate];
-    
 }
 
 @end
