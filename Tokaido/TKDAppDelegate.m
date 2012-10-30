@@ -9,11 +9,15 @@
 #import "TKDAppDelegate.h"
 #import "Terminal.h"
 
+#import <ServiceManagement/ServiceManagement.h>
+#import <Security/Authorization.h>
+
 @implementation TKDAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self ensureTokaidoAppSupportDirectoryIsUpToDate];
+    [self ensureTokaidoBootstrapIsInstalled];
     
     [self loadPrefs];
 }
@@ -67,6 +71,66 @@
 - (void)loadPrefs
 {
     
+}
+
+- (void)ensureTokaidoBootstrapIsInstalled
+{
+    // Check to see if we can communicate with tokaido-bootstrap
+#warning Assume NO for now.
+
+    // If not, do the installation stuff.
+    if (YES) {
+        
+        NSString *executablePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-bootstrap"];
+        NSString *tokaidoLabel = @"io.tilde.tokaido-bootstrap";
+        
+        AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
+        AuthorizationRights authRights = { 1, &authItem };
+        AuthorizationFlags flags = kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights;
+        
+        // Empty for now
+        NSString *promptText = @"";
+        AuthorizationItem dialogConfiguration[1] = {
+            {kAuthorizationEnvironmentPrompt, [promptText length], (char *) [promptText UTF8String], 0}
+        };
+        
+        AuthorizationEnvironment authorizationEnvironment = { 0 };
+        authorizationEnvironment.items = dialogConfiguration;
+        authorizationEnvironment.count = 1;
+        
+        AuthorizationRef auth;
+        if( AuthorizationCreate( &authRights, &authorizationEnvironment, flags, &auth ) == errAuthorizationSuccess ) {
+            (void) SMJobRemove( kSMDomainSystemLaunchd, (__bridge CFStringRef)tokaidoLabel, auth, false, NULL );
+            
+            NSMutableDictionary *plist = [NSMutableDictionary dictionary];
+            [plist setObject:tokaidoLabel forKey:@"Label"];
+            [plist setObject:[NSNumber numberWithBool:YES] forKey:@"RunAtLoad"];
+            [plist setObject:@"/usr/bin/whoami" forKey:@"Program"];
+            [plist setObject:@"/var/log/tokaido" forKey:@"StandardOutPath"];
+            CFErrorRef error;
+            if ( SMJobSubmit( kSMDomainSystemLaunchd, (__bridge CFDictionaryRef)plist, auth, &error) ) {
+                // Script is running
+                NSLog(@"Ran successfully.");
+                
+            } else {
+                NSLog( @"Authenticated install submit failed with error %@", error );
+            }
+            
+            if (error) {
+                CFRelease(error);
+            }
+            
+            (void) SMJobRemove(kSMDomainSystemLaunchd, (__bridge CFStringRef)tokaidoLabel, auth, false, NULL);
+            AuthorizationFree(auth, 0);
+        } else {
+            
+            NSLog(@"Couldn't install tokaido-bootstrap. Quitting.");
+            [[NSApplication sharedApplication] terminate:nil];
+            
+        }
+
+    }
+
 }
 
 
@@ -153,6 +217,8 @@
     // Finally run everything.
     TerminalApplication *terminal = [SBApplication applicationWithBundleIdentifier:@"com.apple.Terminal"];
     [terminal doScript:tokaidoSetupStep2 in:nil];
+    [terminal activate];
+    
 }
 
 @end
