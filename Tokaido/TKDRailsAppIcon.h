@@ -15,8 +15,6 @@
 
 @interface TKDRailsAppIcon : NSCollectionViewItem
 
-@property (readwrite) BOOL selected;
-
 @property (nonatomic, strong) IBOutlet NSObjectController *appController;
 @property (nonatomic, strong) IBOutlet TKDSelectableIcon *appIcon;
 

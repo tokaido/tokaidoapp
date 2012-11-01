@@ -59,12 +59,28 @@
             if ([installedRubies containsObject:rubyName]) {
                 continue;
             } else {
-                NSLog(@"Installing %@...", rubyName);
+                NSLog(@"Installing Ruby: %@...", rubyName);
                 [self installRubyWithName:rubyName];
             }
         }
     }
     
+    // Make sure we have a gems directory. If we don't, extract our default gems to that directory.
+    
+    BOOL gemsDirectoryExists = [fm fileExistsAtPath:[TKDAppDelegate tokaidoInstalledGemsDirectory]];
+    if (!gemsDirectoryExists) {
+        [TKDAppDelegate createDirectoryAtPathIfNonExistant:[TKDAppDelegate tokaidoInstalledGemsDirectory]];
+        
+        NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
+        NSString *fullPathToGemsZip = [TKDAppDelegate tokaidoBundledGemsFile];
+        [arguments addObject:fullPathToGemsZip];
+        
+        NSTask *unzipTask = [[NSTask alloc] init];
+        [unzipTask setLaunchPath:@"/usr/bin/unzip"];
+        [unzipTask setCurrentDirectoryPath:[TKDAppDelegate tokaidoAppSupportDirectory]];
+        [unzipTask setArguments:arguments];
+        [unzipTask launch];
+    }
 }
 
 
@@ -77,11 +93,13 @@
 {
     // Check to see if we can communicate with tokaido-bootstrap
 #warning Assume NO for now.
+    BOOL tokaidoBootstrapInstalled = NO;
 
     // If not, do the installation stuff.
-    if (NO) {
+    if (!tokaidoBootstrapInstalled) {
         
-//        NSString *executablePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-bootstrap"];
+        NSString *executablePath = [@"~/Library/Application Support/Tokaido/ruby" stringByExpandingTildeInPath];
+        NSString *scriptPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-bootstrap"];
         NSString *tokaidoLabel = @"io.tilde.tokaido-bootstrap";
         
         AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
@@ -105,7 +123,8 @@
             NSMutableDictionary *plist = [NSMutableDictionary dictionary];
             [plist setObject:tokaidoLabel forKey:@"Label"];
             [plist setObject:[NSNumber numberWithBool:YES] forKey:@"RunAtLoad"];
-            [plist setObject:@"/usr/bin/whoami" forKey:@"Program"];
+            [plist setObject:executablePath forKey:@"Program"];
+            [plist setObject:@[ scriptPath ] forKey:@"ProgramArguments"];
             [plist setObject:@"/var/log/tokaido" forKey:@"StandardOutPath"];
             CFErrorRef error;
             if ( SMJobSubmit( kSMDomainSystemLaunchd, (__bridge CFDictionaryRef)plist, auth, &error) ) {
@@ -145,6 +164,14 @@
     [unzipTask setCurrentDirectoryPath:[TKDAppDelegate tokaidoInstalledRubiesDirectory]];
     [unzipTask setArguments:arguments];
     [unzipTask launch];
+    
+    
+    // We need a better way to decide what the default ruby should be. Right now we only have one, so just set it as default.
+    NSTask *linkTask = [[NSTask alloc] init];
+    [linkTask setLaunchPath:@"/bin/ln"];
+    [linkTask setCurrentDirectoryPath:[TKDAppDelegate tokaidoAppSupportDirectory]];
+    [linkTask setArguments:@[ @"-s", [@"Rubies" stringByAppendingPathComponent:[rubyName stringByAppendingPathComponent:@"bin/ruby"]], @"ruby" ] ];
+    [linkTask launch];
 }
 
 + (void)createDirectoryAtPathIfNonExistant:(NSString *)path
@@ -163,13 +190,10 @@
     }
 }
 
-+ (NSString *)tokaidoInstalledGemsDirectoryForRuby:(NSString *)ruby;
++ (NSString *)tokaidoInstalledGemsDirectory;
 {
     NSString *tokaidoInstalledGemsDirectory = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Gems"];
-    [self createDirectoryAtPathIfNonExistant:tokaidoInstalledGemsDirectory];
-    NSString *tokaidoInstalledGemsDirectoryForRuby = [tokaidoInstalledGemsDirectory stringByAppendingPathComponent:ruby];
-    [self createDirectoryAtPathIfNonExistant:tokaidoInstalledGemsDirectoryForRuby];
-    return tokaidoInstalledGemsDirectoryForRuby;
+    return tokaidoInstalledGemsDirectory;
 }
 
 + (NSString *)tokaidoInstalledRubiesDirectory;
@@ -182,7 +206,12 @@
 + (NSString *)tokaidoBundledRubiesDirectory;
 {
     NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Rubies"];
-    [self createDirectoryAtPathIfNonExistant:tokaidoBundledRubiesDirectory];
+    return tokaidoBundledRubiesDirectory;
+}
+
++ (NSString *)tokaidoBundledGemsFile;
+{
+    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"gems-default.zip"];
     return tokaidoBundledRubiesDirectory;
 }
 
@@ -206,7 +235,7 @@
     
     
     // Second, set up a variable for our gems location.
-    NSString *gemsDir = [TKDAppDelegate tokaidoInstalledGemsDirectoryForRuby:rubyVersion];
+    NSString *gemsDir = [TKDAppDelegate tokaidoInstalledGemsDirectory];
     NSString *tokaidoSetupStep1 = [tokaidoSetupStep0 stringByAppendingFormat:@"; export TOKAIDO_GEM_HOME=%@", [gemsDir stringByReplacingOccurrencesOfString:@" " withString:@"\\ "]];
     
     // Third, set up the directory we will cd to
