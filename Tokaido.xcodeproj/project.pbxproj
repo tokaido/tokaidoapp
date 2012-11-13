@@ -14,6 +14,7 @@
 		3A10E2561651BF5800238016 /* YellowGem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A10E2501651BF5800238016 /* YellowGem.png */; };
 		3A10E2571651BF5800238016 /* YellowGem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A10E2511651BF5800238016 /* YellowGem@2x.png */; };
 		3A10E25A1651C7C900238016 /* TKDAppPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A10E2591651C7C900238016 /* TKDAppPopUpButton.m */; };
+		3A10E2681652FC6B00238016 /* TKDAppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A10E2671652FC6B00238016 /* TKDAppCollectionView.m */; };
 		3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCC163F5B5C0035ABA2 /* Security.framework */; };
 		3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */; };
 		3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A19ECE516406F5B0035ABA2 /* TKDSelectableIcon.m */; };
@@ -103,6 +104,8 @@
 		3A10E2511651BF5800238016 /* YellowGem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "YellowGem@2x.png"; sourceTree = "<group>"; };
 		3A10E2581651C7C900238016 /* TKDAppPopUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppPopUpButton.h; sourceTree = "<group>"; };
 		3A10E2591651C7C900238016 /* TKDAppPopUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppPopUpButton.m; sourceTree = "<group>"; };
+		3A10E2661652FC6B00238016 /* TKDAppCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppCollectionView.h; sourceTree = "<group>"; };
+		3A10E2671652FC6B00238016 /* TKDAppCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppCollectionView.m; sourceTree = "<group>"; };
 		3A19ECCC163F5B5C0035ABA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSelectableIcon.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				3A19ED0F164467CC0035ABA2 /* TKDEditAppView.xib */,
 				3A10E2581651C7C900238016 /* TKDAppPopUpButton.h */,
 				3A10E2591651C7C900238016 /* TKDAppPopUpButton.m */,
+				3A10E2661652FC6B00238016 /* TKDAppCollectionView.h */,
+				3A10E2671652FC6B00238016 /* TKDAppCollectionView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */,
 				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
 				3A10E25A1651C7C900238016 /* TKDAppPopUpButton.m in Sources */,
+				3A10E2681652FC6B00238016 /* TKDAppCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

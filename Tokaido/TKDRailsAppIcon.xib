@@ -48,6 +48,7 @@
 						<int key="NSvFlags">269</int>
 						<string key="NSFrame">{{20, 20}, {150, 26}}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
@@ -146,6 +147,16 @@
 										<string key="NSAction">_popUpItemAction:</string>
 										<reference key="NSTarget" ref="572530425"/>
 									</object>
+									<object class="NSMenuItem" id="207665556">
+										<reference key="NSMenu" ref="477440783"/>
+										<string key="NSTitle">Remove</string>
+										<string key="NSKeyEquiv"/>
+										<int key="NSMnemonicLoc">2147483647</int>
+										<reference key="NSOnImage" ref="178143974"/>
+										<reference key="NSMixedImage" ref="173518126"/>
+										<string key="NSAction">_popUpItemAction:</string>
+										<reference key="NSTarget" ref="572530425"/>
+									</object>
 								</array>
 								<reference key="NSMenuFont" ref="591514160"/>
 							</object>
@@ -162,6 +173,7 @@
 						<int key="NSvFlags">4365</int>
 						<string key="NSFrame">{{59, 70}, {72, 72}}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="653104233"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSClassName">TKDSelectableIcon</string>
@@ -171,6 +183,7 @@
 						<int key="NSvFlags">269</int>
 						<string key="NSFrame">{{17, 45}, {156, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1031859861"/>
 						<string key="NSReuseIdentifierKey">_NS:1535</string>
 						<bool key="NSEnabled">YES</bool>
@@ -205,6 +218,7 @@
 				</array>
 				<string key="NSFrameSize">{190, 162}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="732940055"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -281,6 +295,14 @@
 						<reference key="destination" ref="99746975"/>
 					</object>
 					<int key="connectionID">135</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">removeMenuItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="207665556"/>
+					</object>
+					<int key="connectionID">137</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -389,6 +411,7 @@
 							<reference ref="729709775"/>
 							<reference ref="157632177"/>
 							<reference ref="1070397097"/>
+							<reference ref="207665556"/>
 						</array>
 						<reference key="parent" ref="572530425"/>
 					</object>
@@ -422,6 +445,11 @@
 						<reference key="object" ref="853800289"/>
 						<reference key="parent" ref="477440783"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">136</int>
+						<reference key="object" ref="207665556"/>
+						<reference key="parent" ref="477440783"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -439,6 +467,7 @@
 				<string key="119.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="120.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="121.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="136.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -448,9 +477,129 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">135</int>
+			<int key="maxID">137</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">NSCollectionViewItem</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="imageView">NSImageView</string>
+						<string key="textField">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="imageView">
+							<string key="name">imageView</string>
+							<string key="candidateClassName">NSImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="textField">
+							<string key="name">textField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NSCollectionViewItem.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TKDRailsAppIcon</string>
+					<string key="superclassName">NSCollectionViewItem</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="activatedMenuItem">NSMenuItem</string>
+						<string key="appController">NSObjectController</string>
+						<string key="appIcon">TKDSelectableIcon</string>
+						<string key="editMenuItem">NSMenuItem</string>
+						<string key="removeMenuItem">NSMenuItem</string>
+						<string key="shouldActivateOnLaunchMenuItem">NSMenuItem</string>
+						<string key="showInFinderMenuItem">NSMenuItem</string>
+						<string key="tokaidoController">TKDTokaidoController</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="activatedMenuItem">
+							<string key="name">activatedMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="appController">
+							<string key="name">appController</string>
+							<string key="candidateClassName">NSObjectController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="appIcon">
+							<string key="name">appIcon</string>
+							<string key="candidateClassName">TKDSelectableIcon</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="editMenuItem">
+							<string key="name">editMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="removeMenuItem">
+							<string key="name">removeMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="shouldActivateOnLaunchMenuItem">
+							<string key="name">shouldActivateOnLaunchMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="showInFinderMenuItem">
+							<string key="name">showInFinderMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tokaidoController">
+							<string key="name">tokaidoController</string>
+							<string key="candidateClassName">TKDTokaidoController</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TKDRailsAppIcon.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TKDSelectableIcon</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TKDSelectableIcon.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TKDTokaidoController</string>
+					<string key="superclassName">NSWindowController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addAppPressed:">id</string>
+						<string key="openTerminalPressed:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addAppPressed:">
+							<string key="name">addAppPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openTerminalPressed:">
+							<string key="name">openTerminalPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="appsArrayController">NSArrayController</string>
+						<string key="railsAppsView">NSCollectionView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="appsArrayController">
+							<string key="name">appsArrayController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="railsAppsView">
+							<string key="name">railsAppsView</string>
+							<string key="candidateClassName">NSCollectionView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TKDTokaidoController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

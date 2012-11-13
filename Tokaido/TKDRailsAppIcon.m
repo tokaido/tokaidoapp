@@ -20,6 +20,14 @@
     
     [self.showInFinderMenuItem setTarget:self.representedObject];
     [self.showInFinderMenuItem setAction:@selector(showInFinder)];
+    
+    [self.removeMenuItem setTarget:self];
+    [self.removeMenuItem setAction:@selector(removeApp)];
+}
+
+- (void)removeApp
+{
+    [self.tokaidoController removeApp:self.representedObject];
 }
 
 

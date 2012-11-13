@@ -18,4 +18,6 @@
 - (IBAction)openTerminalPressed:(id)sender;
 - (IBAction)addAppPressed:(id)sender;
 
+- (void)removeApp:(id)sender;
+
 @end

@@ -67,5 +67,12 @@
                            }];
 }
 
+- (void)removeApp:(id)sender;
+{
+    [self.appsArrayController removeObject:sender];
+    TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+    [delegate saveAppSettings];
+}
+
 
 @end

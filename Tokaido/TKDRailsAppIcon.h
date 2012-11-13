@@ -8,12 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "TKDApp.h"
+#import "TKDTokaidoController.h"
 
+#import "TKDApp.h"
 #import "TKDSelectableIcon.h"
 
 
 @interface TKDRailsAppIcon : NSCollectionViewItem
+
+@property (nonatomic, weak) IBOutlet TKDTokaidoController *tokaidoController;
 
 @property (nonatomic, strong) IBOutlet NSObjectController *appController;
 @property (nonatomic, strong) IBOutlet TKDSelectableIcon *appIcon;
@@ -24,5 +27,6 @@
 @property (nonatomic, strong) IBOutlet NSMenuItem *showInFinderMenuItem;
 
 @property (nonatomic, strong) IBOutlet NSMenuItem *editMenuItem;
+@property (nonatomic, strong) IBOutlet NSMenuItem *removeMenuItem;
 
 @end
