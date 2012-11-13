@@ -10,5 +10,10 @@
 
 @implementation TKDApp
 
+- (void)showInFinder;
+{
+    
+    [[NSWorkspace sharedWorkspace] openFile:self.appDirectoryPath];
+}
 
 @end

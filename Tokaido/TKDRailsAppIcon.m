@@ -17,6 +17,9 @@
 {
     [super awakeFromNib];
     self.appController.content = self.representedObject;
+    
+    [self.showInFinderMenuItem setTarget:self.representedObject];
+    [self.showInFinderMenuItem setAction:@selector(showInFinder)];
 }
 
 

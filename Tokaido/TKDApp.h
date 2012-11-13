@@ -14,4 +14,6 @@
 @property NSString *appDirectoryPath;
 @property NSString *appHostname;
 
+- (void)showInFinder;
+
 @end

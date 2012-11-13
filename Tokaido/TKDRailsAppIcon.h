@@ -18,4 +18,11 @@
 @property (nonatomic, strong) IBOutlet NSObjectController *appController;
 @property (nonatomic, strong) IBOutlet TKDSelectableIcon *appIcon;
 
+@property (nonatomic, strong) IBOutlet NSMenuItem *activatedMenuItem;
+@property (nonatomic, strong) IBOutlet NSMenuItem *shouldActivateOnLaunchMenuItem;
+
+@property (nonatomic, strong) IBOutlet NSMenuItem *showInFinderMenuItem;
+
+@property (nonatomic, strong) IBOutlet NSMenuItem *editMenuItem;
+
 @end
