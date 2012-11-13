@@ -23,7 +23,6 @@
 		3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECEB1640777E0035ABA2 /* TKIconRuby.png */; };
 		3A19ECEE1640777E0035ABA2 /* TKIconRuby@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECEC1640777E0035ABA2 /* TKIconRuby@2x.png */; };
 		3A19ECF21641F4F40035ABA2 /* gems-default.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECF11641F4F40035ABA2 /* gems-default.zip */; };
-		3A19ED10164467CC0035ABA2 /* TKDEditAppView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ED0F164467CC0035ABA2 /* TKDEditAppView.xib */; };
 		3AD6930C16373C9F005AF81E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6930B16373C9F005AF81E /* Cocoa.framework */; };
 		3AD6931616373C9F005AF81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6931416373C9F005AF81E /* InfoPlist.strings */; };
 		3AD6931816373C9F005AF81E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6931716373C9F005AF81E /* main.m */; };
@@ -115,7 +114,6 @@
 		3A19ECEB1640777E0035ABA2 /* TKIconRuby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TKIconRuby.png; sourceTree = "<group>"; };
 		3A19ECEC1640777E0035ABA2 /* TKIconRuby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TKIconRuby@2x.png"; sourceTree = "<group>"; };
 		3A19ECF11641F4F40035ABA2 /* gems-default.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "gems-default.zip"; sourceTree = "<group>"; };
-		3A19ED0F164467CC0035ABA2 /* TKDEditAppView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDEditAppView.xib; sourceTree = "<group>"; };
 		3AD6930716373C9F005AF81E /* Tokaido.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokaido.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD6930B16373C9F005AF81E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3AD6930E16373C9F005AF81E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -307,7 +305,6 @@
 				3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */,
 				3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */,
 				3A19ECE516406F5B0035ABA2 /* TKDSelectableIcon.m */,
-				3A19ED0F164467CC0035ABA2 /* TKDEditAppView.xib */,
 				3A10E2581651C7C900238016 /* TKDAppPopUpButton.h */,
 				3A10E2591651C7C900238016 /* TKDAppPopUpButton.m */,
 				3A10E2661652FC6B00238016 /* TKDAppCollectionView.h */,
@@ -468,7 +465,6 @@
 				3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */,
 				3A19ECEE1640777E0035ABA2 /* TKIconRuby@2x.png in Resources */,
 				3A19ECF21641F4F40035ABA2 /* gems-default.zip in Resources */,
-				3A19ED10164467CC0035ABA2 /* TKDEditAppView.xib in Resources */,
 				3A10E2521651BF5800238016 /* GreenGem.png in Resources */,
 				3A10E2531651BF5800238016 /* GreenGem@2x.png in Resources */,
 				3A10E2541651BF5800238016 /* RedGem.png in Resources */,

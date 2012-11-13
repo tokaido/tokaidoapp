@@ -21,15 +21,22 @@
     [self.showInFinderMenuItem setTarget:self.representedObject];
     [self.showInFinderMenuItem setAction:@selector(showInFinder)];
     
+    [self.editMenuItem setTarget:self];
+    [self.editMenuItem setAction:@selector(editApp)];
+    
     [self.removeMenuItem setTarget:self];
     [self.removeMenuItem setAction:@selector(removeApp)];
+}
+
+- (void)editApp
+{
+    [self.tokaidoController showEditWindowForApp:self.representedObject];
 }
 
 - (void)removeApp
 {
     [self.tokaidoController removeApp:self.representedObject];
 }
-
 
 - (void)setSelected:(BOOL)selected
 {

@@ -67,9 +67,36 @@
                            }];
 }
 
-- (void)removeApp:(id)sender;
+- (void)showEditWindowForApp:(TKDApp *)app
 {
-    [self.appsArrayController removeObject:sender];
+    // Configure edit window here...
+    
+    [NSApp beginSheet:self.editWindow
+       modalForWindow:self.window
+        modalDelegate:self
+       didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
+          contextInfo:nil];
+}
+
+- (IBAction)closeEditWindow:(id)sender;
+{
+    [NSApp endSheet:self.editWindow];
+}
+
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    [sheet orderOut:self];
+}
+
+- (IBAction)saveChangesToApp:(id)sender;
+{
+    [self closeEditWindow:sender];
+}
+
+
+- (void)removeApp:(TKDApp *)app;
+{
+    [self.appsArrayController removeObject:app];
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
     [delegate saveAppSettings];
 }
