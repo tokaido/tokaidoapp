@@ -7,11 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TKDTokaidoController.h"
 
 @interface TKDAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, strong) IBOutlet TKDTokaidoController *tokaidoController;
 
 - (void)openTerminalWithPath:(NSString *)path;
+
+- (void)loadAppSettings;
+- (void)saveAppSettings;
 
 @end

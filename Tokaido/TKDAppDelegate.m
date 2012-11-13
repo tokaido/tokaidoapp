@@ -19,7 +19,7 @@
     [self ensureTokaidoAppSupportDirectoryIsUpToDate];
     [self ensureTokaidoBootstrapIsInstalled];
     
-    [self loadPrefs];
+    [self loadAppSettings];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
@@ -84,10 +84,26 @@
 }
 
 
-- (void)loadPrefs
+- (void)loadAppSettings
 {
-    
+    NSString *appSettingsPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"AppSettings"];
+    NSMutableArray *apps = [NSKeyedUnarchiver unarchiveObjectWithFile:appSettingsPath];
+    if (apps) {
+        self.tokaidoController.apps = apps;
+    } else {
+        NSLog(@"ERROR: Could not load app settings.");
+    }
 }
+
+- (void)saveAppSettings
+{
+    NSString *appSettingsPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"AppSettings"];
+    BOOL success = [NSKeyedArchiver archiveRootObject:self.tokaidoController.apps toFile:appSettingsPath];
+    if (!success) {
+        NSLog(@"ERROR: Couldn't save app settings.");
+    }
+}
+
 
 - (void)ensureTokaidoBootstrapIsInstalled
 {

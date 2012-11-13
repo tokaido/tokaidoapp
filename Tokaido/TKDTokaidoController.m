@@ -61,6 +61,8 @@
                                    newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
                                    
                                    [ac addObject:newApp];
+                                   TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+                                   [delegate saveAppSettings];
                                }
                            }];
 }
