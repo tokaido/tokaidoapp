@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A10E2521651BF5800238016 /* GreenGem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A10E24C1651BF5800238016 /* GreenGem.png */; };
-		3A10E2531651BF5800238016 /* GreenGem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A10E24D1651BF5800238016 /* GreenGem@2x.png */; };
-		3A10E2541651BF5800238016 /* RedGem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A10E24E1651BF5800238016 /* RedGem.png */; };
-		3A10E2551651BF5800238016 /* RedGem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A10E24F1651BF5800238016 /* RedGem@2x.png */; };
-		3A10E2561651BF5800238016 /* YellowGem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A10E2501651BF5800238016 /* YellowGem.png */; };
-		3A10E2571651BF5800238016 /* YellowGem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A10E2511651BF5800238016 /* YellowGem@2x.png */; };
-		3A10E25A1651C7C900238016 /* TKDAppPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A10E2591651C7C900238016 /* TKDAppPopUpButton.m */; };
-		3A10E2681652FC6B00238016 /* TKDAppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A10E2671652FC6B00238016 /* TKDAppCollectionView.m */; };
 		3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCC163F5B5C0035ABA2 /* Security.framework */; };
 		3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */; };
 		3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A19ECE516406F5B0035ABA2 /* TKDSelectableIcon.m */; };
@@ -22,7 +14,6 @@
 		3A19ECEA1640734F0035ABA2 /* TKAppIconBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECE81640734F0035ABA2 /* TKAppIconBackground@2x.png */; };
 		3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECEB1640777E0035ABA2 /* TKIconRuby.png */; };
 		3A19ECEE1640777E0035ABA2 /* TKIconRuby@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECEC1640777E0035ABA2 /* TKIconRuby@2x.png */; };
-		3A19ECF21641F4F40035ABA2 /* gems-default.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3A19ECF11641F4F40035ABA2 /* gems-default.zip */; };
 		3AD6930C16373C9F005AF81E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6930B16373C9F005AF81E /* Cocoa.framework */; };
 		3AD6931616373C9F005AF81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6931416373C9F005AF81E /* InfoPlist.strings */; };
 		3AD6931816373C9F005AF81E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6931716373C9F005AF81E /* main.m */; };
@@ -41,6 +32,11 @@
 		3AD694E6163A1475005AF81E /* TKDApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD694E5163A1475005AF81E /* TKDApp.m */; };
 		3AD69506163B0FC6005AF81E /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD694FA163B0F8D005AF81E /* Mantle.framework */; };
 		3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */; };
+		CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */; };
+		CD8285AD16559D96000CB252 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AA16559D96000CB252 /* Green.png */; };
+		CD8285AE16559D96000CB252 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AB16559D96000CB252 /* Red.png */; };
+		CD8285AF16559D96000CB252 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AC16559D96000CB252 /* Yellow.png */; };
+		CD8285B11655A696000CB252 /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285B01655A696000CB252 /* down_arrow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,16 +91,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3A10E24C1651BF5800238016 /* GreenGem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenGem.png; sourceTree = "<group>"; };
-		3A10E24D1651BF5800238016 /* GreenGem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GreenGem@2x.png"; sourceTree = "<group>"; };
-		3A10E24E1651BF5800238016 /* RedGem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedGem.png; sourceTree = "<group>"; };
-		3A10E24F1651BF5800238016 /* RedGem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RedGem@2x.png"; sourceTree = "<group>"; };
-		3A10E2501651BF5800238016 /* YellowGem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowGem.png; sourceTree = "<group>"; };
-		3A10E2511651BF5800238016 /* YellowGem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "YellowGem@2x.png"; sourceTree = "<group>"; };
-		3A10E2581651C7C900238016 /* TKDAppPopUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppPopUpButton.h; sourceTree = "<group>"; };
-		3A10E2591651C7C900238016 /* TKDAppPopUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppPopUpButton.m; sourceTree = "<group>"; };
-		3A10E2661652FC6B00238016 /* TKDAppCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppCollectionView.h; sourceTree = "<group>"; };
-		3A10E2671652FC6B00238016 /* TKDAppCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppCollectionView.m; sourceTree = "<group>"; };
 		3A19ECCC163F5B5C0035ABA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSelectableIcon.h; sourceTree = "<group>"; };
@@ -113,7 +99,6 @@
 		3A19ECE81640734F0035ABA2 /* TKAppIconBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TKAppIconBackground@2x.png"; sourceTree = "<group>"; };
 		3A19ECEB1640777E0035ABA2 /* TKIconRuby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TKIconRuby.png; sourceTree = "<group>"; };
 		3A19ECEC1640777E0035ABA2 /* TKIconRuby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TKIconRuby@2x.png"; sourceTree = "<group>"; };
-		3A19ECF11641F4F40035ABA2 /* gems-default.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "gems-default.zip"; sourceTree = "<group>"; };
 		3AD6930716373C9F005AF81E /* Tokaido.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokaido.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD6930B16373C9F005AF81E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3AD6930E16373C9F005AF81E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -146,6 +131,12 @@
 		3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = lib/Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
 		3AD69507163B4093005AF81E /* TKDRailsAppIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppIcon.h; sourceTree = "<group>"; };
 		3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppIcon.m; sourceTree = "<group>"; };
+		CD8285A716559A9D000CB252 /* TKDRailsAppTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppTokenField.h; sourceTree = "<group>"; };
+		CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppTokenField.m; sourceTree = "<group>"; };
+		CD8285AA16559D96000CB252 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
+		CD8285AB16559D96000CB252 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
+		CD8285AC16559D96000CB252 /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
+		CD8285B01655A696000CB252 /* down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_arrow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,19 +164,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A10E24B1651BF4400238016 /* Gems */ = {
-			isa = PBXGroup;
-			children = (
-				3A10E24C1651BF5800238016 /* GreenGem.png */,
-				3A10E24D1651BF5800238016 /* GreenGem@2x.png */,
-				3A10E24E1651BF5800238016 /* RedGem.png */,
-				3A10E24F1651BF5800238016 /* RedGem@2x.png */,
-				3A10E2501651BF5800238016 /* YellowGem.png */,
-				3A10E2511651BF5800238016 /* YellowGem@2x.png */,
-			);
-			name = Gems;
-			sourceTree = "<group>";
-		};
 		3AD692FC16373C9F005AF81E = {
 			isa = PBXGroup;
 			children = (
@@ -291,7 +269,6 @@
 		3AD6934E1637557D005AF81E /* Ruby Bundles */ = {
 			isa = PBXGroup;
 			children = (
-				3A19ECF11641F4F40035ABA2 /* gems-default.zip */,
 				3AD6934F16375589005AF81E /* 1.9.3-p194.zip */,
 			);
 			name = "Ruby Bundles";
@@ -305,10 +282,8 @@
 				3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */,
 				3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */,
 				3A19ECE516406F5B0035ABA2 /* TKDSelectableIcon.m */,
-				3A10E2581651C7C900238016 /* TKDAppPopUpButton.h */,
-				3A10E2591651C7C900238016 /* TKDAppPopUpButton.m */,
-				3A10E2661652FC6B00238016 /* TKDAppCollectionView.h */,
-				3A10E2671652FC6B00238016 /* TKDAppCollectionView.m */,
+				CD8285A716559A9D000CB252 /* TKDRailsAppTokenField.h */,
+				CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -316,7 +291,10 @@
 		3AD694DC1639E905005AF81E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				3A10E24B1651BF4400238016 /* Gems */,
+				CD8285B01655A696000CB252 /* down_arrow.png */,
+				CD8285AA16559D96000CB252 /* Green.png */,
+				CD8285AB16559D96000CB252 /* Red.png */,
+				CD8285AC16559D96000CB252 /* Yellow.png */,
 				3A19ECEB1640777E0035ABA2 /* TKIconRuby.png */,
 				3A19ECEC1640777E0035ABA2 /* TKIconRuby@2x.png */,
 				3A19ECE71640734F0035ABA2 /* TKAppIconBackground.png */,
@@ -464,13 +442,10 @@
 				3A19ECEA1640734F0035ABA2 /* TKAppIconBackground@2x.png in Resources */,
 				3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */,
 				3A19ECEE1640777E0035ABA2 /* TKIconRuby@2x.png in Resources */,
-				3A19ECF21641F4F40035ABA2 /* gems-default.zip in Resources */,
-				3A10E2521651BF5800238016 /* GreenGem.png in Resources */,
-				3A10E2531651BF5800238016 /* GreenGem@2x.png in Resources */,
-				3A10E2541651BF5800238016 /* RedGem.png in Resources */,
-				3A10E2551651BF5800238016 /* RedGem@2x.png in Resources */,
-				3A10E2561651BF5800238016 /* YellowGem.png in Resources */,
-				3A10E2571651BF5800238016 /* YellowGem@2x.png in Resources */,
+				CD8285AD16559D96000CB252 /* Green.png in Resources */,
+				CD8285AE16559D96000CB252 /* Red.png in Resources */,
+				CD8285AF16559D96000CB252 /* Yellow.png in Resources */,
+				CD8285B11655A696000CB252 /* down_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,8 +486,7 @@
 				3AD694E6163A1475005AF81E /* TKDApp.m in Sources */,
 				3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */,
 				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
-				3A10E25A1651C7C900238016 /* TKDAppPopUpButton.m in Sources */,
-				3A10E2681652FC6B00238016 /* TKDAppCollectionView.m in Sources */,
+				CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,7 +600,6 @@
 		3AD6933A16373C9F005AF81E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application: Tilde Inc.";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -634,7 +607,6 @@
 				HEADER_SEARCH_PATHS = "lib/**";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -642,7 +614,6 @@
 		3AD6933B16373C9F005AF81E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application: Tilde Inc.";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -650,7 +621,6 @@
 				HEADER_SEARCH_PATHS = "lib/**";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

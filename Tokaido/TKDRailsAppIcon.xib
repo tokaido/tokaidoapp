@@ -43,6 +43,7 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">14</int>
 				<array class="NSMutableArray" key="NSSubviews">
+<<<<<<< HEAD
 					<object class="NSPopUpButton" id="1031859861">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">269</int>
@@ -78,6 +79,175 @@
 								<object class="NSCustomResource" key="NSOnImage" id="178143974">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSMenuCheckmark</string>
+=======
+					<object class="NSCustomView" id="779645848">
+						<reference key="NSNextResponder" ref="1005"/>
+						<int key="NSvFlags">269</int>
+						<array class="NSMutableArray" key="NSSubviews">
+							<object class="NSPopUpButton" id="544024827">
+								<reference key="NSNextResponder" ref="779645848"/>
+								<int key="NSvFlags">-2147483380</int>
+								<string key="NSFrame">{{-3, 1}, {156, 26}}</string>
+								<reference key="NSSuperview" ref="779645848"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="NSEnabled">YES</bool>
+								<object class="NSPopUpButtonCell" key="NSCell" id="220826384">
+									<int key="NSCellFlags">-2076180416</int>
+									<int key="NSCellFlags2">2048</int>
+									<object class="NSFont" key="NSSupport" id="746187188">
+										<string key="NSName">LucidaGrande</string>
+										<double key="NSSize">13</double>
+										<int key="NSfFlags">1044</int>
+									</object>
+									<string key="NSCellIdentifier">_NS:9</string>
+									<reference key="NSControlView" ref="544024827"/>
+									<int key="NSButtonFlags">109199360</int>
+									<int key="NSButtonFlags2">129</int>
+									<string key="NSAlternateContents"/>
+									<string key="NSKeyEquivalent"/>
+									<int key="NSPeriodicDelay">400</int>
+									<int key="NSPeriodicInterval">75</int>
+									<nil key="NSMenuItem"/>
+									<bool key="NSMenuItemRespectAlignment">YES</bool>
+									<object class="NSMenu" key="NSMenu" id="908002493">
+										<string key="NSTitle">OtherViews</string>
+										<array class="NSMutableArray" key="NSMenuItems">
+											<object class="NSMenuItem" id="928219140">
+												<reference key="NSMenu" ref="908002493"/>
+												<string key="NSTitle">Activate</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<object class="NSCustomResource" key="NSOnImage" id="295927634">
+													<string key="NSClassName">NSImage</string>
+													<string key="NSResourceName">NSMenuCheckmark</string>
+												</object>
+												<object class="NSCustomResource" key="NSMixedImage" id="332497055">
+													<string key="NSClassName">NSImage</string>
+													<string key="NSResourceName">NSMenuMixedState</string>
+												</object>
+												<string key="NSAction">_popUpItemAction:</string>
+												<reference key="NSTarget" ref="220826384"/>
+											</object>
+											<object class="NSMenuItem" id="470537609">
+												<reference key="NSMenu" ref="908002493"/>
+												<string key="NSTitle">Activate on Launch</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<int key="NSState">1</int>
+												<reference key="NSOnImage" ref="295927634"/>
+												<reference key="NSMixedImage" ref="332497055"/>
+												<string key="NSAction">_popUpItemAction:</string>
+												<reference key="NSTarget" ref="220826384"/>
+											</object>
+											<object class="NSMenuItem" id="460945410">
+												<reference key="NSMenu" ref="908002493"/>
+												<bool key="NSIsDisabled">YES</bool>
+												<bool key="NSIsSeparator">YES</bool>
+												<string key="NSTitle"/>
+												<string key="NSKeyEquiv"/>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="295927634"/>
+												<reference key="NSMixedImage" ref="332497055"/>
+												<string key="NSAction">_popUpItemAction:</string>
+												<reference key="NSTarget" ref="220826384"/>
+											</object>
+											<object class="NSMenuItem" id="831514274">
+												<reference key="NSMenu" ref="908002493"/>
+												<string key="NSTitle">Edit...</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="295927634"/>
+												<reference key="NSMixedImage" ref="332497055"/>
+												<string key="NSAction">_popUpItemAction:</string>
+												<reference key="NSTarget" ref="220826384"/>
+											</object>
+											<object class="NSMenuItem" id="934069855">
+												<reference key="NSMenu" ref="908002493"/>
+												<string key="NSTitle">Remove App</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="295927634"/>
+												<reference key="NSMixedImage" ref="332497055"/>
+												<string key="NSAction">_popUpItemAction:</string>
+												<reference key="NSTarget" ref="220826384"/>
+											</object>
+											<object class="NSMenuItem" id="376895201">
+												<reference key="NSMenu" ref="908002493"/>
+												<bool key="NSIsDisabled">YES</bool>
+												<bool key="NSIsSeparator">YES</bool>
+												<string key="NSTitle"/>
+												<string key="NSKeyEquiv"/>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="295927634"/>
+												<reference key="NSMixedImage" ref="332497055"/>
+												<string key="NSAction">_popUpItemAction:</string>
+												<reference key="NSTarget" ref="220826384"/>
+											</object>
+											<object class="NSMenuItem" id="1027279340">
+												<reference key="NSMenu" ref="908002493"/>
+												<string key="NSTitle">Show in Finder</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="295927634"/>
+												<reference key="NSMixedImage" ref="332497055"/>
+												<string key="NSAction">_popUpItemAction:</string>
+												<reference key="NSTarget" ref="220826384"/>
+											</object>
+										</array>
+										<bool key="NSNoAutoenable">YES</bool>
+										<reference key="NSMenuFont" ref="746187188"/>
+									</object>
+									<int key="NSSelectedIndex">-1</int>
+									<int key="NSPreferredEdge">1</int>
+									<bool key="NSUsesItemFromMenu">YES</bool>
+									<int key="NSArrowPosition">2</int>
+								</object>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+							</object>
+						</array>
+						<string key="NSFrame">{{20, 14}, {150, 28}}</string>
+						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="544024827"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<string key="NSClassName">TKDRailsAppTokenField</string>
+					</object>
+					<object class="NSCustomView" id="451050126">
+						<reference key="NSNextResponder" ref="1005"/>
+						<int key="NSvFlags">4365</int>
+						<string key="NSFrame">{{59, 70}, {72, 72}}</string>
+						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="653104233"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<string key="NSClassName">TKDSelectableIcon</string>
+					</object>
+					<object class="NSTextField" id="653104233">
+						<reference key="NSNextResponder" ref="1005"/>
+						<int key="NSvFlags">269</int>
+						<string key="NSFrame">{{17, 45}, {156, 17}}</string>
+						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="779645848"/>
+						<string key="NSReuseIdentifierKey">_NS:1535</string>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSTextFieldCell" key="NSCell" id="437008737">
+							<int key="NSCellFlags">67108928</int>
+							<int key="NSCellFlags2">138414080</int>
+							<string key="NSContents">My Rails App</string>
+							<reference key="NSSupport" ref="746187188"/>
+							<string key="NSCellIdentifier">_NS:1535</string>
+							<reference key="NSControlView" ref="653104233"/>
+							<object class="NSColor" key="NSBackgroundColor">
+								<int key="NSColorSpace">6</int>
+								<string key="NSCatalogName">System</string>
+								<string key="NSColorName">controlColor</string>
+								<object class="NSColor" key="NSColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+>>>>>>> Adding our custom 'token'-like field.
 								</object>
 								<object class="NSCustomResource" key="NSMixedImage" id="173518126">
 									<string key="NSClassName">NSImage</string>
@@ -86,6 +256,7 @@
 								<string key="NSAction">_popUpItemAction:</string>
 								<reference key="NSTarget" ref="572530425"/>
 							</object>
+<<<<<<< HEAD
 							<bool key="NSMenuItemRespectAlignment">YES</bool>
 							<object class="NSMenu" key="NSMenu" id="477440783">
 								<string key="NSTitle">OtherViews</string>
@@ -203,6 +374,8 @@
 									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 								</object>
 							</object>
+=======
+>>>>>>> Adding our custom 'token'-like field.
 							<object class="NSColor" key="NSTextColor">
 								<int key="NSColorSpace">6</int>
 								<string key="NSCatalogName">System</string>
@@ -352,8 +525,13 @@
 						<reference key="object" ref="1005"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="653104233"/>
+<<<<<<< HEAD
 							<reference ref="732940055"/>
 							<reference ref="1031859861"/>
+=======
+							<reference ref="451050126"/>
+							<reference ref="779645848"/>
+>>>>>>> Adding our custom 'token'-like field.
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -386,14 +564,22 @@
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
+<<<<<<< HEAD
 						<int key="objectID">113</int>
 						<reference key="object" ref="1031859861"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="572530425"/>
+=======
+						<int key="objectID">118</int>
+						<reference key="object" ref="779645848"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="544024827"/>
+>>>>>>> Adding our custom 'token'-like field.
 						</array>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
+<<<<<<< HEAD
 						<int key="objectID">114</int>
 						<reference key="object" ref="572530425"/>
 						<array class="NSMutableArray" key="children">
@@ -449,6 +635,71 @@
 						<int key="objectID">136</int>
 						<reference key="object" ref="207665556"/>
 						<reference key="parent" ref="477440783"/>
+=======
+						<int key="objectID">119</int>
+						<reference key="object" ref="544024827"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="220826384"/>
+						</array>
+						<reference key="parent" ref="779645848"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">120</int>
+						<reference key="object" ref="220826384"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="908002493"/>
+						</array>
+						<reference key="parent" ref="544024827"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">121</int>
+						<reference key="object" ref="908002493"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="470537609"/>
+							<reference ref="460945410"/>
+							<reference ref="831514274"/>
+							<reference ref="928219140"/>
+							<reference ref="1027279340"/>
+							<reference ref="376895201"/>
+							<reference ref="934069855"/>
+						</array>
+						<reference key="parent" ref="220826384"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">136</int>
+						<reference key="object" ref="1027279340"/>
+						<reference key="parent" ref="908002493"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">137</int>
+						<reference key="object" ref="470537609"/>
+						<reference key="parent" ref="908002493"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">138</int>
+						<reference key="object" ref="460945410"/>
+						<reference key="parent" ref="908002493"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">139</int>
+						<reference key="object" ref="831514274"/>
+						<reference key="parent" ref="908002493"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">140</int>
+						<reference key="object" ref="928219140"/>
+						<reference key="parent" ref="908002493"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">141</int>
+						<reference key="object" ref="376895201"/>
+						<reference key="parent" ref="908002493"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">142</int>
+						<reference key="object" ref="934069855"/>
+						<reference key="parent" ref="908002493"/>
+>>>>>>> Adding our custom 'token'-like field.
 					</object>
 				</array>
 			</object>
@@ -458,16 +709,28 @@
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="109.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+<<<<<<< HEAD
 				<string key="113.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="114.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="115.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="116.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="117.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+=======
+>>>>>>> Adding our custom 'token'-like field.
 				<string key="118.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="119.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="120.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="121.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="136.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+<<<<<<< HEAD
+=======
+				<string key="137.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="138.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="139.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="140.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="141.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="142.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+>>>>>>> Adding our custom 'token'-like field.
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -477,31 +740,14 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
+<<<<<<< HEAD
 			<int key="maxID">137</int>
+=======
+			<int key="maxID">142</int>
+>>>>>>> Adding our custom 'token'-like field.
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">NSCollectionViewItem</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="imageView">NSImageView</string>
-						<string key="textField">NSTextField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="imageView">
-							<string key="name">imageView</string>
-							<string key="candidateClassName">NSImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textField">
-							<string key="name">textField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSCollectionViewItem.h</string>
-					</object>
-				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">TKDRailsAppIcon</string>
 					<string key="superclassName">NSCollectionViewItem</string>
@@ -509,11 +755,15 @@
 						<string key="activatedMenuItem">NSMenuItem</string>
 						<string key="appController">NSObjectController</string>
 						<string key="appIcon">TKDSelectableIcon</string>
+<<<<<<< HEAD
 						<string key="editMenuItem">NSMenuItem</string>
 						<string key="removeMenuItem">NSMenuItem</string>
 						<string key="shouldActivateOnLaunchMenuItem">NSMenuItem</string>
 						<string key="showInFinderMenuItem">NSMenuItem</string>
 						<string key="tokaidoController">TKDTokaidoController</string>
+=======
+						<string key="tokenField">TKDRailsAppTokenField</string>
+>>>>>>> Adding our custom 'token'-like field.
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="activatedMenuItem">
@@ -528,6 +778,7 @@
 							<string key="name">appIcon</string>
 							<string key="candidateClassName">TKDSelectableIcon</string>
 						</object>
+<<<<<<< HEAD
 						<object class="IBToOneOutletInfo" key="editMenuItem">
 							<string key="name">editMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>
@@ -547,11 +798,24 @@
 						<object class="IBToOneOutletInfo" key="tokaidoController">
 							<string key="name">tokaidoController</string>
 							<string key="candidateClassName">TKDTokaidoController</string>
+=======
+						<object class="IBToOneOutletInfo" key="tokenField">
+							<string key="name">tokenField</string>
+							<string key="candidateClassName">TKDRailsAppTokenField</string>
+>>>>>>> Adding our custom 'token'-like field.
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/TKDRailsAppIcon.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TKDRailsAppTokenField</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TKDRailsAppTokenField.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

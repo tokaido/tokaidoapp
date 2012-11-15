@@ -12,7 +12,7 @@
 
 #import "TKDApp.h"
 #import "TKDSelectableIcon.h"
-
+#import "TKDRailsAppTokenField.h"
 
 @interface TKDRailsAppIcon : NSCollectionViewItem
 
@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) IBOutlet NSObjectController *appController;
 @property (nonatomic, strong) IBOutlet TKDSelectableIcon *appIcon;
+@property (nonatomic, strong) IBOutlet TKDRailsAppTokenField *tokenField;
+
 
 @property (nonatomic, strong) IBOutlet NSMenuItem *activatedMenuItem;
 @property (nonatomic, strong) IBOutlet NSMenuItem *shouldActivateOnLaunchMenuItem;
