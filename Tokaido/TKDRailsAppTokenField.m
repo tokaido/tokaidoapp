@@ -29,6 +29,7 @@
     self.textField.textColor = [NSColor lightGrayColor];
     self.textField.stringValue = @"app.tokaido";
     self.textField.drawsBackground = NO;
+    [self.textField setAlignment:NSCenterTextAlignment];
     [self.textField setBordered:NO];
     [self.textField setBezeled:NO];
     [self.textField setEditable:NO];
@@ -83,23 +84,7 @@
     
     if (NSPointInRect(curPoint, self.bounds)) {
         NSLog(@"Clicked point inside: %@", NSStringFromPoint([theEvent locationInWindow]));
-        
-        [self.menu ]
     }
 }
-
-
-//- (void)drawRect:(NSRect)dirtyRect
-//{
-//    // Draw the gem
-//    [self.gemView drawRect:dirtyRect];
-//    
-//    // Draw the text
-//    NSDictionary *attributes = @{NSForegroundColorAttributeName : [NSColor lightGrayColor]};
-//    [self.title drawAtPoint:NSMakePoint(25, 0) withAttributes:attributes];
-//    
-//    // Draw the down arrow
-//    [self.arrowView drawRect:dirtyRect];
-//}
 
 @end
