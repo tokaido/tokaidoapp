@@ -29,6 +29,12 @@
 
     TKDApp *app = self.appController.content;    
     [self.tokenField setTitle:app.appHostname];
+    self.tokenField.delegate = self;
+}
+
+- (void)tokenField:(TKDRailsAppTokenField *)tokenField clickedWithEvent:(NSEvent *)event;
+{
+    [NSMenu popUpContextMenu:self.appMenu withEvent:event forView:self.view];
 }
 
 - (void)editApp

@@ -72,6 +72,7 @@
     }
 }
 
+// Event Handling
 
 - (BOOL)acceptsFirstResponder
 {
@@ -83,7 +84,9 @@
     NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     
     if (NSPointInRect(curPoint, self.bounds)) {
-        NSLog(@"Clicked point inside: %@", NSStringFromPoint([theEvent locationInWindow]));
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tokenField:clickedWithEvent:)]) {
+            [self.delegate tokenField:self clickedWithEvent:theEvent];
+        }
     }
 }
 

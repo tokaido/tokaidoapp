@@ -14,7 +14,15 @@ typedef enum {
     TKDRailsAppTokenStateDeactivated
 } TKDRailsAppTokenState;
 
+@class TKDRailsAppTokenField;
+
+@protocol TKDRailsAppTokenFieldDelegate <NSObject>
+- (void)tokenField:(TKDRailsAppTokenField *)tokenField clickedWithEvent:(NSEvent *)event;
+@end
+
 @interface TKDRailsAppTokenField : NSView
+
+@property (nonatomic, weak) id<TKDRailsAppTokenFieldDelegate> delegate;
 
 - (void)setState:(TKDRailsAppTokenState)newState;
 - (void)setTitle:(NSString *)newTitle;

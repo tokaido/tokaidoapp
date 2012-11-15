@@ -14,7 +14,7 @@
 #import "TKDSelectableIcon.h"
 #import "TKDRailsAppTokenField.h"
 
-@interface TKDRailsAppIcon : NSCollectionViewItem
+@interface TKDRailsAppIcon : NSCollectionViewItem <TKDRailsAppTokenFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet TKDTokaidoController *tokaidoController;
 
@@ -22,6 +22,7 @@
 @property (nonatomic, strong) IBOutlet TKDSelectableIcon *appIcon;
 @property (nonatomic, strong) IBOutlet TKDRailsAppTokenField *tokenField;
 
+@property (nonatomic, strong) IBOutlet NSMenu *appMenu;
 
 @property (nonatomic, strong) IBOutlet NSMenuItem *activatedMenuItem;
 @property (nonatomic, strong) IBOutlet NSMenuItem *shouldActivateOnLaunchMenuItem;
