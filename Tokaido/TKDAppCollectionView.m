@@ -8,6 +8,7 @@
 
 #import "TKDAppCollectionView.h"
 #import "TKDRailsAppIcon.h"
+#import "TKDRailsAppTokenField.h"
 
 @implementation TKDAppCollectionView
 
@@ -18,6 +19,7 @@
     appIcon.tokaidoController = prototype.tokaidoController;
     [appIcon view]; // force load the view
     appIcon.tokenField.delegate = appIcon;
+    [appIcon.tokenField configureForRepresentedObject];
     return  appIcon;
 }
 

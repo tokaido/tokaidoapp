@@ -33,6 +33,12 @@
     [NSMenu popUpContextMenu:self.appMenu withEvent:event forView:self.view];
 }
 
+- (NSString *)titleForTokenField:(TKDRailsAppTokenField *)tokenField;
+{
+    TKDApp *app = (TKDApp *)self.representedObject;
+    return app.appHostname;
+}
+
 - (void)editApp
 {
     [self.tokaidoController showEditWindowForApp:self.representedObject];

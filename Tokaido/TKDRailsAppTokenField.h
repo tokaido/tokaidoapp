@@ -18,6 +18,7 @@ typedef enum {
 
 @protocol TKDRailsAppTokenFieldDelegate <NSObject>
 - (void)tokenField:(TKDRailsAppTokenField *)tokenField clickedWithEvent:(NSEvent *)event;
+- (NSString *)titleForTokenField:(TKDRailsAppTokenField *)tokenField;
 @end
 
 @interface TKDRailsAppTokenField : NSView
@@ -26,5 +27,6 @@ typedef enum {
 
 - (void)setState:(TKDRailsAppTokenState)newState;
 - (void)setTitle:(NSString *)newTitle;
+- (void)configureForRepresentedObject;
 
 @end
