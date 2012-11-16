@@ -87,7 +87,14 @@
 - (void)loadAppSettings
 {
     NSString *appSettingsPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"AppSettings"];
-    NSMutableArray *apps = [NSKeyedUnarchiver unarchiveObjectWithFile:appSettingsPath];
+    
+    NSMutableArray *apps = nil;
+    @try {
+        apps = [NSKeyedUnarchiver unarchiveObjectWithFile:appSettingsPath];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"ERROR: Couldn't load app settings: %@", exception);
+    }
     
     if (apps) {
         self.tokaidoController.apps = apps;
