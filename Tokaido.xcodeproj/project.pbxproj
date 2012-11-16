@@ -37,6 +37,7 @@
 		CD8285AE16559D96000CB252 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AB16559D96000CB252 /* Red.png */; };
 		CD8285AF16559D96000CB252 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AC16559D96000CB252 /* Yellow.png */; };
 		CD8285B11655A696000CB252 /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285B01655A696000CB252 /* down_arrow.png */; };
+		CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,8 @@
 		CD8285AB16559D96000CB252 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
 		CD8285AC16559D96000CB252 /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
 		CD8285B01655A696000CB252 /* down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_arrow.png; sourceTree = "<group>"; };
+		CD8285DC1655B670000CB252 /* TKDAppCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppCollectionView.h; sourceTree = "<group>"; };
+		CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +280,8 @@
 		3AD6935B1639C6FE005AF81E /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				CD8285DC1655B670000CB252 /* TKDAppCollectionView.h */,
+				CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */,
 				3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */,
 				3AD69507163B4093005AF81E /* TKDRailsAppIcon.h */,
 				3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */,
@@ -487,6 +492,7 @@
 				3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */,
 				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
 				CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */,
+				CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

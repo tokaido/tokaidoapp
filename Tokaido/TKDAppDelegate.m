@@ -88,6 +88,7 @@
 {
     NSString *appSettingsPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"AppSettings"];
     NSMutableArray *apps = [NSKeyedUnarchiver unarchiveObjectWithFile:appSettingsPath];
+    
     if (apps) {
         self.tokaidoController.apps = apps;
     } else {
@@ -108,11 +109,11 @@
 - (void)ensureTokaidoBootstrapIsInstalled
 {
     // Check to see if we can communicate with tokaido-bootstrap
-#warning Assume NO for now.
+#warning Assume YES for now.
     BOOL tokaidoBootstrapInstalled = NO;
 
     // If not, do the installation stuff.
-    if (!tokaidoBootstrapInstalled) {
+    if (tokaidoBootstrapInstalled) {
         
         NSString *executablePath = [@"~/Library/Application Support/Tokaido/ruby" stringByExpandingTildeInPath];
         NSString *scriptPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-bootstrap"];

@@ -16,6 +16,8 @@
     TKDRailsAppIcon *appIcon = (TKDRailsAppIcon *)[super newItemForRepresentedObject:object];
     TKDRailsAppIcon *prototype = (TKDRailsAppIcon *)self.itemPrototype;
     appIcon.tokaidoController = prototype.tokaidoController;
+    [appIcon view]; // force load the view
+    appIcon.tokenField.delegate = appIcon;
     return  appIcon;
 }
 
