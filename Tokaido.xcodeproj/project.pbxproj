@@ -32,6 +32,7 @@
 		3AD694E6163A1475005AF81E /* TKDApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD694E5163A1475005AF81E /* TKDApp.m */; };
 		3AD69506163B0FC6005AF81E /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD694FA163B0F8D005AF81E /* Mantle.framework */; };
 		3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */; };
+		CD1FCB88169D066C00FB7E36 /* Tokaido.icns in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB87169D066C00FB7E36 /* Tokaido.icns */; };
 		CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */; };
 		CD8285AD16559D96000CB252 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AA16559D96000CB252 /* Green.png */; };
 		CD8285AE16559D96000CB252 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AB16559D96000CB252 /* Red.png */; };
@@ -132,6 +133,7 @@
 		3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = lib/Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
 		3AD69507163B4093005AF81E /* TKDRailsAppIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppIcon.h; sourceTree = "<group>"; };
 		3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppIcon.m; sourceTree = "<group>"; };
+		CD1FCB87169D066C00FB7E36 /* Tokaido.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Tokaido.icns; sourceTree = SOURCE_ROOT; };
 		CD8285A716559A9D000CB252 /* TKDRailsAppTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppTokenField.h; sourceTree = "<group>"; };
 		CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppTokenField.m; sourceTree = "<group>"; };
 		CD8285AA16559D96000CB252 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		3AD694DC1639E905005AF81E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CD1FCB86169D047B00FB7E36 /* Icon */,
 				CD8285B01655A696000CB252 /* down_arrow.png */,
 				CD8285AA16559D96000CB252 /* Green.png */,
 				CD8285AB16559D96000CB252 /* Red.png */,
@@ -326,6 +329,14 @@
 				3AD69500163B0F8D005AF81E /* Mantle iOS Tests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CD1FCB86169D047B00FB7E36 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				CD1FCB87169D066C00FB7E36 /* Tokaido.icns */,
+			);
+			name = Icon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +462,7 @@
 				CD8285AE16559D96000CB252 /* Red.png in Resources */,
 				CD8285AF16559D96000CB252 /* Yellow.png in Resources */,
 				CD8285B11655A696000CB252 /* down_arrow.png in Resources */,
+				CD1FCB88169D066C00FB7E36 /* Tokaido.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
