@@ -19,5 +19,5 @@ Compiling static ruby:
     sm tokaidoapp dependencies
     sm tokaidoapp install
 
-Ruby is isntalled in `$HOME/.sm/pkg/versions/tokaidoapp/1.9.3-p125/`
+Ruby is installed in `$HOME/.sm/pkg/versions/tokaidoapp/1.9.3-p125/`
 
