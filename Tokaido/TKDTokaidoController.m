@@ -52,25 +52,15 @@
     [self.openPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {                               
        NSURL *chosenURL = [self.openPanel URL];
        
-       if (result == NSFileHandlingPanelOKButton && chosenURL) {
-           
-           if ([self directoryContainsGemfile:chosenURL]) {
-               TKDApp *newApp = [[TKDApp alloc] init];
-               newApp.appName = [chosenURL lastPathComponent];
-               newApp.appDirectoryPath = [chosenURL path];
-               newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
-               
-               [ac addObject:newApp];
-               TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
-               [delegate saveAppSettings];
-           } else {
-               NSAlert *alert = [NSAlert alertWithMessageText:@"Selected directory isn't a Rails app"
-                                                defaultButton:@"OK"
-                                              alternateButton:nil
-                                                  otherButton:nil
-                                    informativeTextWithFormat:@"Rails app should contain a Gemfile in the directory."];
-               [alert runModal];
-           }
+       if ((result == NSFileHandlingPanelOKButton && chosenURL) && [self canAddURL:chosenURL]) {
+            TKDApp *newApp = [[TKDApp alloc] init];
+            newApp.appName = [chosenURL lastPathComponent];
+            newApp.appDirectoryPath = [chosenURL path];
+            newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
+
+            [ac addObject:newApp];
+            TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+            [delegate saveAppSettings];
        }
    }];
 }
@@ -109,12 +99,50 @@
     [delegate saveAppSettings];
 }
 
+- (BOOL)canAddURL:(NSURL *)url
+{
+    if (![self directoryContainsGemfile:url]) {
+        
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Selected directory isn't a Rails app"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:@"Rails app should contain a Gemfile in the directory."];
+        [alert runModal];
+        
+        return NO;
+    }
+    
+    if ([self directoryAlreadyListed:url]) {
+        
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Selected directory is already in Tokaido"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:@"Please choose a different directory."];
+        [alert runModal];
+        
+        return NO;
+    }
+    
+    return YES;
+}
 
 - (BOOL)directoryContainsGemfile:(NSURL *)url
 {
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *gemfilePath = [[url path] stringByAppendingPathComponent:@"Gemfile"];
     return [fm fileExistsAtPath:gemfilePath];
+}
+
+- (BOOL)directoryAlreadyListed:(NSURL *)url
+{
+    for (TKDApp *app in self.apps) {
+        if ([app.appDirectoryPath isEqual:[url path]]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end
