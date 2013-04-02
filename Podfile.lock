@@ -1,0 +1,24 @@
+PODS:
+  - libextobjc/EXTKeyPathCoding (0.2.5):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.2.5):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.2.5)
+  - LibYAML (0.1.4)
+  - Mantle (1.0):
+    - libextobjc/EXTKeyPathCoding
+    - libextobjc/EXTScope
+  - YAML-Framework (0.0.1):
+    - LibYAML (~> 0.1.4)
+
+DEPENDENCIES:
+  - Mantle (~> 1.0)
+  - YAML-Framework (~> 0.0.1)
+
+SPEC CHECKSUMS:
+  libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
+  LibYAML: 49b77e5b3f4417fa512a8f1f4675a78480bf6b3d
+  Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7
+  YAML-Framework: 4ada9225119ffb13a206f251fe4434e660bca16d
+
+COCOAPODS: 0.17.1

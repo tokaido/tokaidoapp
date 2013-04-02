@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2ED0D0CF3BDF47DBAFB3E8FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7523D448445F475BB439A142 /* libPods.a */; };
 		3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCC163F5B5C0035ABA2 /* Security.framework */; };
 		3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */; };
 		3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A19ECE516406F5B0035ABA2 /* TKDSelectableIcon.m */; };
@@ -30,16 +31,15 @@
 		3AD6935216375C98005AF81E /* 1.9.3-p194.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD6934F16375589005AF81E /* 1.9.3-p194.zip */; };
 		3AD694E21639F9D5005AF81E /* TKDRailsAppIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */; };
 		3AD694E6163A1475005AF81E /* TKDApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD694E5163A1475005AF81E /* TKDApp.m */; };
-		3AD69506163B0FC6005AF81E /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD694FA163B0F8D005AF81E /* Mantle.framework */; };
 		3AD69509163B4093005AF81E /* TKDRailsAppIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */; };
 		CD1FCB88169D066C00FB7E36 /* Tokaido.icns in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB87169D066C00FB7E36 /* Tokaido.icns */; };
 		CD1FCB8C169D0DCF00FB7E36 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB89169D0DCE00FB7E36 /* Green@2x.png */; };
 		CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB8A169D0DCF00FB7E36 /* Red@2x.png */; };
 		CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */; };
+		CD5A8934170B84EA00217D8A /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5A8933170B84EA00217D8A /* Yellow.png */; };
 		CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */; };
 		CD8285AD16559D96000CB252 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AA16559D96000CB252 /* Green.png */; };
 		CD8285AE16559D96000CB252 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AB16559D96000CB252 /* Red.png */; };
-		CD8285AF16559D96000CB252 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AC16559D96000CB252 /* Yellow.png */; };
 		CD8285B11655A696000CB252 /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285B01655A696000CB252 /* down_arrow.png */; };
 		CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */; };
 /* End PBXBuildFile section */
@@ -51,34 +51,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3AD6930616373C9F005AF81E;
 			remoteInfo = Tokaido;
-		};
-		3AD694F9163B0F8D005AF81E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D042FC3C15F72B23004E8054;
-			remoteInfo = "Mantle Mac";
-		};
-		3AD694FB163B0F8D005AF81E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D042FC5415F72B23004E8054;
-			remoteInfo = "Mantle Mac Tests";
-		};
-		3AD694FD163B0F8D005AF81E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D042FC7915F72BC7004E8054;
-			remoteInfo = "Mantle iOS";
-		};
-		3AD694FF163B0F8D005AF81E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D042FC8715F72BC7004E8054;
-			remoteInfo = "Mantle iOS Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -133,21 +105,22 @@
 		3AD694E11639F9D5005AF81E /* TKDRailsAppIcon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDRailsAppIcon.xib; sourceTree = "<group>"; };
 		3AD694E4163A1475005AF81E /* TKDApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDApp.h; sourceTree = "<group>"; };
 		3AD694E5163A1475005AF81E /* TKDApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDApp.m; sourceTree = "<group>"; };
-		3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mantle.xcodeproj; path = lib/Mantle/Mantle.xcodeproj; sourceTree = "<group>"; };
 		3AD69507163B4093005AF81E /* TKDRailsAppIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppIcon.h; sourceTree = "<group>"; };
 		3AD69508163B4093005AF81E /* TKDRailsAppIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppIcon.m; sourceTree = "<group>"; };
+		7523D448445F475BB439A142 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1FCB87169D066C00FB7E36 /* Tokaido.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Tokaido.icns; sourceTree = SOURCE_ROOT; };
 		CD1FCB89169D0DCE00FB7E36 /* Green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green@2x.png"; sourceTree = "<group>"; };
 		CD1FCB8A169D0DCF00FB7E36 /* Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red@2x.png"; sourceTree = "<group>"; };
 		CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow@2x.png"; sourceTree = "<group>"; };
+		CD5A8933170B84EA00217D8A /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
 		CD8285A716559A9D000CB252 /* TKDRailsAppTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppTokenField.h; sourceTree = "<group>"; };
 		CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppTokenField.m; sourceTree = "<group>"; };
 		CD8285AA16559D96000CB252 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
 		CD8285AB16559D96000CB252 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
-		CD8285AC16559D96000CB252 /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
 		CD8285B01655A696000CB252 /* down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_arrow.png; sourceTree = "<group>"; };
 		CD8285DC1655B670000CB252 /* TKDAppCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppCollectionView.h; sourceTree = "<group>"; };
 		CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppCollectionView.m; sourceTree = "<group>"; };
+		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,9 +130,9 @@
 			files = (
 				3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */,
 				3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */,
-				3AD69506163B0FC6005AF81E /* Mantle.framework in Frameworks */,
 				3AD6934B16374795005AF81E /* ScriptingBridge.framework in Frameworks */,
 				3AD6930C16373C9F005AF81E /* Cocoa.framework in Frameworks */,
+				2ED0D0CF3BDF47DBAFB3E8FC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +155,7 @@
 				3AD6932E16373C9F005AF81E /* TokaidoTests */,
 				3AD6930A16373C9F005AF81E /* Frameworks */,
 				3AD6930816373C9F005AF81E /* Products */,
+				E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,11 +173,11 @@
 			children = (
 				3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */,
 				3A19ECCC163F5B5C0035ABA2 /* Security.framework */,
-				3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */,
 				3AD6934A16374795005AF81E /* ScriptingBridge.framework */,
 				3AD6930B16373C9F005AF81E /* Cocoa.framework */,
 				3AD6932916373C9F005AF81E /* SenTestingKit.framework */,
 				3AD6930D16373C9F005AF81E /* Other Frameworks */,
+				7523D448445F475BB439A142 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -324,17 +298,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		3AD694E8163B0F8D005AF81E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3AD694FA163B0F8D005AF81E /* Mantle.framework */,
-				3AD694FC163B0F8D005AF81E /* Mantle Mac Tests.octest */,
-				3AD694FE163B0F8D005AF81E /* libMantle.a */,
-				3AD69500163B0F8D005AF81E /* Mantle iOS Tests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CD1FCB86169D047B00FB7E36 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,8 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				CD8285AA16559D96000CB252 /* Green.png */,
+				CD5A8933170B84EA00217D8A /* Yellow.png */,
 				CD8285AB16559D96000CB252 /* Red.png */,
-				CD8285AC16559D96000CB252 /* Yellow.png */,
 				CD1FCB89169D0DCE00FB7E36 /* Green@2x.png */,
 				CD1FCB8A169D0DCF00FB7E36 /* Red@2x.png */,
 				CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */,
@@ -367,6 +330,7 @@
 				3AD6930416373C9F005AF81E /* Frameworks */,
 				3AD6930516373C9F005AF81E /* Resources */,
 				3AD6935116375C8F005AF81E /* CopyFiles */,
+				19D09BFA9B9E4F4F9E39E605 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -416,12 +380,6 @@
 			mainGroup = 3AD692FC16373C9F005AF81E;
 			productRefGroup = 3AD6930816373C9F005AF81E /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3AD694E8163B0F8D005AF81E /* Products */;
-					ProjectRef = 3AD694E7163B0F8D005AF81E /* Mantle.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3AD6930616373C9F005AF81E /* Tokaido */,
@@ -429,37 +387,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3AD694FA163B0F8D005AF81E /* Mantle.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Mantle.framework;
-			remoteRef = 3AD694F9163B0F8D005AF81E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3AD694FC163B0F8D005AF81E /* Mantle Mac Tests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Mantle Mac Tests.octest";
-			remoteRef = 3AD694FB163B0F8D005AF81E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3AD694FE163B0F8D005AF81E /* libMantle.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMantle.a;
-			remoteRef = 3AD694FD163B0F8D005AF81E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3AD69500163B0F8D005AF81E /* Mantle iOS Tests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Mantle iOS Tests.octest";
-			remoteRef = 3AD694FF163B0F8D005AF81E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3AD6930516373C9F005AF81E /* Resources */ = {
@@ -477,12 +404,12 @@
 				3A19ECEE1640777E0035ABA2 /* TKIconRuby@2x.png in Resources */,
 				CD8285AD16559D96000CB252 /* Green.png in Resources */,
 				CD8285AE16559D96000CB252 /* Red.png in Resources */,
-				CD8285AF16559D96000CB252 /* Yellow.png in Resources */,
 				CD8285B11655A696000CB252 /* down_arrow.png in Resources */,
 				CD1FCB88169D066C00FB7E36 /* Tokaido.icns in Resources */,
 				CD1FCB8C169D0DCF00FB7E36 /* Green@2x.png in Resources */,
 				CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */,
 				CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */,
+				CD5A8934170B84EA00217D8A /* Yellow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +424,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		19D09BFA9B9E4F4F9E39E605 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 		3AD6932616373C9F005AF81E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -637,12 +578,11 @@
 		};
 		3AD6933A16373C9F005AF81E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
-				HEADER_SEARCH_PATHS = "lib/**";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -651,12 +591,11 @@
 		};
 		3AD6933B16373C9F005AF81E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
-				HEADER_SEARCH_PATHS = "lib/**";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
