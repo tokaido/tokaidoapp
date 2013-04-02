@@ -26,6 +26,7 @@
     
     [self.removeMenuItem setTarget:self];
     [self.removeMenuItem setAction:@selector(removeApp)];
+    [self.removeMenuItem setEnabled:YES];
 }
 
 - (void)tokenField:(TKDRailsAppTokenField *)tokenField clickedWithEvent:(NSEvent *)event;

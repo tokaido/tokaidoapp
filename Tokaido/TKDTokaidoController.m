@@ -67,7 +67,11 @@
 
 - (void)showEditWindowForApp:(TKDApp *)app
 {
-    // Configure edit window here...
+    
+    self.appImageView.image = [NSImage imageNamed:@"TKIconRuby.png"];
+    [self.appNameField setStringValue:app.appName];
+    [self.hostnameField setStringValue:app.appHostname];
+    [self.usesYamlButton setState:NSOnState];
     
     [NSApp beginSheet:self.editWindow
        modalForWindow:self.window

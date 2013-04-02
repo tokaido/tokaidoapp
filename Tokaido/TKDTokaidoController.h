@@ -16,6 +16,11 @@
 @property IBOutlet NSArrayController *appsArrayController;
 
 @property (nonatomic, strong) IBOutlet NSWindow *editWindow;
+@property (nonatomic, strong) IBOutlet NSImageView *appImageView;
+@property (nonatomic, strong) IBOutlet NSTextField *appNameField;
+@property (nonatomic, strong) IBOutlet NSTextField *hostnameField;
+@property (nonatomic, strong) IBOutlet NSButton *usesYamlButton;
+
 @property NSMutableArray *apps;
 
 - (IBAction)openTerminalPressed:(id)sender;
