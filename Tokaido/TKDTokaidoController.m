@@ -8,7 +8,7 @@
 
 #import "TKDAppDelegate.h"
 #import "TKDTokaidoController.h"
-
+#import "TKDMuxrManager.h"
 #import "TKDApp.h"
 
 @interface TKDTokaidoController ()
@@ -23,6 +23,8 @@
     CGSize size = CGSizeMake(150, 162);
     [self.railsAppsView setMinItemSize:size];
 //    [self.railsAppsView setMaxItemSize:size];
+    
+    [[TKDMuxrManager defaultManager] setupSocket];
 
 }
 
