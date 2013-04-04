@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TKDApp.h"
+
 @interface TKDMuxrManager : NSObject
 
 + (id)defaultManager;
-- (BOOL)setupSocket;
+
+- (void)addApp:(TKDApp *)app;
+- (void)removeApp:(TKDApp *)app;
 
 @end
