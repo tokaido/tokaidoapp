@@ -10,12 +10,28 @@
 
 @implementation TKDApp
 
-+ (NSDictionary *)externalRepresentationKeyPathsByPropertyKey {
-    return [super.externalRepresentationKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:@{
-            @"AppName": @"name",
-            @"AppDirectoryPath": @"directory_path",
-            @"AppHostname": @"hostname"
-            }];
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"appName": @"name",
+             @"appDirectoryPath": @"directory_path",
+             @"appHostname": @"hostname",
+             @"appState" : @"state",
+             };
+}
+
++ (NSValueTransformer *)stateJSONTransformer {
+    NSDictionary *states = @{
+                             @"off": @(TKDAppOff),
+                             @"booting": @(TKDAppBooting),
+                             @"on": @(TKDAppOn),
+                             @"shutting_down": @(TKDAppShuttingDown)
+                             };
+    
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        return states[str];
+    } reverseBlock:^(NSNumber *state) {
+        return [states allKeysForObject:state].lastObject;
+    }];
 }
 
 - (void)showInFinder;

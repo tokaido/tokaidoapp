@@ -8,11 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum : NSUInteger {
+    TKDAppOff,
+    TKDAppBooting,
+    TKDAppOn,
+    TKDAppShuttingDown
+} TKDAppState;
+
 @interface TKDApp : MTLModel
 
-@property NSString *appName;
-@property NSString *appDirectoryPath;
-@property NSString *appHostname;
+@property (nonatomic, strong) NSString *appName;
+@property (nonatomic, strong) NSString *appDirectoryPath;
+@property (nonatomic, strong) NSString *appHostname;
+@property (nonatomic, assign) TKDAppState state;
 
 - (void)showInFinder;
 

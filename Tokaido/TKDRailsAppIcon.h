@@ -32,4 +32,6 @@
 @property (nonatomic, strong) IBOutlet NSMenuItem *editMenuItem;
 @property (nonatomic, strong) IBOutlet NSMenuItem *removeMenuItem;
 
+@property (nonatomic, readonly) TKDApp *app;
+
 @end

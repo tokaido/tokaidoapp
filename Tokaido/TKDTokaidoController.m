@@ -24,8 +24,33 @@
     [self.railsAppsView setMinItemSize:size];
 //    [self.railsAppsView setMaxItemSize:size];
     
-    [[TKDMuxrManager defaultManager] setupSocket];
+    TKDApp *fakeApp = [[TKDApp alloc] init];
+    fakeApp.appName = @"Fake";
+    fakeApp.appHostname = @"fake.local";
+    fakeApp.appDirectoryPath = @"/who/what";
+    
+    [[TKDMuxrManager defaultManager] addApp:fakeApp];
 
+}
+
+- (void)startApp:(TKDApp *)app;
+{
+    if (app.state == TKDAppOff) {
+        app.state = TKDAppBooting;
+        [[TKDMuxrManager defaultManager] addApp:app];
+    } else {
+        NSLog(@"ERROR: Cannot start already running app: %@", app);
+    }
+}
+
+- (void)stopApp:(TKDApp *)app;
+{
+    if (app.state == TKDAppOn) {
+        app.state = TKDAppShuttingDown;
+        [[TKDMuxrManager defaultManager] stopApp:app];
+    } else {
+        NSLog(@"ERROR: Cannot stop already stopped app: %@", app);
+    }
 }
 
 - (IBAction)openTerminalPressed:(id)sender;
@@ -96,7 +121,6 @@
 {
     [self closeEditWindow:sender];
 }
-
 
 - (void)removeApp:(TKDApp *)app;
 {

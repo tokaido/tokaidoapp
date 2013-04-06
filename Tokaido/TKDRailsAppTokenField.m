@@ -13,7 +13,7 @@
 
 @interface TKDRailsAppTokenField ()
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, assign) TKDRailsAppTokenState state;
+@property (nonatomic, assign) TKDAppState state;
 
 @property (nonatomic, strong) NSImageView *gemView;
 @property (nonatomic, strong) NSImageView *arrowView;
@@ -25,7 +25,7 @@
 - (void)awakeFromNib
 {
     self.gemView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 19)];
-    [self setState:TKDRailsAppTokenStateWorking];
+    [self setState:TKDAppOff];
     [self addSubview:self.gemView];
     
     self.textField = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 0, 100, 20)];
@@ -47,21 +47,42 @@
 - (void)configureForRepresentedObject
 {
     self.title = [self.delegate titleForTokenField:self];
+    [[self.delegate app] addObserver:self
+                          forKeyPath:@"state"
+                             options:(NSKeyValueObservingOptionNew |
+                                      NSKeyValueObservingOptionOld)
+                             context:NULL];
 }
 
-- (void)setState:(TKDRailsAppTokenState)newState;
+- (void)observeValueForKeyPath:(NSString*)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary*)change
+                       context:(void*)context
+{
+	if ([keyPath isEqualToString:@"state"]) {
+        [self setState:[[change objectForKey:NSKeyValueChangeNewKey] intValue]];
+	} else {
+        [super observeValueForKeyPath:keyPath
+                             ofObject:object
+                               change:change
+                              context:context];
+    }
+}
+
+- (void)setState:(TKDAppState)newState;
 {
     if (self.state != newState) {
         _state = newState;
         
         switch (self.state) {
-            case TKDRailsAppTokenStateActivated:
+            case TKDAppOn:
                 self.gemView.image = [NSImage imageNamed:@"Green.png"];
                 break;
-            case TKDRailsAppTokenStateWorking:
+            case TKDAppBooting:
+            case TKDAppShuttingDown:
                 self.gemView.image = [NSImage imageNamed:@"Yellow.png"];
                 break;
-            case TKDRailsAppTokenStateDeactivated:
+            case TKDAppOff:
                 self.gemView.image = [NSImage imageNamed:@"Red.png"];
                 break;
                 
@@ -121,6 +142,11 @@
             [self.delegate tokenField:self clickedWithEvent:theEvent];
         }
     }
+}
+
+- (void)dealloc
+{
+    [[self.delegate app] removeObserver:self forKeyPath:@"state"];
 }
 
 @end

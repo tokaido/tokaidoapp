@@ -13,6 +13,7 @@
 
 @interface TKDMuxrManager ()
 @property (nonatomic, strong) NSMapTable *socketsToReadData;
+@property (nonatomic, assign) int openSocket;
 @end
 
 @implementation TKDMuxrManager
@@ -31,11 +32,12 @@
 - (void)setup
 {
     self.socketsToReadData = [NSMapTable strongToStrongObjectsMapTable];
+    self.openSocket = [self openNewSocket];
+    [self readFromSocket:self.openSocket];
 }
 
 - (int)openNewSocket
 {
-
     // Just open a socket
     int fd = socket(AF_UNIX, SOCK_STREAM, 0);
     if (fd == -1) {
@@ -44,7 +46,7 @@
     }
     
     struct sockaddr_un addr;
-    char *socket_path = "/tmp/tokaido.sock";
+    char *socket_path = "/tmp/fakemux.sock";
     
     memset(&addr, 0, sizeof(addr));
     addr.sun_family = AF_UNIX;
@@ -52,7 +54,6 @@
     
     if (connect(fd, (struct sockaddr*)&addr, sizeof(addr)) == -1) {
         NSLog(@"ERROR: Could not connect to the Tokaido service.");
-#warning Need a better way to communicate this to the user
         return NULL;
     }
     
@@ -61,33 +62,36 @@
 
 - (BOOL)readFromSocket:(int)fd
 {
-    fcntl(fd, F_SETFL, O_NONBLOCK);  // Avoid blocking the read operation
-
     // Set up our dispatch source
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t readSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, fd, 0, queue);
     if (!readSource) {
-//        close(fd);
+        close(fd);
+        NSLog(@"ERROR: Couldn't create a read source for socket");
         return NO;
     }
     
     // Install the event handler
     dispatch_source_set_event_handler(readSource, ^{
         size_t estimated = dispatch_source_get_data(readSource) + 1;
-        
+        NSLog(@"size to read: %ld", estimated);
+
         // Read the data into a text buffer.
         char* buffer = (char*) malloc(estimated);
+        memset(buffer, 0, estimated);
         if (buffer) {
             
-            read(fd, buffer, (estimated));
-            [self processMuxrLine:buffer];
+            read(fd, buffer, estimated);
+            NSLog(@"Read line from muxr: %s", buffer);
+
+            NSString *muxrLine = [NSString stringWithUTF8String:buffer];
+            NSLog(@"Got muxrLine: %@", muxrLine);
+            [self processMuxrLine:muxrLine];
             
             // Release the buffer when done.
             free(buffer);
             
-//            // If there is no more data, cancel the source.
-//            if (done)
-//                dispatch_source_cancel(readSource);
+            dispatch_source_cancel(readSource);
         }
     });
     
@@ -103,13 +107,12 @@
 
 
 - (BOOL)writeCommand:(NSString *)command toSocket:(int)fd
-{
-    fcntl(fd, F_SETFL); // Block during the write.
-    
+{    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t writeSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_WRITE, fd, 0, queue);
     if (!writeSource) {
         close(fd);
+        NSLog(@"ERROR: Couldn't open socket for writing.");
         return NO;
     }
     
@@ -119,48 +122,42 @@
         // This assumes we don't need to buffer our data
         write(fd, [command UTF8String], bufferSize);
         
-        
-        // Cancel and release the dispatch source when done.
         dispatch_source_cancel(writeSource);
     });
     
-    dispatch_source_set_cancel_handler(writeSource, ^{close(fd);});
     dispatch_resume(writeSource);
     return YES;
 }
 
 - (void)addApp:(TKDApp *)app;
 {
-    NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\" 4930", app.appDirectoryPath, app.appHostname];
+    NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\" 4930\n", app.appDirectoryPath, app.appHostname];
     [self issueCommand:command];
 }
 
 - (void)removeApp:(TKDApp *)app;
 {
-    NSString *command = [NSString stringWithFormat:@"REMOVE \"%@\"", app.appHostname];
+    NSString *command = [NSString stringWithFormat:@"REMOVE \"%@\"\n", app.appHostname];
     [self issueCommand:command];
 }
 
 - (void)issueCommand:(NSString *)command
 {
     // Create a new socket to muxr
-    int socket = [self openNewSocket];
+//    int socket = [self openNewSocket];
     
     // Write out our socket command
-    [self writeCommand:command toSocket:socket];
+    [self writeCommand:command toSocket:self.openSocket];
     
     // Setup a new reading buffer for that socket
-    [self readFromSocket:socket];
+//    [self readFromSocket:socket];
     
     // When our response is returned and finished reading, it will be called automatically.
 }
 
 
-- (void)processMuxrLine:(char *)buffer
-{
-    NSString *muxrLine = [NSString stringWithUTF8String:buffer];
-    NSLog(@"Got muxrLine: %@", muxrLine);
-    
+- (void)processMuxrLine:(NSString *)muxrLine
+{    
     // This happens on a background thread, so it should fire off UI updating notifications on
     // the main thread.
 }

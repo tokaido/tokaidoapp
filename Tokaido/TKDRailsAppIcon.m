@@ -20,6 +20,7 @@
     
     [self.showInFinderMenuItem setTarget:self.representedObject];
     [self.showInFinderMenuItem setAction:@selector(showInFinder)];
+    [self.showInFinderMenuItem setEnabled:YES];
     
     [self.editMenuItem setTarget:self];
     [self.editMenuItem setAction:@selector(editApp)];
@@ -27,6 +28,7 @@
     [self.removeMenuItem setTarget:self];
     [self.removeMenuItem setAction:@selector(removeApp)];
     [self.removeMenuItem setEnabled:YES];
+    
 }
 
 - (void)tokenField:(TKDRailsAppTokenField *)tokenField clickedWithEvent:(NSEvent *)event;
