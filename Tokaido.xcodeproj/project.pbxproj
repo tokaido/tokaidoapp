@@ -38,6 +38,8 @@
 		CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */; };
 		CD5A8934170B84EA00217D8A /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5A8933170B84EA00217D8A /* Yellow.png */; };
 		CD5A8937170CC4E900217D8A /* TKDMuxrManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5A8936170CC4E900217D8A /* TKDMuxrManager.m */; };
+		CD5A8980171380A600217D8A /* TKDEditAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5A897F171380A500217D8A /* TKDEditAppController.m */; };
+		CD5A8982171380E500217D8A /* EditAppWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5A8981171380E500217D8A /* EditAppWindow.xib */; };
 		CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */; };
 		CD8285AD16559D96000CB252 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AA16559D96000CB252 /* Green.png */; };
 		CD8285AE16559D96000CB252 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AB16559D96000CB252 /* Red.png */; };
@@ -116,6 +118,9 @@
 		CD5A8933170B84EA00217D8A /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
 		CD5A8935170CC4E800217D8A /* TKDMuxrManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDMuxrManager.h; sourceTree = "<group>"; };
 		CD5A8936170CC4E900217D8A /* TKDMuxrManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDMuxrManager.m; sourceTree = "<group>"; };
+		CD5A897E171380A500217D8A /* TKDEditAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEditAppController.h; sourceTree = "<group>"; };
+		CD5A897F171380A500217D8A /* TKDEditAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEditAppController.m; sourceTree = "<group>"; };
+		CD5A8981171380E500217D8A /* EditAppWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditAppWindow.xib; sourceTree = "<group>"; };
 		CD8285A716559A9D000CB252 /* TKDRailsAppTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppTokenField.h; sourceTree = "<group>"; };
 		CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppTokenField.m; sourceTree = "<group>"; };
 		CD8285AA16559D96000CB252 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
@@ -204,6 +209,9 @@
 				3AD693431637436E005AF81E /* TKDTokaidoController.h */,
 				3AD693441637436E005AF81E /* TKDTokaidoController.m */,
 				3AD6932016373C9F005AF81E /* MainMenu.xib */,
+				CD5A897E171380A500217D8A /* TKDEditAppController.h */,
+				CD5A897F171380A500217D8A /* TKDEditAppController.m */,
+				CD5A8981171380E500217D8A /* EditAppWindow.xib */,
 				3AD694DC1639E905005AF81E /* Images */,
 				3AD694E3163A1457005AF81E /* Model */,
 				3AD6935B1639C6FE005AF81E /* Custom Views */,
@@ -415,6 +423,7 @@
 				CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */,
 				CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */,
 				CD5A8934170B84EA00217D8A /* Yellow.png in Resources */,
+				CD5A8982171380E500217D8A /* EditAppWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +481,7 @@
 				CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */,
 				CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */,
 				CD5A8937170CC4E900217D8A /* TKDMuxrManager.m in Sources */,
+				CD5A8980171380A600217D8A /* TKDEditAppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

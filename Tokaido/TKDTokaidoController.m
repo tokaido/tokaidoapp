@@ -102,22 +102,14 @@
 
 - (void)showEditWindowForApp:(TKDApp *)app
 {
+    self.editAppController = [[TKDEditAppController alloc] initWithWindowNibName:@"EditAppWindow"];
+    self.editAppController.app = app;
     
-    self.appImageView.image = [NSImage imageNamed:@"TKIconRuby.png"];
-    [self.appNameField setStringValue:app.appName];
-    [self.hostnameField setStringValue:app.appHostname];
-    [self.usesYamlButton setState:NSOnState];
-    
-    [NSApp beginSheet:self.editWindow
+    [NSApp beginSheet:self.editAppController.window
        modalForWindow:self.window
         modalDelegate:self
        didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
           contextInfo:nil];
-}
-
-- (IBAction)closeEditWindow:(id)sender;
-{
-    [NSApp endSheet:self.editWindow];
 }
 
 - (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
@@ -125,10 +117,6 @@
     [sheet orderOut:self];
 }
 
-- (IBAction)saveChangesToApp:(id)sender;
-{
-    [self closeEditWindow:sender];
-}
 
 - (void)removeApp:(TKDApp *)app;
 {
@@ -136,6 +124,8 @@
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
     [delegate saveAppSettings];
 }
+
+#pragma mark Helper Methods
 
 - (BOOL)canAddURL:(NSURL *)url
 {

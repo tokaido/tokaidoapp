@@ -9,27 +9,21 @@
 #import <Foundation/Foundation.h>
 
 #import "TKDApp.h"
+#import "TKDEditAppController.h"
 
 @interface TKDTokaidoController : NSWindowController
 
 @property IBOutlet NSCollectionView *railsAppsView;
 @property IBOutlet NSArrayController *appsArrayController;
 
-@property (nonatomic, strong) IBOutlet NSWindow *editWindow;
-@property (nonatomic, strong) IBOutlet NSImageView *appImageView;
-@property (nonatomic, strong) IBOutlet NSTextField *appNameField;
-@property (nonatomic, strong) IBOutlet NSTextField *hostnameField;
-@property (nonatomic, strong) IBOutlet NSButton *usesYamlButton;
+@property (nonatomic, strong) TKDEditAppController *editAppController;
 
-@property NSMutableArray *apps;
+@property (nonatomic, strong) NSMutableArray *apps;
 
 - (IBAction)openTerminalPressed:(id)sender;
 - (IBAction)addAppPressed:(id)sender;
 
 - (void)removeApp:(id)sender;
 - (void)showEditWindowForApp:(TKDApp *)app;
-
-- (IBAction)closeEditWindow:(id)sender;
-- (IBAction)saveChangesToApp:(id)sender;
 
 @end
