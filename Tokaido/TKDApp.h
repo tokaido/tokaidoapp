@@ -17,10 +17,28 @@ typedef enum : NSUInteger {
 
 @interface TKDApp : MTLModel
 
-@property (nonatomic, strong) NSString *appName;
-@property (nonatomic, strong) NSString *appDirectoryPath;
-@property (nonatomic, strong) NSString *appHostname;
+@property (nonatomic, copy) NSString *appName;
+@property (nonatomic, copy) NSString *appDirectoryPath;
+@property (nonatomic, copy) NSString *appHostname;
+@property (nonatomic, copy) NSString *appIconPath;
+
 @property (nonatomic, assign) TKDAppState state;
+@property (nonatomic, assign) BOOL usesYAMLfile;
+
+
+/** 
+ 
+ This can be used to init an TKD app instance with a directory, provided the
+ directory includes a Tokaido.yaml file with the following entries:
+ 
+ app_name: App Name
+ hostname: app.local
+ app_icon: ./icon.png
+ 
+ */
+
+- (id)initWithTokaidoDirectory:(NSURL *)url;
+
 
 - (void)showInFinder;
 

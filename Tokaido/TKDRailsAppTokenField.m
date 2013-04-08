@@ -25,8 +25,9 @@
 - (void)awakeFromNib
 {
     self.gemView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 19)];
-    [self setState:TKDAppOff];
     [self addSubview:self.gemView];
+    _state = TKDAppBooting;
+    [self setState:TKDAppOff];
     
     self.textField = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 0, 100, 20)];
     self.textField.textColor = [NSColor darkGrayColor];
@@ -60,6 +61,7 @@
                        context:(void*)context
 {
 	if ([keyPath isEqualToString:@"state"]) {
+        
         [self setState:[[change objectForKey:NSKeyValueChangeNewKey] intValue]];
 	} else {
         [super observeValueForKeyPath:keyPath

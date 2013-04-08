@@ -80,14 +80,22 @@
        NSURL *chosenURL = [self.openPanel URL];
        
        if ((result == NSFileHandlingPanelOKButton && chosenURL) && [self canAddURL:chosenURL]) {
-            TKDApp *newApp = [[TKDApp alloc] init];
-            newApp.appName = [chosenURL lastPathComponent];
-            newApp.appDirectoryPath = [chosenURL path];
-            newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
-
-            [ac addObject:newApp];
-            TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
-            [delegate saveAppSettings];
+           TKDApp *newApp = nil;
+           
+           if ([self directoryContainsTokaidoYAMLFile:chosenURL]) {
+               newApp = [[TKDApp alloc] initWithTokaidoDirectory:chosenURL];
+           } else {
+               newApp = [[TKDApp alloc] init];
+               newApp.appName = [chosenURL lastPathComponent];
+               newApp.appDirectoryPath = [chosenURL path];
+               newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
+           }
+           
+           if (newApp) {
+               [ac addObject:newApp];
+               TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+               [delegate saveAppSettings];
+           }
        }
    }];
 }
@@ -158,13 +166,6 @@
     return YES;
 }
 
-- (BOOL)directoryContainsGemfile:(NSURL *)url
-{
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *gemfilePath = [[url path] stringByAppendingPathComponent:@"Gemfile"];
-    return [fm fileExistsAtPath:gemfilePath];
-}
-
 - (BOOL)directoryAlreadyListed:(NSURL *)url
 {
     for (TKDApp *app in self.apps) {
@@ -173,6 +174,20 @@
         }
     }
     return NO;
+}
+
+- (BOOL)directoryContainsGemfile:(NSURL *)url
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *gemfilePath = [[url path] stringByAppendingPathComponent:@"Gemfile"];
+    return [fm fileExistsAtPath:gemfilePath];
+}
+
+- (BOOL)directoryContainsTokaidoYAMLFile:(NSURL *)url
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *tokaidoFilePath = [[url path] stringByAppendingPathComponent:@"Tokaido.yaml"];
+    return [fm fileExistsAtPath:tokaidoFilePath];
 }
 
 @end

@@ -116,7 +116,6 @@
 - (void)ensureTokaidoBootstrapIsInstalled
 {
     // Check to see if we can communicate with tokaido-bootstrap
-#warning Assume YES for now.
     BOOL tokaidoBootstrapInstalled = NO;
 
     // If not, do the installation stuff.
@@ -250,7 +249,6 @@
 
 - (void)openTerminalWithPath:(NSString *)path;
 {
-#warning This is hardcoded for now.
     NSString *rubyVersion = @"1.9.3-p194";
     NSString *rubyBinDirectory = [rubyVersion stringByAppendingPathComponent:@"bin"];
 
