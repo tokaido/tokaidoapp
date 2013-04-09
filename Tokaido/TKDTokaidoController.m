@@ -125,6 +125,12 @@
     [delegate saveAppSettings];
 }
 
+- (NSString *)appSelectionStringForCurrentCount
+{
+    
+    return (([self.appsArrayController.arrangedObjects count] == 1) ? @"App" : @"Apps");
+}
+
 #pragma mark Helper Methods
 
 - (BOOL)canAddURL:(NSURL *)url

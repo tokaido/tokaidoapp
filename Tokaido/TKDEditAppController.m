@@ -7,6 +7,7 @@
 //
 
 #import "TKDEditAppController.h"
+#import "TKDAppDelegate.h"
 
 @interface TKDEditAppController ()
 
@@ -39,6 +40,14 @@
 
 - (IBAction)saveChangesToApp:(id)sender;
 {
+    // If we're using the YAML file, write changes to it.
+    
+    
+    // Save our own settings.
+    TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+    [delegate saveAppSettings];
+    
+    
     [NSApp endSheet:self.window];
 }
 
