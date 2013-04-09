@@ -41,5 +41,6 @@ typedef enum : NSUInteger {
 
 
 - (void)showInFinder;
+- (void)serializeToYAML;
 
 @end

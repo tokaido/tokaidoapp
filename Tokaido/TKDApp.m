@@ -24,12 +24,22 @@ static NSString *kAppIconKey = @"app_icon";
     return self;
 }
 
++ (NSDictionary *)YAMLKeyPathsByPropertyKey {
+    return @{
+             @"appName": @"app_name",
+             @"appHostname": @"app_hostname",
+             @"appIconPath" : @"app_icon_path"
+             };
+}
+
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"appName": @"name",
+             @"appName": @"app_name",
              @"appDirectoryPath": @"directory_path",
-             @"appHostname": @"hostname",
-             @"appState" : @"state",
+             @"appHostname": @"app_hostname",
+             @"appState" : @"app_state",
+             @"appIconPath" : @"app_icon_path"
              };
 }
 
@@ -86,6 +96,34 @@ static NSString *kAppIconKey = @"app_icon";
 - (void)showInFinder;
 {
     [[NSWorkspace sharedWorkspace] openFile:self.appDirectoryPath];
+}
+
+- (void)serializeToYAML;
+{
+    NSMutableDictionary *yamlDictionary = [NSMutableDictionary dictionaryWithCapacity:10];
+    NSDictionary *keys = [TKDApp YAMLKeyPathsByPropertyKey];
+    NSError *error = nil;
+    
+    for (NSString *key in [keys allKeys]) {
+        NSString *yamlKeyName = [keys valueForKey:key];
+        [yamlDictionary setValue:[self valueForKey:key] forKey:yamlKeyName];
+    }
+    
+    NSData *yamlData = [YAMLSerialization dataFromYAML:yamlDictionary
+                                               options:kYAMLWriteOptionSingleDocument
+                                                 error:&error];
+    
+    if (error) {
+        NSLog(@"ERROR: Couldn't form YAML data from TKDApp: %@", [error localizedDescription]);
+        return;
+    }
+    
+    BOOL success = [yamlData writeToFile:[self.appDirectoryPath stringByAppendingPathComponent:@"/Tokaido.yaml"]
+                              atomically:YES];
+    
+    if (!success) {
+        NSLog(@"ERROR: Couldn't write YAML file.");
+    }
 }
 
 @end

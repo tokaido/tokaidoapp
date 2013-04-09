@@ -10,20 +10,13 @@
 #import "TKDAppDelegate.h"
 
 @interface TKDEditAppController ()
-
+@property (nonatomic, copy) NSString *prevAppName;
+@property (nonatomic, copy) NSString *prevHostname;
+@property (nonatomic, copy) NSString *prevAppIconPath;
+@property (nonatomic, assign) BOOL prevUsesYAML;
 @end
 
 @implementation TKDEditAppController
-
-- (id)initWithWindow:(NSWindow *)window
-{
-    self = [super initWithWindow:window];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
 
 - (void)windowDidLoad
 {
@@ -31,17 +24,19 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
-    self.appImageView.image = [NSImage imageNamed:@"TKIconRuby.png"];
-    [self.appNameField setStringValue:self.app.appName];
-    [self.hostnameField setStringValue:self.app.appHostname];
-    self.app.usesYAMLfile ? [self.usesYamlButton setState:NSOnState] : [self.usesYamlButton setState:NSOffState];
+    self.prevAppIconPath = self.app.appIconPath;
+    self.prevAppName = self.app.appName;
+    self.prevHostname = self.app.appHostname;
+    self.prevUsesYAML = self.app.usesYAMLfile;
     
 }
 
-- (IBAction)saveChangesToApp:(id)sender;
+- (IBAction)savePressed:(id)sender;
 {
     // If we're using the YAML file, write changes to it.
-    
+    if (self.app.usesYAMLfile) {
+        [self.app serializeToYAML];
+    }
     
     // Save our own settings.
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
@@ -51,8 +46,13 @@
     [NSApp endSheet:self.window];
 }
 
-- (IBAction)closeEditWindow:(id)sender
+- (IBAction)cancelPressed:(id)sender;
 {
+    self.app.appIconPath = self.prevAppIconPath;
+    self.app.appName = self.prevAppName;
+    self.app.appHostname = self.prevHostname;
+    self.app.usesYAMLfile = self.prevUsesYAML;
+    
     [NSApp endSheet:self.window];
 }
 

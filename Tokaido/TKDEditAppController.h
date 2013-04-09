@@ -19,7 +19,7 @@
 @property (nonatomic, strong) IBOutlet NSTextField *hostnameField;
 @property (nonatomic, strong) IBOutlet NSButton *usesYamlButton;
 
-- (IBAction)closeEditWindow:(id)sender;
-- (IBAction)saveChangesToApp:(id)sender;
+- (IBAction)savePressed:(id)sender;
+- (IBAction)cancelPressed:(id)sender;
 
 @end
