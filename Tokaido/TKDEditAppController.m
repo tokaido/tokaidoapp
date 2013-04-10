@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Tilde. All rights reserved.
 //
 
+#import <Quartz/Quartz.h>
+
 #import "TKDEditAppController.h"
 #import "TKDAppDelegate.h"
 
@@ -31,6 +33,21 @@
     
 }
 
+- (IBAction)chooseImagePressed:(id)sender;
+{
+    IKPictureTaker *pictureTaker = [IKPictureTaker pictureTaker];
+    
+    [pictureTaker beginPictureTakerSheetForWindow:self.window
+                                     withDelegate:self
+                                   didEndSelector:@selector(pictureTakerDidEnd:returnCode:contextInfo:)
+                                      contextInfo:nil];
+}
+
+- (void)pictureTakerDidEnd:(IKPictureTaker *)pictureTaker returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
+{
+    self.appImageView.image = [pictureTaker outputImage];
+}
+
 - (IBAction)savePressed:(id)sender;
 {
     // If we're using the YAML file, write changes to it.
@@ -41,7 +58,6 @@
     // Save our own settings.
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
     [delegate saveAppSettings];
-    
     
     [NSApp endSheet:self.window];
 }

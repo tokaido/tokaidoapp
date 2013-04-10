@@ -21,5 +21,6 @@
 
 - (IBAction)savePressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
+- (IBAction)chooseImagePressed:(id)sender;
 
 @end

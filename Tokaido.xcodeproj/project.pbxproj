@@ -40,6 +40,7 @@
 		CD5A8937170CC4E900217D8A /* TKDMuxrManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5A8936170CC4E900217D8A /* TKDMuxrManager.m */; };
 		CD5A8980171380A600217D8A /* TKDEditAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5A897F171380A500217D8A /* TKDEditAppController.m */; };
 		CD5A8982171380E500217D8A /* EditAppWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5A8981171380E500217D8A /* EditAppWindow.xib */; };
+		CD5A898A1714F0AC00217D8A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5A89891714F0AC00217D8A /* Quartz.framework */; };
 		CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */; };
 		CD8285AD16559D96000CB252 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AA16559D96000CB252 /* Green.png */; };
 		CD8285AE16559D96000CB252 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AB16559D96000CB252 /* Red.png */; };
@@ -121,6 +122,7 @@
 		CD5A897E171380A500217D8A /* TKDEditAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEditAppController.h; sourceTree = "<group>"; };
 		CD5A897F171380A500217D8A /* TKDEditAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEditAppController.m; sourceTree = "<group>"; };
 		CD5A8981171380E500217D8A /* EditAppWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditAppWindow.xib; sourceTree = "<group>"; };
+		CD5A89891714F0AC00217D8A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		CD8285A716559A9D000CB252 /* TKDRailsAppTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppTokenField.h; sourceTree = "<group>"; };
 		CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppTokenField.m; sourceTree = "<group>"; };
 		CD8285AA16559D96000CB252 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD5A898A1714F0AC00217D8A /* Quartz.framework in Frameworks */,
 				3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */,
 				3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */,
 				3AD6934B16374795005AF81E /* ScriptingBridge.framework in Frameworks */,
@@ -178,6 +181,7 @@
 		3AD6930A16373C9F005AF81E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD5A89891714F0AC00217D8A /* Quartz.framework */,
 				3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */,
 				3A19ECCC163F5B5C0035ABA2 /* Security.framework */,
 				3AD6934A16374795005AF81E /* ScriptingBridge.framework */,
