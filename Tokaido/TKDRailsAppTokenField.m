@@ -8,7 +8,7 @@
 
 #import "TKDRailsAppTokenField.h"
 
-#define kSpacing 4
+#define kSpacing 8
 #define kArrowUp 5
 
 @interface TKDRailsAppTokenField ()
@@ -43,13 +43,21 @@
     self.arrowView = [[NSImageView alloc] initWithFrame:NSMakeRect(130, kArrowUp, 9, 10)];
     self.arrowView.image = [NSImage imageNamed:@"down_arrow.png"];
     [self addSubview:self.arrowView];
+    
+//    [self.textField bind:@"value" toObject:[self.delegate app] withKeyPath:@"appHostname" options:nil];
 }
 
 - (void)configureForRepresentedObject
 {
     self.title = [self.delegate titleForTokenField:self];
+    
     [[self.delegate app] addObserver:self
                           forKeyPath:@"state"
+                             options:(NSKeyValueObservingOptionNew |
+                                      NSKeyValueObservingOptionOld)
+                             context:NULL];
+    [[self.delegate app] addObserver:self
+                          forKeyPath:@"appHostname"
                              options:(NSKeyValueObservingOptionNew |
                                       NSKeyValueObservingOptionOld)
                              context:NULL];
@@ -61,8 +69,9 @@
                        context:(void*)context
 {
 	if ([keyPath isEqualToString:@"state"]) {
-        
         [self setState:[[change objectForKey:NSKeyValueChangeNewKey] intValue]];
+    } else if ([keyPath isEqualToString:@"appHostname"]) {
+        [self setTitle:[change objectForKey:NSKeyValueChangeNewKey]];
 	} else {
         [super observeValueForKeyPath:keyPath
                              ofObject:object
@@ -100,6 +109,7 @@
 {
     if (newTitle != self.title) {
         _title = newTitle;
+        self.textField.stringValue = _title;
         [self layout];
     }
 }
@@ -111,19 +121,19 @@
     
     // Figure out the size of our text field.
     NSSize textsize = [self.title sizeWithAttributes:nil];
-    if (textsize.width > 110) {
-        textsize.width = 110;
+    if (textsize.width > 120) {
+        textsize.width = 120;
     }
     
     // Move the gem in to the right so that it's directly beside the text
-    CGFloat textStart = totalWidth / 2.0f - textsize.width / 2.0f;
+    CGFloat textStart = (totalWidth / 2.0f) - (textsize.width / 2.0f);
     CGSize gemSize = self.gemView.bounds.size;
-    self.gemView.frame = NSMakeRect(textStart - gemSize.width - kSpacing, 1, gemSize.width, gemSize.height);
+    self.gemView.frame = NSIntegralRect( NSMakeRect(textStart - gemSize.width - kSpacing, 1, gemSize.width, gemSize.height) );
     
     // Move the down arrow in to the left so that it's also directly beside the text
     CGFloat textEnd = totalWidth / 2.0f + textsize.width / 2.0f;
     CGSize arrowSize = self.arrowView.bounds.size;
-    self.arrowView.frame = NSMakeRect(textEnd + kSpacing, kArrowUp, arrowSize.width, arrowSize.height);
+    self.arrowView.frame = NSIntegralRect( NSMakeRect(textEnd + kSpacing, kArrowUp, arrowSize.width, arrowSize.height) );
     
     [self setNeedsDisplay:YES];
 }
@@ -149,6 +159,7 @@
 - (void)dealloc
 {
     [[self.delegate app] removeObserver:self forKeyPath:@"state"];
+    [[self.delegate app] removeObserver:self forKeyPath:@"appHostname"];
 }
 
 @end

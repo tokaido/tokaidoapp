@@ -58,4 +58,9 @@
     [self.appIcon setSelected:selected];
 }
 
+- (TKDApp *)app
+{
+    return self.representedObject;
+}
+
 @end
