@@ -11,6 +11,8 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
+NSString * const kMuxrNotification = @"kMuxrNotification";
+
 @interface TKDMuxrManager ()
 @property (nonatomic, strong) NSMapTable *socketsToReadData;
 @property (nonatomic, assign) int openSocket;
@@ -160,6 +162,17 @@
 {    
     // This happens on a background thread, so it should fire off UI updating notifications on
     // the main thread.
+    
+    NSArray *elements = [muxrLine componentsSeparatedByString:@" "];
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        NSDictionary *userInfo = @{@"action": [elements objectAtIndex:0],
+                                   @"hostname": [elements objectAtIndex:1]};
+        NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
+                                                                         object:nil
+                                                                       userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
+    });
 }
 
 @end

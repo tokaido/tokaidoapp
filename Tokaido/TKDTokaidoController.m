@@ -23,6 +23,9 @@
     CGSize size = CGSizeMake(150, 162);
     [self.railsAppsView setMinItemSize:size];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMuxrEvent:) name:kMuxrNotification object:nil];
+    
+    
 //    TKDApp *fakeApp = [[TKDApp alloc] init];
 //    fakeApp.appName = @"Fake";
 //    fakeApp.appHostname = @"fake.local";
@@ -142,7 +145,43 @@
     [[TKDMuxrManager defaultManager] removeApp:app];
 }
 
+#pragma mark NSNotification Handlers
+- (void)handleMuxrEvent:(NSNotification *)note
+{
+    NSLog(@"Got event: %@", [note userInfo]);
+
+    
+    NSMutableString *hostname = [[[note userInfo] objectForKey:@"hostname"] mutableCopy];
+    [hostname replaceOccurrencesOfString:@"\""
+                              withString:@""
+                                 options:NSCaseInsensitiveSearch
+                                   range:NSMakeRange(0, [hostname length])];
+    [hostname replaceOccurrencesOfString:@"\n"
+                              withString:@""
+                                 options:NSCaseInsensitiveSearch
+                                   range:NSMakeRange(0, [hostname length])];
+    
+    NSLog(@"Hostname: %@", hostname);
+    
+    TKDApp *app = [self appWithHostname:hostname];
+    
+    // Check the event here and do the right thing.
+    
+    app.state = TKDAppOn;
+}
+
 #pragma mark Helper Methods
+
+- (TKDApp *)appWithHostname:(NSString *)hostname
+{
+    for (TKDApp *app in self.apps) {
+        if ([app.appHostname isEqualToString:hostname]) {
+            return app;
+        }
+    }
+    
+    return nil;
+}
 
 - (BOOL)canAddURL:(NSURL *)url
 {

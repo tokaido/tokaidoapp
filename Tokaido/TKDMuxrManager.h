@@ -10,6 +10,8 @@
 
 #import "TKDApp.h"
 
+extern  NSString * const kMuxrNotification;
+
 @interface TKDMuxrManager : NSObject
 
 + (id)defaultManager;
