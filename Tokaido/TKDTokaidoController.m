@@ -22,14 +22,13 @@
     self.apps = [[NSMutableArray alloc] init];
     CGSize size = CGSizeMake(150, 162);
     [self.railsAppsView setMinItemSize:size];
-//    [self.railsAppsView setMaxItemSize:size];
     
-    TKDApp *fakeApp = [[TKDApp alloc] init];
-    fakeApp.appName = @"Fake";
-    fakeApp.appHostname = @"fake.local";
-    fakeApp.appDirectoryPath = @"/who/what";
-    
-    [[TKDMuxrManager defaultManager] addApp:fakeApp];
+//    TKDApp *fakeApp = [[TKDApp alloc] init];
+//    fakeApp.appName = @"Fake";
+//    fakeApp.appHostname = @"fake.local";
+//    fakeApp.appDirectoryPath = @"/who/what";
+//    
+//    [[TKDMuxrManager defaultManager] addApp:fakeApp];
 
 }
 
@@ -129,6 +128,18 @@
 {
     
     return (([self.appsArrayController.arrangedObjects count] == 1) ? @"App" : @"Apps");
+}
+
+- (void)activateApp:(TKDApp *)app;
+{
+    app.state = TKDAppBooting;
+    [[TKDMuxrManager defaultManager] addApp:app];
+}
+
+- (void)deactivateApp:(TKDApp *)app;
+{
+    app.state = TKDAppShuttingDown;
+    [[TKDMuxrManager defaultManager] removeApp:app];
 }
 
 #pragma mark Helper Methods

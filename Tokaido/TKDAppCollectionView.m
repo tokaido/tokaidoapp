@@ -7,15 +7,15 @@
 //
 
 #import "TKDAppCollectionView.h"
-#import "TKDRailsAppIcon.h"
+#import "TKDAppViewItem.h"
 #import "TKDRailsAppTokenField.h"
 
 @implementation TKDAppCollectionView
 
 - (NSCollectionViewItem *)newItemForRepresentedObject:(id)object;
 {
-    TKDRailsAppIcon *appIcon = (TKDRailsAppIcon *)[super newItemForRepresentedObject:object];
-    TKDRailsAppIcon *prototype = (TKDRailsAppIcon *)self.itemPrototype;
+    TKDAppViewItem *appIcon = (TKDAppViewItem *)[super newItemForRepresentedObject:object];
+    TKDAppViewItem *prototype = (TKDAppViewItem *)self.itemPrototype;
     appIcon.tokaidoController = prototype.tokaidoController;
     [appIcon view]; // force load the view
     appIcon.tokenField.delegate = appIcon;

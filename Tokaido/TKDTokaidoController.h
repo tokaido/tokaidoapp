@@ -26,4 +26,8 @@
 - (void)removeApp:(id)sender;
 - (void)showEditWindowForApp:(TKDApp *)app;
 
+- (void)activateApp:(TKDApp *)app;
+- (void)deactivateApp:(TKDApp *)app;
+
+
 @end
