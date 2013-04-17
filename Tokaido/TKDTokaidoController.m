@@ -24,15 +24,6 @@
     [self.railsAppsView setMinItemSize:size];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMuxrEvent:) name:kMuxrNotification object:nil];
-    
-    
-//    TKDApp *fakeApp = [[TKDApp alloc] init];
-//    fakeApp.appName = @"Fake";
-//    fakeApp.appHostname = @"fake.local";
-//    fakeApp.appDirectoryPath = @"/who/what";
-//    
-//    [[TKDMuxrManager defaultManager] addApp:fakeApp];
-
 }
 
 - (void)startApp:(TKDApp *)app;
