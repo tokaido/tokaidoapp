@@ -93,7 +93,7 @@ static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWAL
 {
     // Check if /etc/resolver/tokaido exists. If not, we need to run tokaido-install.
     NSFileManager *fm = [NSFileManager defaultManager];
-    BOOL tokaidoBootstrapInstalled = [fm fileExistsAtPath:@"/etc/resolver/tokaido"];
+    BOOL tokaidoBootstrapInstalled = [fm fileExistsAtPath:@"/Library/LaunchDaemons/com.tokaido.firewall.plist"];
     
     // If not, do the installation stuff.
     if (tokaidoBootstrapInstalled) {
@@ -102,9 +102,7 @@ static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWAL
         NSLog(@"tokaido-bootstrap NOT detected, installing...");
         
         // Setup a bunch of paths
-        NSString *executablePath = [@"~/Library/Application Support/Tokaido/ruby" stringByExpandingTildeInPath];
-
-//        executablePath = [NSString stringWithFormat:@"\"%@\"", executablePath];
+        NSString *executablePath = [[@"~/Library/Application Support/Tokaido/ruby" stringByExpandingTildeInPath] stringByResolvingSymlinksInPath];
         NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory]stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
         NSString *firewallPlistPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"firewall/com.tokaido.firewall.plist"];
         NSString *firewallScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"firewall/firewall_rules.rb"];
@@ -160,15 +158,10 @@ static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWAL
             NSMutableDictionary *plist = [NSMutableDictionary dictionary];
             [plist setObject:tokaidoLabel forKey:@"Label"];
             [plist setObject:[NSNumber numberWithBool:YES] forKey:@"RunAtLoad"];
-//            [plist setObject:executablePath forKey:@"Program"];
-//            [plist setObject:@"/usr/bin/ruby" forKey:@"Program"];
-//            [plist setObject:@[ @"-r", setupScriptPath, tokadioInstallScriptPath ] forKey:@"ProgramArguments"];
-//            [plist setObject:@[ @"/tmp/test.rb" ] forKey:@"ProgramArguments"];
-//            [plist setObject:@[ @"-al" ] forKey:@"ProgramArguments"];
-            [plist setObject:@[ @"/tmp/newtest.rb"] forKey:@"ProgramArguments"];
-            
-            [plist setObject:@"/var/log/tokaido-install.log2" forKey:@"StandardOutPath"];
-            [plist setObject:@"/var/log/tokaido-install.error2" forKey:@"StandardErrorPath"];
+            [plist setObject:[NSNumber numberWithBool:YES] forKey:@"AbandonProcessGroup"];
+            [plist setObject:@[ executablePath, @"-r", setupScriptPath, tokadioInstallScriptPath ] forKey:@"ProgramArguments"];
+            [plist setObject:@"/var/log/tokaido-install.log" forKey:@"StandardOutPath"];
+            [plist setObject:@"/var/log/tokaido-install.error" forKey:@"StandardErrorPath"];
             
             CFErrorRef error;
             if ( SMJobSubmit( kSMDomainSystemLaunchd, (__bridge CFDictionaryRef)plist, auth, &error) ) {
@@ -184,14 +177,11 @@ static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWAL
                 CFRelease(error);
             }
             
-            (void) SMJobRemove(kSMDomainSystemLaunchd, (__bridge CFStringRef)tokaidoLabel, auth, false, NULL);
             AuthorizationFree(auth, 0);
-            
-            NSLog(@"Plist was: %@", plist);
-            
+                        
         } else {
             
-            NSLog(@"Couldn't install tokaido-bootstrap. Quitting.");
+            NSLog(@"Couldn't run tokaido-install. Quitting.");
             [[NSApplication sharedApplication] terminate:nil];
             
         }
