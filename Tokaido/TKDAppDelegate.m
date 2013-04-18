@@ -12,8 +12,11 @@
 #import <ServiceManagement/ServiceManagement.h>
 #import <Security/Authorization.h>
 
-static NSString * const kTokaidoBootstrapFirewallPlistCommandString = @"TOKAIDO_FIREWALL_RULES_COMMAND";
+static NSString * const kTokaidoBootstrapFirewallPlistCommandString = @"TOKAIDO_FIREWALL_COMMAND";
 static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWALL_TMPDIR";
+static NSString * const kTokaidoBootstrapFirewallPlistSetupString = @"TOKAIDO_FIREWALL_SETUP";
+static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_FIREWALL_SCRIPT";
+
 
 @implementation TKDAppDelegate
 
@@ -106,8 +109,7 @@ static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWAL
         NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory]stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
         NSString *firewallPlistPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"firewall/com.tokaido.firewall.plist"];
         NSString *firewallScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"firewall/firewall_rules.rb"];
-        NSString *firewallLogsPath = [[TKDAppDelegate tokaidoInstalledLogsDirectory] stringByAppendingPathComponent:@"firewall"];
-        NSString *firewallCommand = [executablePath stringByAppendingFormat:@" -r \"%@\" \"%@\"", setupScriptPath, firewallScriptPath];
+        NSString *firewallPath = [TKDAppDelegate tokaidoInstalledFirewallDirectory] ;
         
         // Rewrite the install plist to contain appropriate values
         NSError *error = nil;
@@ -118,9 +120,13 @@ static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWAL
             NSLog(@"ERROR: Couldn't read firewall plist: %@", [error localizedDescription]);
         } else {
             firewallPlistString = [firewallPlistString stringByReplacingOccurrencesOfString:kTokaidoBootstrapFirewallPlistCommandString
-                                                                                 withString:firewallCommand];
+                                                                                 withString:executablePath];
             firewallPlistString = [firewallPlistString stringByReplacingOccurrencesOfString:kTokaidoBootstrapFirewallPlistTmpDir
-                                                                                 withString:firewallLogsPath];
+                                                                                 withString:firewallPath];
+            firewallPlistString = [firewallPlistString stringByReplacingOccurrencesOfString:kTokaidoBootstrapFirewallPlistSetupString
+                                                                                 withString:setupScriptPath];
+            firewallPlistString = [firewallPlistString stringByReplacingOccurrencesOfString:kTokaidoBootstrapFirewallPlistScriptString
+                                                                                 withString:firewallScriptPath];
             [firewallPlistString writeToFile:firewallPlistPath
                                   atomically:YES
                                     encoding:NSUTF8StringEncoding
@@ -329,11 +335,11 @@ static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWAL
     return tokaidoInstalledBootstrapDirectory;
 }
 
-+ (NSString *)tokaidoInstalledLogsDirectory;
++ (NSString *)tokaidoInstalledFirewallDirectory;
 {
-    NSString *tokaidoInstalledLogsDirectory = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Logs"];
-    [self createDirectoryAtPathIfNonExistant:tokaidoInstalledLogsDirectory];
-    return tokaidoInstalledLogsDirectory;
+    NSString *tokaidoInstalledFirewallDirectory = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Firewall"];
+    [self createDirectoryAtPathIfNonExistant:tokaidoInstalledFirewallDirectory];
+    return tokaidoInstalledFirewallDirectory;
 }
 
 + (NSString *)tokaidoBundledRubiesDirectory;
