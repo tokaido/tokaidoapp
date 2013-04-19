@@ -12,11 +12,14 @@
 #import <ServiceManagement/ServiceManagement.h>
 #import <Security/Authorization.h>
 
+// plist replacement constants
 static NSString * const kTokaidoBootstrapFirewallPlistCommandString = @"TOKAIDO_FIREWALL_COMMAND";
 static NSString * const kTokaidoBootstrapFirewallPlistTmpDir = @"TOKAIDO_FIREWALL_TMPDIR";
 static NSString * const kTokaidoBootstrapFirewallPlistSetupString = @"TOKAIDO_FIREWALL_SETUP";
 static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_FIREWALL_SCRIPT";
 
+// tokaido-bootstrap label
+static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
 
 @implementation TKDAppDelegate
 
@@ -25,6 +28,8 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
     [self ensureTokaidoAppSupportDirectoryIsUpToDate];
     [self ensureTokaidoBootstrapGemsAreInstalled];
     [self ensureTokaidoBootstrapIsInstalled];
+    sleep(2);
+    [self startTokaidoBootstrap];
     
     [self loadAppSettings];
 }
@@ -32,6 +37,11 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
     return YES;
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification;
+{
+    [self stopTokaidoBootstrap];
 }
 
 - (void)ensureTokaidoAppSupportDirectoryIsUpToDate
@@ -109,7 +119,7 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
         NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory]stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
         NSString *firewallPlistPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"firewall/com.tokaido.firewall.plist"];
         NSString *firewallScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"firewall/firewall_rules.rb"];
-        NSString *firewallPath = [TKDAppDelegate tokaidoInstalledFirewallDirectory] ;
+        NSString *firewallPath = [TKDAppDelegate tokaidoInstalledFirewallDirectory];
         
         // Rewrite the install plist to contain appropriate values
         NSError *error = nil;
@@ -368,6 +378,43 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
     NSString *tokaidoDirectory = [NSString stringWithFormat:@"%@/Tokaido", applicationSupportDirectory];
     [self createDirectoryAtPathIfNonExistant:tokaidoDirectory];
     return tokaidoDirectory;
+}
+
+- (void)startTokaidoBootstrap
+{
+    NSString *executablePath = [[@"~/Library/Application Support/Tokaido/ruby" stringByExpandingTildeInPath] stringByResolvingSymlinksInPath];
+    NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory]stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
+    NSString *tokadioBootstrapScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bin/tokaido-bootstrap"];
+    NSString *firewallPath = [TKDAppDelegate tokaidoInstalledFirewallDirectory];
+    
+    
+    NSMutableDictionary *plist = [NSMutableDictionary dictionary];
+    [plist setObject:kTokaidoBootstrapLabel forKey:@"Label"];
+    [plist setObject:[NSNumber numberWithBool:YES] forKey:@"RunAtLoad"];
+    [plist setObject:[NSNumber numberWithBool:YES] forKey:@"AbandonProcessGroup"];
+    [plist setObject:@{@"TOKAIDO_TMPDIR": firewallPath} forKey:@"EnvironmentVariables"];
+    [plist setObject:@[ executablePath, @"-r", setupScriptPath, tokadioBootstrapScriptPath ]
+              forKey:@"ProgramArguments"];
+    
+    CFErrorRef error;
+    if ( SMJobSubmit( kSMDomainUserLaunchd, (__bridge CFDictionaryRef)plist, NULL, &error) ) {
+        // Script is running
+        NSLog(@"tokaido-bootstrap started successfully.");
+        
+    } else {
+        NSLog(@"tokaido-bootstrap failed to start – error %@", error);
+    }
+    
+    if (error) {
+        NSLog(@"SMJobSubmit ERROR: %@", CFErrorCopyDescription(error));
+        CFRelease(error);
+    }
+}
+
+- (void)stopTokaidoBootstrap
+{
+    NSLog(@"tokaido-bootstrap shutting down...");
+     SMJobRemove(kSMDomainUserLaunchd, (__bridge CFStringRef)kTokaidoBootstrapLabel, NULL, false, NULL);
 }
 
 @end
