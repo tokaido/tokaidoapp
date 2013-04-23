@@ -14,6 +14,8 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic, strong) IBOutlet TKDTokaidoController *tokaidoController;
 
++ (NSString *)tokaidoMuxrSocketPath;
+
 - (void)openTerminalWithPath:(NSString *)path;
 
 - (void)loadAppSettings;

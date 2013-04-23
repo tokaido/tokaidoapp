@@ -28,7 +28,9 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     [self ensureTokaidoAppSupportDirectoryIsUpToDate];
     [self ensureTokaidoBootstrapGemsAreInstalled];
     [self ensureTokaidoBootstrapIsInstalled];
-    sleep(2);
+    sleep(1);
+    [self stopTokaidoBootstrap];
+    sleep(1);
     [self startTokaidoBootstrap];
     
     [self loadAppSettings];
@@ -201,7 +203,6 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
             [[NSApplication sharedApplication] terminate:nil];
             
         }
-        
     }
 }
 
@@ -211,7 +212,7 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     // Check if tokaido-bootstrap is where we expect it to be
     NSString *bootstrapDir = [TKDAppDelegate tokaidoInstalledBootstrapDirectory];
     NSFileManager *fm = [NSFileManager defaultManager];
-    BOOL bootstrapGemsInstalled = [fm fileExistsAtPath:[bootstrapDir stringByAppendingFormat:@"bundle/bundler/setup.rb"]];
+    BOOL bootstrapGemsInstalled = [fm fileExistsAtPath:[bootstrapDir stringByAppendingFormat:@"/bundle/bundler/setup.rb"]];
     
     if (!bootstrapGemsInstalled) {
         NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
@@ -352,6 +353,12 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     return tokaidoInstalledFirewallDirectory;
 }
 
++ (NSString *)tokaidoMuxrSocketPath;
+{
+    NSString *tokaidoMuxrPath = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Firewall/muxr.sock"];
+    return tokaidoMuxrPath;
+}
+
 + (NSString *)tokaidoBundledRubiesDirectory;
 {
     NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Rubies"];
@@ -391,6 +398,8 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     NSMutableDictionary *plist = [NSMutableDictionary dictionary];
     [plist setObject:kTokaidoBootstrapLabel forKey:@"Label"];
     [plist setObject:[NSNumber numberWithBool:YES] forKey:@"RunAtLoad"];
+    [plist setObject:@"/tmp/bootstrap.out" forKey:@"StandardOutPath"];
+    [plist setObject:@"/tmp/bootstrap.err" forKey:@"StandardErrorPath"];
     [plist setObject:[NSNumber numberWithBool:YES] forKey:@"AbandonProcessGroup"];
     [plist setObject:@{@"TOKAIDO_TMPDIR": firewallPath} forKey:@"EnvironmentVariables"];
     [plist setObject:@[ executablePath, @"-r", setupScriptPath, tokadioBootstrapScriptPath ]

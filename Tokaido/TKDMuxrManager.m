@@ -11,11 +11,14 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
+#import "TKDAppDelegate.h"
+
 NSString * const kMuxrNotification = @"kMuxrNotification";
 
 @interface TKDMuxrManager ()
 @property (nonatomic, strong) NSMapTable *socketsToReadData;
 @property (nonatomic, assign) int openSocket;
+@property (nonatomic, assign) int writeSocket;
 @end
 
 @implementation TKDMuxrManager
@@ -48,11 +51,12 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     }
     
     struct sockaddr_un addr;
-    char *socket_path = "/tmp/fakemux.sock";
+    NSString *socketPath = [TKDAppDelegate tokaidoMuxrSocketPath];
+    const char *cSocketPath = [socketPath UTF8String];
     
     memset(&addr, 0, sizeof(addr));
     addr.sun_family = AF_UNIX;
-    strncpy(addr.sun_path, socket_path, sizeof(addr.sun_path)-1);
+    strncpy(addr.sun_path, cSocketPath, sizeof(addr.sun_path)-1);
     
     if (connect(fd, (struct sockaddr*)&addr, sizeof(addr)) == -1) {
         NSLog(@"ERROR: Could not connect to the Tokaido service.");
@@ -77,6 +81,11 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     dispatch_source_set_event_handler(readSource, ^{
         size_t estimated = dispatch_source_get_data(readSource) + 1;
         NSLog(@"size to read: %ld", estimated);
+        
+        if (estimated == 1) {
+            NSLog(@"No more data to read, closing.");
+            dispatch_source_cancel(readSource);
+        }
 
         // Read the data into a text buffer.
         char* buffer = (char*) malloc(estimated);
@@ -88,12 +97,17 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 
             NSString *muxrLine = [NSString stringWithUTF8String:buffer];
             NSLog(@"Got muxrLine: %@", muxrLine);
+            if (!muxrLine) {
+                NSLog(@"Unprocessable line. Failing.");
+                return;
+            }
+            
             [self processMuxrLine:muxrLine];
             
             // Release the buffer when done.
             free(buffer);
             
-            dispatch_source_cancel(readSource);
+//            dispatch_source_cancel(readSource);
         }
     });
     
@@ -109,7 +123,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 
 
 - (BOOL)writeCommand:(NSString *)command toSocket:(int)fd
-{    
+{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t writeSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_WRITE, fd, 0, queue);
     if (!writeSource) {
@@ -122,6 +136,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
         size_t bufferSize = [command lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
         
         // This assumes we don't need to buffer our data
+        NSLog(@"Writing command to muxr: %@", command);
         write(fd, [command UTF8String], bufferSize);
         
         dispatch_source_cancel(writeSource);
@@ -133,8 +148,9 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 
 - (void)addApp:(TKDApp *)app;
 {
-    NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\" 4930\n", app.appDirectoryPath, app.appHostname];
+    NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
     [self issueCommand:command];
+//    [self issueCommand:command];
 }
 
 - (void)removeApp:(TKDApp *)app;
@@ -164,6 +180,10 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     // the main thread.
     
     NSArray *elements = [muxrLine componentsSeparatedByString:@" "];
+    
+    if ([elements count] < 2) {
+        return;
+    }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         NSDictionary *userInfo = @{@"action": [elements objectAtIndex:0],
