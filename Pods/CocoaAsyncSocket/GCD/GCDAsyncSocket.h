@@ -107,14 +107,18 @@ typedef enum GCDAsyncSocketError GCDAsyncSocketError;
 	
 	int socket4FD;
 	int socket6FD;
+	int socketUN;
 	int connectIndex;
 	NSData * connectInterface4;
 	NSData * connectInterface6;
+	NSData * connectInterfaceUN;
+	NSURL * socketUrl;
 	
 	dispatch_queue_t socketQueue;
 	
 	dispatch_source_t accept4Source;
 	dispatch_source_t accept6Source;
+	dispatch_source_t acceptUNSource;
 	dispatch_source_t connectTimer;
 	dispatch_source_t readSource;
 	dispatch_source_t writeSource;
@@ -269,6 +273,15 @@ typedef enum GCDAsyncSocketError GCDAsyncSocketError;
 **/
 - (BOOL)acceptOnInterface:(NSString *)interface port:(uint16_t)port error:(NSError **)errPtr;
 
+/**
+ * Tells the socket to begin listening and accepting connections on the unix domain at the given url.
+ * When a connection is accepted, a new instance of GCDAsyncSocket will be spawned to handle it,
+ * and the socket:didAcceptNewSocket: delegate method will be invoked.
+ *
+ * The socket will listen on all available interfaces (e.g. wifi, ethernet, etc)
+ **/
+- (BOOL)acceptOnUrl:(NSURL *)url error:(NSError **)errPtr;
+
 #pragma mark Connecting
 
 /**
@@ -384,6 +397,10 @@ typedef enum GCDAsyncSocketError GCDAsyncSocketError;
             viaInterface:(NSString *)interface
              withTimeout:(NSTimeInterval)timeout
                    error:(NSError **)errPtr;
+/**
+ * Connects to the unix domain socket at the given url, using the specified timeout.
+ */
+- (BOOL)connectToUrl:(NSURL *)url withTimeout:(NSTimeInterval)timeout error:(NSError **)errPtr;
 
 #pragma mark Disconnecting
 
@@ -447,6 +464,7 @@ typedef enum GCDAsyncSocketError GCDAsyncSocketError;
 **/
 - (NSString *)connectedHost;
 - (uint16_t)connectedPort;
+- (NSURL *)connectedUrl;
 
 - (NSString *)localHost;
 - (uint16_t)localPort;
@@ -963,6 +981,12 @@ typedef enum GCDAsyncSocketError GCDAsyncSocketError;
  * The host parameter will be an IP address, not a DNS name.
 **/
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port;
+
+/**
+ * Called when a socket connects and is ready for reading and writing.
+ * The host parameter will be an IP address, not a DNS name.
+ **/
+- (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url;
 
 /**
  * Called when a socket has completed reading the requested data into memory.

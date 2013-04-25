@@ -16,9 +16,8 @@
 NSString * const kMuxrNotification = @"kMuxrNotification";
 
 @interface TKDMuxrManager ()
-@property (nonatomic, strong) NSMapTable *socketsToReadData;
-@property (nonatomic, assign) int openSocket;
-@property (nonatomic, assign) int writeSocket;
+@property (nonatomic, strong) GCDAsyncSocket *socket;
+@property (nonatomic, strong) dispatch_queue_t backgroundQueue;
 @end
 
 @implementation TKDMuxrManager
@@ -36,149 +35,20 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 
 - (void)setup
 {
-    self.socketsToReadData = [NSMapTable strongToStrongObjectsMapTable];
-    self.openSocket = [self openNewSocket];
-    [self readFromSocket:self.openSocket];
-}
-
-- (int)openNewSocket
-{
-    // Just open a socket
-    int fd = socket(AF_UNIX, SOCK_STREAM, 0);
-    if (fd == -1) {
-        NSLog(@"Could not open socket.");
-        return NULL;
+    self.backgroundQueue = dispatch_queue_create("socketQueue", DISPATCH_QUEUE_SERIAL);
+    self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:self.backgroundQueue];
+    NSError *error = nil;
+    NSURL *socketURL = [NSURL URLWithString:[TKDAppDelegate tokaidoMuxrSocketPath]];
+    if (![self.socket connectToUrl:socketURL withTimeout:-1 error:&error]) {
+        NSLog(@"ERROR: Couldn't connect to socket: %@", [error localizedDescription]);
     }
-    
-    fcntl(fd, F_SETFL, O_NONBLOCK);
-    
-    struct sockaddr_un addr;
-    NSString *socketPath = [TKDAppDelegate tokaidoMuxrSocketPath];
-    const char *cSocketPath = [socketPath UTF8String];
-    
-    memset(&addr, 0, sizeof(addr));
-    addr.sun_family = AF_UNIX;
-    strncpy(addr.sun_path, cSocketPath, sizeof(addr.sun_path)-1);
-    
-    if (connect(fd, (struct sockaddr*)&addr, sizeof(addr)) == -1) {
-        NSLog(@"ERROR: Could not connect to the Tokaido service.");
-        return NULL;
-    }
-    
-    return fd;
 }
 
-- (BOOL)readFromSocket:(int)fd
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;
 {
-    // Set up our dispatch source
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t readSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, fd, 0, queue);
-    if (!readSource) {
-        close(fd);
-        NSLog(@"ERROR: Couldn't create a read source for socket");
-        return NO;
-    }
-    
-    // Install the event handler
-    dispatch_source_set_event_handler(readSource, ^{
-        @autoreleasepool {
-        size_t estimated = dispatch_source_get_data(readSource) + 1;
-        NSLog(@"size to read: %ld", estimated);
-        
-        if (estimated == 1) {
-            NSLog(@"No more data to read.");
-            dispatch_source_cancel(readSource);
-            [self readFromSocket:fd];
-            return;
-        }
+  NSString *muxrLine = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+  NSLog(@"Got back from muxr: %@", muxrLine);
 
-        // Read the data into a text buffer.
-        char* buffer = (char*) malloc(estimated);
-        memset(buffer, 0, estimated);
-        if (buffer) {
-            
-            read(fd, buffer, estimated);
-            NSLog(@"Read line from muxr: %s", buffer);
-
-            NSString *muxrLine = [NSString stringWithUTF8String:buffer];
-            NSLog(@"Got muxrLine: %@", muxrLine);
-            if (!muxrLine) {
-                NSLog(@"Unprocessable line. Failing.");
-                return;
-            }
-            
-            [self processMuxrLine:muxrLine];
-            
-            // Release the buffer when done.
-            free(buffer);
-            }
-        }
-    });
-    
-    // Install the cancellation handler
-    dispatch_source_set_cancel_handler(readSource, ^{
-        close(fd);
-    });
-    
-    // Start reading the socket.
-    dispatch_resume(readSource);
-    return YES;
-}
-
-
-- (BOOL)writeCommand:(NSString *)command toSocket:(int)fd
-{
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t writeSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_WRITE, fd, 0, queue);
-    if (!writeSource) {
-        close(fd);
-        NSLog(@"ERROR: Couldn't open socket for writing.");
-        return NO;
-    }
-    
-    dispatch_source_set_event_handler(writeSource, ^{
-        size_t bufferSize = [command lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-        
-        // This assumes we don't need to buffer our data
-        NSLog(@"Writing command to muxr: %@", command);
-        write(fd, [command UTF8String], bufferSize);
-        
-        dispatch_source_cancel(writeSource);
-    });
-    
-    dispatch_resume(writeSource);
-    return YES;
-}
-
-- (void)addApp:(TKDApp *)app;
-{
-    NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
-    [self issueCommand:command];
-}
-
-- (void)removeApp:(TKDApp *)app;
-{
-    NSString *command = [NSString stringWithFormat:@"REMOVE \"%@\"\n", app.appHostname];
-    [self issueCommand:command];
-}
-
-- (void)issueCommand:(NSString *)command
-{
-    // Create a new socket to muxr
-//    int socket = [self openNewSocket];
-    
-    // Write out our socket command
-    [self writeCommand:command toSocket:self.openSocket];
-    
-    // Setup a new reading buffer for that socket
-//    [self readFromSocket:socket];
-    
-    // When our response is returned and finished reading, it will be called automatically.
-}
-
-
-- (void)processMuxrLine:(NSString *)muxrLine
-{    
     // This happens on a background thread, so it should fire off UI updating notifications on
     // the main thread.
     
@@ -196,6 +66,37 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
                                                                        userInfo:userInfo];
         [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
     });
+    
+  [sock readDataWithTimeout:-1 tag:0];
+}
+
+- (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url;
+{
+  NSLog(@"Connected to %@", url);
+  [sock readDataWithTimeout:-1 tag:0];
+}
+
+- (void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(NSError *)error;
+{
+  NSLog(@"Closed connection: %@", error);
+}
+
+- (void)addApp:(TKDApp *)app;
+{
+    NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
+    [self issueCommand:command];
+}
+
+- (void)removeApp:(TKDApp *)app;
+{
+    NSString *command = [NSString stringWithFormat:@"REMOVE \"%@\"\n", app.appHostname];
+    [self issueCommand:command];
+}
+
+- (void)issueCommand:(NSString *)command
+{
+    NSData *data = [command dataUsingEncoding:NSUTF8StringEncoding];
+    [self.socket writeData:data withTimeout:-1 tag:0];
 }
 
 @end

@@ -5,4 +5,5 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
     #import "Mantle.h"
+    #import "GCDAsyncSocket.h"
 #endif

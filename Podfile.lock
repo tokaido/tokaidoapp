@@ -13,12 +13,13 @@ PODS:
     - LibYAML (~> 0.1.4)
 
 DEPENDENCIES:
-  - CocoaAsyncSocket (from `https://github.com/tokaido/CocoaAsyncSocket`)
+  - CocoaAsyncSocket (from `https://github.com/tokaido/CocoaAsyncSocket`, branch `socketUN`)
   - Mantle (~> 1.0)
   - YAML-Framework (~> 0.0.1)
 
 EXTERNAL SOURCES:
   CocoaAsyncSocket:
+    :branch: socketUN
     :git: https://github.com/tokaido/CocoaAsyncSocket
 
 SPEC CHECKSUMS:
