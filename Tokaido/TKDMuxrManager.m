@@ -83,8 +83,10 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
         NSLog(@"size to read: %ld", estimated);
         
         if (estimated == 1) {
-            NSLog(@"No more data to read, closing.");
+            NSLog(@"No more data to read.");
             dispatch_source_cancel(readSource);
+            [self readFromSocket:fd];
+            return;
         }
 
         // Read the data into a text buffer.
@@ -150,7 +152,6 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 {
     NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
     [self issueCommand:command];
-//    [self issueCommand:command];
 }
 
 - (void)removeApp:(TKDApp *)app;

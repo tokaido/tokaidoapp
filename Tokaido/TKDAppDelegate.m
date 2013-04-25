@@ -26,7 +26,7 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self ensureTokaidoAppSupportDirectoryIsUpToDate];
-    [self ensureTokaidoBootstrapGemsAreInstalled];
+    [self ensureTokaidoInstallIsInstalled];
     [self ensureTokaidoBootstrapIsInstalled];
     sleep(1);
     [self stopTokaidoBootstrap];
@@ -207,7 +207,7 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
 }
 
 
-- (void)ensureTokaidoBootstrapGemsAreInstalled
+- (void)ensureTokaidoInstallIsInstalled
 {
     // Check if tokaido-bootstrap is where we expect it to be
     NSString *bootstrapDir = [TKDAppDelegate tokaidoInstalledBootstrapDirectory];
@@ -367,7 +367,7 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
 
 + (NSString *)tokaidoBundledGemsFile;
 {
-    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"gems-default.zip"];
+    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-gems.zip"];
     return tokaidoBundledRubiesDirectory;
 }
 
@@ -380,19 +380,38 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
 
 + (NSString *)tokaidoAppSupportDirectory;
 {
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *applicationSupportDirectory = [paths objectAtIndex:0];
     NSString *tokaidoDirectory = [NSString stringWithFormat:@"%@/Tokaido", applicationSupportDirectory];
     [self createDirectoryAtPathIfNonExistant:tokaidoDirectory];
-    return tokaidoDirectory;
+
+    
+    NSString *homeDirectory = NSHomeDirectory();
+    NSString *tokaidoDirectorySymlink = [homeDirectory stringByAppendingPathComponent:@"/.tokaido"];
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if (![fm fileExistsAtPath:tokaidoDirectorySymlink]) {
+        NSError *error = nil;
+        [fm createSymbolicLinkAtPath:tokaidoDirectorySymlink withDestinationPath:tokaidoDirectory error:&error];
+        if (error) {
+            NSLog(@"ERROR: Couldn't create the .tokaido symlink.");
+        }
+    }
+    
+    return tokaidoDirectorySymlink;
 }
 
 - (void)startTokaidoBootstrap
 {
-    NSString *executablePath = [[@"~/Library/Application Support/Tokaido/ruby" stringByExpandingTildeInPath] stringByResolvingSymlinksInPath];
-    NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory]stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
+    NSString *executablePath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
+    NSString *executableDirectory = [TKDAppDelegate tokaidoAppSupportDirectory];
+    NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
     NSString *tokadioBootstrapScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bin/tokaido-bootstrap"];
     NSString *firewallPath = [TKDAppDelegate tokaidoInstalledFirewallDirectory];
+    NSString *gemHome = [TKDAppDelegate tokaidoInstalledGemsDirectory];
+    NSString *gemPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"/bin"];
+    NSString *path = [executableDirectory stringByAppendingFormat:@":%@", gemPath];
     
     
     NSMutableDictionary *plist = [NSMutableDictionary dictionary];
@@ -401,7 +420,13 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     [plist setObject:@"/tmp/bootstrap.out" forKey:@"StandardOutPath"];
     [plist setObject:@"/tmp/bootstrap.err" forKey:@"StandardErrorPath"];
     [plist setObject:[NSNumber numberWithBool:YES] forKey:@"AbandonProcessGroup"];
-    [plist setObject:@{@"TOKAIDO_TMPDIR": firewallPath} forKey:@"EnvironmentVariables"];
+    [plist setObject:@{
+     @"TOKAIDO_TMPDIR": firewallPath,
+     @"PATH": path,
+     @"GEM_HOME": gemHome,
+     @"GEM_PATH": gemHome // Think we need this? Not really sure.
+     }  forKey:@"EnvironmentVariables"];
+    
     [plist setObject:@[ executablePath, @"-r", setupScriptPath, tokadioBootstrapScriptPath ]
               forKey:@"ProgramArguments"];
     
