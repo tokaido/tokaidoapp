@@ -50,6 +50,8 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
         return NULL;
     }
     
+    fcntl(fd, F_SETFL, O_NONBLOCK);
+    
     struct sockaddr_un addr;
     NSString *socketPath = [TKDAppDelegate tokaidoMuxrSocketPath];
     const char *cSocketPath = [socketPath UTF8String];
@@ -79,6 +81,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     
     // Install the event handler
     dispatch_source_set_event_handler(readSource, ^{
+        @autoreleasepool {
         size_t estimated = dispatch_source_get_data(readSource) + 1;
         NSLog(@"size to read: %ld", estimated);
         
@@ -108,8 +111,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
             
             // Release the buffer when done.
             free(buffer);
-            
-//            dispatch_source_cancel(readSource);
+            }
         }
     });
     
