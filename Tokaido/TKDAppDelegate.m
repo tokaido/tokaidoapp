@@ -19,7 +19,7 @@ static NSString * const kTokaidoBootstrapFirewallPlistSetupString = @"TOKAIDO_FI
 static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_FIREWALL_SCRIPT";
 
 // tokaido-bootstrap label
-static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
+static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 
 @implementation TKDAppDelegate
 
@@ -85,21 +85,21 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     }
     
     // Make sure we have a gems directory. If we don't, extract our default gems to that directory.
-    
     BOOL gemsDirectoryExists = [fm fileExistsAtPath:[TKDAppDelegate tokaidoInstalledGemsDirectory]];
     if (!gemsDirectoryExists) {
         [TKDAppDelegate createDirectoryAtPathIfNonExistant:[TKDAppDelegate tokaidoInstalledGemsDirectory]];
-        
-        NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
-        NSString *fullPathToGemsZip = [TKDAppDelegate tokaidoBundledGemsFile];
-        [arguments addObject:fullPathToGemsZip];
-        
-        NSTask *unzipTask = [[NSTask alloc] init];
-        [unzipTask setLaunchPath:@"/usr/bin/unzip"];
-        [unzipTask setCurrentDirectoryPath:[TKDAppDelegate tokaidoAppSupportDirectory]];
-        [unzipTask setArguments:arguments];
-        [unzipTask launch];
-        [unzipTask waitUntilExit];
+        [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledGemsFile]
+              inDirectoryPath:[TKDAppDelegate tokaidoAppSupportDirectory]];
+    }
+    
+    // Make sure we have a sqlite3 installed.
+    NSString *gemsDirectory = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"/gems"];
+    NSString *sqliteDirectory = [gemsDirectory stringByAppendingPathComponent:@"sqlite3-1.3.7"];
+    BOOL sqlite3Exists = [fm fileExistsAtPath:sqliteDirectory];
+    if (!sqlite3Exists) {
+        [TKDAppDelegate createDirectoryAtPathIfNonExistant:gemsDirectory];
+        [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledSqliteFile]
+              inDirectoryPath:gemsDirectory];
     }
 }
 
@@ -263,15 +263,8 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
 
 - (void)installRubyWithName:(NSString *)rubyName
 {
-    NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
     NSString *fullPathToRubyZip = [[TKDAppDelegate tokaidoBundledRubiesDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", rubyName]];
-    [arguments addObject:fullPathToRubyZip];
-    
-    NSTask *unzipTask = [[NSTask alloc] init];
-    [unzipTask setLaunchPath:@"/usr/bin/unzip"];
-    [unzipTask setCurrentDirectoryPath:[TKDAppDelegate tokaidoInstalledRubiesDirectory]];
-    [unzipTask setArguments:arguments];
-    [unzipTask launch];
+    [self unzipFileAtPath:fullPathToRubyZip inDirectoryPath:[TKDAppDelegate tokaidoInstalledRubiesDirectory]];
         
     // We need a better way to decide what the default ruby should be. Right now we only have one, so just set it as default.
     NSTask *linkTask = [[NSTask alloc] init];
@@ -371,6 +364,13 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     return tokaidoBundledRubiesDirectory;
 }
 
++ (NSString *)tokaidoBundledSqliteFile;
+{
+    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"sqlite3-1.3.7.zip"];
+    return tokaidoBundledRubiesDirectory;
+}
+
+
 + (NSString *)tokaidoBundledBootstrapFile
 {
     NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-bootstrap.zip"];
@@ -386,7 +386,6 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     NSString *tokaidoDirectory = [NSString stringWithFormat:@"%@/Tokaido", applicationSupportDirectory];
     [self createDirectoryAtPathIfNonExistant:tokaidoDirectory];
 
-    
     NSString *homeDirectory = NSHomeDirectory();
     NSString *tokaidoDirectorySymlink = [homeDirectory stringByAppendingPathComponent:@"/.tokaido"];
     
@@ -401,6 +400,8 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
     
     return tokaidoDirectorySymlink;
 }
+
+#pragma mark start/stop tokaido-bootstrap
 
 - (void)startTokaidoBootstrap
 {
@@ -449,6 +450,22 @@ static NSString * const kTokaidoBootstrapLabel = @"com.tokaido.bootstrap";
 {
     NSLog(@"tokaido-bootstrap shutting down...");
      SMJobRemove(kSMDomainUserLaunchd, (__bridge CFStringRef)kTokaidoBootstrapLabel, NULL, false, NULL);
+}
+
+#pragma mark Helpers
+
+- (void)unzipFileAtPath:(NSString *)path inDirectoryPath:(NSString *)directory
+{
+    NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
+    [arguments addObject:@"-u"];
+    [arguments addObject:path];
+    
+    NSTask *unzipTask = [[NSTask alloc] init];
+    [unzipTask setLaunchPath:@"/usr/bin/unzip"];
+    [unzipTask setCurrentDirectoryPath:directory];
+    [unzipTask setArguments:arguments];
+    [unzipTask launch];
+    [unzipTask waitUntilExit];
 }
 
 @end
