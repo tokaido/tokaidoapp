@@ -103,6 +103,15 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
         [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledSqliteFile]
               inDirectoryPath:gemsDirectory];
     }
+
+    // Make sure we have a json installed.
+    NSString *jsonDirectory = [gemsDirectory stringByAppendingPathComponent:@"json-1.7.7"];
+    BOOL jsonExists = [fm fileExistsAtPath:jsonDirectory];
+    if (!jsonExists) {
+        [TKDAppDelegate createDirectoryAtPathIfNonExistant:gemsDirectory];
+        [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledJsonFile]
+              inDirectoryPath:gemsDirectory];
+    }
 }
 
 
@@ -372,6 +381,13 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     return tokaidoBundledRubiesDirectory;
 }
 
++ (NSString *)tokaidoBundledJsonFile;
+{
+    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"json-1.7.7.zip"];
+    return tokaidoBundledRubiesDirectory;
+}
+
+
 
 + (NSString *)tokaidoBundledBootstrapFile
 {
@@ -412,6 +428,8 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
     NSString *tokadioBootstrapScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bin/tokaido-bootstrap"];
     NSString *firewallPath = [TKDAppDelegate tokaidoInstalledFirewallDirectory];
+    NSString *outPath = [[TKDAppDelegate tokaidoInstalledFirewallDirectory] stringByAppendingPathComponent:@"/bootstrap.out"];
+    NSString *errPath = [[TKDAppDelegate tokaidoInstalledFirewallDirectory] stringByAppendingPathComponent:@"/bootstrap.err"];
     NSString *gemHome = [TKDAppDelegate tokaidoInstalledGemsDirectory];
     NSString *gemPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"/bin"];
     NSString *path = [executableDirectory stringByAppendingFormat:@":%@", gemPath];
@@ -422,8 +440,8 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     NSMutableDictionary *plist = [NSMutableDictionary dictionary];
     [plist setObject:kTokaidoBootstrapLabel forKey:@"Label"];
     [plist setObject:[NSNumber numberWithBool:YES] forKey:@"RunAtLoad"];
-    [plist setObject:@"/tmp/bootstrap.out" forKey:@"StandardOutPath"];
-    [plist setObject:@"/tmp/bootstrap.err" forKey:@"StandardErrorPath"];
+    [plist setObject:outPath forKey:@"StandardOutPath"];
+    [plist setObject:errPath forKey:@"StandardErrorPath"];
     [plist setObject:[NSNumber numberWithBool:YES] forKey:@"AbandonProcessGroup"];
     [plist setObject:@{
      @"TOKAIDO_TMPDIR": firewallPath,
@@ -454,6 +472,34 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 {
     NSLog(@"tokaido-bootstrap shutting down...");
      SMJobRemove(kSMDomainUserLaunchd, (__bridge CFStringRef)kTokaidoBootstrapLabel, NULL, false, NULL);
+}
+
+- (BOOL)runBundleInstallForApp:(TKDApp *)app;
+{
+    NSString *executablePath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
+    NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
+    NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
+    NSString *gemHome = [TKDAppDelegate tokaidoInstalledGemsDirectory];
+    
+    NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
+    [arguments addObject:@"-r"];
+    [arguments addObject:setupScriptPath];
+    [arguments addObject:bundlerPath];
+    [arguments addObject:@"install"];
+    
+    NSTask *unzipTask = [[NSTask alloc] init];
+    [unzipTask setEnvironment:@{@"GEM_HOME": gemHome}];
+    [unzipTask setLaunchPath:executablePath];
+    [unzipTask setCurrentDirectoryPath:app.appDirectoryPath];
+    [unzipTask setArguments:arguments];
+    [unzipTask launch];
+    [unzipTask waitUntilExit];
+    
+    if ([unzipTask terminationStatus] != 0) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark Helpers

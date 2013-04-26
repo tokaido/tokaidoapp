@@ -21,4 +21,6 @@
 - (void)loadAppSettings;
 - (void)saveAppSettings;
 
+- (BOOL)runBundleInstallForApp:(TKDApp *)app;
+
 @end

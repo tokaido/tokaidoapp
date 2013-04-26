@@ -47,6 +47,7 @@
 		CD8285AE16559D96000CB252 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AB16559D96000CB252 /* Red.png */; };
 		CD8285B11655A696000CB252 /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285B01655A696000CB252 /* down_arrow.png */; };
 		CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */; };
+		CDA9B854172B39C60027E78B /* json-1.7.7.zip in Resources */ = {isa = PBXBuildFile; fileRef = CDA9B853172B39C60027E78B /* json-1.7.7.zip */; };
 		CDB963F617288901002A8A43 /* tokaido-gems.zip in Resources */ = {isa = PBXBuildFile; fileRef = CDB963F517288901002A8A43 /* tokaido-gems.zip */; };
 		CDB963F81729D610002A8A43 /* sqlite3-1.3.7.zip in Resources */ = {isa = PBXBuildFile; fileRef = CDB963F71729D610002A8A43 /* sqlite3-1.3.7.zip */; };
 /* End PBXBuildFile section */
@@ -134,6 +135,7 @@
 		CD8285B01655A696000CB252 /* down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_arrow.png; sourceTree = "<group>"; };
 		CD8285DC1655B670000CB252 /* TKDAppCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppCollectionView.h; sourceTree = "<group>"; };
 		CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppCollectionView.m; sourceTree = "<group>"; };
+		CDA9B853172B39C60027E78B /* json-1.7.7.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "json-1.7.7.zip"; sourceTree = "<group>"; };
 		CDB963F517288901002A8A43 /* tokaido-gems.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-gems.zip"; sourceTree = "<group>"; };
 		CDB963F71729D610002A8A43 /* sqlite3-1.3.7.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "sqlite3-1.3.7.zip"; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -277,6 +279,7 @@
 		3AD6934E1637557D005AF81E /* Ruby Bundles */ = {
 			isa = PBXGroup;
 			children = (
+				CDA9B853172B39C60027E78B /* json-1.7.7.zip */,
 				CDB963F71729D610002A8A43 /* sqlite3-1.3.7.zip */,
 				CDB963F517288901002A8A43 /* tokaido-gems.zip */,
 				CD5A898D171CC96000217D8A /* tokaido-bootstrap.zip */,
@@ -440,6 +443,7 @@
 				CD5A898E171CC96000217D8A /* tokaido-bootstrap.zip in Resources */,
 				CDB963F617288901002A8A43 /* tokaido-gems.zip in Resources */,
 				CDB963F81729D610002A8A43 /* sqlite3-1.3.7.zip in Resources */,
+				CDA9B854172B39C60027E78B /* json-1.7.7.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

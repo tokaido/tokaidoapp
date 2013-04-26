@@ -91,8 +91,14 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 
 - (void)addApp:(TKDApp *)app;
 {
-    NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
-    [self issueCommand:command];
+    // XXX: This is basically a hack. We run `bundle install` before launching asking muxr to launch it.
+    TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+    BOOL bundleInstallWorked = [delegate runBundleInstallForApp:app];
+    
+    if (bundleInstallWorked) {
+        NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
+        [self issueCommand:command];        
+    }
 }
 
 - (void)removeApp:(TKDApp *)app;
