@@ -46,6 +46,8 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     [self stopTokaidoBootstrap];
 }
 
+#pragma mark Launch Steps
+
 - (void)ensureTokaidoAppSupportDirectoryIsUpToDate
 {
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -414,6 +416,8 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     NSString *gemPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"/bin"];
     NSString *path = [executableDirectory stringByAppendingFormat:@":%@", gemPath];
     
+    //unlink current socket
+    unlink([[TKDAppDelegate tokaidoMuxrSocketPath] UTF8String]);
     
     NSMutableDictionary *plist = [NSMutableDictionary dictionary];
     [plist setObject:kTokaidoBootstrapLabel forKey:@"Label"];

@@ -47,6 +47,7 @@
 						<string key="NSFrame">{{20, 20}, {150, 26}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSClassName">TKDRailsAppTokenField</string>
 					</object>
@@ -162,6 +163,14 @@
 						<reference key="NSOnImage" ref="50260213"/>
 						<reference key="NSMixedImage" ref="804306812"/>
 						<string key="NSAction">_popUpItemAction:</string>
+					</object>
+					<object class="NSMenuItem" id="134747779">
+						<reference key="NSMenu" ref="619415256"/>
+						<string key="NSTitle">Open in Browser</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="50260213"/>
+						<reference key="NSMixedImage" ref="804306812"/>
 					</object>
 					<object class="NSMenuItem" id="294451683">
 						<reference key="NSMenu" ref="619415256"/>
@@ -279,6 +288,14 @@
 					<int key="connectionID">154</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">openInBrowserMenuItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="134747779"/>
+					</object>
+					<int key="connectionID">156</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: selection.appName</string>
 						<reference key="source" ref="437008737"/>
@@ -375,6 +392,7 @@
 							<reference ref="28243296"/>
 							<reference ref="523998107"/>
 							<reference ref="970746432"/>
+							<reference ref="134747779"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -413,6 +431,11 @@
 						<reference key="object" ref="970746432"/>
 						<reference key="parent" ref="619415256"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">155</int>
+						<reference key="object" ref="134747779"/>
+						<reference key="parent" ref="619415256"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -430,6 +453,7 @@
 				<string key="145.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="146.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="147.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="155.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -439,7 +463,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">154</int>
+			<int key="maxID">156</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -473,6 +497,7 @@
 						<string key="appIcon">TKDSelectableIcon</string>
 						<string key="appMenu">NSMenu</string>
 						<string key="editMenuItem">NSMenuItem</string>
+						<string key="openInBrowserMenuItem">NSMenuItem</string>
 						<string key="removeMenuItem">NSMenuItem</string>
 						<string key="shouldActivateOnLaunchMenuItem">NSMenuItem</string>
 						<string key="showInFinderMenuItem">NSMenuItem</string>
@@ -498,6 +523,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="editMenuItem">
 							<string key="name">editMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="openInBrowserMenuItem">
+							<string key="name">openInBrowserMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="removeMenuItem">

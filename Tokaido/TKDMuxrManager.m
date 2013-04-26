@@ -42,38 +42,46 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     if (![self.socket connectToUrl:socketURL withTimeout:-1 error:&error]) {
         NSLog(@"ERROR: Couldn't connect to socket: %@", [error localizedDescription]);
     }
+    [self.socket readDataWithTimeout:-1 tag:0];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;
 {
-  NSString *muxrLine = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-  NSLog(@"Got back from muxr: %@", muxrLine);
+    NSString *muxrLine = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"Got back from muxr: %@", muxrLine);
 
-    // This happens on a background thread, so it should fire off UI updating notifications on
-    // the main thread.
     
-    NSArray *elements = [muxrLine componentsSeparatedByString:@" "];
-    
-    if ([elements count] < 2) {
+    if ([muxrLine isEqualToString:@"TOKAIDO ACTIVE\n"]) {
+        NSLog(@"Muxr Manager Ready");
         return;
     }
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        NSDictionary *userInfo = @{@"action": [elements objectAtIndex:0],
-                                   @"hostname": [elements objectAtIndex:1]};
-        NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
-                                                                         object:nil
-                                                                       userInfo:userInfo];
-        [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
-    });
+    NSArray *elements = [muxrLine componentsSeparatedByString:@" "];
+    NSString *reply = [elements objectAtIndex:0];
     
-  [sock readDataWithTimeout:-1 tag:0];
+    if ([reply isEqualToString:@"ADDED"]) {
+        NSLog(@"App added, waiting for ready...");
+        [self.socket readDataWithTimeout:-1 tag:0];
+    } else if ([reply isEqualToString:@"READY"]) {
+        
+        // This happens on a background thread, so it should fire off UI updating notifications on
+        // the main thread.
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSDictionary *userInfo = @{@"action": [elements objectAtIndex:0],
+                                       @"hostname": [elements objectAtIndex:1]};
+            NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
+                                                                             object:nil
+                                                                           userInfo:userInfo];
+            [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
+        });
+    } else {
+        [self.socket readDataWithTimeout:-1 tag:0];
+    }
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url;
 {
   NSLog(@"Connected to %@", url);
-  [sock readDataWithTimeout:-1 tag:0];
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(NSError *)error;
@@ -97,6 +105,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 {
     NSData *data = [command dataUsingEncoding:NSUTF8StringEncoding];
     [self.socket writeData:data withTimeout:-1 tag:0];
+    [self.socket readDataWithTimeout:-1 tag:0];
 }
 
 @end

@@ -28,6 +28,7 @@
 @property (nonatomic, strong) IBOutlet NSMenuItem *shouldActivateOnLaunchMenuItem;
 
 @property (nonatomic, strong) IBOutlet NSMenuItem *showInFinderMenuItem;
+@property (nonatomic, strong) IBOutlet NSMenuItem *openInBrowserMenuItem;
 
 @property (nonatomic, strong) IBOutlet NSMenuItem *editMenuItem;
 @property (nonatomic, strong) IBOutlet NSMenuItem *removeMenuItem;

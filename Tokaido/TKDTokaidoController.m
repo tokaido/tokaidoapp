@@ -138,10 +138,7 @@
 
 #pragma mark NSNotification Handlers
 - (void)handleMuxrEvent:(NSNotification *)note
-{
-    NSLog(@"Got event: %@", [note userInfo]);
-
-    
+{    
     NSMutableString *hostname = [[[note userInfo] objectForKey:@"hostname"] mutableCopy];
     [hostname replaceOccurrencesOfString:@"\""
                               withString:@""
@@ -152,7 +149,7 @@
                                  options:NSCaseInsensitiveSearch
                                    range:NSMakeRange(0, [hostname length])];
     
-    NSLog(@"Hostname: %@", hostname);
+    NSLog(@"Enabling App: %@", hostname);
     
     TKDApp *app = [self appWithHostname:hostname];
     

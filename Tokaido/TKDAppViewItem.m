@@ -22,6 +22,9 @@
     [self.showInFinderMenuItem setAction:@selector(showInFinder)];
     [self.showInFinderMenuItem setEnabled:YES];
     
+    [self.openInBrowserMenuItem setTarget:self.representedObject];
+    [self.openInBrowserMenuItem setAction:@selector(openInBrowser)];
+    
     [self.editMenuItem setTarget:self];
     [self.editMenuItem setAction:@selector(editApp)];
     
@@ -70,24 +73,32 @@
             [self.activatedMenuItem setEnabled:YES];
             [self.activatedMenuItem setTarget:self];
             [self.activatedMenuItem setTitle:@"Activate"];
+            
+            [self.openInBrowserMenuItem setTarget:nil];
             break;
             
         case TKDAppBooting:
             [self.activatedMenuItem setEnabled:NO];
             [self.activatedMenuItem setTarget:nil];
             [self.activatedMenuItem setTitle:@"Starting up..."];
+            
+            [self.openInBrowserMenuItem setTarget:nil];
             break;
             
         case TKDAppOn:
             [self.activatedMenuItem setEnabled:YES];
             [self.activatedMenuItem setTarget:self];
             [self.activatedMenuItem setTitle:@"Deactivate"];
+            
+            [self.openInBrowserMenuItem setTarget:self.representedObject];
             break;
             
         case TKDAppShuttingDown:
             [self.activatedMenuItem setEnabled:NO];
             [self.activatedMenuItem setTarget:nil];
             [self.activatedMenuItem setTitle:@"Shutting down..."];
+            
+            [self.openInBrowserMenuItem setTarget:nil];
             break;
             
         default:

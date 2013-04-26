@@ -98,6 +98,12 @@ static NSString *kAppIconKey = @"app_icon";
     [[NSWorkspace sharedWorkspace] openFile:self.appDirectoryPath];
 }
 
+- (void)openInBrowser;
+{
+    NSString *urlString = [NSString stringWithFormat:@"http://%@", self.appHostname];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+}
+
 - (void)serializeToYAML;
 {
     NSMutableDictionary *yamlDictionary = [NSMutableDictionary dictionaryWithCapacity:10];
