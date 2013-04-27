@@ -93,26 +93,34 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 {
     // XXX: This is basically a hack. We run `bundle install` before launching asking muxr to launch it.
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
-    BOOL bundleInstallWorked = [delegate runBundleInstallForApp:app];
     
-    if (bundleInstallWorked) {
-        NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
-        [self issueCommand:command];        
-    } else {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app! `bundle install` failed."
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
-        [alert runModal];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        NSDictionary *userInfo = @{@"action": @"FAILED",
-                                   @"hostname": app.appHostname};
-        NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
-                                                                         object:nil
-                                                                       userInfo:userInfo];
-        [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
-    }
+        BOOL bundleInstallWorked = [delegate runBundleInstallForApp:app];
+        
+        if (bundleInstallWorked) {
+            NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
+            [self issueCommand:command];
+        } else {
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
+            [alert runModal];
+            
+            NSDictionary *userInfo = @{@"action": @"FAILED",
+                                       @"hostname": app.appHostname};
+            NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
+                                                                             object:nil
+                                                                           userInfo:userInfo];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
+            });
+        }
+        
+    });
+    
 }
 
 - (void)removeApp:(TKDApp *)app;

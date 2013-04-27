@@ -158,7 +158,7 @@
     if ([action isEqualToString:@"READY"]) {
         NSLog(@"Enabling App: %@", hostname);
         app.state = TKDAppOn;
-    } else if ([action isEqualToString:@"FAILED"]) {
+    } else if ([action isEqualToString:@"FAILED"] || [action isEqualToString:@"REMOVED"]) {
         NSLog(@"Disabling App: %@", hostname);
         app.state = TKDAppOff;
     }

@@ -73,6 +73,8 @@
             [self.activatedMenuItem setEnabled:YES];
             [self.activatedMenuItem setTarget:self];
             [self.activatedMenuItem setTitle:@"Activate"];
+            [self.activatedMenuItem setAction:@selector(activate)];
+
             
             [self.openInBrowserMenuItem setTarget:nil];
             break;
@@ -89,6 +91,7 @@
             [self.activatedMenuItem setEnabled:YES];
             [self.activatedMenuItem setTarget:self];
             [self.activatedMenuItem setTitle:@"Deactivate"];
+
             
             [self.openInBrowserMenuItem setTarget:self.representedObject];
             break;
