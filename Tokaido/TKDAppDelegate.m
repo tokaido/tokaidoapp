@@ -94,23 +94,65 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
               inDirectoryPath:[TKDAppDelegate tokaidoAppSupportDirectory]];
     }
     
-    // Make sure we have a sqlite3 installed.
-    NSString *gemsDirectory = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"/gems"];
-    NSString *sqliteDirectory = [gemsDirectory stringByAppendingPathComponent:@"sqlite3-1.3.7"];
-    BOOL sqlite3Exists = [fm fileExistsAtPath:sqliteDirectory];
-    if (!sqlite3Exists) {
-        [TKDAppDelegate createDirectoryAtPathIfNonExistant:gemsDirectory];
-        [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledSqliteFile]
-              inDirectoryPath:gemsDirectory];
+    // Make sure we have a llvm-gcc installed, for gems that require compilation
+    NSString *llvmDirectory = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/llvm-gcc"];
+    BOOL llvmExists = [fm fileExistsAtPath:llvmDirectory];
+    if (!llvmExists) {
+        [TKDAppDelegate createDirectoryAtPathIfNonExistant:llvmDirectory];
+        [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledLLVMGCCFile]
+              inDirectoryPath:llvmDirectory];
     }
-
-    // Make sure we have a json installed.
-    NSString *jsonDirectory = [gemsDirectory stringByAppendingPathComponent:@"json-1.7.7"];
-    BOOL jsonExists = [fm fileExistsAtPath:jsonDirectory];
-    if (!jsonExists) {
-        [TKDAppDelegate createDirectoryAtPathIfNonExistant:gemsDirectory];
-        [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledJsonFile]
-              inDirectoryPath:gemsDirectory];
+    
+    NSError *error = nil;
+    NSString *rbConfigPath = [TKDAppDelegate tokaidoInstalledRbConfig];
+    NSMutableString *rbconfig = [[NSString stringWithContentsOfFile:rbConfigPath encoding:NSUTF8StringEncoding error:&error] mutableCopy];
+    
+    if (error) {
+        NSLog(@"ERROR patiching rbconfig: %@", [error localizedDescription]);
+        return;
+    }
+    
+    // Replace the TOPDIR line
+    NSRegularExpression *topDirRegex = [NSRegularExpression regularExpressionWithPattern:@"TOPDIR\\s=.*"
+                                                                           options:0
+                                                                             error:&error];
+    
+    if (error) {
+        NSLog(@"ERROR patching rbconfig: %@", [error localizedDescription]);
+        return;
+    }
+    
+    NSString *newTopDir = [NSString stringWithFormat:@"TOPDIR = \"%@/1.9.3-p194\"", [TKDAppDelegate tokaidoInstalledRubiesDirectory]];
+    [topDirRegex replaceMatchesInString:rbconfig
+                          options:0
+                            range:NSMakeRange(0, [rbconfig length])
+                     withTemplate:newTopDir];
+    
+    
+    // Replace the CONFIG["CC"] line
+    NSRegularExpression *ccRegex = [NSRegularExpression regularExpressionWithPattern:@"CONFIG\\[\\\"CC\\\"\\].*"
+                                                                           options:0
+                                                                             error:&error];
+    
+    if (error) {
+        NSLog(@"ERROR patching rbconfig: %@", [error localizedDescription]);
+        return;
+    }
+    
+    NSString *newConfig = [NSString stringWithFormat:@"CONFIG[\"CC\"] = \"%@\"", [TKDAppDelegate tokaidoInstalledLLVMGCC]];
+    [ccRegex replaceMatchesInString:rbconfig
+                          options:0
+                            range:NSMakeRange(0, [rbconfig length])
+                     withTemplate:newConfig];
+    
+    [rbconfig writeToFile:[TKDAppDelegate tokaidoInstalledRbConfig]
+               atomically:YES
+                 encoding:NSUTF8StringEncoding
+                    error:&error];
+    
+    if (error) {
+        NSLog(@"ERROR saving rbconfig: %@", [error localizedDescription]);
+        return;
     }
 }
 
@@ -357,6 +399,20 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     return tokaidoInstalledFirewallDirectory;
 }
 
++ (NSString *)tokaidoInstalledRbConfig;
+{
+#warning this really shouldn't be hardcoded, but we don't yet have a plan to handle multiple rubies.
+    NSString *tokaidoInstalledRbConfig = [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/1.9.3-p194/lib/ruby/1.9.1/x86_64-darwin11.4.2/rbconfig.rb"];
+    return tokaidoInstalledRbConfig;
+}
+
+
++ (NSString *)tokaidoInstalledLLVMGCC;
+{
+    NSString *tokaidoInstalledLLVMGCC = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"llvm-gcc/llvm-gcc-4.2"];
+    return tokaidoInstalledLLVMGCC;
+}
+
 + (NSString *)tokaidoMuxrSocketPath;
 {
     NSString *tokaidoMuxrPath = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Firewall/muxr.sock"];
@@ -375,19 +431,11 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     return tokaidoBundledRubiesDirectory;
 }
 
-+ (NSString *)tokaidoBundledSqliteFile;
++ (NSString *)tokaidoBundledLLVMGCCFile;
 {
-    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"sqlite3-1.3.7.zip"];
-    return tokaidoBundledRubiesDirectory;
+    NSString *tokaidoBundledLLVMGCCFile = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"llvm-gcc-4.2.zip"];
+    return tokaidoBundledLLVMGCCFile;
 }
-
-+ (NSString *)tokaidoBundledJsonFile;
-{
-    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"json-1.7.7.zip"];
-    return tokaidoBundledRubiesDirectory;
-}
-
-
 
 + (NSString *)tokaidoBundledBootstrapFile
 {
