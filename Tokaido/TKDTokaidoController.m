@@ -149,13 +149,20 @@
                                  options:NSCaseInsensitiveSearch
                                    range:NSMakeRange(0, [hostname length])];
     
-    NSLog(@"Enabling App: %@", hostname);
     
     TKDApp *app = [self appWithHostname:hostname];
     
     // Check the event here and do the right thing.
     
-    app.state = TKDAppOn;
+    NSString *action = [[note userInfo] objectForKey:@"action"];
+    if ([action isEqualToString:@"READY"]) {
+        NSLog(@"Enabling App: %@", hostname);
+        app.state = TKDAppOn;
+    } else if ([action isEqualToString:@"FAILED"]) {
+        NSLog(@"Disabling App: %@", hostname);
+        app.state = TKDAppOff;
+    }
+    
 }
 
 #pragma mark Helper Methods

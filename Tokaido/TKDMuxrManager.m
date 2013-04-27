@@ -98,6 +98,20 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     if (bundleInstallWorked) {
         NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
         [self issueCommand:command];        
+    } else {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app! `bundle install` failed."
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
+        [alert runModal];
+        
+        NSDictionary *userInfo = @{@"action": @"FAILED",
+                                   @"hostname": app.appHostname};
+        NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
+                                                                         object:nil
+                                                                       userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
     }
 }
 
