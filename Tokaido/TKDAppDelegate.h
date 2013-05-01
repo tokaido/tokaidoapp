@@ -15,6 +15,7 @@
 @property (nonatomic, strong) IBOutlet TKDTokaidoController *tokaidoController;
 
 + (NSString *)tokaidoMuxrSocketPath;
++ (NSString *)tokaidoInstalledFirewallDirectory;
 
 - (void)openTerminalWithPath:(NSString *)path;
 
