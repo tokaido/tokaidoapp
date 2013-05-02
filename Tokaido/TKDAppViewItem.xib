@@ -155,6 +155,14 @@
 						<reference key="NSOnImage" ref="50260213"/>
 						<reference key="NSMixedImage" ref="804306812"/>
 					</object>
+					<object class="NSMenuItem" id="440929698">
+						<reference key="NSMenu" ref="619415256"/>
+						<string key="NSTitle">Show Logs</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="50260213"/>
+						<reference key="NSMixedImage" ref="804306812"/>
+					</object>
 					<object class="NSMenuItem" id="523998107">
 						<reference key="NSMenu" ref="619415256"/>
 						<string key="NSTitle">Show in Finder</string>
@@ -296,6 +304,14 @@
 					<int key="connectionID">156</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showLogs:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="440929698"/>
+					</object>
+					<int key="connectionID">158</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: selection.appName</string>
 						<reference key="source" ref="437008737"/>
@@ -393,6 +409,7 @@
 							<reference ref="523998107"/>
 							<reference ref="970746432"/>
 							<reference ref="134747779"/>
+							<reference ref="440929698"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -436,6 +453,11 @@
 						<reference key="object" ref="134747779"/>
 						<reference key="parent" ref="619415256"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">157</int>
+						<reference key="object" ref="440929698"/>
+						<reference key="parent" ref="619415256"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -454,6 +476,7 @@
 				<string key="146.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="147.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="155.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="157.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -463,152 +486,9 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">156</int>
+			<int key="maxID">158</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">NSCollectionViewItem</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="imageView">NSImageView</string>
-						<string key="textField">NSTextField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="imageView">
-							<string key="name">imageView</string>
-							<string key="candidateClassName">NSImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textField">
-							<string key="name">textField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSCollectionViewItem.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TKDAppViewItem</string>
-					<string key="superclassName">NSCollectionViewItem</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activatedMenuItem">NSMenuItem</string>
-						<string key="appController">NSObjectController</string>
-						<string key="appIcon">TKDSelectableIcon</string>
-						<string key="appMenu">NSMenu</string>
-						<string key="editMenuItem">NSMenuItem</string>
-						<string key="openInBrowserMenuItem">NSMenuItem</string>
-						<string key="removeMenuItem">NSMenuItem</string>
-						<string key="shouldActivateOnLaunchMenuItem">NSMenuItem</string>
-						<string key="showInFinderMenuItem">NSMenuItem</string>
-						<string key="tokaidoController">TKDTokaidoController</string>
-						<string key="tokenField">TKDRailsAppTokenField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activatedMenuItem">
-							<string key="name">activatedMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="appController">
-							<string key="name">appController</string>
-							<string key="candidateClassName">NSObjectController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="appIcon">
-							<string key="name">appIcon</string>
-							<string key="candidateClassName">TKDSelectableIcon</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="appMenu">
-							<string key="name">appMenu</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="editMenuItem">
-							<string key="name">editMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="openInBrowserMenuItem">
-							<string key="name">openInBrowserMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="removeMenuItem">
-							<string key="name">removeMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="shouldActivateOnLaunchMenuItem">
-							<string key="name">shouldActivateOnLaunchMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="showInFinderMenuItem">
-							<string key="name">showInFinderMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tokaidoController">
-							<string key="name">tokaidoController</string>
-							<string key="candidateClassName">TKDTokaidoController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tokenField">
-							<string key="name">tokenField</string>
-							<string key="candidateClassName">TKDRailsAppTokenField</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TKDAppViewItem.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TKDRailsAppTokenField</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TKDRailsAppTokenField.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TKDSelectableIcon</string>
-					<string key="superclassName">NSControl</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TKDSelectableIcon.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TKDTokaidoController</string>
-					<string key="superclassName">NSWindowController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="addAppPressed:">id</string>
-						<string key="openTerminalPressed:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="addAppPressed:">
-							<string key="name">addAppPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openTerminalPressed:">
-							<string key="name">openTerminalPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="appsArrayController">NSArrayController</string>
-						<string key="railsAppsView">NSCollectionView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="appsArrayController">
-							<string key="name">appsArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="railsAppsView">
-							<string key="name">railsAppsView</string>
-							<string key="candidateClassName">NSCollectionView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TKDTokaidoController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
