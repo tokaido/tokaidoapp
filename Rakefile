@@ -11,7 +11,7 @@ namespace :bootstrap do
     end
 
     cd "tmp/zips/Bootstrap" do
-      sh "bundle --standalone"
+      sh "bundle --standalone --without development"
     end
   end
 
