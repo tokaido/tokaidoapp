@@ -2397,29 +2397,6 @@
 					<int key="connectionID">669</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">enabled: selection.self</string>
-						<reference key="source" ref="621802707"/>
-						<reference key="destination" ref="49638090"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="621802707"/>
-							<reference key="NSDestination" ref="49638090"/>
-							<string key="NSLabel">enabled: selection.self</string>
-							<string key="NSBinding">enabled</string>
-							<string key="NSKeyPath">selection.self</string>
-							<dictionary key="NSOptions">
-								<integer value="0" key="NSMultipleValuesPlaceholder"/>
-								<integer value="0" key="NSNoSelectionPlaceholder"/>
-								<integer value="0" key="NSNotApplicablePlaceholder"/>
-								<integer value="0" key="NSNullPlaceholder"/>
-								<string key="NSValueTransformerName">NSIsNotNil</string>
-							</dictionary>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">668</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">openTerminalPressed:</string>
 						<reference key="source" ref="787169721"/>
@@ -3888,47 +3865,6 @@
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">NSDocument</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="printDocument:">id</string>
-						<string key="revertDocumentToSaved:">id</string>
-						<string key="runPageLayout:">id</string>
-						<string key="saveDocument:">id</string>
-						<string key="saveDocumentAs:">id</string>
-						<string key="saveDocumentTo:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="printDocument:">
-							<string key="name">printDocument:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="revertDocumentToSaved:">
-							<string key="name">revertDocumentToSaved:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="runPageLayout:">
-							<string key="name">runPageLayout:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocument:">
-							<string key="name">saveDocument:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocumentAs:">
-							<string key="name">saveDocumentAs:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocumentTo:">
-							<string key="name">saveDocumentTo:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSDocument.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">TKDAppCollectionView</string>
 					<string key="superclassName">NSCollectionView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -3961,12 +3897,24 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">TKDAppViewItem</string>
 					<string key="superclassName">NSCollectionViewItem</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">showLogs:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">showLogs:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">showLogs:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="activatedMenuItem">NSMenuItem</string>
 						<string key="appController">NSObjectController</string>
 						<string key="appIcon">TKDSelectableIcon</string>
 						<string key="appMenu">NSMenu</string>
 						<string key="editMenuItem">NSMenuItem</string>
+						<string key="openInBrowserMenuItem">NSMenuItem</string>
 						<string key="removeMenuItem">NSMenuItem</string>
 						<string key="shouldActivateOnLaunchMenuItem">NSMenuItem</string>
 						<string key="showInFinderMenuItem">NSMenuItem</string>
@@ -3992,6 +3940,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="editMenuItem">
 							<string key="name">editMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="openInBrowserMenuItem">
+							<string key="name">openInBrowserMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="removeMenuItem">

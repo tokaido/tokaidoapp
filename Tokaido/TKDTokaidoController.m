@@ -49,12 +49,16 @@
 - (IBAction)openTerminalPressed:(id)sender;
 {
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+    NSString *path;
     
     if ([self.appsArrayController.selectedObjects count] > 0) {
         TKDApp *selectedApp = [self.appsArrayController.selectedObjects objectAtIndex:0];
-        [delegate openTerminalWithPath:selectedApp.appDirectoryPath];
+        path = selectedApp.appDirectoryPath;
+    } else {
+        path = NSHomeDirectory();
     }
 
+    [delegate openTerminalWithPath:path];
 }
 
 - (IBAction)addAppPressed:(id)sender;
