@@ -18,6 +18,8 @@ namespace :bootstrap do
   task :zip => :update do
     require "zip/zip"
 
+    rm "tmp/zips/tokaido-bootstrap.zip"
+
     directory = "tmp/zips/Bootstrap/"
     zipfile_name = "tmp/zips/tokaido-bootstrap.zip"
 
@@ -26,6 +28,10 @@ namespace :bootstrap do
         zipfile.add("Bootstrap/" + file.sub(directory, ''), file)
       end
     end
+  end
+
+  task :copy => :zip do
+    cp "tmp/zips/tokaido-bootstrap.zip", "Tokaido/tokaido-bootstrap.zip"
   end
 end
 
