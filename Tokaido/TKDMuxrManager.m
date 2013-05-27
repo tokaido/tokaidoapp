@@ -62,7 +62,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     if ([reply isEqualToString:@"ADDED"]) {
         NSLog(@"App added, waiting for ready...");
         [self.socket readDataWithTimeout:-1 tag:0];
-    } else if ([reply isEqualToString:@"READY"]) {
+    } else if ([reply isEqualToString:@"READY"] || [reply isEqualToString:@"REMOVED"]) {
         
         // This happens on a background thread, so it should fire off UI updating notifications on
         // the main thread.
@@ -99,7 +99,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
         BOOL bundleInstallWorked = [delegate runBundleInstallForApp:app];
         
         if (bundleInstallWorked) {
-            NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appDirectoryPath, app.appHostname];
+            NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appHostname, app.appDirectoryPath];
             [self issueCommand:command];
         } else {
             NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
