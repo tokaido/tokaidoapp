@@ -1,4 +1,5 @@
 directory "tmp/zips"
+directory "tmp/gem_home"
 
 namespace :bootstrap do
   task :update => "tmp/zips" do
@@ -18,7 +19,7 @@ namespace :bootstrap do
   task :zip => :update do
     require "zip/zip"
 
-    rm "tmp/zips/tokaido-bootstrap.zip"
+    rm_f "tmp/zips/tokaido-bootstrap.zip"
 
     directory = "tmp/zips/Bootstrap/"
     zipfile_name = "tmp/zips/tokaido-bootstrap.zip"
@@ -35,3 +36,30 @@ namespace :bootstrap do
   end
 end
 
+namespace :gems do
+  task :build do
+    rm_rf "tmp/gem_home/*"
+    sh "gem install bundler --no-ri --no-rdoc -E -i tmp/gem_home"
+  end
+
+  task :zip => :build do
+    require "zip/zip"
+
+    rm_f "tmp/zips/tokaido-gems.zip"
+
+    directory = "tmp/gem_home/"
+    zipfile_name = "tmp/zips/tokaido-gems.zip"
+
+    Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+      Dir[File.join(directory, '**', '**')].each do |file|
+        zipfile.add("Gems/" + file.sub(directory, ''), file)
+      end
+    end
+  end
+
+  task :copy => :zip do
+    cp "tmp/zips/tokaido-gems.zip", "Tokaido/tokaido-gems.zip"
+  end
+end
+
+task :default => ["gems:copy", "bootstrap:copy"]
