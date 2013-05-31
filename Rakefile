@@ -1,5 +1,5 @@
 directory "tmp/zips"
-directory "tmp/gem_home"
+directory "tmp/zips/gem_home"
 
 namespace :bootstrap do
   task :update => "tmp/zips" do
@@ -11,8 +11,10 @@ namespace :bootstrap do
       sh "git clone https://github.com/tokaido/tokaido-bootstrap.git tmp/zips/Bootstrap"
     end
 
-    cd "tmp/zips/Bootstrap" do
-      sh "bundle --standalone --without development"
+    Bundler.with_clean_env do
+      cd "tmp/zips/Bootstrap" do
+        sh "bundle --standalone --without development"
+      end
     end
   end
 
@@ -36,10 +38,33 @@ namespace :bootstrap do
   end
 end
 
+def install_gem(gem, options="")
+  sh "gem install #{gem} --no-ri --no-rdoc -E -i tmp/zips/gem_home #{options}"
+end
+
 namespace :gems do
-  task :build do
-    rm_rf "tmp/gem_home/*"
-    sh "gem install bundler --no-ri --no-rdoc -E -i tmp/gem_home"
+  task :deps do
+    cd "tmp/zips" do
+      sh "curl -O http://www.sqlite.org/sqlite-autoconf-3070500.tar.gz"
+      sh "tar -xf sqlite-autoconf-3070500.tar.gz"
+    end
+
+    cd "tmp/zips/sqlite-autoconf-3070500" do
+      sh "./configure --disable-shared --enable-static"
+      sh "make"
+    end
+  end
+
+  task :build => ["tmp/zips/gem_home", :deps] do
+    rm_rf "tmp/zips/gem_home/*"
+
+    cp "Tokaido/Gemfile", "tmp/zips"
+
+    Bundler.with_clean_env do
+      sh "bundle --path tmp/zips/gem_home"
+    end
+
+    sh "gem install bundler -i tmp/zips/gem_home/ruby/2.0.0"
   end
 
   task :zip => :build do
@@ -47,7 +72,7 @@ namespace :gems do
 
     rm_f "tmp/zips/tokaido-gems.zip"
 
-    directory = "tmp/gem_home/"
+    directory = "tmp/zips/gem_home/ruby/2.0.0"
     zipfile_name = "tmp/zips/tokaido-gems.zip"
 
     Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|

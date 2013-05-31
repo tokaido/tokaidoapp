@@ -72,6 +72,8 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     // If there are any that aren't already installed, then install them.
     NSString *bundledRubiesDirectory = [TKDAppDelegate tokaidoBundledRubiesDirectory];
     
+    NSLog(@"Bundled Rubies Directory: %@", bundledRubiesDirectory);
+
     NSDirectoryEnumerator *bundledRubiesEnum = [fm enumeratorAtPath:bundledRubiesDirectory];
     NSString *bundledFile;
     while (bundledFile = [bundledRubiesEnum nextObject]) {
@@ -122,7 +124,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
         return;
     }
     
-    NSString *newTopDir = [NSString stringWithFormat:@"TOPDIR = \"%@/1.9.3-p194\"", [TKDAppDelegate tokaidoInstalledRubiesDirectory]];
+    NSString *newTopDir = [NSString stringWithFormat:@"TOPDIR = \"%@/2.0.0-p195\"", [TKDAppDelegate tokaidoInstalledRubiesDirectory]];
     [topDirRegex replaceMatchesInString:rbconfig
                           options:0
                             range:NSMakeRange(0, [rbconfig length])
@@ -170,7 +172,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
         NSLog(@"tokaido-bootstrap NOT detected, installing...");
         
         // Setup a bunch of paths
-        NSString *executablePath = [[@"~/Library/Application Support/Tokaido/ruby" stringByExpandingTildeInPath] stringByResolvingSymlinksInPath];
+        NSString *executablePath = [[@"~/.tokaido/ruby" stringByExpandingTildeInPath] stringByResolvingSymlinksInPath];
         NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory]stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
         NSString *firewallPlistPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"firewall/com.tokaido.firewall.plist"];
         NSString *firewallScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"firewall/firewall_rules.rb"];
@@ -207,7 +209,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
         
         NSString *tokaidoLabel = @"io.tilde.tokaido-install";
         NSString *tokadioInstallScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bin/tokaido-install"];
-        
+                
         AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
         AuthorizationRights authRights = { 1, &authItem };
         AuthorizationFlags flags = kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights;
@@ -345,7 +347,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 
 - (void)openTerminalWithPath:(NSString *)path;
 {
-    NSString *rubyVersion = @"1.9.3-p194";
+    NSString *rubyVersion = @"2.0.0-p195";
     NSString *rubyBinDirectory = [rubyVersion stringByAppendingPathComponent:@"bin"];
 
     // First, set up a variable for our ruby installation.
@@ -402,7 +404,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 + (NSString *)tokaidoInstalledRbConfig;
 {
 #warning this really shouldn't be hardcoded, but we don't yet have a plan to handle multiple rubies.
-    NSString *tokaidoInstalledRbConfig = [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/1.9.3-p194/lib/ruby/1.9.1/x86_64-darwin11.4.2/rbconfig.rb"];
+    NSString *tokaidoInstalledRbConfig = [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/2.0.0-p195/lib/ruby/2.0.0/x86_64-darwin12.3.0/rbconfig.rb"];
     return tokaidoInstalledRbConfig;
 }
 
@@ -458,9 +460,9 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     NSFileManager *fm = [NSFileManager defaultManager];
     if (![fm fileExistsAtPath:tokaidoDirectorySymlink]) {
         NSError *error = nil;
-        [fm createSymbolicLinkAtPath:tokaidoDirectorySymlink withDestinationPath:tokaidoDirectory error:&error];
+        [fm linkItemAtPath:tokaidoDirectory toPath:tokaidoDirectorySymlink error:&error];
         if (error) {
-            NSLog(@"ERROR: Couldn't create the .tokaido symlink.");
+            NSLog(@"ERROR: Couldn't create the .tokaido symlink. %@", error);
         }
     }
     
@@ -474,7 +476,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     NSString *executablePath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
     NSString *executableDirectory = [TKDAppDelegate tokaidoAppSupportDirectory];
     NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
-    NSString *tokadioBootstrapScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bin/tokaido-bootstrap"];
+    NSString *tokaidoBootstrapScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bin/tokaido-bootstrap"];
     NSString *firewallPath = [TKDAppDelegate tokaidoInstalledFirewallDirectory];
     NSString *outPath = [[TKDAppDelegate tokaidoInstalledFirewallDirectory] stringByAppendingPathComponent:@"/bootstrap.out"];
     NSString *errPath = [[TKDAppDelegate tokaidoInstalledFirewallDirectory] stringByAppendingPathComponent:@"/bootstrap.err"];
@@ -498,7 +500,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
      @"GEM_PATH": gemHome // Think we need this? Not really sure.
      }  forKey:@"EnvironmentVariables"];
     
-    [plist setObject:@[ executablePath, @"-r", setupScriptPath, tokadioBootstrapScriptPath ]
+    [plist setObject:@[ executablePath, @"-r", setupScriptPath, tokaidoBootstrapScriptPath ]
               forKey:@"ProgramArguments"];
     
     CFErrorRef error;

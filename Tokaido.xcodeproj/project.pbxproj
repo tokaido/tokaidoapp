@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08A60A6417564F6A00197C27 /* 2.0.0-p195.zip in Resources */ = {isa = PBXBuildFile; fileRef = 08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */; };
+		08A60A6517564F7900197C27 /* 2.0.0-p195.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */; };
 		2ED0D0CF3BDF47DBAFB3E8FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7523D448445F475BB439A142 /* libPods.a */; };
 		3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCC163F5B5C0035ABA2 /* Security.framework */; };
 		3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */; };
@@ -28,7 +30,6 @@
 		3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD693441637436E005AF81E /* TKDTokaidoController.m */; };
 		3AD6934B16374795005AF81E /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6934A16374795005AF81E /* ScriptingBridge.framework */; };
 		3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6934C16374989005AF81E /* SetupTokaido.sh */; };
-		3AD6935216375C98005AF81E /* 1.9.3-p194.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD6934F16375589005AF81E /* 1.9.3-p194.zip */; };
 		3AD694E21639F9D5005AF81E /* TKDAppViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD694E11639F9D5005AF81E /* TKDAppViewItem.xib */; };
 		3AD694E6163A1475005AF81E /* TKDApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD694E5163A1475005AF81E /* TKDApp.m */; };
 		3AD69509163B4093005AF81E /* TKDAppViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69508163B4093005AF81E /* TKDAppViewItem.m */; };
@@ -68,13 +69,14 @@
 			dstPath = Rubies;
 			dstSubfolderSpec = 7;
 			files = (
-				3AD6935216375C98005AF81E /* 1.9.3-p194.zip in CopyFiles */,
+				08A60A6517564F7900197C27 /* 2.0.0-p195.zip in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "2.0.0-p195.zip"; sourceTree = "<group>"; };
 		3A19ECCC163F5B5C0035ABA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSelectableIcon.h; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 		3AD6934E1637557D005AF81E /* Ruby Bundles */ = {
 			isa = PBXGroup;
 			children = (
+				08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */,
 				CDA9B855172B42E30027E78B /* llvm-gcc-4.2.zip */,
 				CDB963F517288901002A8A43 /* tokaido-gems.zip */,
 				CD5A898D171CC96000217D8A /* tokaido-bootstrap.zip */,
@@ -393,7 +396,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TKD;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Tilde;
 			};
 			buildConfigurationList = 3AD6930116373C9F005AF81E /* Build configuration list for PBXProject "Tokaido" */;
@@ -440,6 +443,7 @@
 				CD5A898E171CC96000217D8A /* tokaido-bootstrap.zip in Resources */,
 				CDB963F617288901002A8A43 /* tokaido-gems.zip in Resources */,
 				CDA9B856172B42E30027E78B /* llvm-gcc-4.2.zip in Resources */,
+				08A60A6417564F6A00197C27 /* 2.0.0-p195.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +616,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
@@ -625,6 +630,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
