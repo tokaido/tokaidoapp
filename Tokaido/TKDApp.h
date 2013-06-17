@@ -15,6 +15,12 @@ typedef enum : NSUInteger {
     TKDAppShuttingDown
 } TKDAppState;
 
+typedef enum : NSUInteger {
+    TKDAppBundling,
+    TKDAppBundleFailed,
+    TKDAppStartingServer
+} TKDAppBootingSubstate;
+
 @interface TKDApp : MTLModel
 
 @property (nonatomic, copy) NSString *appName;
@@ -23,6 +29,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString *appIconPath;
 
 @property (nonatomic, assign) TKDAppState state;
+@property (nonatomic, assign) TKDAppBootingSubstate bootingSubstate;
 @property (nonatomic, assign) BOOL usesYAMLfile;
 
 
