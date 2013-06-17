@@ -8,8 +8,8 @@
 
 #import "TKDRailsAppTokenField.h"
 
-#define kSpacing 8
-#define kArrowUp 5
+#define kSpacing 3
+#define kArrowUpWidth 9
 
 @interface TKDRailsAppTokenField ()
 @property (nonatomic, strong) NSString *title;
@@ -24,23 +24,35 @@
 
 - (void)awakeFromNib
 {
-    self.gemView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 19)];
+    self.gemView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 9, 9, 9)];
     [self addSubview:self.gemView];
+
     _state = TKDAppBooting;
     [self setState:TKDAppOff];
-    
-    self.textField = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 0, 100, 20)];
+
+    // the total width of the view is 150px
+    // - gem view: 18px
+    // - padding: 0px
+    // - text field: liquid (max 117px)
+    // - padding: 5px
+    // - arrow: 10px
+
+    self.textField = [[NSTextField alloc] initWithFrame:NSMakeRect(18, 0, 117, 20)];
     self.textField.textColor = [NSColor darkGrayColor];
     self.textField.stringValue = @"app.tokaido";
     self.textField.drawsBackground = NO;
-//    self.textField.backgroundColor = [NSColor blueColor];
-    [self.textField setAlignment:NSCenterTextAlignment];
+
+    // truncate using ellipses
+    [[self.textField cell] setLineBreakMode:NSLineBreakByTruncatingTail];
+
+    // center text
+    //[self.textField setAlignment:NSCenterTextAlignment];
     [self.textField setBordered:NO];
     [self.textField setBezeled:NO];
     [self.textField setEditable:NO];
     [self addSubview:self.textField];
     
-    self.arrowView = [[NSImageView alloc] initWithFrame:NSMakeRect(130, kArrowUp, 9, 10)];
+    self.arrowView = [[NSImageView alloc] initWithFrame:NSMakeRect(140, 5, kArrowUpWidth, kArrowUpWidth + 1)];
     self.arrowView.image = [NSImage imageNamed:@"down_arrow.png"];
     [self addSubview:self.arrowView];
     
@@ -87,14 +99,14 @@
         
         switch (self.state) {
             case TKDAppOn:
-                self.gemView.image = [NSImage imageNamed:@"Green.png"];
+                self.gemView.image = [NSImage imageNamed:@"Green"];
                 break;
             case TKDAppBooting:
             case TKDAppShuttingDown:
-                self.gemView.image = [NSImage imageNamed:@"Yellow.png"];
+                self.gemView.image = [NSImage imageNamed:@"Yellow"];
                 break;
             case TKDAppOff:
-                self.gemView.image = [NSImage imageNamed:@"Red.png"];
+                self.gemView.image = [NSImage imageNamed:@"Red"];
                 break;
                 
             default:
@@ -117,23 +129,32 @@
 // Layout
 - (void)layout
 {
-    CGFloat totalWidth = self.bounds.size.width;
+    // This method has a lot of hardcoded values. Ideally that would be addressed.
+
+    CGFloat viewWidth = self.bounds.size.width;
+    CGSize gemSize = self.gemView.bounds.size;
+    CGSize arrowSize = self.arrowView.bounds.size;
     
-    // Figure out the size of our text field.
-    NSSize textsize = [self.title sizeWithAttributes:nil];
-    if (textsize.width > 120) {
-        textsize.width = 120;
+    CGFloat maxTextWidth = viewWidth - gemSize.width - kSpacing - kSpacing - kArrowUpWidth;
+    NSSize textSize = [self.title sizeWithAttributes:nil];
+
+    if (textSize.width + 10 > maxTextWidth) {
+        textSize.width = maxTextWidth;
+    } else {
+        textSize.width = textSize.width + 10;
     }
     
-    // Move the gem in to the right so that it's directly beside the text
-    CGFloat textStart = (totalWidth / 2.0f) - (textsize.width / 2.0f);
-    CGSize gemSize = self.gemView.bounds.size;
-    self.gemView.frame = NSIntegralRect( NSMakeRect(textStart - gemSize.width - kSpacing, 1, gemSize.width, gemSize.height) );
+    CGFloat extraSpace = maxTextWidth - textSize.width;
+    CGFloat padding = extraSpace / 2.0f;
     
-    // Move the down arrow in to the left so that it's also directly beside the text
-    CGFloat textEnd = totalWidth / 2.0f + textsize.width / 2.0f;
-    CGSize arrowSize = self.arrowView.bounds.size;
-    self.arrowView.frame = NSIntegralRect( NSMakeRect(textEnd + kSpacing, kArrowUp, arrowSize.width, arrowSize.height) );
+    CGFloat start = padding;
+    CGFloat textStart = padding + gemSize.width + kSpacing;
+    CGFloat textEnd = viewWidth - kArrowUpWidth - kSpacing - padding;
+    CGFloat arrowStart = textEnd + kSpacing;
+
+    self.gemView.frame = NSIntegralRect( NSMakeRect(start, 5, gemSize.width, gemSize.height));
+    self.arrowView.frame = NSIntegralRect( NSMakeRect(arrowStart, 5, arrowSize.width, arrowSize.height));
+    self.textField.frame = NSIntegralRect( NSMakeRect(textStart, 4, textSize.width, textSize.height));
     
     [self setNeedsDisplay:YES];
 }

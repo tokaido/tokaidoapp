@@ -46,7 +46,6 @@
 						<int key="NSvFlags">269</int>
 						<string key="NSFrame">{{20, 20}, {150, 26}}</string>
 						<reference key="NSSuperview" ref="1005"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSClassName">TKDRailsAppTokenField</string>
@@ -56,7 +55,6 @@
 						<int key="NSvFlags">4365</int>
 						<string key="NSFrame">{{59, 70}, {72, 72}}</string>
 						<reference key="NSSuperview" ref="1005"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="653104233"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSClassName">TKDSelectableIcon</string>
@@ -66,7 +64,6 @@
 						<int key="NSvFlags">269</int>
 						<string key="NSFrame">{{17, 45}, {156, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="555843640"/>
 						<string key="NSReuseIdentifierKey">_NS:1535</string>
 						<bool key="NSEnabled">YES</bool>
@@ -105,7 +102,6 @@
 				</array>
 				<string key="NSFrameSize">{190, 162}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="732940055"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -486,7 +482,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">158</int>
+			<int key="maxID">160</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
