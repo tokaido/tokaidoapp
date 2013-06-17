@@ -58,6 +58,16 @@ static NSString *kAppIconKey = @"app_icon";
     }];
 }
 
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+
+    if ([key isEqualToString:@"stateMessage"]) {
+        keyPaths = [keyPaths setByAddingObject:@"state"];
+    }
+
+    return keyPaths;
+}
+
 - (id)initWithTokaidoDirectory:(NSURL *)tokaidoAppURL;
 {
     self = [super init];
@@ -91,6 +101,14 @@ static NSString *kAppIconKey = @"app_icon";
         
     }
     return self;
+}
+
+- (NSString *)stateMessage {
+    if (self.state == TKDAppBooting) {
+        return @"App Booting Up";
+    } else {
+        return nil;
+    }
 }
 
 - (void)showInFinder;
