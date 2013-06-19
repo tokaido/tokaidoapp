@@ -26,23 +26,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMuxrEvent:) name:kMuxrNotification object:nil];
 }
 
-- (void)startApp:(TKDApp *)app;
-{
-    if (app.state == TKDAppOff) {
-        app.state = TKDAppBooting;
-        [[TKDMuxrManager defaultManager] addApp:app];
-    } else {
-        NSLog(@"ERROR: Cannot start already running app: %@", app);
-    }
-}
-
-- (void)stopApp:(TKDApp *)app;
+- (void)toggleApp:(TKDApp *)app;
 {
     if (app.state == TKDAppOn) {
-        app.state = TKDAppShuttingDown;
-        [[TKDMuxrManager defaultManager] stopApp:app];
+        [self deactivateApp:app];
     } else {
-        NSLog(@"ERROR: Cannot stop already stopped app: %@", app);
+        [self activateApp:app];
     }
 }
 

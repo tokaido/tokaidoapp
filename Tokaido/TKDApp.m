@@ -62,7 +62,11 @@ static NSString *kAppIconKey = @"app_icon";
     NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
     if ([key isEqualToString:@"stateMessage"]) {
-        keyPaths = [keyPaths setByAddingObject:@"state"];
+        keyPaths = [keyPaths setByAddingObjectsFromArray:@[@"state", @"substate"]];
+    } else if ([key isEqualToString:@"needsStateChange"]) {
+        keyPaths = [keyPaths setByAddingObjectsFromArray:@[@"state"]];
+    } else if ([key isEqualToString:@"stateChangeString"]) {
+        keyPaths = [keyPaths setByAddingObjectsFromArray:@[@"state"]];
     }
 
     return keyPaths;
@@ -104,11 +108,41 @@ static NSString *kAppIconKey = @"app_icon";
 }
 
 - (NSString *)stateMessage {
+    NSMapTable *substates = [NSMapTable new];
+    [substates setObject:@"Running bundle install" forKey:[NSNumber numberWithInt:TKDAppBootingBundling]];
+    [substates setObject:@"bundle install failed" forKey:[NSNumber numberWithInt:TKDAppBootingBundleFailed]];
+    [substates setObject:@"Booting server" forKey:[NSNumber numberWithInt:TKDAppBootingStartingServer]];
+
     if (self.state == TKDAppBooting) {
-        return @"App Booting Up";
+        return [substates objectForKey:[NSNumber numberWithInt:self.substate]];
+    } else if (self.state == TKDAppOff) {
+        return @"Not started";
+    } else if (self.state == TKDAppOn) {
+        return @"Started";
+    } else if (self.state == TKDAppShuttingDown) {
+        return @"Shutting Down";
     } else {
         return nil;
     }
+}
+
+- (NSString *)stateChangeString {
+    if (self.state == TKDAppOn) {
+        return @"Shut Down";
+    } else if (self.state == TKDAppOff) {
+        return @"Boot App";
+    } else {
+        return nil;
+    }
+}
+
+- (bool)needsStateChange {
+    return self.state == TKDAppOff || self.state == TKDAppOn;
+}
+
+- (void)enterSubstate:(TKDAppSubstate)substate;
+{
+    self.substate = substate;
 }
 
 - (void)showInFinder;

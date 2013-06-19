@@ -16,10 +16,10 @@ typedef enum : NSUInteger {
 } TKDAppState;
 
 typedef enum : NSUInteger {
-    TKDAppBundling,
-    TKDAppBundleFailed,
-    TKDAppStartingServer
-} TKDAppBootingSubstate;
+    TKDAppBootingBundling,
+    TKDAppBootingBundleFailed,
+    TKDAppBootingStartingServer
+} TKDAppSubstate;
 
 @interface TKDApp : MTLModel
 
@@ -29,7 +29,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString *appIconPath;
 
 @property (nonatomic, assign) TKDAppState state;
-@property (nonatomic, assign) TKDAppBootingSubstate bootingSubstate;
+@property (nonatomic, assign) TKDAppSubstate substate;
+@property (nonatomic, assign) NSString *stateChangeString;
+@property (nonatomic, assign) bool needsStateChange;
 @property (nonatomic, assign) BOOL usesYAMLfile;
 
 
@@ -50,5 +52,6 @@ typedef enum : NSUInteger {
 - (void)showInFinder;
 - (void)openInBrowser;
 - (void)serializeToYAML;
+- (void)enterSubstate:(TKDAppSubstate)substate;
 
 @end

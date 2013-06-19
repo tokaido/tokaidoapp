@@ -29,5 +29,4 @@
 - (void)activateApp:(TKDApp *)app;
 - (void)deactivateApp:(TKDApp *)app;
 
-
 @end

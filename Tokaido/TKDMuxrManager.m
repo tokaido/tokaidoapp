@@ -99,6 +99,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
         BOOL bundleInstallWorked = [delegate runBundleInstallForApp:app];
         
         if (bundleInstallWorked) {
+            [app enterSubstate:TKDAppBootingStartingServer];
             NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appHostname, app.appDirectoryPath];
             [self issueCommand:command];
         } else {
@@ -107,6 +108,9 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
                                            alternateButton:nil
                                                otherButton:nil
                                  informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
+
+            [app enterSubstate:TKDAppBootingBundleFailed];
+
             [alert runModal];
             
             NSDictionary *userInfo = @{@"action": @"FAILED",
