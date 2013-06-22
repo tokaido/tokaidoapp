@@ -95,7 +95,15 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
         [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledGemsFile]
               inDirectoryPath:[TKDAppDelegate tokaidoAppSupportDirectory]];
     }
-    
+
+    BOOL binDirectoryExists = [fm fileExistsAtPath:[TKDAppDelegate tokaidoInstalledBinDirectory]];
+    if (!binDirectoryExists) {
+        NSLog(@"Unzipping Bundled Tokaido binaries");
+        [TKDAppDelegate createDirectoryAtPathIfNonExistant:[TKDAppDelegate tokaidoInstalledBinDirectory]];
+        [self unzipFileAtPath:[TKDAppDelegate tokaidoBundledBinFile]
+              inDirectoryPath:[TKDAppDelegate tokaidoAppSupportDirectory]];
+    }
+
     // Make sure we have a llvm-gcc installed, for gems that require compilation
     NSString *llvmDirectory = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/llvm-gcc"];
     BOOL llvmExists = [fm fileExistsAtPath:llvmDirectory];
@@ -348,28 +356,36 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 - (void)openTerminalWithPath:(NSString *)path;
 {
     NSString *rubyVersion = @"2.0.0-p195";
-    NSString *rubyBinDirectory = [rubyVersion stringByAppendingPathComponent:@"bin"];
 
     // First, set up a variable for our ruby installation.
-    NSString *tokaidoSetupStep0 = [NSString stringWithFormat:@"export TOKAIDO_PATH=%@", [[[TKDAppDelegate tokaidoInstalledRubiesDirectory] stringByReplacingOccurrencesOfString:@" " withString:@"\\ "] stringByAppendingPathComponent:rubyBinDirectory]];
-    
-    
-    // Second, set up a variable for our gems location.
-    NSString *gemsDir = [TKDAppDelegate tokaidoInstalledGemsDirectory];
-    NSString *tokaidoSetupStep1 = [tokaidoSetupStep0 stringByAppendingFormat:@"; export TOKAIDO_GEM_HOME=%@", [gemsDir stringByReplacingOccurrencesOfString:@" " withString:@"\\ "]];
-    
-    // Third, set up the directory we will cd to
-    NSString *tokaidoSetupStep2 = [tokaidoSetupStep1 stringByAppendingFormat:@"; export TOKAIDO_APP_DIR=%@", [path stringByReplacingOccurrencesOfString:@" " withString:@"\\ "]];
-    
-    
-    // Forth, source the SetupTokaido script, to load these variables into the shell and clear up the screen.
-    NSString *tokaidoSetupStep3 = [tokaidoSetupStep2 stringByAppendingFormat:@"; source %@/SetupTokaido.sh", [[NSBundle mainBundle] resourcePath]];
-    
+    NSString *tokaidoSetupStep0 = [NSString stringWithFormat:@"export TOKAIDO_PATH=%@", [self rubyBinDirectory:rubyVersion]];
+
+    // Second, set up the directory we will cd to
+    NSString *tokaidoSetupStep1 = [tokaidoSetupStep0 stringByAppendingFormat:@"; export TOKAIDO_APP_DIR=%@",
+                                   [self sanitizePath:path]];
+
+    // Third, source the SetupTokaido script, to load these variables into the shell and clear up the screen.
+    NSString *tokaidoSetupStep2 = [tokaidoSetupStep1 stringByAppendingFormat:@"; source %@/SetupTokaido.sh",
+                                   [[NSBundle mainBundle] resourcePath]];
 
     // Finally run everything.
     TerminalApplication *terminal = [SBApplication applicationWithBundleIdentifier:@"com.apple.Terminal"];
-    [terminal doScript:tokaidoSetupStep3 in:nil];
+    [terminal doScript:tokaidoSetupStep2 in:nil];
     [terminal activate];
+}
+
+- (NSString *)rubyBinDirectory:(NSString *)rubyVersion;
+{
+    NSString *installedRubies = [TKDAppDelegate tokaidoInstalledRubiesDirectory];
+    NSString *sanitizedInstalledRubies = [self sanitizePath:installedRubies];
+    NSString *rubyBinDirectory = [rubyVersion stringByAppendingPathComponent:@"bin"];
+    
+    return [sanitizedInstalledRubies stringByAppendingPathComponent:rubyBinDirectory];
+}
+
+- (NSString *)sanitizePath:(NSString *)input;
+{
+    return [input stringByReplacingOccurrencesOfString:@" " withString:@"\\ "];
 }
 
 #pragma mark Directories
@@ -394,6 +410,11 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     return tokaidoInstalledBootstrapDirectory;
 }
 
++ (NSString *)tokaidoInstalledBinDirectory; {
+    NSString *tokaidoInstalledBinDirectory = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"bin"];
+    return tokaidoInstalledBinDirectory;
+}
+
 + (NSString *)tokaidoInstalledFirewallDirectory;
 {
     NSString *tokaidoInstalledFirewallDirectory = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Firewall"];
@@ -404,33 +425,33 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 + (NSString *)tokaidoInstalledRbConfig;
 {
 #warning this really shouldn't be hardcoded, but we don't yet have a plan to handle multiple rubies.
-    NSString *tokaidoInstalledRbConfig = [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/2.0.0-p195/lib/ruby/2.0.0/x86_64-darwin12.3.0/rbconfig.rb"];
-    return tokaidoInstalledRbConfig;
+    return [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/2.0.0-p195/lib/ruby/2.0.0/x86_64-darwin12.3.0/rbconfig.rb"];
 }
 
 
 + (NSString *)tokaidoInstalledLLVMGCC;
 {
-    NSString *tokaidoInstalledLLVMGCC = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"llvm-gcc/llvm-gcc-4.2"];
-    return tokaidoInstalledLLVMGCC;
+    return [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"llvm-gcc/llvm-gcc-4.2"];
 }
 
 + (NSString *)tokaidoMuxrSocketPath;
 {
-    NSString *tokaidoMuxrPath = [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Firewall/muxr.sock"];
-    return tokaidoMuxrPath;
+    return [[self tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Firewall/muxr.sock"];
 }
 
 + (NSString *)tokaidoBundledRubiesDirectory;
 {
-    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Rubies"];
-    return tokaidoBundledRubiesDirectory;
+    return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Rubies"];
 }
 
 + (NSString *)tokaidoBundledGemsFile;
 {
-    NSString *tokaidoBundledRubiesDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-gems.zip"];
-    return tokaidoBundledRubiesDirectory;
+    return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-gems.zip"];
+}
+
++ (NSString *)tokaidoBundledBinFile;
+{
+    return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"tokaido-bin.zip"];
 }
 
 + (NSString *)tokaidoBundledLLVMGCCFile;

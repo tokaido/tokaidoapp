@@ -23,7 +23,7 @@ else
   mkdir -p $gem_home
 
   echo "Installing Bundler"
-  gem install bundler --no-ri --no-rdoc
+  gem install bundler -E --no-ri --no-rdoc
 fi
 
 export PATH=$tmp/bootstrap-gems/bin:$PATH
@@ -61,9 +61,10 @@ rm -rf gem_home
 echo "Building new GEM_HOME"
 bundle --path gem_home --gemfile Gemfile
 
-gem install bundler --no-ri --no-rdoc -i $zips/gem_home/ruby/2.0.0
+gem install bundler -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.0.0
 
 rm -f tokaido-gems.zip
+rm -rf Gems
 cp -R gem_home/ruby/2.0.0 Gems
 
 zip -r tokaido-gems.zip Gems
