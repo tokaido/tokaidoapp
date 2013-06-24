@@ -103,15 +103,17 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
             NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appHostname, app.appDirectoryPath];
             [self issueCommand:command];
         } else {
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
-                                             defaultButton:@"OK"
-                                           alternateButton:nil
-                                               otherButton:nil
-                                 informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
+                                                 defaultButton:@"OK"
+                                               alternateButton:nil
+                                                   otherButton:nil
+                                     informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
 
-            [app enterSubstate:TKDAppBootingBundleFailed];
+                [app enterSubstate:TKDAppBootingBundleFailed];
 
-            [alert runModal];
+                [alert runModal];
+            });
             
             NSDictionary *userInfo = @{@"action": @"FAILED",
                                        @"hostname": app.appHostname};
