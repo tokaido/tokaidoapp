@@ -122,7 +122,7 @@
     if (newTitle != self.title) {
         _title = newTitle;
         self.textField.stringValue = _title;
-        [self layout];
+        [self setNeedsLayout:YES];
     }
 }
 
@@ -156,7 +156,7 @@
     self.arrowView.frame = NSIntegralRect( NSMakeRect(arrowStart, 5, arrowSize.width, arrowSize.height));
     self.textField.frame = NSIntegralRect( NSMakeRect(textStart, 4, textSize.width, textSize.height));
     
-    [self setNeedsDisplay:YES];
+    [super layout];
 }
 
 // Event Handling
