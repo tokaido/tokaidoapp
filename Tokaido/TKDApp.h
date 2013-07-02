@@ -27,6 +27,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString *appDirectoryPath;
 @property (nonatomic, copy) NSString *appHostname;
 @property (nonatomic, copy) NSString *appIconPath;
+@property (nonatomic, copy) NSString *failureReason;
 
 @property (nonatomic, assign) TKDAppState state;
 @property (nonatomic, assign) TKDAppSubstate substate;

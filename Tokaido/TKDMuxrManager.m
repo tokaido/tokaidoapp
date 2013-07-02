@@ -91,13 +91,12 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 
 - (void)addApp:(TKDApp *)app;
 {
-    // XXX: This is basically a hack. We run `bundle install` before launching asking muxr to launch it.
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
+
         BOOL bundleInstallWorked = [delegate runBundleInstallForApp:app];
-        
+
         if (bundleInstallWorked) {
             [app enterSubstate:TKDAppBootingStartingServer];
             NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appHostname, app.appDirectoryPath];
@@ -111,22 +110,27 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
                                      informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
 
                 [app enterSubstate:TKDAppBootingBundleFailed];
-
                 [alert runModal];
             });
-            
-            NSDictionary *userInfo = @{@"action": @"FAILED",
-                                       @"hostname": app.appHostname};
-            NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
-                                                                             object:nil
-                                                                           userInfo:userInfo];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
-            });
+
+            [self postMessage:@"FAILED" forApp:app];
         }
         
     });
-    
+}
+
+// Post a failure message, which will put the app back in the off state
+- (void)postMessage:(NSString *)message forApp:(TKDApp *)app;
+{
+    NSDictionary *userInfo = @{@"action": message,
+                               @"hostname": app.appHostname};
+
+    NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
+                                                                     object:nil
+                                                                   userInfo:userInfo];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
+    });
 }
 
 - (void)removeApp:(TKDApp *)app;

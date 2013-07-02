@@ -116,7 +116,13 @@ static NSString *kAppIconKey = @"app_icon";
     if (self.state == TKDAppBooting) {
         return [substates objectForKey:[NSNumber numberWithInt:self.substate]];
     } else if (self.state == TKDAppOff) {
-        return @"Not started";
+        NSString *failureReason = self.failureReason;
+
+        if (failureReason == nil) {
+            return @"Not started";
+        } else {
+            return failureReason;
+        }
     } else if (self.state == TKDAppOn) {
         return @"Started";
     } else if (self.state == TKDAppShuttingDown) {
@@ -143,6 +149,10 @@ static NSString *kAppIconKey = @"app_icon";
 - (void)enterSubstate:(TKDAppSubstate)substate;
 {
     self.substate = substate;
+
+    if (substate == TKDAppBootingBundleFailed) {
+        self.failureReason = @"Bundling failed. Try \"Open in Terminal\".";
+    }
 }
 
 - (void)showInFinder;
