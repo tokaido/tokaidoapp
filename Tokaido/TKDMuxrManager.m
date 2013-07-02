@@ -92,40 +92,8 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 - (void)addApp:(TKDApp *)app;
 {
     // XXX: This is basically a hack. We run `bundle install` before launching asking muxr to launch it.
-    TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        BOOL bundleInstallWorked = [app runBundleInstall];
-        
-        if (bundleInstallWorked) {
-            [app enterSubstate:TKDAppBootingStartingServer];
-            NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", app.appHostname, app.appDirectoryPath];
-            [self issueCommand:command];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
-                                                 defaultButton:@"OK"
-                                               alternateButton:nil
-                                                   otherButton:nil
-                                     informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
-
-                [app enterSubstate:TKDAppBootingBundleFailed];
-
-                [alert runModal];
-            });
-            
-            NSDictionary *userInfo = @{@"action": @"FAILED",
-                                       @"hostname": app.appHostname};
-            NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
-                                                                             object:nil
-                                                                           userInfo:userInfo];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
-            });
-        }
-        
-    });
+//    TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+    [app runBundleInstall];
     
 }
 

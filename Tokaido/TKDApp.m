@@ -8,11 +8,21 @@
 
 #import "TKDApp.h"
 #import "TKDAppDelegate.h"
+#import "TKDMuxrManager.h"
+#import "TKDTask.h"
 #import <YAML-Framework/YAMLSerialization.h>
 
 static NSString *kAppNameKey = @"app_name";
 static NSString *kHostnameKey = @"hostname";
 static NSString *kAppIconKey = @"app_icon";
+
+@interface TKDTask (TKDApp)
++ (instancetype)taskForApp:(TKDApp *)app;
+@end
+
+@interface TKDApp () <TKDTaskDelegate>
+@property (nonatomic, strong) NSString *lastLine;
+@end
 
 @implementation TKDApp
 
@@ -115,7 +125,11 @@ static NSString *kAppIconKey = @"app_icon";
     [substates setObject:@"Booting server" forKey:[NSNumber numberWithInt:TKDAppBootingStartingServer]];
 
     if (self.state == TKDAppBooting) {
-        return [substates objectForKey:[NSNumber numberWithInt:self.substate]];
+        if (self.substate == TKDAppBootingBundling) {
+            return [NSString stringWithFormat:@"bundle install: %@", self.lastLine];
+        } else {
+            return [substates objectForKey:[NSNumber numberWithInt:self.substate]];
+        }
     } else if (self.state == TKDAppOff) {
         return @"Not started";
     } else if (self.state == TKDAppOn) {
@@ -187,33 +201,63 @@ static NSString *kAppIconKey = @"app_icon";
     }
 }
 
-- (BOOL)runBundleInstall {
+- (void)runBundleInstall {
     [self enterSubstate:TKDAppBootingBundling];
 
-    NSString *executablePath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
+    TKDTask *task = [self task];
+    task.delegate = self;
+    task.launchPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
+
     NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
     NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
-    NSString *gemHome = [TKDAppDelegate tokaidoInstalledGemsDirectory];
+    task.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"install" ];
 
-    NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
-    [arguments addObject:@"-r"];
-    [arguments addObject:setupScriptPath];
-    [arguments addObject:bundlerPath];
-    [arguments addObject:@"install"];
+    [task launch];
+}
 
-    NSTask *unzipTask = [[NSTask alloc] init];
-    [unzipTask setEnvironment:@{@"GEM_HOME": gemHome}];
-    [unzipTask setLaunchPath:executablePath];
-    [unzipTask setCurrentDirectoryPath:self.appDirectoryPath];
-    [unzipTask setArguments:arguments];
-    [unzipTask launch];
-    [unzipTask waitUntilExit];
+- (TKDTask *)task {
+    return [TKDTask taskForApp:self];
+}
 
-    if ([unzipTask terminationStatus] != 0) {
-        return NO;
+- (NSDictionary *)environment {
+    return @{ @"GEM_HOME": [TKDAppDelegate tokaidoInstalledGemsDirectory] };
+}
+
+#pragma mark - TKDTaskDelegate methods
+
+- (void)task:(TKDTask *)task didPrintLine:(NSString *)line toStandardOut:(id)_ {
+    [self willChangeValueForKey:@"stateMessage"];
+    self.lastLine = line;
+    [self didChangeValueForKey:@"stateMessage"];
+}
+
+- (void)task:(TKDTask *)task didTerminate:(int)terminationStatus reason:(NSTaskTerminationReason)reason {
+    if (terminationStatus == 0) {
+        [self enterSubstate:TKDAppBootingStartingServer];
+        NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", self.appHostname, self.appDirectoryPath];
+        [[TKDMuxrManager defaultManager] issueCommand:command];
+    } else {
+        [self enterSubstate:TKDAppBootingBundleFailed];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
+
+            [alert runModal];
+        });
+
+        NSDictionary *userInfo = @{@"action": @"FAILED",
+                                   @"hostname": self.appHostname};
+        NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
+                                                                         object:nil
+                                                                       userInfo:userInfo];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
+        });
     }
 
-    return YES;
 }
 
 @end

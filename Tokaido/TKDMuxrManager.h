@@ -18,5 +18,6 @@ extern  NSString * const kMuxrNotification;
 
 - (void)addApp:(TKDApp *)app;
 - (void)removeApp:(TKDApp *)app;
+- (void)issueCommand:(NSString *)command;
 
 @end
