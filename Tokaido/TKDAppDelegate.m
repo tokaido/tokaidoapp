@@ -553,13 +553,13 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
     NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
     NSString *gemHome = [TKDAppDelegate tokaidoInstalledGemsDirectory];
-    
+
     NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
     [arguments addObject:@"-r"];
     [arguments addObject:setupScriptPath];
     [arguments addObject:bundlerPath];
     [arguments addObject:@"install"];
-    
+
     NSTask *unzipTask = [[NSTask alloc] init];
     [unzipTask setEnvironment:@{@"GEM_HOME": gemHome}];
     [unzipTask setLaunchPath:executablePath];
@@ -567,7 +567,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     [unzipTask setArguments:arguments];
     [unzipTask launch];
     [unzipTask waitUntilExit];
-    
+
     if ([unzipTask terminationStatus] != 0) {
         return NO;
     }
