@@ -4,6 +4,15 @@
 
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
-    #import "Mantle.h"
-    #import "GCDAsyncSocket.h"
+    #import <Mantle/Mantle.h>
+    #import <CocoaAsyncSocket/GCDAsyncSocket.h>
+
+    #import <LibYAML/yaml.h>
+    // LibYAML wants HAVE_CONFIG_H set but libextobjc doesn't like it, so we undef it
+    #undef HAVE_CONFIG_H
+
+    #import <libextobjc/EXTConcreteProtocol.h>
+    #import <libextobjc/EXTKeyPathCoding.h>
+    #import <libextobjc/EXTRuntimeExtensions.h>
+    #import <libextobjc/EXTScope.h>
 #endif

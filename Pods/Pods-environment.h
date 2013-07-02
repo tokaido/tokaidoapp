@@ -30,6 +30,12 @@
 #define COCOAPODS_VERSION_MINOR_YAML_Framework 0
 #define COCOAPODS_VERSION_PATCH_YAML_Framework 1
 
+// libextobjc/EXTConcreteProtocol
+#define COCOAPODS_POD_AVAILABLE_libextobjc_EXTConcreteProtocol
+#define COCOAPODS_VERSION_MAJOR_libextobjc_EXTConcreteProtocol 0
+#define COCOAPODS_VERSION_MINOR_libextobjc_EXTConcreteProtocol 2
+#define COCOAPODS_VERSION_PATCH_libextobjc_EXTConcreteProtocol 5
+
 // libextobjc/EXTKeyPathCoding
 #define COCOAPODS_POD_AVAILABLE_libextobjc_EXTKeyPathCoding
 #define COCOAPODS_VERSION_MAJOR_libextobjc_EXTKeyPathCoding 0
