@@ -21,6 +21,8 @@ typedef enum : NSUInteger {
     TKDAppBootingStartingServer
 } TKDAppSubstate;
 
+@class TKDTask;
+
 @interface TKDApp : MTLModel
 
 @property (nonatomic, copy) NSString *appName;
@@ -49,11 +51,14 @@ typedef enum : NSUInteger {
 
 - (id)initWithTokaidoDirectory:(NSURL *)url;
 
+- (TKDTask *)task;
+- (NSDictionary *)environment;
 
 - (void)showInFinder;
 - (void)openInBrowser;
 - (void)serializeToYAML;
 - (void)enterSubstate:(TKDAppSubstate)substate;
-- (BOOL)runBundleInstall;
+
+- (void)runBundleInstall;
 
 @end
