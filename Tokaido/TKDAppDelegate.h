@@ -14,14 +14,25 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic, strong) IBOutlet TKDTokaidoController *tokaidoController;
 
-+ (NSString *)tokaidoMuxrSocketPath;
+// TODO: Move those to TKDDirectories or something
++ (NSString *)tokaidoInstalledGemsDirectory;
++ (NSString *)tokaidoInstalledRubiesDirectory;
++ (NSString *)tokaidoInstalledBootstrapDirectory;
++ (NSString *)tokaidoInstalledBinDirectory;
 + (NSString *)tokaidoInstalledFirewallDirectory;
++ (NSString *)tokaidoInstalledRbConfig;
++ (NSString *)tokaidoInstalledLLVMGCC;
++ (NSString *)tokaidoMuxrSocketPath;
++ (NSString *)tokaidoBundledRubiesDirectory;
++ (NSString *)tokaidoBundledGemsFile;
++ (NSString *)tokaidoBundledBinFile;
++ (NSString *)tokaidoBundledLLVMGCCFile;
++ (NSString *)tokaidoBundledBootstrapFile;
++ (NSString *)tokaidoAppSupportDirectory;
 
 - (void)openTerminalWithPath:(NSString *)path;
 
 - (void)loadAppSettings;
 - (void)saveAppSettings;
-
-- (BOOL)runBundleInstallForApp:(TKDApp *)app;
 
 @end
