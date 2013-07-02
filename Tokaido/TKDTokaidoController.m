@@ -30,8 +30,12 @@
 {
     if (app.state == TKDAppOn) {
         [self deactivateApp:app];
-    } else {
+    } else if (app.state == TKDAppOff) {
         [self activateApp:app];
+    } else if (app.state == TKDAppBooting) {
+        [self deactivateApp:app];
+    } else {
+        NSAssert(false, @"should never be reached");
     }
 }
 

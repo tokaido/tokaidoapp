@@ -138,6 +138,8 @@ static NSString *kAppIconKey = @"app_icon";
         return @"Shut Down";
     } else if (self.state == TKDAppOff) {
         return @"Boot App";
+    } else if (self.state == TKDAppBooting) {
+        return @"Cancel Boot";
     } else {
         return nil;
     }
