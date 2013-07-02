@@ -7,6 +7,7 @@
 //
 
 #import "TKDApp.h"
+#import "TKDAppDelegate.h"
 #import <YAML-Framework/YAMLSerialization.h>
 
 static NSString *kAppNameKey = @"app_name";
@@ -182,6 +183,35 @@ static NSString *kAppIconKey = @"app_icon";
     if (!success) {
         NSLog(@"ERROR: Couldn't write YAML file.");
     }
+}
+
+- (BOOL)runBundleInstall {
+    [self enterSubstate:TKDAppBootingBundling];
+
+    NSString *executablePath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
+    NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
+    NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
+    NSString *gemHome = [TKDAppDelegate tokaidoInstalledGemsDirectory];
+
+    NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
+    [arguments addObject:@"-r"];
+    [arguments addObject:setupScriptPath];
+    [arguments addObject:bundlerPath];
+    [arguments addObject:@"install"];
+
+    NSTask *unzipTask = [[NSTask alloc] init];
+    [unzipTask setEnvironment:@{@"GEM_HOME": gemHome}];
+    [unzipTask setLaunchPath:executablePath];
+    [unzipTask setCurrentDirectoryPath:self.appDirectoryPath];
+    [unzipTask setArguments:arguments];
+    [unzipTask launch];
+    [unzipTask waitUntilExit];
+
+    if ([unzipTask terminationStatus] != 0) {
+        return NO;
+    }
+
+    return YES;
 }
 
 @end

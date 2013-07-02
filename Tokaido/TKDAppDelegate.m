@@ -545,36 +545,6 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
      SMJobRemove(kSMDomainUserLaunchd, (__bridge CFStringRef)kTokaidoBootstrapLabel, NULL, false, NULL);
 }
 
-- (BOOL)runBundleInstallForApp:(TKDApp *)app;
-{
-    [app enterSubstate:TKDAppBootingBundling];
-
-    NSString *executablePath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
-    NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
-    NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
-    NSString *gemHome = [TKDAppDelegate tokaidoInstalledGemsDirectory];
-    
-    NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
-    [arguments addObject:@"-r"];
-    [arguments addObject:setupScriptPath];
-    [arguments addObject:bundlerPath];
-    [arguments addObject:@"install"];
-    
-    NSTask *unzipTask = [[NSTask alloc] init];
-    [unzipTask setEnvironment:@{@"GEM_HOME": gemHome}];
-    [unzipTask setLaunchPath:executablePath];
-    [unzipTask setCurrentDirectoryPath:app.appDirectoryPath];
-    [unzipTask setArguments:arguments];
-    [unzipTask launch];
-    [unzipTask waitUntilExit];
-    
-    if ([unzipTask terminationStatus] != 0) {
-        return NO;
-    }
-    
-    return YES;
-}
-
 #pragma mark Helpers
 
 - (void)unzipFileAtPath:(NSString *)path inDirectoryPath:(NSString *)directory

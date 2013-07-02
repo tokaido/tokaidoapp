@@ -96,7 +96,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        BOOL bundleInstallWorked = [delegate runBundleInstallForApp:app];
+        BOOL bundleInstallWorked = [app runBundleInstall];
         
         if (bundleInstallWorked) {
             [app enterSubstate:TKDAppBootingStartingServer];
