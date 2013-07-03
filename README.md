@@ -6,7 +6,7 @@ When first cloning this repo, be sure to run the following:
 
 	gem install cocoapods
 	pod install
-  rake
+	rake
 	open Tokaido.xcworkspace
 
 You should then be able to build and run Tokaido in Xcode.
