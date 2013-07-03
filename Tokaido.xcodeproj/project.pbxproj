@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08783A2A1784A9AC0071AC1C /* uninstall.sh in Resources */ = {isa = PBXBuildFile; fileRef = 08783A291784A9AC0071AC1C /* uninstall.sh */; };
 		089C2B971776194D001530DF /* tokaido-bin.zip in Resources */ = {isa = PBXBuildFile; fileRef = 089C2B961776194D001530DF /* tokaido-bin.zip */; };
 		08A60A6417564F6A00197C27 /* 2.0.0-p195.zip in Resources */ = {isa = PBXBuildFile; fileRef = 08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */; };
 		08A60A6517564F7900197C27 /* 2.0.0-p195.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */; };
@@ -79,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08783A291784A9AC0071AC1C /* uninstall.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstall.sh; sourceTree = "<group>"; };
 		089C2B961776194D001530DF /* tokaido-bin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-bin.zip"; sourceTree = "<group>"; };
 		08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "2.0.0-p195.zip"; sourceTree = "<group>"; };
 		3A19ECCC163F5B5C0035ABA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -244,6 +246,7 @@
 		3AD6931216373C9F005AF81E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				08783A291784A9AC0071AC1C /* uninstall.sh */,
 				E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */,
 				3AD69347163746A8005AF81E /* ScriptingBridge */,
 				3AD6934C16374989005AF81E /* SetupTokaido.sh */,
@@ -446,6 +449,7 @@
 				CD1FCB88169D066C00FB7E36 /* Tokaido.icns in Resources */,
 				CD1FCB8C169D0DCF00FB7E36 /* Green@2x.png in Resources */,
 				CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */,
+				08783A2A1784A9AC0071AC1C /* uninstall.sh in Resources */,
 				CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */,
 				CD5A8934170B84EA00217D8A /* Yellow.png in Resources */,
 				CD5A8982171380E500217D8A /* EditAppWindow.xib in Resources */,
