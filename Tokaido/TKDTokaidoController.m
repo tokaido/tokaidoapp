@@ -123,13 +123,13 @@
 
 - (void)activateApp:(TKDApp *)app;
 {
-    app.state = TKDAppBooting;
+    [app enterState:TKDAppBooting];
     [[TKDMuxrManager defaultManager] addApp:app];
 }
 
 - (void)deactivateApp:(TKDApp *)app;
 {
-    app.state = TKDAppShuttingDown;
+    [app enterState:TKDAppShuttingDown];
     [[TKDMuxrManager defaultManager] removeApp:app];
 }
 
@@ -154,10 +154,10 @@
     NSString *action = [[note userInfo] objectForKey:@"action"];
     if ([action isEqualToString:@"READY"]) {
         NSLog(@"Enabling App: %@", hostname);
-        app.state = TKDAppOn;
+        [app enterState:TKDAppOn];
     } else if ([action isEqualToString:@"FAILED"] || [action isEqualToString:@"REMOVED"]) {
         NSLog(@"Disabling App: %@", hostname);
-        app.state = TKDAppOff;
+        [app enterState:TKDAppOff];
     }
     
 }

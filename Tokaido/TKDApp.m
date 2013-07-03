@@ -172,6 +172,15 @@ static NSString *kAppIconKey = @"app_icon";
     }
 }
 
+-(void)enterState:(TKDAppState)state;
+{
+    self.state = state;
+
+    if (state == TKDAppOn) {
+        self.failureReason = nil;
+    }
+}
+
 - (void)showInFinder;
 {
     [[NSWorkspace sharedWorkspace] openFile:self.appDirectoryPath];

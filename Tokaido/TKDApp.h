@@ -57,6 +57,7 @@ typedef enum : NSUInteger {
 - (void)showInFinder;
 - (void)openInBrowser;
 - (void)serializeToYAML;
+- (void)enterState:(TKDAppState)state;
 - (void)enterSubstate:(TKDAppSubstate)substate;
 
 - (void)runBundleInstall;
