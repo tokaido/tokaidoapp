@@ -458,7 +458,7 @@
                         </buttonCell>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="784">
-                        <rect key="frame" x="367.99999999999994" y="3" width="72" height="25"/>
+                        <rect key="frame" x="368" y="3" width="72" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Boot App" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="785">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -507,11 +507,11 @@
                             </segments>
                         </segmentedCell>
                     </segmentedControl>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="715">
-                        <rect key="frame" x="47" y="8" width="76" height="16"/>
+                    <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="715">
+                        <rect key="frame" x="47" y="8" width="316" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Booting App" id="716">
-                            <font key="font" metaFont="cellTitle"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" red="0.47843140360000003" green="0.47843140360000003" blue="0.47843140360000003" alpha="1" colorSpace="deviceRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             <connections>
@@ -530,14 +530,14 @@
                             </binding>
                         </connections>
                     </textField>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="629">
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="629">
                         <rect key="frame" x="-1" y="31" width="582" height="342"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" ambiguous="YES" id="UiT-0T-gch">
+                        <clipView key="contentView" id="UiT-0T-gch">
                             <rect key="frame" x="1" y="1" width="580" height="340"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <collectionView ambiguous="YES" selectable="YES" allowsMultipleSelection="YES" id="630" customClass="TKDAppCollectionView">
+                                <collectionView selectable="YES" allowsMultipleSelection="YES" id="630" customClass="TKDAppCollectionView">
                                     <rect key="frame" x="0.0" y="0.0" width="580" height="340"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -561,12 +561,17 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="596" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="8" id="6lg-wf-PyC"/>
-                    <constraint firstItem="715" firstAttribute="leading" secondItem="596" secondAttribute="trailing" constant="8" id="DR2-Iz-PVk"/>
+                    <constraint firstItem="629" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="-1" id="Dqg-99-a4G"/>
                     <constraint firstAttribute="bottom" secondItem="596" secondAttribute="bottom" constant="5" id="KNE-Cp-NeJ"/>
                     <constraint firstAttribute="bottom" secondItem="547" secondAttribute="bottom" constant="5" id="VvR-F1-QVM"/>
                     <constraint firstAttribute="trailing" secondItem="547" secondAttribute="trailing" constant="8" id="aUJ-C6-MtG"/>
+                    <constraint firstItem="629" firstAttribute="top" secondItem="372" secondAttribute="top" constant="-1" id="c1M-hg-mrY"/>
+                    <constraint firstAttribute="bottom" secondItem="629" secondAttribute="bottom" constant="31" id="ewX-hu-HkF"/>
+                    <constraint firstItem="784" firstAttribute="leading" secondItem="715" secondAttribute="trailing" constant="8" id="i4C-jg-fn8"/>
                     <constraint firstAttribute="bottom" secondItem="715" secondAttribute="bottom" constant="8" id="lYR-S7-PEB"/>
                     <constraint firstAttribute="bottom" secondItem="784" secondAttribute="bottom" constant="5" id="nmC-QB-rlZ"/>
+                    <constraint firstAttribute="trailing" secondItem="629" secondAttribute="trailing" constant="-1" id="ouM-fq-w2V"/>
+                    <constraint firstItem="715" firstAttribute="leading" secondItem="596" secondAttribute="trailing" constant="8" id="rps-DL-MXo"/>
                     <constraint firstItem="547" firstAttribute="leading" secondItem="784" secondAttribute="trailing" constant="8" id="uQu-FW-gae"/>
                 </constraints>
             </view>
@@ -635,4 +640,51 @@
     <resources>
         <image name="NSAddTemplate" width="8" height="8"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TKDAppCollectionView" superclassName="NSCollectionView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppCollectionView.h"/>
+        </class>
+        <class className="TKDAppDelegate" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppDelegate.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tokaidoController" candidateClass="TKDTokaidoController"/>
+                <relationship kind="outlet" name="window" candidateClass="NSWindow"/>
+            </relationships>
+        </class>
+        <class className="TKDAppViewItem" superclassName="NSCollectionViewItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppViewItem.h"/>
+            <relationships>
+                <relationship kind="action" name="showLogs:"/>
+                <relationship kind="outlet" name="activatedMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="appController" candidateClass="NSObjectController"/>
+                <relationship kind="outlet" name="appIcon" candidateClass="TKDSelectableIcon"/>
+                <relationship kind="outlet" name="appMenu" candidateClass="NSMenu"/>
+                <relationship kind="outlet" name="editMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="openInBrowserMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="removeMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="shouldActivateOnLaunchMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="showInFinderMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="tokaidoController" candidateClass="TKDTokaidoController"/>
+                <relationship kind="outlet" name="tokenField" candidateClass="TKDRailsAppTokenField"/>
+            </relationships>
+        </class>
+        <class className="TKDRailsAppTokenField" superclassName="NSView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDRailsAppTokenField.h"/>
+        </class>
+        <class className="TKDSelectableIcon" superclassName="NSControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDSelectableIcon.h"/>
+        </class>
+        <class className="TKDTokaidoController" superclassName="NSWindowController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDTokaidoController.h"/>
+            <relationships>
+                <relationship kind="action" name="addAppPressed:"/>
+                <relationship kind="action" name="openTerminalPressed:"/>
+                <relationship kind="outlet" name="appsArrayController" candidateClass="NSArrayController"/>
+                <relationship kind="outlet" name="railsAppsView" candidateClass="NSCollectionView"/>
+            </relationships>
+        </class>
+    </classes>
 </document>
