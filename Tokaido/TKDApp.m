@@ -126,6 +126,7 @@ static NSString *kAppIconKey = @"app_icon";
 
     if (self.state == TKDAppBooting) {
         if (self.substate == TKDAppBootingBundling) {
+            if (self.lastLine == nil) { return @"bundle install"; }
             return [NSString stringWithFormat:@"bundle install: %@", self.lastLine];
         } else {
             return [substates objectForKey:[NSNumber numberWithInt:self.substate]];
