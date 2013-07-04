@@ -17,10 +17,10 @@ export PATH=$BIN:$TOKAIDO_PATH:$GEM_HOME/bin:$PATH
 
 if [ -d /Applications/Postgres.app ]; then
   export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-  echo "\e[0;32mTokaido detected Postgres.app and added it to the PATH\e[00m"
+  echo -e "\033[0;32mTokaido detected Postgres.app and added it to the PATH\033[00m"
 fi
 
 cd "$TOKAIDO_APP_DIR"
 
-echo "\e[0;32mThis terminal is now ready use with Tokaido.\e[00m"
+echo -e "\033[0;32mThis terminal is now ready use with Tokaido.\033[00m"
 echo
