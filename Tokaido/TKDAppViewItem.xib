@@ -50,6 +50,7 @@
             </subviews>
             <connections>
                 <outlet property="delegate" destination="-2" id="FI8-1w-1E8"/>
+                <outlet property="menu" destination="140" id="P0x-NR-bry"/>
             </connections>
         </customView>
         <userDefaultsController id="53"/>
