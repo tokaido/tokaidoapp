@@ -99,7 +99,7 @@
             
         case TKDAppShuttingDown:
             [self.activatedMenuItem setEnabled:NO];
-            [self.activatedMenuItem setTarget:nil];
+            [self.activatedMenuItem setTarget:nil]; 
             [self.activatedMenuItem setTitle:@"Shutting down..."];
             
             [self.openInBrowserMenuItem setTarget:nil];
@@ -155,6 +155,13 @@
 - (IBAction)showLogs:(id)sender {
     NSString *outPath = [NSString stringWithFormat:@"%@/%@.tokaido.out", [TKDAppDelegate tokaidoInstalledFirewallDirectory], self.app.appName];
     [[NSWorkspace sharedWorkspace] openFile:outPath withApplication:@"Console"];
+}
+
+- (void)doubleClick:(id)sender {
+    if (self.app.state == TKDAppOff) {
+        // boot app on double click
+        [self activate];
+    }
 }
 
 - (TKDApp *)app

@@ -22,7 +22,8 @@
     self.apps = [[NSMutableArray alloc] init];
     CGSize size = CGSizeMake(150, 162);
     [self.railsAppsView setMinItemSize:size];
-    
+    [self.railsAppsView setMaxItemSize:size];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMuxrEvent:) name:kMuxrNotification object:nil];
 }
 

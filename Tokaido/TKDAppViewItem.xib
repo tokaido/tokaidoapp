@@ -1,497 +1,131 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
-	<data>
-		<int key="IBDocument.SystemTarget">1080</int>
-		<string key="IBDocument.SystemVersion">12D78</string>
-		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.37</string>
-		<string key="IBDocument.HIToolboxVersion">626.00</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">3084</string>
-		</object>
-		<array key="IBDocument.IntegratedClassDependencies">
-			<string>NSCustomObject</string>
-			<string>NSCustomView</string>
-			<string>NSMenu</string>
-			<string>NSMenuItem</string>
-			<string>NSObjectController</string>
-			<string>NSTextField</string>
-			<string>NSTextFieldCell</string>
-			<string>NSUserDefaultsController</string>
-		</array>
-		<array key="IBDocument.PluginDependencies">
-			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-		</array>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
-			<integer value="1" key="NS.object.0"/>
-		</object>
-		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
-			<object class="NSCustomObject" id="1001">
-				<string key="NSClassName">TKDAppViewItem</string>
-			</object>
-			<object class="NSCustomObject" id="1003">
-				<string key="NSClassName">FirstResponder</string>
-			</object>
-			<object class="NSCustomObject" id="1004">
-				<string key="NSClassName">NSApplication</string>
-			</object>
-			<object class="NSCustomView" id="1005">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">14</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="NSCustomView" id="555843640">
-						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{20, 20}, {150, 26}}</string>
-						<reference key="NSSuperview" ref="1005"/>
-						<reference key="NSNextKeyView"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<string key="NSClassName">TKDRailsAppTokenField</string>
-					</object>
-					<object class="NSCustomView" id="732940055">
-						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">4365</int>
-						<string key="NSFrame">{{59, 70}, {72, 72}}</string>
-						<reference key="NSSuperview" ref="1005"/>
-						<reference key="NSNextKeyView" ref="653104233"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<string key="NSClassName">TKDSelectableIcon</string>
-					</object>
-					<object class="NSTextField" id="653104233">
-						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{17, 45}, {156, 17}}</string>
-						<reference key="NSSuperview" ref="1005"/>
-						<reference key="NSNextKeyView" ref="555843640"/>
-						<string key="NSReuseIdentifierKey">_NS:1535</string>
-						<bool key="NSEnabled">YES</bool>
-						<object class="NSTextFieldCell" key="NSCell" id="437008737">
-							<int key="NSCellFlags">67108928</int>
-							<int key="NSCellFlags2">138414080</int>
-							<string key="NSContents">My Rails App</string>
-							<object class="NSFont" key="NSSupport" id="591514160">
-								<string key="NSName">LucidaGrande</string>
-								<double key="NSSize">13</double>
-								<int key="NSfFlags">1044</int>
-							</object>
-							<string key="NSCellIdentifier">_NS:1535</string>
-							<reference key="NSControlView" ref="653104233"/>
-							<object class="NSColor" key="NSBackgroundColor">
-								<int key="NSColorSpace">6</int>
-								<string key="NSCatalogName">System</string>
-								<string key="NSColorName">controlColor</string>
-								<object class="NSColor" key="NSColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
-								</object>
-							</object>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">6</int>
-								<string key="NSCatalogName">System</string>
-								<string key="NSColorName">controlTextColor</string>
-								<object class="NSColor" key="NSColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-								</object>
-							</object>
-						</object>
-						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-					</object>
-				</array>
-				<string key="NSFrameSize">{190, 162}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView" ref="732940055"/>
-				<string key="NSClassName">NSView</string>
-			</object>
-			<object class="NSUserDefaultsController" id="942066954">
-				<bool key="NSSharedInstance">YES</bool>
-			</object>
-			<object class="NSObjectController" id="161759664">
-				<bool key="NSEditable">YES</bool>
-				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
-			</object>
-			<object class="NSMenu" id="619415256">
-				<string key="NSTitle">OtherViews</string>
-				<array class="NSMutableArray" key="NSMenuItems">
-					<object class="NSMenuItem" id="450429462">
-						<reference key="NSMenu" ref="619415256"/>
-						<bool key="NSIsDisabled">YES</bool>
-						<string key="NSTitle">Activate</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<object class="NSCustomResource" key="NSOnImage" id="50260213">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuCheckmark</string>
-						</object>
-						<object class="NSCustomResource" key="NSMixedImage" id="804306812">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuMixedState</string>
-						</object>
-						<string key="NSAction">_popUpItemAction:</string>
-					</object>
-					<object class="NSMenuItem" id="970746432">
-						<reference key="NSMenu" ref="619415256"/>
-						<string key="NSTitle">Activate on Launch</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<int key="NSState">1</int>
-						<reference key="NSOnImage" ref="50260213"/>
-						<reference key="NSMixedImage" ref="804306812"/>
-						<string key="NSAction">_popUpItemAction:</string>
-					</object>
-					<object class="NSMenuItem" id="646070875">
-						<reference key="NSMenu" ref="619415256"/>
-						<bool key="NSIsDisabled">YES</bool>
-						<bool key="NSIsSeparator">YES</bool>
-						<string key="NSTitle"/>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="50260213"/>
-						<reference key="NSMixedImage" ref="804306812"/>
-					</object>
-					<object class="NSMenuItem" id="440929698">
-						<reference key="NSMenu" ref="619415256"/>
-						<string key="NSTitle">Show Logs</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="50260213"/>
-						<reference key="NSMixedImage" ref="804306812"/>
-					</object>
-					<object class="NSMenuItem" id="523998107">
-						<reference key="NSMenu" ref="619415256"/>
-						<string key="NSTitle">Show in Finder</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="50260213"/>
-						<reference key="NSMixedImage" ref="804306812"/>
-						<string key="NSAction">_popUpItemAction:</string>
-					</object>
-					<object class="NSMenuItem" id="134747779">
-						<reference key="NSMenu" ref="619415256"/>
-						<string key="NSTitle">Open in Browser</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="50260213"/>
-						<reference key="NSMixedImage" ref="804306812"/>
-					</object>
-					<object class="NSMenuItem" id="294451683">
-						<reference key="NSMenu" ref="619415256"/>
-						<bool key="NSIsDisabled">YES</bool>
-						<bool key="NSIsSeparator">YES</bool>
-						<string key="NSTitle"/>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="50260213"/>
-						<reference key="NSMixedImage" ref="804306812"/>
-					</object>
-					<object class="NSMenuItem" id="28243296">
-						<reference key="NSMenu" ref="619415256"/>
-						<string key="NSTitle">Edit...</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSKeyEquivModMask">1048576</int>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="50260213"/>
-						<reference key="NSMixedImage" ref="804306812"/>
-						<string key="NSAction">_popUpItemAction:</string>
-					</object>
-					<object class="NSMenuItem" id="795797955">
-						<reference key="NSMenu" ref="619415256"/>
-						<string key="NSTitle">Remove</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="50260213"/>
-						<reference key="NSMixedImage" ref="804306812"/>
-						<string key="NSAction">_popUpItemAction:</string>
-					</object>
-				</array>
-				<reference key="NSMenuFont" ref="591514160"/>
-			</object>
-		</array>
-		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<array class="NSMutableArray" key="connectionRecords">
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">view</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="1005"/>
-					</object>
-					<int key="connectionID">52</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">appNameTextField</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="653104233"/>
-					</object>
-					<int key="connectionID">98</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">appController</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="161759664"/>
-					</object>
-					<int key="connectionID">101</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">appIcon</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="732940055"/>
-					</object>
-					<int key="connectionID">110</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">appMenu</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="619415256"/>
-					</object>
-					<int key="connectionID">149</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">tokenField</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="555843640"/>
-					</object>
-					<int key="connectionID">150</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">removeMenuItem</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="795797955"/>
-					</object>
-					<int key="connectionID">151</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">editMenuItem</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="28243296"/>
-					</object>
-					<int key="connectionID">152</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">showInFinderMenuItem</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="523998107"/>
-					</object>
-					<int key="connectionID">153</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">activatedMenuItem</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="450429462"/>
-					</object>
-					<int key="connectionID">154</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">openInBrowserMenuItem</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="134747779"/>
-					</object>
-					<int key="connectionID">156</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">showLogs:</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="440929698"/>
-					</object>
-					<int key="connectionID">158</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: selection.appName</string>
-						<reference key="source" ref="437008737"/>
-						<reference key="destination" ref="161759664"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="437008737"/>
-							<reference key="NSDestination" ref="161759664"/>
-							<string key="NSLabel">value: selection.appName</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">selection.appName</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">103</int>
-				</object>
-			</array>
-			<object class="IBMutableOrderedSet" key="objectRecords">
-				<array key="orderedObjects">
-					<object class="IBObjectRecord">
-						<int key="objectID">0</int>
-						<array key="object" id="0"/>
-						<reference key="children" ref="1000"/>
-						<nil key="parent"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-2</int>
-						<reference key="object" ref="1001"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">File's Owner</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-1</int>
-						<reference key="object" ref="1003"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">First Responder</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-3</int>
-						<reference key="object" ref="1004"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">Application</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1</int>
-						<reference key="object" ref="1005"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="653104233"/>
-							<reference ref="732940055"/>
-							<reference ref="555843640"/>
-						</array>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">29</int>
-						<reference key="object" ref="653104233"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="437008737"/>
-						</array>
-						<reference key="parent" ref="1005"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">30</int>
-						<reference key="object" ref="437008737"/>
-						<reference key="parent" ref="653104233"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">53</int>
-						<reference key="object" ref="942066954"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">99</int>
-						<reference key="object" ref="161759664"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">109</int>
-						<reference key="object" ref="732940055"/>
-						<reference key="parent" ref="1005"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">138</int>
-						<reference key="object" ref="555843640"/>
-						<reference key="parent" ref="1005"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">140</int>
-						<reference key="object" ref="619415256"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="795797955"/>
-							<reference ref="294451683"/>
-							<reference ref="450429462"/>
-							<reference ref="646070875"/>
-							<reference ref="28243296"/>
-							<reference ref="523998107"/>
-							<reference ref="970746432"/>
-							<reference ref="134747779"/>
-							<reference ref="440929698"/>
-						</array>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">141</int>
-						<reference key="object" ref="795797955"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">142</int>
-						<reference key="object" ref="294451683"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">143</int>
-						<reference key="object" ref="450429462"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">144</int>
-						<reference key="object" ref="646070875"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">145</int>
-						<reference key="object" ref="28243296"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">146</int>
-						<reference key="object" ref="523998107"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">147</int>
-						<reference key="object" ref="970746432"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">155</int>
-						<reference key="object" ref="134747779"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">157</int>
-						<reference key="object" ref="440929698"/>
-						<reference key="parent" ref="619415256"/>
-					</object>
-				</array>
-			</object>
-			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="109.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="138.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="140.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="141.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="142.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="143.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="144.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="145.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="146.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="147.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="155.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="157.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="99.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			</dictionary>
-			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
-			<nil key="activeLocalization"/>
-			<dictionary class="NSMutableDictionary" key="localizations"/>
-			<nil key="sourceID"/>
-			<int key="maxID">160</int>
-		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
-		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
-		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NSMenuCheckmark">{11, 11}</string>
-			<string key="NSMenuMixedState">{10, 3}</string>
-		</dictionary>
-	</data>
-</archive>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.9" systemVersion="12E55" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1080" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4457.9"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TKDAppViewItem">
+            <connections>
+                <action selector="showLogs:" destination="157" id="158"/>
+                <outlet property="activatedMenuItem" destination="143" id="154"/>
+                <outlet property="appController" destination="99" id="101"/>
+                <outlet property="appIcon" destination="109" id="110"/>
+                <outlet property="appMenu" destination="140" id="149"/>
+                <outlet property="appNameTextField" destination="29" id="98"/>
+                <outlet property="editMenuItem" destination="145" id="152"/>
+                <outlet property="openInBrowserMenuItem" destination="155" id="156"/>
+                <outlet property="removeMenuItem" destination="141" id="151"/>
+                <outlet property="showInFinderMenuItem" destination="146" id="153"/>
+                <outlet property="tokenField" destination="138" id="150"/>
+                <outlet property="view" destination="1" id="52"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <customView autoresizesSubviews="NO" id="1" customClass="TKDAppViewItemView">
+            <rect key="frame" x="0.0" y="0.0" width="190" height="162"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" id="29">
+                    <rect key="frame" x="17" y="45" width="156" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="My Rails App" id="30">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <binding destination="99" name="value" keyPath="selection.appName" id="103"/>
+                        </connections>
+                    </textFieldCell>
+                </textField>
+                <customView focusRingType="none" id="109" customClass="TKDSelectableIcon">
+                    <rect key="frame" x="59" y="70" width="72" height="72"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView id="138" customClass="TKDRailsAppTokenField">
+                    <rect key="frame" x="20" y="20" width="150" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+            </subviews>
+            <connections>
+                <outlet property="delegate" destination="-2" id="FI8-1w-1E8"/>
+            </connections>
+        </customView>
+        <userDefaultsController id="53"/>
+        <objectController id="99"/>
+        <menu title="OtherViews" id="140">
+            <items>
+                <menuItem title="Activate" enabled="NO" id="143">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Activate on Launch" state="on" id="147">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="144"/>
+                <menuItem title="Show Logs" id="157">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Show in Finder" id="146">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Open in Browser" id="155">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="142"/>
+                <menuItem title="Edit..." id="145"/>
+                <menuItem title="Remove" id="141">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
+    </objects>
+    <classes>
+        <class className="NSCollectionViewItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSCollectionViewItem.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="NSImageView"/>
+                <relationship kind="outlet" name="textField" candidateClass="NSTextField"/>
+            </relationships>
+        </class>
+        <class className="TKDAppViewItem" superclassName="NSCollectionViewItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppViewItem.h"/>
+            <relationships>
+                <relationship kind="action" name="doubleClick:"/>
+                <relationship kind="action" name="showLogs:"/>
+                <relationship kind="outlet" name="activatedMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="appController" candidateClass="NSObjectController"/>
+                <relationship kind="outlet" name="appIcon" candidateClass="TKDSelectableIcon"/>
+                <relationship kind="outlet" name="appMenu" candidateClass="NSMenu"/>
+                <relationship kind="outlet" name="editMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="openInBrowserMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="removeMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="shouldActivateOnLaunchMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="showInFinderMenuItem" candidateClass="NSMenuItem"/>
+                <relationship kind="outlet" name="tokaidoController" candidateClass="TKDTokaidoController"/>
+                <relationship kind="outlet" name="tokenField" candidateClass="TKDRailsAppTokenField"/>
+            </relationships>
+        </class>
+        <class className="TKDAppViewItemView" superclassName="NSView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppViewItemView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate" candidateClass="TKDAppViewItem"/>
+            </relationships>
+        </class>
+        <class className="TKDRailsAppTokenField" superclassName="NSView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDRailsAppTokenField.h"/>
+        </class>
+        <class className="TKDSelectableIcon" superclassName="NSControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDSelectableIcon.h"/>
+        </class>
+        <class className="TKDTokaidoController" superclassName="NSWindowController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDTokaidoController.h"/>
+            <relationships>
+                <relationship kind="action" name="addAppPressed:"/>
+                <relationship kind="action" name="openTerminalPressed:"/>
+                <relationship kind="outlet" name="appsArrayController" candidateClass="NSArrayController"/>
+                <relationship kind="outlet" name="railsAppsView" candidateClass="NSCollectionView"/>
+            </relationships>
+        </class>
+    </classes>
+</document>

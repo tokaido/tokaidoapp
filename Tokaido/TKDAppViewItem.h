@@ -32,7 +32,11 @@
 
 @property (nonatomic, strong) IBOutlet NSMenuItem *editMenuItem;
 @property (nonatomic, strong) IBOutlet NSMenuItem *removeMenuItem;
+
 - (IBAction)showLogs:(id)sender;
+
+// Called by TKDAppViewItemView
+- (IBAction)doubleClick:(id)sender;
 
 @property (nonatomic, readonly) TKDApp *app;
 
