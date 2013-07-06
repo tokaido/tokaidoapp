@@ -443,7 +443,7 @@
         <window title="Tokaido" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="335" y="390" width="580" height="372"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1578"/>
             <value key="minSize" type="size" width="500" height="300"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="580" height="372"/>
@@ -507,11 +507,11 @@
                             </segments>
                         </segmentedCell>
                     </segmentedControl>
-                    <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="715">
-                        <rect key="frame" x="47" y="8" width="316" height="17"/>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="715">
+                        <rect key="frame" x="47" y="8" width="76" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Booting App" id="716">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="cellTitle"/>
                             <color key="textColor" red="0.47843140360000003" green="0.47843140360000003" blue="0.47843140360000003" alpha="1" colorSpace="deviceRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             <connections>
@@ -561,17 +561,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="596" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="8" id="6lg-wf-PyC"/>
-                    <constraint firstItem="629" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="-1" id="Dqg-99-a4G"/>
+                    <constraint firstAttribute="trailing" secondItem="629" secondAttribute="trailing" constant="-1" id="B98-Qw-i3r"/>
+                    <constraint firstItem="715" firstAttribute="leading" secondItem="596" secondAttribute="trailing" constant="8" id="DR2-Iz-PVk"/>
                     <constraint firstAttribute="bottom" secondItem="596" secondAttribute="bottom" constant="5" id="KNE-Cp-NeJ"/>
+                    <constraint firstItem="629" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="-1" id="RrJ-Kw-PPN"/>
                     <constraint firstAttribute="bottom" secondItem="547" secondAttribute="bottom" constant="5" id="VvR-F1-QVM"/>
+                    <constraint firstAttribute="bottom" secondItem="629" secondAttribute="bottom" constant="31" id="Zju-zt-42F"/>
                     <constraint firstAttribute="trailing" secondItem="547" secondAttribute="trailing" constant="8" id="aUJ-C6-MtG"/>
-                    <constraint firstItem="629" firstAttribute="top" secondItem="372" secondAttribute="top" constant="-1" id="c1M-hg-mrY"/>
-                    <constraint firstAttribute="bottom" secondItem="629" secondAttribute="bottom" constant="31" id="ewX-hu-HkF"/>
-                    <constraint firstItem="784" firstAttribute="leading" secondItem="715" secondAttribute="trailing" constant="8" id="i4C-jg-fn8"/>
+                    <constraint firstItem="629" firstAttribute="top" secondItem="372" secondAttribute="top" id="dfS-aA-buw"/>
                     <constraint firstAttribute="bottom" secondItem="715" secondAttribute="bottom" constant="8" id="lYR-S7-PEB"/>
                     <constraint firstAttribute="bottom" secondItem="784" secondAttribute="bottom" constant="5" id="nmC-QB-rlZ"/>
-                    <constraint firstAttribute="trailing" secondItem="629" secondAttribute="trailing" constant="-1" id="ouM-fq-w2V"/>
-                    <constraint firstItem="715" firstAttribute="leading" secondItem="596" secondAttribute="trailing" constant="8" id="rps-DL-MXo"/>
                     <constraint firstItem="547" firstAttribute="leading" secondItem="784" secondAttribute="trailing" constant="8" id="uQu-FW-gae"/>
                 </constraints>
             </view>
@@ -641,8 +640,41 @@
         <image name="NSAddTemplate" width="8" height="8"/>
     </resources>
     <classes>
+        <class className="NSCollectionViewItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSCollectionViewItem.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="NSImageView"/>
+                <relationship kind="outlet" name="textField" candidateClass="NSTextField"/>
+            </relationships>
+        </class>
+        <class className="NSDocument">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSDocument.h"/>
+            <relationships>
+                <relationship kind="action" name="browseDocumentVersions:"/>
+                <relationship kind="action" name="duplicateDocument:"/>
+                <relationship kind="action" name="lockDocument:"/>
+                <relationship kind="action" name="moveDocument:"/>
+                <relationship kind="action" name="moveDocumentToUbiquityContainer:"/>
+                <relationship kind="action" name="printDocument:"/>
+                <relationship kind="action" name="renameDocument:"/>
+                <relationship kind="action" name="revertDocumentToSaved:"/>
+                <relationship kind="action" name="runPageLayout:"/>
+                <relationship kind="action" name="saveDocument:"/>
+                <relationship kind="action" name="saveDocumentAs:"/>
+                <relationship kind="action" name="saveDocumentTo:"/>
+                <relationship kind="action" name="saveDocumentToPDF:"/>
+                <relationship kind="action" name="unlockDocument:"/>
+            </relationships>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NSTextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSTextView.h"/>
+            <relationships>
+                <relationship kind="action" name="orderFrontSharingServicePicker:"/>
+                <relationship kind="action" name="toggleQuickLookPreviewPanel:"/>
+            </relationships>
         </class>
         <class className="TKDAppCollectionView" superclassName="NSCollectionView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppCollectionView.h"/>
@@ -657,6 +689,7 @@
         <class className="TKDAppViewItem" superclassName="NSCollectionViewItem">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppViewItem.h"/>
             <relationships>
+                <relationship kind="action" name="doubleClick:"/>
                 <relationship kind="action" name="showLogs:"/>
                 <relationship kind="outlet" name="activatedMenuItem" candidateClass="NSMenuItem"/>
                 <relationship kind="outlet" name="appController" candidateClass="NSObjectController"/>
