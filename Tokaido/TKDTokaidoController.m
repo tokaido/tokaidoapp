@@ -153,10 +153,17 @@
     // Check the event here and do the right thing.
     
     NSString *action = [[note userInfo] objectForKey:@"action"];
+
+    NSLog(@"ACTION: %@", action);
+
+    if ([action isEqualToString:@"ERR"]) {
+        [app setStatus:@"Booting failed. Review the logs or \"Open in Terminal\"."];
+    }
+
     if ([action isEqualToString:@"READY"]) {
         NSLog(@"Enabling App: %@", hostname);
         [app enterState:TKDAppOn];
-    } else if ([action isEqualToString:@"FAILED"] || [action isEqualToString:@"REMOVED"]) {
+    } else if ([action isEqualToString:@"FAILED"] || [action isEqualToString:@"REMOVED"] || [action isEqualToString:@"ERR"]) {
         NSLog(@"Disabling App: %@", hostname);
         [app enterState:TKDAppOff];
     }

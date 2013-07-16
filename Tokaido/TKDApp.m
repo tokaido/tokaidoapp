@@ -182,6 +182,11 @@ static NSString *kAppIconKey = @"app_icon";
     }
 }
 
+-(void)setStatus:(NSString *)status;
+{
+    self.failureReason = status;
+}
+
 - (void)showInFinder;
 {
     [[NSWorkspace sharedWorkspace] openFile:self.appDirectoryPath];

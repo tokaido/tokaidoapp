@@ -59,6 +59,7 @@ typedef enum : NSUInteger {
 - (void)serializeToYAML;
 - (void)enterState:(TKDAppState)state;
 - (void)enterSubstate:(TKDAppSubstate)substate;
+- (void)setStatus:(NSString *)status;
 
 - (void)runBundleInstall;
 

@@ -62,7 +62,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     if ([reply isEqualToString:@"ADDED"]) {
         NSLog(@"App added, waiting for ready...");
         [self.socket readDataWithTimeout:-1 tag:0];
-    } else if ([reply isEqualToString:@"READY"] || [reply isEqualToString:@"REMOVED"]) {
+    } else if ([reply isEqualToString:@"READY"] || [reply isEqualToString:@"REMOVED"] || [reply isEqualToString:@"ERR"]) {
         
         // This happens on a background thread, so it should fire off UI updating notifications on
         // the main thread.
