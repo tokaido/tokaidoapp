@@ -6,6 +6,7 @@ When first cloning this repo, be sure to run the following:
 
     gem install cocoapods
     pod install
+    bundle install
     rake
     open Tokaido.xcworkspace
 
