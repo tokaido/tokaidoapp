@@ -228,16 +228,22 @@ static NSString *kAppIconKey = @"app_icon";
 
 - (void)runBundleInstall {
     [self enterSubstate:TKDAppBootingBundling];
+    dispatch_queue_t bundleInstall = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(bundleInstall, ^{
+      @try {
+        TKDTask *task = [self task];
+        task.delegate = self;
+        task.launchPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
+        
+        NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
+        NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
+        task.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"install" ];
 
-    TKDTask *task = [self task];
-    task.delegate = self;
-    task.launchPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
-
-    NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
-    NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
-    task.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"install" ];
-
-    [task launch];
+        [task launch];
+      } @catch (NSException *exception) {
+        NSLog(@"Problem running bundle install: %@", [exception description]);
+      }
+    });
 }
 
 - (TKDTask *)task {
@@ -252,6 +258,7 @@ static NSString *kAppIconKey = @"app_icon";
 
 - (void)task:(TKDTask *)task didPrintLine:(NSString *)line toStandardOut:(id)_ {
     [self willChangeValueForKey:@"stateMessage"];
+    NSLog(@"%@", line);
     self.lastLine = line;
     [self didChangeValueForKey:@"stateMessage"];
 }
