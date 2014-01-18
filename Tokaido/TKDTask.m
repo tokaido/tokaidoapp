@@ -16,12 +16,6 @@
     NSTask *_task;
     NSPipe *_standardOutputPipe;
     NSPipe *_standardErrorPipe;
-    NSFileHandle *_standardOutputFileHandle;
-    NSFileHandle *_standardErrorFileHandle;
-    NSMutableString *_standardOutputBuffer;
-    NSMutableString *_standardErrorBuffer;
-    NSMutableArray *_standardOutputLines;
-    NSMutableArray *_standardErrorLines;
 }
 @end
 
@@ -43,10 +37,6 @@
     if (self = [super init]) {
         _arguments = [NSArray array];
         _environment = [NSDictionary dictionary];
-        _standardOutputLines = [NSMutableArray array];
-        _standardErrorLines = [NSMutableArray array];
-        _standardOutputBuffer = [NSMutableString string];
-        _standardErrorBuffer = [NSMutableString string];
     }
     return self;
 }
@@ -103,6 +93,11 @@
     [self setupTask];
     [_task launch];
     if ([self.delegate respondsToSelector:@selector(task:didLaunch:)]) [self.delegate task:self didLaunch:nil];
+    [_task waitUntilExit];
+}
+
+-(void)waitUntilExit {
+  [_task waitUntilExit];
 }
 
 - (TKDTaskState)state {
@@ -145,33 +140,36 @@
         @strongify(self);
         if ([self.delegate respondsToSelector:@selector(task:didTerminate:reason:)]) [self.delegate task:self didTerminate:task.terminationStatus reason:task.terminationReason];
     };
+
     _standardOutputPipe = [NSPipe pipe];
     _standardErrorPipe = [NSPipe pipe];
-    _standardOutputFileHandle = _standardOutputPipe.fileHandleForReading;
-    _standardErrorFileHandle = _standardErrorPipe.fileHandleForReading;
+
     _task.standardOutput = _standardOutputPipe;
     _task.standardError = _standardErrorPipe;
-    _standardOutputFileHandle.readabilityHandler = [self readabilityHandlerFor:_standardOutputFileHandle buffer:_standardOutputBuffer lines:_standardOutputLines];
-    _standardOutputFileHandle.readabilityHandler = [self readabilityHandlerFor:_standardErrorFileHandle buffer:_standardErrorBuffer lines:_standardErrorLines];
+
+    [[_standardOutputPipe fileHandleForReading] waitForDataInBackgroundAndNotify];
+    [[_standardErrorPipe fileHandleForReading] waitForDataInBackgroundAndNotify];
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSFileHandleDataAvailableNotification
+                                               object:[_standardOutputPipe fileHandleForReading]
+                                               queue:nil usingBlock:[self readabilityHandlerForPipe:_standardOutputPipe]];
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSFileHandleDataAvailableNotification
+                                               object:[_standardErrorPipe fileHandleForReading]
+                                               queue:nil usingBlock:[self readabilityHandlerForPipe:_standardErrorPipe]];
 }
 
-- (void (^)(NSFileHandle *))readabilityHandlerFor:(NSFileHandle *)handle buffer:(NSMutableString *)buffer lines:(NSMutableArray *)lines {
-    return ^(NSFileHandle *handle) {
-        [buffer appendString:[[NSString alloc] initWithData:handle.availableData encoding:NSASCIIStringEncoding]];
-        NSArray *bufferLines = [buffer componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-        if ([[bufferLines lastObject] length] == 0) {
-            // data ended in a newline -> clear buffer
-            [buffer setString:@""];
-        } else {
-            // data did not end in newline -> make lastObject new buffer
-            [buffer setString:[bufferLines lastObject]];
-        }
-        for (int i = 0; i < bufferLines.count - 1; i++) {
-            NSString *line = bufferLines[i];
-            if ([self.delegate respondsToSelector:@selector(task:didPrintLine:toStandardOut:)]) [self.delegate task:self didPrintLine:line toStandardOut:nil];
-            [lines addObject:line];
-        }
-    };
+- (void(^)(NSNotification *)) readabilityHandlerForPipe:(NSPipe *) p {
+  return ^(NSNotification *notification) {
+    NSData *output = [[p fileHandleForReading] availableData];
+    NSString *outputString = [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding];
+
+    dispatch_sync(dispatch_get_main_queue(), ^{
+      [self.delegate task:self didPrintLine:outputString toStandardOut:p];
+    });
+
+    [[p fileHandleForReading] waitForDataInBackgroundAndNotify];
+  };
 }
 
 @end

@@ -44,5 +44,5 @@ typedef NS_ENUM(NSInteger, TKDTaskState) {
 @property (nonatomic, readonly) NSArray *standardErrorLines;
 
 - (void)launch;
-
+- (void)waitUntilExit;
 @end
