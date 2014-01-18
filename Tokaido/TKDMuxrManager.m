@@ -13,6 +13,9 @@
 
 #import "TKDAppDelegate.h"
 
+#define TAG_MUXR_RESPONSE  0
+#define TAG_AWAIT_COMMAND  1
+
 NSString * const kMuxrNotification = @"kMuxrNotification";
 
 @interface TKDMuxrManager ()
@@ -42,7 +45,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     if (![self.socket connectToUrl:socketURL withTimeout:-1 error:&error]) {
         NSLog(@"ERROR: Couldn't connect to socket: %@", [error localizedDescription]);
     }
-    [self.socket readDataWithTimeout:-1 tag:0];
+    [self.socket readDataToData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:TAG_MUXR_RESPONSE];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;
@@ -51,18 +54,19 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     NSLog(@"Got back from muxr: %@", muxrLine);
 
     
-    if ([muxrLine isEqualToString:@"TOKAIDO ACTIVE\n"]) {
+    if (TAG_MUXR_RESPONSE == tag) {
+      if ([muxrLine isEqualToString:@"TOKAIDO ACTIVE\n"]) {
         NSLog(@"Muxr Manager Ready");
         return;
-    }
+      }
+    } else if (TAG_AWAIT_COMMAND == tag) {
+      NSArray *elements = [muxrLine componentsSeparatedByString:@" "];
+      NSString *reply = [elements objectAtIndex:0];
     
-    NSArray *elements = [muxrLine componentsSeparatedByString:@" "];
-    NSString *reply = [elements objectAtIndex:0];
-    
-    if ([reply isEqualToString:@"ADDED"]) {
+      if ([reply isEqualToString:@"ADDED"]) {
         NSLog(@"App added, waiting for ready...");
-        [self.socket readDataWithTimeout:-1 tag:0];
-    } else if ([reply isEqualToString:@"READY"] || [reply isEqualToString:@"REMOVED"] || [reply isEqualToString:@"ERR"]) {
+        [self.socket readDataToData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1  tag:TAG_AWAIT_COMMAND];
+      } else if ([reply isEqualToString:@"READY"] || [reply isEqualToString:@"REMOVED"] || [reply isEqualToString:@"ERR"]) {
         
         // This happens on a background thread, so it should fire off UI updating notifications on
         // the main thread.
@@ -73,9 +77,8 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
                                                                              object:nil
                                                                            userInfo:userInfo];
             [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
-        });
-    } else {
-        [self.socket readDataWithTimeout:-1 tag:0];
+         });
+      } 
     }
 }
 
@@ -118,7 +121,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 {
     NSData *data = [command dataUsingEncoding:NSUTF8StringEncoding];
     [self.socket writeData:data withTimeout:-1 tag:0];
-    [self.socket readDataWithTimeout:-1 tag:0];
+    [self.socket readDataToData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1  tag:TAG_AWAIT_COMMAND];
 }
 
 @end
