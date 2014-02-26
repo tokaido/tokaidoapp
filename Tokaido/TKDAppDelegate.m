@@ -431,7 +431,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 + (NSString *)tokaidoInstalledRbConfig;
 {
     //TODO: this really shouldn't be hardcoded, but we don't yet have a plan to handle multiple rubies.
-    return [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/2.1.1-p76/lib/ruby/2.1.1/x86_64-darwin13.0/rbconfig.rb"];
+    return [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/2.1.1-p76/lib/ruby/2.1.0/x86_64-darwin13.0/rbconfig.rb"];
 }
 
 

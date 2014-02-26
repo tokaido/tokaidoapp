@@ -61,10 +61,10 @@ rm -rf gem_home
 echo "Building new GEM_HOME"
 bundle --path gem_home --gemfile Gemfile
 
-gem install bundler -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.1.1
+gem install bundler -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.1.0
 
 rm -f tokaido-gems.zip
 rm -rf Gems
-cp -R gem_home/ruby/2.1.1 Gems
+cp -R gem_home/ruby/2.1.0 Gems
 
 zip -r tokaido-gems.zip Gems
