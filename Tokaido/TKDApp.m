@@ -258,7 +258,6 @@ static NSString *kAppIconKey = @"app_icon";
 
 - (void)task:(TKDTask *)task didPrintLine:(NSString *)line toStandardOut:(id)_ {
     [self willChangeValueForKey:@"stateMessage"];
-    NSLog(@"%@", line);
     self.lastLine = line;
     [self didChangeValueForKey:@"stateMessage"];
 }
