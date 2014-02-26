@@ -132,7 +132,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
         return;
     }
     
-    NSString *newTopDir = [NSString stringWithFormat:@"TOPDIR = \"%@/2.0.0-p195\"", [TKDAppDelegate tokaidoInstalledRubiesDirectory]];
+    NSString *newTopDir = [NSString stringWithFormat:@"TOPDIR = \"%@/2.1.1-p76\"", [TKDAppDelegate tokaidoInstalledRubiesDirectory]];
     [topDirRegex replaceMatchesInString:rbconfig
                           options:0
                             range:NSMakeRange(0, [rbconfig length])
@@ -355,7 +355,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 
 - (void)openTerminalWithPath:(NSString *)path;
 {
-    NSString *rubyVersion = @"2.0.0-p195";
+    NSString *rubyVersion = @"2.1.1-p76";
 
     // First, set up a variable for our ruby installation.
     NSString *tokaidoSetupStep0 = [NSString stringWithFormat:@"export TOKAIDO_PATH=%@", [self rubyBinDirectory:rubyVersion]];
@@ -425,7 +425,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 + (NSString *)tokaidoInstalledRbConfig;
 {
     //TODO: this really shouldn't be hardcoded, but we don't yet have a plan to handle multiple rubies.
-    return [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/2.0.0-p195/lib/ruby/2.0.0/x86_64-darwin12.3.0/rbconfig.rb"];
+    return [[self tokaidoInstalledRubiesDirectory] stringByAppendingPathComponent:@"/2.1.1-p76/lib/ruby/2.1.1/x86_64-darwin13.0/rbconfig.rb"];
 }
 
 
