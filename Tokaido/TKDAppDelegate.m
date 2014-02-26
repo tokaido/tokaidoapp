@@ -374,7 +374,9 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
     [terminal activate];
  
     if ([terminal isRunning]) {
-      TerminalWindow *openedSession = [terminal windows][0];
+      [terminal doScript:@"echo \"Starting shell\"\n" in:nil];
+      
+      TerminalWindow *openedSession = [[terminal windows] lastObject];
       [terminal doScript:tokaidoSetupStep2 in:openedSession];
       openedSession.visible = YES;
     }
