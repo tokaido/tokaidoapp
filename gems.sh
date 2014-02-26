@@ -1,15 +1,15 @@
 root=$PWD
 tmp=$root/tmp
 
-if [ -d $tmp/2.0.0-p195 ]
+if [ -d $tmp/2.1.1-p76 ]
 then
   echo "Tokaido Ruby is unzipped"
 else
   echo "Unzipping Tokaido Ruby"
-  unzip "Tokaido/2.0.0-p195.zip" -d tmp
+  unzip "Tokaido/Rubies/2.1.1-p76.zip" -d tmp
 fi
 
-export PATH=$tmp/2.0.0-p195/bin:$PATH
+export PATH=$tmp/2.1.1-p76/bin:$PATH
 
 gem_home="$tmp/bootstrap-gems"
 
@@ -61,10 +61,10 @@ rm -rf gem_home
 echo "Building new GEM_HOME"
 bundle --path gem_home --gemfile Gemfile
 
-gem install bundler -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.0.0
+gem install bundler -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.1.1
 
 rm -f tokaido-gems.zip
 rm -rf Gems
-cp -R gem_home/ruby/2.0.0 Gems
+cp -R gem_home/ruby/2.1.1 Gems
 
 zip -r tokaido-gems.zip Gems
