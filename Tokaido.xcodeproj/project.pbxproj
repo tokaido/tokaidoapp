@@ -13,6 +13,7 @@
 		089C2B971776194D001530DF /* tokaido-bin.zip in Resources */ = {isa = PBXBuildFile; fileRef = 089C2B961776194D001530DF /* tokaido-bin.zip */; };
 		08A60A6417564F6A00197C27 /* 2.0.0-p195.zip in Resources */ = {isa = PBXBuildFile; fileRef = 08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */; };
 		08A60A6517564F7900197C27 /* 2.0.0-p195.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */; };
+		0E189A6A18BDF2C300EF0A47 /* Rubies in Resources */ = {isa = PBXBuildFile; fileRef = 0E189A6918BDF2C300EF0A47 /* Rubies */; };
 		2ED0D0CF3BDF47DBAFB3E8FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7523D448445F475BB439A142 /* libPods.a */; };
 		3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCC163F5B5C0035ABA2 /* Security.framework */; };
 		3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */; };
@@ -88,6 +89,7 @@
 		08783A2F1785D7250071AC1C /* power-control.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "power-control.png"; sourceTree = "<group>"; };
 		089C2B961776194D001530DF /* tokaido-bin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-bin.zip"; sourceTree = "<group>"; };
 		08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "2.0.0-p195.zip"; sourceTree = "<group>"; };
+		0E189A6918BDF2C300EF0A47 /* Rubies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Rubies; sourceTree = "<group>"; };
 		3A19ECCC163F5B5C0035ABA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSelectableIcon.h; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		3AD6931116373C9F005AF81E /* Tokaido */ = {
 			isa = PBXGroup;
 			children = (
+				0E189A6918BDF2C300EF0A47 /* Rubies */,
 				3AD6931D16373C9F005AF81E /* TKDAppDelegate.h */,
 				3AD6931E16373C9F005AF81E /* TKDAppDelegate.m */,
 				CD5A8935170CC4E800217D8A /* TKDMuxrManager.h */,
@@ -452,6 +455,7 @@
 				3AD6932216373C9F005AF81E /* MainMenu.xib in Resources */,
 				3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */,
 				3AD694E21639F9D5005AF81E /* TKDAppViewItem.xib in Resources */,
+				0E189A6A18BDF2C300EF0A47 /* Rubies in Resources */,
 				3A19ECE91640734F0035ABA2 /* TKAppIconBackground.png in Resources */,
 				3A19ECEA1640734F0035ABA2 /* TKAppIconBackground@2x.png in Resources */,
 				3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */,
