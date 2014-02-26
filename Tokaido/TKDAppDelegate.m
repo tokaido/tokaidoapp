@@ -370,8 +370,14 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 
     // Finally run everything.
     TerminalApplication *terminal = [SBApplication applicationWithBundleIdentifier:@"com.apple.Terminal"];
-    [terminal doScript:tokaidoSetupStep2 in:nil];
+ 
     [terminal activate];
+ 
+    if ([terminal isRunning]) {
+      TerminalWindow *openedSession = [terminal windows][0];
+      [terminal doScript:tokaidoSetupStep2 in:openedSession];
+      openedSession.visible = YES;
+    }
 }
 
 - (NSString *)rubyBinDirectory:(NSString *)rubyVersion;
