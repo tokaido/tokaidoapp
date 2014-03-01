@@ -64,3 +64,6 @@ typedef enum : NSUInteger {
 - (void)runBundleInstall;
 
 @end
+
+@interface TKDNullApp : TKDApp
+@end

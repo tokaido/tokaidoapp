@@ -7,7 +7,7 @@
 //
 
 #import "TKDAppViewItem.h"
-#import "TKDAppDelegate.h"
+#import "TKDConfiguration.h"
 
 @interface TKDAppViewItem ()
 @end
@@ -153,7 +153,7 @@
 }
 
 - (IBAction)showLogs:(id)sender {
-    NSString *outPath = [NSString stringWithFormat:@"%@/%@.tokaido.out", [TKDAppDelegate tokaidoInstalledFirewallDirectory], self.app.appName];
+    NSString *outPath = [NSString stringWithFormat:@"%@/%@.tokaido.out", [TKDConfiguration tokaidoInstalledFirewallDirectory], self.app.appName];
     [[NSWorkspace sharedWorkspace] openFile:outPath withApplication:@"Console"];
 }
 

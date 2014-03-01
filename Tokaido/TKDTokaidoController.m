@@ -8,17 +8,22 @@
 
 #import "TKDAppDelegate.h"
 #import "TKDTokaidoController.h"
+#import "TKDTokaidoControllerHelper.h"
 #import "TKDMuxrManager.h"
 #import "TKDApp.h"
 
+#import "TKDTerminalSessions.h"
+
 @interface TKDTokaidoController ()
 @property NSOpenPanel *openPanel;
+@property TKDTokaidoControllerHelper *helpers;
 @end
 
 @implementation TKDTokaidoController
 
 - (void)awakeFromNib
 {
+    self.helpers = [[TKDTokaidoControllerHelper alloc] initWithController:self];
     self.apps = [[NSMutableArray alloc] init];
     CGSize size = CGSizeMake(150, 162);
     [self.railsAppsView setMinItemSize:size];
@@ -42,18 +47,20 @@
 
 - (IBAction)openTerminalPressed:(id)sender;
 {
-    TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
-    NSString *path;
-    
-    if ([self.appsArrayController.selectedObjects count] > 0) {
-        TKDApp *selectedApp = [self.appsArrayController.selectedObjects objectAtIndex:0];
-        path = selectedApp.appDirectoryPath;
-    } else {
-        path = NSHomeDirectory();
-    }
 
-    [delegate openTerminalWithPath:path];
+    if (![self.helpers didSelectAnApp]) {
+      NSAlert *alert = [NSAlert alertWithMessageText:@"You didn't select an app. Terminal will open in your home directory."
+                                    defaultButton:@"OK"
+                                  alternateButton:nil
+                                     otherButton:nil
+                         informativeTextWithFormat:@"Please choose an app if you would like the working directory set to it."];
+      [alert runModal];
+    }
+    
+    [[TKDTerminalSessions sharedTerminalSessions] openForApplication:[self.helpers selectedApp]];
 }
+
+
 
 - (IBAction)addAppPressed:(id)sender;
 {

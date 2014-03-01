@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Tilde. All rights reserved.
 //
 
+#import "TKDConfiguration.h"
 #import "TKDApp.h"
 #import "TKDAppDelegate.h"
 #import "TKDMuxrManager.h"
@@ -15,6 +16,7 @@
 static NSString *kAppNameKey = @"app_name";
 static NSString *kHostnameKey = @"hostname";
 static NSString *kAppIconKey = @"app_icon";
+
 
 @interface TKDTask (TKDApp)
 + (instancetype)taskForApp:(TKDApp *)app;
@@ -233,10 +235,10 @@ static NSString *kAppIconKey = @"app_icon";
       @try {
         TKDTask *task = [self task];
         task.delegate = self;
-        task.launchPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
+        task.launchPath = [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
         
-        NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
-        NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
+        NSString *setupScriptPath = [[TKDConfiguration tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
+        NSString *bundlerPath = [[TKDConfiguration tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
         task.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"install" ];
 
         [task launch];
@@ -251,7 +253,7 @@ static NSString *kAppIconKey = @"app_icon";
 }
 
 - (NSDictionary *)environment {
-    return @{ @"GEM_HOME": [TKDAppDelegate tokaidoInstalledGemsDirectory] };
+    return @{ @"GEM_HOME": [TKDConfiguration tokaidoInstalledGemsDirectory] };
 }
 
 #pragma mark - TKDTaskDelegate methods
@@ -289,6 +291,17 @@ static NSString *kAppIconKey = @"app_icon";
         });
     }
 
+}
+
+@end
+
+@implementation TKDNullApp
+
+- (id)init
+{
+    if (self = [super init])
+        self.appDirectoryPath = NSHomeDirectory();
+    return self;
 }
 
 @end

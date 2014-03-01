@@ -14,23 +14,8 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic, strong) IBOutlet TKDTokaidoController *tokaidoController;
 
-// TODO: Move those to TKDDirectories or something
-+ (NSString *)tokaidoInstalledGemsDirectory;
-+ (NSString *)tokaidoInstalledRubiesDirectory;
-+ (NSString *)tokaidoInstalledBootstrapDirectory;
-+ (NSString *)tokaidoInstalledBinDirectory;
-+ (NSString *)tokaidoInstalledFirewallDirectory;
-+ (NSString *)tokaidoInstalledRbConfig;
-+ (NSString *)tokaidoInstalledLLVMGCC;
-+ (NSString *)tokaidoMuxrSocketPath;
-+ (NSString *)tokaidoBundledRubiesDirectory;
-+ (NSString *)tokaidoBundledGemsFile;
-+ (NSString *)tokaidoBundledBinFile;
-+ (NSString *)tokaidoBundledLLVMGCCFile;
-+ (NSString *)tokaidoBundledBootstrapFile;
-+ (NSString *)tokaidoAppSupportDirectory;
 
-- (void)openTerminalWithPath:(NSString *)path;
+- (NSString *)rubyBinDirectory:(NSString *)rubyVersion;
 
 - (void)loadAppSettings;
 - (void)saveAppSettings;

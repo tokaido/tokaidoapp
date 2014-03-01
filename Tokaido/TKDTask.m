@@ -8,7 +8,7 @@
 
 #import "TKDTask.h"
 #import "TKDApp.h"
-#import "TKDAppDelegate.h"
+#import "TKDConfiguration.h"
 
 @interface TKDTask () {
     NSDictionary *_environment;
@@ -23,7 +23,7 @@
 
 + (instancetype)task {
     TKDTask *task = [[TKDTask alloc] init];
-    task.currentDirectoryPath = [TKDAppDelegate tokaidoAppSupportDirectory];
+    task.currentDirectoryPath = [TKDConfiguration tokaidoAppSupportDirectory];
     return task;
 }
 
