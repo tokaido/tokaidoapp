@@ -127,12 +127,11 @@ static NSString *kAppIconKey = @"app_icon";
     [substates setObject:@"Booting server" forKey:[NSNumber numberWithInt:TKDAppBootingStartingServer]];
 
     if (self.state == TKDAppBooting) {
-        if (self.substate == TKDAppBootingBundling) {
+        if (self.substate == TKDAppBootingBundling)
             if (self.lastLine == nil) { return @"bundle install"; }
             return [NSString stringWithFormat:@"bundle install: %@", self.lastLine];
-        } else {
+        else
             return [substates objectForKey:[NSNumber numberWithInt:self.substate]];
-        }
     } else if (self.state == TKDAppOff) {
         NSString *failureReason = self.failureReason;
 
@@ -235,10 +234,10 @@ static NSString *kAppIconKey = @"app_icon";
       @try {
         TKDTask *task = [self task];
         task.delegate = self;
-        task.launchPath = [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
-        
-        NSString *setupScriptPath = [[TKDConfiguration tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
-        NSString *bundlerPath = [[TKDConfiguration tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
+        task.launchPath = [[TKDConfiguration tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"/ruby"];
+
+        NSString *setupScriptPath = [TKDConfiguration setupScriptGemsInstalledFile];
+        NSString *bundlerPath = [TKDConfiguration gemsBundlerInstalledDirectoryPath];
         task.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"install" ];
 
         [task launch];
@@ -253,15 +252,15 @@ static NSString *kAppIconKey = @"app_icon";
 }
 
 - (NSDictionary *)environment {
-    return @{ @"GEM_HOME": [TKDConfiguration tokaidoInstalledGemsDirectory] };
+    return @{ @"GEM_HOME": [TKDConfiguration gemsInstalledDirectoryPath] };
 }
 
 #pragma mark - TKDTaskDelegate methods
 
 - (void)task:(TKDTask *)task didPrintLine:(NSString *)line toStandardOut:(id)_ {
-    [self willChangeValueForKey:@"stateMessage"];
-    self.lastLine = line;
-    [self didChangeValueForKey:@"stateMessage"];
+  [self willChangeValueForKey:@"stateMessage"];
+  self.lastLine = line;
+  [self didChangeValueForKey:@"stateMessage"];
 }
 
 - (void)task:(TKDTask *)task didTerminate:(int)terminationStatus reason:(NSTaskTerminationReason)reason {
@@ -269,7 +268,7 @@ static NSString *kAppIconKey = @"app_icon";
         [self enterSubstate:TKDAppBootingStartingServer];
         NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", self.appHostname, self.appDirectoryPath];
         [[TKDMuxrManager defaultManager] issueCommand:command];
-    } else {
+     } else {
         [self enterSubstate:TKDAppBootingBundleFailed];
         dispatch_async(dispatch_get_main_queue(), ^{
             NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
@@ -281,8 +280,11 @@ static NSString *kAppIconKey = @"app_icon";
             [alert runModal];
         });
 
-        NSDictionary *userInfo = @{@"action": @"FAILED",
-                                   @"hostname": self.appHostname};
+        NSDictionary *userInfo = @{
+          @"action": @"FAILED",
+          @"hostname": self.appHostname
+        };
+      
         NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
                                                                          object:nil
                                                                        userInfo:userInfo];
