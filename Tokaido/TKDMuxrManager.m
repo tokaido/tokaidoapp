@@ -41,7 +41,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     self.backgroundQueue = dispatch_queue_create("socketQueue", DISPATCH_QUEUE_SERIAL);
     self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:self.backgroundQueue];
     NSError *error = nil;
-    NSURL *socketURL = [NSURL URLWithString:[TKDConfiguration tokaidoMuxrSocketPath]];
+    NSURL *socketURL = [NSURL URLWithString:[TKDConfiguration muxrSocketPath]];
     if (![self.socket connectToUrl:socketURL withTimeout:-1 error:&error]) {
         NSLog(@"ERROR: Couldn't connect to socket: %@", [error localizedDescription]);
     }
@@ -76,6 +76,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
             NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
                                                                              object:nil
                                                                            userInfo:userInfo];
+          
             [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
          });
       } 
