@@ -2,28 +2,57 @@
 
 @interface TKDConfiguration : NSObject
 
++(NSString *) rubyVersion;
++(NSString *) applicationName;
++(NSString *) bundlePath;
++(NSString *) applicationSupportDirectoryPath;
++(NSString *) applicationSettingsDirectoryPath;
++(NSString *) tokaidoLocalHomeDirectoryPath;
 
-+ (NSString *) tokaidoInstalledLLVMGCC;
-+ (NSString *) tokaidoMuxrSocketPath;
-+ (NSString *) rubyInstallationDirectories;
-+ (NSString *) tokaidoBundledGemsFile;
-+ (NSString *) tokaidoBundledBinFile;
-+ (NSString *) tokaidoBundledLLVMGCCFile;
-+ (NSString *) tokaidoBundledBootstrapFile;
-+ (NSString *) tokaidoBundledRubiesDirectory;
+@end
 
+@interface TKDConfiguration(BundledFilesAndPaths)
++(NSArray *) rubiesBundled;
++(NSString *) rubyExecutableInstalledFile;
++(NSString *) bundledGemsFile;
++(NSString *) bundledBinariesFile;
++(NSString *) setupScriptGemsInstalledFile;
++(NSString *) bundledBootstrapFile;
++(NSString *) gemsBundlerInstalledDirectoryPath;
 
-+ (NSString *) tokaidoInstalledBootstrapDirectory;
-+ (NSString *) tokaidoInstalledGemsDirectory;
-+ (NSString *) tokaidoInstalledBinDirectory;
-+ (NSString *) tokaidoInstalledFirewallDirectory;
-+ (NSString *) tokaidoInstalledRbConfig;
++(NSString *) rubiesBundledDirectoryPath;
+@end
 
+@interface TKDConfiguration(Firewall)
++(NSString *) firewallStandardOutInstalledFile;
++(NSString *) firewallStandardErrorInstalledFile;
++(NSString *) firewallInstallScriptInstalledFile;
++(NSString *) firewallInstalledDirectoryPath;
+@end
 
-+ (NSString *) rubyVersion;
-+ (NSString *) tokaidoTerminalSetupScriptPath;
+@interface TKDConfiguration(Bootstrap)
++(NSString *) bootstrapLaunchDaemonPlistFile;
 
-+ (NSString *) tokaidoAppSupportDirectory;
-+ (NSString *) applicationSupportDirectory;
++(NSString *) terminalSetupScriptInstalledDirectoryPath;
++(NSString *) bootstrapGemsInstalledFile;
++(NSString *) bootstrapFirewallPlistInstalledFile;
++(NSString *) bootstrapFirewallScriptInstalledFile;
++(NSString *) boostrapScriptInstalledFile;
++(NSString *) bootstrapInstalledDirectoryPath;
+@end
 
+@interface TKDConfiguration(InstalledPaths)
++(NSArray *) rubiesInstalled;
++(NSString *) rubyConfigInstalledFile;
++(NSString *) compilerExecutableInstalledFile;
+
++(NSString *) rubiesInstalledDirectoryPath;
++(NSString *) gemsInstalledDirectoryPath;
++(NSString *) gemsBinaryInstalledDirectoryPath;
+
++(NSString *) binariesInstalledDirectoryPath;
+
++(NSString *) compilerInstalledDirectoryPath;
+
++(NSString *) muxrSocketPath;
 @end

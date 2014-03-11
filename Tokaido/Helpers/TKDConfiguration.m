@@ -1,106 +1,171 @@
-#import "TKDFileUtilities.h"
 #import "TKDConfiguration.h"
+#import "TKDFileUtilities.h"
+#import "TKDRubyBinary.h"
 
 @implementation TKDConfiguration
 
-+ (NSString *) rubyVersion {
++(NSString *) rubyVersion {
   return @"2.1.1-p76";
 }
 
-+ (NSString *) tokaidoTerminalSetupScriptPath {
-  return [[TKDConfiguration tokaidoMainBundlePath] stringByAppendingString:@"/SetupTokaido.sh"];
++(NSArray *) rubiesBundled {
+  return @[[[TKDRubyBinary alloc] initWithName:@"2.1.1-p76"]];
 }
 
-+ (NSString *) tokaidoMainBundlePath {
++(NSArray *) rubiesInstalled {
+	NSMutableSet *installedRubies = [NSMutableSet set];
+	
+ NSDirectoryEnumerator *installedRubyPaths = [TKDFileUtilities lookIn:[self rubiesInstalledDirectoryPath]];
+	NSString *installedFile;
+	
+	while (installedFile = [installedRubyPaths nextObject])
+	  if ([TKDFileUtilities directoryExists:[[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:installedFile]]) {
+	    [installedRubyPaths skipDescendents];
+			[installedRubies addObject:[[TKDRubyBinary alloc] initWithName:installedFile]];
+		}
+		
+	return [installedRubies allObjects];
+}
+
++(NSString *) rubyConfigInstalledFile {
+  return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.1.1-p76/lib/ruby/2.1.0/x86_64-darwin13.0/rbconfig.rb"];
+}
+
++(NSString *) applicationName {
+  return @"Tokaido"; 
+}
+
++ (NSString *) terminalSetupScriptInstalledDirectoryPath {
+  return [[self bundlePath] stringByAppendingString:@"/SetupTokaido.sh"];
+}
+
++(NSString *) bundlePath {
   return [[NSBundle mainBundle] resourcePath];
 }
 
-+ (NSString *)tokaidoInstalledGemsDirectory {
-    return [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Gems"];
++(NSString *) rubiesBundledDirectoryPath {
+  return [[self bundlePath] stringByAppendingPathComponent:@"Rubies"];
 }
 
-+ (NSString *)rubyInstallationDirectories {
-    NSString *directory = [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Rubies"];
-    [TKDFileUtilities createDirectoryAtPathIfNonExistant:directory];
-    return directory;
++(NSString *) rubiesInstalledDirectoryPath {
+  return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Rubies"];
 }
 
-+ (NSString *)tokaidoInstalledBootstrapDirectory {
-    NSString *directory = [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Bootstrap"];
-    [TKDFileUtilities createDirectoryAtPathIfNonExistant:directory];
-    return directory;
++(NSString *) gemsInstalledDirectoryPath {
+  return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Gems"];
 }
 
-+ (NSString *)tokaidoInstalledBinDirectory; {
-    return [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"bin"];
++(NSString *) gemsBinaryInstalledDirectoryPath {
+  return [[self gemsInstalledDirectoryPath] stringByAppendingPathComponent:@"bin"];
 }
 
-+ (NSString *)tokaidoInstalledFirewallDirectory {
-    NSString *tokaidoInstalledFirewallDirectory = [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Firewall"];
-    [TKDFileUtilities createDirectoryAtPathIfNonExistant:tokaidoInstalledFirewallDirectory];
-    return tokaidoInstalledFirewallDirectory;
++(NSString *) gemsBundlerInstalledDirectoryPath {
+  return [[self gemsBinaryInstalledDirectoryPath] stringByAppendingPathComponent:@"bundle"];
 }
 
-+ (NSString *)tokaidoInstalledRbConfig {
-  return [[TKDConfiguration rubyInstallationDirectories] stringByAppendingPathComponent:@"/2.1.1-p76/lib/ruby/2.1.0/x86_64-darwin13.0/rbconfig.rb"];
++(NSString *) binariesInstalledDirectoryPath {
+  return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"bin"];
 }
 
-
-+ (NSString *)tokaidoInstalledLLVMGCC {
-    return [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"llvm-gcc/llvm-gcc-4.2"];
++(NSString *) compilerInstalledDirectoryPath {
+  return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Clang"];
 }
 
-+ (NSString *)tokaidoMuxrSocketPath {
-    return [[TKDConfiguration tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"Firewall/muxr.sock"];
++(NSString *) bootstrapInstalledDirectoryPath {
+  return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Bootstrap"];
 }
 
-+ (NSString *)tokaidoBundledRubiesDirectory {
-    return [[TKDConfiguration tokaidoMainBundlePath] stringByAppendingPathComponent:@"Rubies"];
++(NSString *) firewallInstalledDirectoryPath {
+  return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Firewall"];
 }
 
-+ (NSString *)tokaidoBundledGemsFile {
-    return [[TKDConfiguration tokaidoMainBundlePath] stringByAppendingPathComponent:@"tokaido-gems.zip"];
++(NSString *) setupScriptGemsInstalledFile {
+  return [[self bootstrapInstalledDirectoryPath] stringByAppendingPathComponent:@"/bundle/bundler/setup.rb"];
 }
 
-+ (NSString *)tokaidoBundledBinFile {
-    return [[TKDConfiguration tokaidoMainBundlePath] stringByAppendingPathComponent:@"tokaido-bin.zip"];
++(NSString *) bootstrapGemsInstalledFile {
+  return [[self bootstrapInstalledDirectoryPath] stringByAppendingPathComponent:@"/bundle/bundler/setup.rb"];
 }
 
-+ (NSString *)tokaidoBundledLLVMGCCFile {
-    return [[TKDConfiguration tokaidoMainBundlePath] stringByAppendingPathComponent:@"llvm-gcc-4.2.zip"];
++(NSString *) bootstrapLaunchDaemonPlistFile {
+  return @"/Library/LaunchDaemons/com.tokaido.firewall.plist";
 }
 
-+ (NSString *)tokaidoBundledBootstrapFile {
-  return [[TKDConfiguration tokaidoMainBundlePath] stringByAppendingPathComponent:@"tokaido-bootstrap.zip"];
++(NSString *) bootstrapFirewallPlistInstalledFile {
+  return [[self bootstrapInstalledDirectoryPath] stringByAppendingPathComponent:@"firewall/com.tokaido.firewall.plist"];
 }
 
-
-+ (NSString *) applicationSupportDirectory {
-  return [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
++(NSString *) bootstrapFirewallScriptInstalledFile {
+  return [[self bootstrapInstalledDirectoryPath] stringByAppendingPathComponent:@"firewall/firewall_rules.rb"];
 }
 
-+ (NSString *) tokaidoApplicationSupportDirectory {
-  return [NSString stringWithFormat:@"%@/Tokaido", [TKDConfiguration applicationSupportDirectory]];
++(NSString *) boostrapScriptInstalledFile {
+  return [[self bootstrapInstalledDirectoryPath] stringByAppendingPathComponent:@"bin/tokaido-bootstrap"];
 }
 
-+ (NSString *) tokaidoLocalHomeDirectory {
++(NSString *) firewallInstallScriptInstalledFile {
+  return [[self bootstrapInstalledDirectoryPath] stringByAppendingPathComponent:@"bin/tokaido-install"];
+}
+
++(NSString *) firewallStandardOutInstalledFile {
+  return [[self firewallInstalledDirectoryPath] stringByAppendingPathComponent:@"/bootstrap.out"];
+}
+
++(NSString *) firewallStandardErrorInstalledFile {
+  return [[self firewallInstalledDirectoryPath] stringByAppendingPathComponent:@"/bootstrap.err"];
+}
+
++(NSString *) bundledBinariesFile {
+  return [[self bundlePath] stringByAppendingPathComponent:@"tokaido-bin.zip"];
+}
+
++(NSString *) bundledGemsFile {
+  return [[self bundlePath] stringByAppendingPathComponent:@"tokaido-gems.zip"];
+}
+
++(NSString *) bundledBootstrapFile {
+  return [[self bundlePath] stringByAppendingPathComponent:@"tokaido-bootstrap.zip"];
+}
+
++(NSString *) compilerExecutableInstalledFile {
+  return [[[self compilerInstalledDirectoryPath] stringByAppendingPathComponent:@"clang"]  stringByResolvingSymlinksInPath];
+}
+
++(NSString *) tokaidoLocalHomeDirectoryPath {
   return [NSHomeDirectory() stringByAppendingPathComponent:@"/.tokaido"];
 }
 
-+ (NSString *)tokaidoAppSupportDirectory {
-    [TKDFileUtilities createDirectoryAtPathIfNonExistant:[self applicationSupportDirectory]];
++(NSString *) applicationSettingsDirectoryPath {
+  return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"AppSettings"];
+}
+
++(NSString *) rubyExecutableInstalledFile {
+  return [[[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"ruby"] stringByResolvingSymlinksInPath];
+}
+
++(NSString *) applicationSupportDirectoryPath {
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+  NSString *applicationSupportDirectory = [paths objectAtIndex:0];
+ 
+  [TKDFileUtilities createDirectoryAtPathIfNonExistant:applicationSupportDirectory];
     
-    NSFileManager *fm = [NSFileManager defaultManager];
-    if (![fm fileExistsAtPath:[self tokaidoLocalHomeDirectory]]) {
+  NSFileManager *fm = [NSFileManager defaultManager];
+    if (![fm fileExistsAtPath:applicationSupportDirectory]) {
         NSError *error = nil;
-        [fm linkItemAtPath:[TKDConfiguration tokaidoApplicationSupportDirectory] toPath:[TKDConfiguration tokaidoLocalHomeDirectory] error:&error];
+        [fm linkItemAtPath:applicationSupportDirectory
+                   toPath:[self tokaidoLocalHomeDirectoryPath]
+                    error:&error];
         if (error) {
             NSLog(@"ERROR: Couldn't create the .tokaido symlink. %@", error);
         }
     }
     
-    return [TKDConfiguration tokaidoLocalHomeDirectory];
+    return [self tokaidoLocalHomeDirectoryPath];
 }
 
+
++(NSString *) muxrSocketPath {
+  return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Firewall/muxr.sock"];
+} 
 
 @end
