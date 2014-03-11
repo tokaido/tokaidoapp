@@ -35,6 +35,11 @@
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
   [[[TKDStopTokaido alloc] initWithView:(id)self] execute];
+  
+  for (TKDApp *app in self.tokaidoController.apps)
+    [app enterState:TKDAppOff];
+    
+  [self saveAppSettings];
 }
 
 
