@@ -6,7 +6,7 @@ then
   echo "Tokaido Ruby is unzipped"
 else
   echo "Unzipping Tokaido Ruby"
-  unzip "Tokaido/Rubies/2.1.1-p76.zip" -d tmp
+  unzip "Tokaido/2.1.1-p76.dev.zip" -d tmp
 fi
 
 export PATH=$tmp/2.1.1-p76/bin:$PATH
@@ -29,7 +29,7 @@ fi
 export PATH=$tmp/bootstrap-gems/bin:$PATH
 
 zips="$tmp/zips"
-sqlite3="$zips/sqlite-autoconf-3070500"
+sqlite3="$zips/sqlite-autoconf-3080400"
 
 mkdir -p $zips
 cp Tokaido/Gemfile tmp/zips/Gemfile
@@ -41,8 +41,8 @@ then
   echo "SQLite3 already built"
 else
   echo "Downloading and extracting SQLite3"
-  curl -O http://www.sqlite.org/sqlite-autoconf-3070500.tar.gz
-  tar -xf sqlite-autoconf-3070500.tar.gz
+  curl -O http://www.sqlite.org/2014/sqlite-autoconf-3080400.tar.gz
+  tar -xf sqlite-autoconf-3080400.tar.gz
 
   echo "Building static SQLite3"
   cd $sqlite3
