@@ -127,10 +127,10 @@ static NSString *kAppIconKey = @"app_icon";
     [substates setObject:@"Booting server" forKey:[NSNumber numberWithInt:TKDAppBootingStartingServer]];
 
     if (self.state == TKDAppBooting) {
-        if (self.substate == TKDAppBootingBundling)
+        if (self.substate == TKDAppBootingBundling) {
             if (self.lastLine == nil) { return @"bundle install"; }
             return [NSString stringWithFormat:@"bundle install: %@", self.lastLine];
-        else
+        } else
             return [substates objectForKey:[NSNumber numberWithInt:self.substate]];
     } else if (self.state == TKDAppOff) {
         NSString *failureReason = self.failureReason;
