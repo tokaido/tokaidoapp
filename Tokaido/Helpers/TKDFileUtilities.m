@@ -2,7 +2,21 @@
 
 @implementation TKDFileUtilities
 
-+ (void)createDirectoryAtPathIfNonExistant:(NSString *)path {
++(BOOL) fileExists:(NSString *)filePath {
+  BOOL isDirectory = NO;
+	return ([[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory] && !isDirectory);
+}
+
++(BOOL) directoryExists:(NSString *)path {
+	BOOL isDirectory = NO;
+	return ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory] && isDirectory);
+}
+
++(NSEnumerator *) lookIn:(NSString *)path {
+  return [[NSFileManager defaultManager] enumeratorAtPath:path];
+}
+
++(void) createDirectoryAtPathIfNonExistant:(NSString *)path {
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDirectory = NO;
     
@@ -17,7 +31,7 @@
     }
 }
 
-+ (void)unzipFileAtPath:(NSString *)path inDirectoryPath:(NSString *)directory {
++(void) unzipFileAtPath:(NSString *)path inDirectoryPath:(NSString *)directory {
     NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
     [arguments addObject:@"-u"];
     [arguments addObject:path];
