@@ -1,11 +1,3 @@
-//
-//  TKDUtilities.m
-//  Tokaido
-//
-//  Created by Andres Robalino on 2/28/14.
-//  Copyright (c) 2014 Tilde. All rights reserved.
-//
-
 #import "TKDUtilities.h"
 #import "TKDConfiguration.h"
 

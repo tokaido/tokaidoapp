@@ -13,6 +13,9 @@
 #import "TKDApp.h"
 
 #import "TKDTerminalSessions.h"
+#import "TKDEnsureAppSupportUpdated.h"
+#import "TKDEnsureTokaidoAppSupportUpdatedProgress.h"
+#import "TKDLoadingTokaidoController.h"
 
 @interface TKDTokaidoController ()
 @property NSOpenPanel *openPanel;
@@ -21,15 +24,26 @@
 
 @implementation TKDTokaidoController
 
-- (void)awakeFromNib
-{
-    self.helpers = [[TKDTokaidoControllerHelper alloc] initWithController:self];
-    self.apps = [[NSMutableArray alloc] init];
-    CGSize size = CGSizeMake(150, 162);
-    [self.railsAppsView setMinItemSize:size];
-    [self.railsAppsView setMaxItemSize:size];
+- (void)awakeFromNib {
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMuxrEvent:) name:kMuxrNotification object:nil];
+  self.helpers = [[TKDTokaidoControllerHelper alloc] initWithController:self];
+
+  CGSize size = CGSizeMake(150, 162);
+  [self.railsAppsView setMinItemSize:size];
+  [self.railsAppsView setMaxItemSize:size];
+  
+  TKDEnsureAppSupportUpdated *task = [[TKDEnsureAppSupportUpdated alloc] init];
+  TKDEnsureTokaidoAppSupportUpdatedProgress *activationProgress = [[TKDEnsureTokaidoAppSupportUpdatedProgress alloc] init];
+  TKDLoadingTokaidoController *loadingWindow = [[TKDLoadingTokaidoController alloc] initWithWindowNibName:@"LoadingWindow" forLoader:activationProgress withTask:task];
+  
+  [self showWindow:self];
+  [NSApp beginSheet:loadingWindow.window
+     modalForWindow:self.window
+      modalDelegate:self
+     didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)
+        contextInfo:nil];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMuxrEvent:) name:kMuxrNotification object:nil];
 }
 
 - (void)toggleApp:(TKDApp *)app;
@@ -129,16 +143,14 @@
     return (([self.appsArrayController.arrangedObjects count] == 1) ? @"App" : @"Apps");
 }
 
-- (void)activateApp:(TKDApp *)app;
-{
-    [app enterState:TKDAppBooting];
-    [[TKDMuxrManager defaultManager] addApp:app];
+- (void)activateApp:(TKDApp *)app {
+  [app enterState:TKDAppBooting];
+  [[TKDMuxrManager defaultManager] addApp:app];
 }
 
-- (void)deactivateApp:(TKDApp *)app;
-{
-    [app enterState:TKDAppShuttingDown];
-    [[TKDMuxrManager defaultManager] removeApp:app];
+- (void)deactivateApp:(TKDApp *)app {
+  [app enterState:TKDAppShuttingDown];
+  [[TKDMuxrManager defaultManager] removeApp:app];
 }
 
 #pragma mark NSNotification Handlers

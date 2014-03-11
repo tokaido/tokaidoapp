@@ -12,6 +12,8 @@
 #import "TKDConfiguration.h"
 #import "TKDFileUtilities.h"
 
+#import "TKDStopTokaido.h"
+
 @implementation TKDAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
