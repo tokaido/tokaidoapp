@@ -153,7 +153,7 @@
 }
 
 - (IBAction)showLogs:(id)sender {
-    NSString *outPath = [NSString stringWithFormat:@"%@/%@.tokaido.out", [TKDConfiguration tokaidoInstalledFirewallDirectory], self.app.appName];
+    NSString *outPath = [NSString stringWithFormat:@"%@/%@.tokaido.out", [TKDConfiguration firewallInstalledDirectoryPath], self.app.appName];
     [[NSWorkspace sharedWorkspace] openFile:outPath withApplication:@"Console"];
 }
 
