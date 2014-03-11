@@ -29,7 +29,7 @@
   NSArray *commands = @[
     [NSString stringWithFormat:@"export TOKAIDO_PATH=%@", rubyBinPath],
     [NSString stringWithFormat:@"export TOKAIDO_APP_DIR=%@", appDirectory],
-    [NSString stringWithFormat:@"source %@", [TKDConfiguration tokaidoTerminalSetupScriptPath]]
+    [NSString stringWithFormat:@"source %@", [TKDConfiguration terminalSetupScriptInstalledDirectoryPath]]
   ];
  
   return [commands componentsJoinedByString:@"\n"];
