@@ -17,3 +17,4 @@ You should then be able to build and run Tokaido in Xcode.
 Compiling static ruby:
 
 https://github.com/tokaido/tokaido-build#static-ruby
+
