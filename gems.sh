@@ -1,15 +1,15 @@
 root=$PWD
 tmp=$root/tmp
 
-if [ -d $tmp/2.0.0-p195 ]
+if [ -d $tmp/2.1.1-p76 ]
 then
   echo "Tokaido Ruby is unzipped"
 else
   echo "Unzipping Tokaido Ruby"
-  unzip "Tokaido/2.0.0-p195.zip" -d tmp
+  unzip "Tokaido/2.1.1-p76.dev.zip" -d tmp
 fi
 
-export PATH=$tmp/2.0.0-p195/bin:$PATH
+export PATH=$tmp/2.1.1-p76/bin:$PATH
 
 gem_home="$tmp/bootstrap-gems"
 
@@ -29,7 +29,7 @@ fi
 export PATH=$tmp/bootstrap-gems/bin:$PATH
 
 zips="$tmp/zips"
-sqlite3="$zips/sqlite-autoconf-3070500"
+sqlite3="$zips/sqlite-autoconf-3080400"
 
 mkdir -p $zips
 cp Tokaido/Gemfile tmp/zips/Gemfile
@@ -41,8 +41,8 @@ then
   echo "SQLite3 already built"
 else
   echo "Downloading and extracting SQLite3"
-  curl -O http://www.sqlite.org/sqlite-autoconf-3070500.tar.gz
-  tar -xf sqlite-autoconf-3070500.tar.gz
+  curl -O http://www.sqlite.org/2014/sqlite-autoconf-3080400.tar.gz
+  tar -xf sqlite-autoconf-3080400.tar.gz
 
   echo "Building static SQLite3"
   cd $sqlite3
@@ -61,10 +61,10 @@ rm -rf gem_home
 echo "Building new GEM_HOME"
 bundle --path gem_home --gemfile Gemfile
 
-gem install bundler -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.0.0
+gem install bundler -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.1.0
 
 rm -f tokaido-gems.zip
 rm -rf Gems
-cp -R gem_home/ruby/2.0.0 Gems
+cp -R gem_home/ruby/2.1.0 Gems
 
 zip -r tokaido-gems.zip Gems
