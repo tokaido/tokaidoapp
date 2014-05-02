@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1080" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TKDAppLogViewerController">
+            <connections>
+                <outlet property="viewer" destination="9ci-nn-wsQ" id="Qoq-j0-MYj"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="131" y="325" width="634" height="300"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1360" height="746"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="634" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ci-nn-wsQ">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12"/>
+                        <connections>
+                            <outlet property="UIDelegate" destination="-2" id="fp2-4x-n3u"/>
+                        </connections>
+                    </webView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9ci-nn-wsQ" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="D7C-Gv-Xbb"/>
+                    <constraint firstItem="9ci-nn-wsQ" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="Jhp-h7-nGB"/>
+                    <constraint firstAttribute="bottom" secondItem="9ci-nn-wsQ" secondAttribute="bottom" id="Lj8-Vm-bTR"/>
+                    <constraint firstAttribute="trailing" secondItem="9ci-nn-wsQ" secondAttribute="trailing" id="gb2-BV-CKC"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+    </objects>
+</document>
