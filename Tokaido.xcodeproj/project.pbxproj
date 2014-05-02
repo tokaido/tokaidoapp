@@ -60,6 +60,7 @@
 		D7CC348019134636001AD694 /* TKDStartTokaido.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC347F19134636001AD694 /* TKDStartTokaido.m */; };
 		D7CC348819134823001AD694 /* TKDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348719134823001AD694 /* TKDConfiguration.m */; };
 		D7CC348B19134843001AD694 /* TKDFileUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348A19134843001AD694 /* TKDFileUtilities.m */; };
+		D7CC348E19134944001AD694 /* TKDStopTokaido.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348D19134944001AD694 /* TKDStopTokaido.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,8 @@
 		D7CC348719134823001AD694 /* TKDConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDConfiguration.m; sourceTree = "<group>"; };
 		D7CC348919134843001AD694 /* TKDFileUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDFileUtilities.h; sourceTree = "<group>"; };
 		D7CC348A19134843001AD694 /* TKDFileUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDFileUtilities.m; sourceTree = "<group>"; };
+		D7CC348C19134944001AD694 /* TKDStopTokaido.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDStopTokaido.h; sourceTree = "<group>"; };
+		D7CC348D19134944001AD694 /* TKDStopTokaido.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDStopTokaido.m; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -399,6 +402,8 @@
 			children = (
 				D7CC347E19134636001AD694 /* TKDStartTokaido.h */,
 				D7CC347F19134636001AD694 /* TKDStartTokaido.m */,
+				D7CC348C19134944001AD694 /* TKDStopTokaido.h */,
+				D7CC348D19134944001AD694 /* TKDStopTokaido.m */,
 			);
 			name = Tokaido;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 				C545BDBB178346D900DACCBD /* TKDTask.m in Sources */,
 				CD5A8937170CC4E900217D8A /* TKDMuxrManager.m in Sources */,
 				CD5A8980171380A600217D8A /* TKDEditAppController.m in Sources */,
+				D7CC348E19134944001AD694 /* TKDStopTokaido.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
