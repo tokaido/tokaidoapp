@@ -66,6 +66,7 @@
 		D7CC349919134A94001AD694 /* TKDRubyBinaryFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349819134A94001AD694 /* TKDRubyBinaryFinder.m */; };
 		D7CC349C19134AD6001AD694 /* TKDInstallRuby.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349B19134AD6001AD694 /* TKDInstallRuby.m */; };
 		D7CC349F19134B20001AD694 /* TKDRubyConfigPatches.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */; };
+		D7CC34A219134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A119134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,8 @@
 		D7CC349B19134AD6001AD694 /* TKDInstallRuby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDInstallRuby.m; sourceTree = "<group>"; };
 		D7CC349D19134B20001AD694 /* TKDRubyConfigPatches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRubyConfigPatches.h; sourceTree = "<group>"; };
 		D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRubyConfigPatches.m; sourceTree = "<group>"; };
+		D7CC34A019134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEnsureTokaidoBootstrapIsInstalled.h; sourceTree = "<group>"; };
+		D7CC34A119134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureTokaidoBootstrapIsInstalled.m; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -409,7 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				D7CC349619134A7B001AD694 /* Ruby */,
-				D7CC348F19134987001AD694 /* Consistency */,
+				D7CC348F19134987001AD694 /* Setup */,
 				D7CC347D191345E6001AD694 /* Tokaido */,
 				D7CC3484191347F5001AD694 /* TKDControlTask.h */,
 			);
@@ -454,13 +457,15 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		D7CC348F19134987001AD694 /* Consistency */ = {
+		D7CC348F19134987001AD694 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
 				D7CC3490191349CB001AD694 /* TKDEnsureAppSupportUpdated.h */,
 				D7CC3491191349CB001AD694 /* TKDEnsureAppSupportUpdated.m */,
+				D7CC34A019134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.h */,
+				D7CC34A119134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m */,
 			);
-			name = Consistency;
+			name = Setup;
 			sourceTree = "<group>";
 		};
 		D7CC349619134A7B001AD694 /* Ruby */ = {
@@ -524,6 +529,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TKD;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Tilde;
 			};
@@ -641,6 +647,7 @@
 				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
 				CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */,
 				CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */,
+				D7CC34A219134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m in Sources */,
 				C545BDBB178346D900DACCBD /* TKDTask.m in Sources */,
 				CD5A8937170CC4E900217D8A /* TKDMuxrManager.m in Sources */,
 				CD5A8980171380A600217D8A /* TKDEditAppController.m in Sources */,
