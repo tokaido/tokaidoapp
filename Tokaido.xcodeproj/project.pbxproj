@@ -73,6 +73,7 @@
 		D7CC34AF191350F4001AD694 /* TKDLoadingTokaidoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */; };
 		D7CC34B11913517C001AD694 /* LoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34B01913517C001AD694 /* LoadingWindow.xib */; };
 		D7CC34B419135207001AD694 /* TKDTokaidoControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */; };
+		D7CC34B71913533B001AD694 /* TKDTerminalSessions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34B61913533B001AD694 /* TKDTerminalSessions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +204,8 @@
 		D7CC34B01913517C001AD694 /* LoadingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingWindow.xib; sourceTree = "<group>"; };
 		D7CC34B219135207001AD694 /* TKDTokaidoControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDTokaidoControllerHelper.h; sourceTree = "<group>"; };
 		D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTokaidoControllerHelper.m; sourceTree = "<group>"; };
+		D7CC34B51913533B001AD694 /* TKDTerminalSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDTerminalSessions.h; sourceTree = "<group>"; };
+		D7CC34B61913533B001AD694 /* TKDTerminalSessions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTerminalSessions.m; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -299,6 +302,8 @@
 				3AD6935B1639C6FE005AF81E /* Custom Views */,
 				3AD6934E1637557D005AF81E /* Ruby Bundles */,
 				3AD6931216373C9F005AF81E /* Supporting Files */,
+				D7CC34B51913533B001AD694 /* TKDTerminalSessions.h */,
+				D7CC34B61913533B001AD694 /* TKDTerminalSessions.m */,
 			);
 			path = Tokaido;
 			sourceTree = "<group>";
@@ -667,6 +672,7 @@
 				3AD6931F16373C9F005AF81E /* TKDAppDelegate.m in Sources */,
 				D7CC348819134823001AD694 /* TKDConfiguration.m in Sources */,
 				3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */,
+				D7CC34B71913533B001AD694 /* TKDTerminalSessions.m in Sources */,
 				D7CC3492191349CB001AD694 /* TKDEnsureAppSupportUpdated.m in Sources */,
 				D7CC349C19134AD6001AD694 /* TKDInstallRuby.m in Sources */,
 				D7CC34B419135207001AD694 /* TKDTokaidoControllerHelper.m in Sources */,
