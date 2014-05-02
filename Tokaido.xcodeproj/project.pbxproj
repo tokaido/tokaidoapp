@@ -293,13 +293,13 @@
 				CD5A897E171380A500217D8A /* TKDEditAppController.h */,
 				CD5A897F171380A500217D8A /* TKDEditAppController.m */,
 				CD5A8981171380E500217D8A /* EditAppWindow.xib */,
+				D7CC34B51913533B001AD694 /* TKDTerminalSessions.h */,
+				D7CC34B61913533B001AD694 /* TKDTerminalSessions.m */,
 				C545BDB9178346D900DACCBD /* TKDTask.h */,
 				C545BDBA178346D900DACCBD /* TKDTask.m */,
 				3AD694DC1639E905005AF81E /* Images */,
 				3AD6935B1639C6FE005AF81E /* Custom Views */,
 				3AD6931216373C9F005AF81E /* Supporting Files */,
-				D7CC34B51913533B001AD694 /* TKDTerminalSessions.h */,
-				D7CC34B61913533B001AD694 /* TKDTerminalSessions.m */,
 			);
 			path = Tokaido;
 			sourceTree = "<group>";
