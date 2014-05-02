@@ -191,6 +191,7 @@
 		D7CC34A419134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureTokaidoInstallIsInstalled.m; sourceTree = "<group>"; };
 		D7CC34A619134DDE001AD694 /* TKDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDUtilities.h; sourceTree = "<group>"; };
 		D7CC34A719134DDE001AD694 /* TKDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDUtilities.m; sourceTree = "<group>"; };
+		D7CC34A91913501A001AD694 /* TKDActivationProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDActivationProgress.h; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -439,6 +440,7 @@
 		D7CC348119134771001AD694 /* Loaders */ = {
 			isa = PBXGroup;
 			children = (
+				D7CC34A91913501A001AD694 /* TKDActivationProgress.h */,
 				D7CC348219134783001AD694 /* Launch */,
 			);
 			name = Loaders;
