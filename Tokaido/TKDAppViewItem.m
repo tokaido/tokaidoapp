@@ -1,13 +1,6 @@
-//
-//  TKDRailsAppIcon.m
-//  Tokaido
-//
-//  Created by Mucho Besos on 10/26/12.
-//  Copyright (c) 2012 Tilde. All rights reserved.
-//
-
 #import "TKDAppViewItem.h"
-#import "TKDAppDelegate.h"
+#import "TKDConfiguration.h"
+#import "TKDAppLogViewerController.h"
 
 @interface TKDAppViewItem ()
 @end
@@ -51,7 +44,7 @@
         case TKDAppOff:
             [self.tokaidoController activateApp:app];
             break;
-        
+            
         case TKDAppOn:
             [self.tokaidoController deactivateApp:app];
             break;
@@ -75,7 +68,7 @@
             [self.activatedMenuItem setTarget:self];
             [self.activatedMenuItem setTitle:@"Activate"];
             [self.activatedMenuItem setAction:@selector(activate)];
-
+            
             
             [self.openInBrowserMenuItem setTarget:nil];
             break;
@@ -92,14 +85,14 @@
             [self.activatedMenuItem setEnabled:YES];
             [self.activatedMenuItem setTarget:self];
             [self.activatedMenuItem setTitle:@"Deactivate"];
-
+            
             
             [self.openInBrowserMenuItem setTarget:self.representedObject];
             break;
             
         case TKDAppShuttingDown:
             [self.activatedMenuItem setEnabled:NO];
-            [self.activatedMenuItem setTarget:nil]; 
+            [self.activatedMenuItem setTarget:nil];
             [self.activatedMenuItem setTitle:@"Shutting down..."];
             
             [self.openInBrowserMenuItem setTarget:nil];
@@ -153,8 +146,9 @@
 }
 
 - (IBAction)showLogs:(id)sender {
-    NSString *outPath = [NSString stringWithFormat:@"%@/%@.tokaido.out", [TKDAppDelegate tokaidoInstalledFirewallDirectory], self.app.appName];
-    [[NSWorkspace sharedWorkspace] openFile:outPath withApplication:@"Console"];
+    self.appLogViewerController = [[TKDAppLogViewerController alloc] initWithWindowNibName:@"LogViewerWindow"];
+    self.appLogViewerController.app = self.app;
+    [self.appLogViewerController showWindow:self];
 }
 
 - (void)doubleClick:(id)sender {
