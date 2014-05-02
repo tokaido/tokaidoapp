@@ -1,11 +1,5 @@
-//
-//  TKDApp.m
-//  Tokaido
-//
-//  Created by Mucho Besos on 10/25/12.
-//  Copyright (c) 2012 Tilde. All rights reserved.
-//
-
+#import "TKDConfiguration.h"
+#import "TKDUtilities.h"
 #import "TKDApp.h"
 #import "TKDAppDelegate.h"
 #import "TKDMuxrManager.h"
@@ -15,6 +9,7 @@
 static NSString *kAppNameKey = @"app_name";
 static NSString *kHostnameKey = @"hostname";
 static NSString *kAppIconKey = @"app_icon";
+
 
 @interface TKDTask (TKDApp)
 + (instancetype)taskForApp:(TKDApp *)app;
@@ -71,7 +66,7 @@ static NSString *kAppIconKey = @"app_icon";
 
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
     NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-
+    
     if ([key isEqualToString:@"stateMessage"]) {
         keyPaths = [keyPaths setByAddingObjectsFromArray:@[@"state", @"substate"]];
     } else if ([key isEqualToString:@"needsStateChange"]) {
@@ -79,7 +74,7 @@ static NSString *kAppIconKey = @"app_icon";
     } else if ([key isEqualToString:@"stateChangeString"]) {
         keyPaths = [keyPaths setByAddingObjectsFromArray:@[@"state"]];
     }
-
+    
     return keyPaths;
 }
 
@@ -90,8 +85,8 @@ static NSString *kAppIconKey = @"app_icon";
         NSData *yamlData = [NSData dataWithContentsOfURL:[tokaidoAppURL URLByAppendingPathComponent:@"Tokaido.yaml"]];
         NSError *error = nil;
         NSMutableArray *tokaidoYAML = [YAMLSerialization YAMLWithData:yamlData
-                                                       options:kYAMLReadOptionStringScalars
-                                                         error:&error];
+                                                              options:kYAMLReadOptionStringScalars
+                                                                error:&error];
         
         if (error) {
             NSLog(@"ERROR: Couldn't load Tokaido.yaml file: %@", [error localizedDescription]);
@@ -123,7 +118,7 @@ static NSString *kAppIconKey = @"app_icon";
     [substates setObject:@"Running bundle install" forKey:[NSNumber numberWithInt:TKDAppBootingBundling]];
     [substates setObject:@"bundle install failed" forKey:[NSNumber numberWithInt:TKDAppBootingBundleFailed]];
     [substates setObject:@"Booting server" forKey:[NSNumber numberWithInt:TKDAppBootingStartingServer]];
-
+    
     if (self.state == TKDAppBooting) {
         if (self.substate == TKDAppBootingBundling) {
             if (self.lastLine == nil) { return @"bundle install"; }
@@ -133,7 +128,7 @@ static NSString *kAppIconKey = @"app_icon";
         }
     } else if (self.state == TKDAppOff) {
         NSString *failureReason = self.failureReason;
-
+        
         if (failureReason == nil) {
             return @"Not started";
         } else {
@@ -167,7 +162,7 @@ static NSString *kAppIconKey = @"app_icon";
 - (void)enterSubstate:(TKDAppSubstate)substate;
 {
     self.substate = substate;
-
+    
     if (substate == TKDAppBootingBundleFailed) {
         self.failureReason = @"Bundling failed. Try \"Open in Terminal\".";
     }
@@ -176,7 +171,7 @@ static NSString *kAppIconKey = @"app_icon";
 -(void)enterState:(TKDAppState)state;
 {
     self.state = state;
-
+    
     if (state == TKDAppOn) {
         self.failureReason = nil;
     }
@@ -230,19 +225,31 @@ static NSString *kAppIconKey = @"app_icon";
     [self enterSubstate:TKDAppBootingBundling];
     dispatch_queue_t bundleInstall = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(bundleInstall, ^{
-      @try {
-        TKDTask *task = [self task];
-        task.delegate = self;
-        task.launchPath = [[TKDAppDelegate tokaidoAppSupportDirectory] stringByAppendingPathComponent:@"/ruby"];
-        
-        NSString *setupScriptPath = [[TKDAppDelegate tokaidoInstalledBootstrapDirectory] stringByAppendingPathComponent:@"bundle/bundler/setup.rb"];
-        NSString *bundlerPath = [[TKDAppDelegate tokaidoInstalledGemsDirectory] stringByAppendingPathComponent:@"bin/bundle"];
-        task.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"install" ];
-
-        [task launch];
-      } @catch (NSException *exception) {
-        NSLog(@"Problem running bundle install: %@", [exception description]);
-      }
+        @try {
+            TKDTask *check = [self task];
+            check.launchPath = [[TKDConfiguration tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"/ruby"];
+            NSString *setupScriptPath = [TKDConfiguration setupScriptGemsInstalledFile];
+            NSString *bundlerPath = [TKDConfiguration gemsBundlerInstalledDirectoryPath];
+            check.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"check" ];
+            
+            [check launch];
+            
+            if ([check terminationStatus] == 0) {
+                NSLog(@"bundle check successfull");
+                [self task:check didTerminate:0 reason:nil];
+                return;
+            }
+            
+            TKDTask *task = [self task];
+            task.delegate = self;
+            task.launchPath = [[TKDConfiguration tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"/ruby"];
+            
+            task.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"install" ];
+            
+            [task launch];
+        } @catch (NSException *exception) {
+            NSLog(@"Problem running bundle install: %@", [exception description]);
+        }
     });
 }
 
@@ -251,14 +258,29 @@ static NSString *kAppIconKey = @"app_icon";
 }
 
 - (NSDictionary *)environment {
-    return @{ @"GEM_HOME": [TKDAppDelegate tokaidoInstalledGemsDirectory] };
+    NSLog(@"%@", @{
+                   @"GEM_HOME": [TKDConfiguration gemsInstalledDirectoryPath],
+                   @"GEM_PATH": [TKDConfiguration gemsInstalledDirectoryPath],
+                   @"PATH"    : [NSString stringWithFormat:@"%@:%@:%@/bin:%@",
+                                 [TKDConfiguration binariesInstalledDirectoryPath],
+                                 [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
+                                 [TKDConfiguration gemsInstalledDirectoryPath],
+                                 @"/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/sbin:/usr/sbin:/Applications/Postgres.app/Contents/Versions/9.3/bin"] });
+    
+    return @{
+             @"GEM_HOME": [TKDConfiguration gemsInstalledDirectoryPath],
+             @"GEM_PATH": [TKDConfiguration gemsInstalledDirectoryPath],
+             @"PATH"    : [NSString stringWithFormat:@"%@:%@:%@/bin:%@",
+                           [TKDConfiguration binariesInstalledDirectoryPath],
+                           [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
+                           [TKDConfiguration gemsInstalledDirectoryPath],
+                           @"/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/sbin:/usr/sbin:/Applications/Postgres.app/Contents/Versions/9.3/bin"] };
 }
 
 #pragma mark - TKDTaskDelegate methods
 
 - (void)task:(TKDTask *)task didPrintLine:(NSString *)line toStandardOut:(id)_ {
     [self willChangeValueForKey:@"stateMessage"];
-    NSLog(@"%@", line);
     self.lastLine = line;
     [self didChangeValueForKey:@"stateMessage"];
 }
@@ -275,13 +297,16 @@ static NSString *kAppIconKey = @"app_icon";
                                              defaultButton:@"OK"
                                            alternateButton:nil
                                                otherButton:nil
-                                 informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding."];
-
+                                 informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding. Also check if a gem added requires a compiler and install the developer tools to proceed."];
+            
             [alert runModal];
         });
-
-        NSDictionary *userInfo = @{@"action": @"FAILED",
-                                   @"hostname": self.appHostname};
+        
+        NSDictionary *userInfo = @{
+                                   @"action": @"FAILED",
+                                   @"hostname": self.appHostname
+                                   };
+        
         NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
                                                                          object:nil
                                                                        userInfo:userInfo];
@@ -289,7 +314,32 @@ static NSString *kAppIconKey = @"app_icon";
             [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
         });
     }
+    
+}
 
+@end
+
+@implementation TKDNullApp
+
+- (id)init
+{
+    if (self = [super init])
+        self.appDirectoryPath = NSHomeDirectory();
+    return self;
+}
+
+@end
+
+@implementation TKDCubalogApp
+
+- (id)init {
+    if (self = [super init]) {
+        self.appName = @"cubalog";
+        self.appDirectoryPath = [TKDConfiguration cubalogInstalledDirectoryPath];
+        self.appHostname = [[self.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
+    }
+    
+    return self;
 }
 
 @end

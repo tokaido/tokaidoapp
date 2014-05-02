@@ -38,7 +38,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL usesYAMLfile;
 
 
-/** 
+/**
  
  This can be used to init an TKD app instance with a directory, provided the
  directory includes a Tokaido.yaml file with the following entries:
@@ -63,4 +63,10 @@ typedef enum : NSUInteger {
 
 - (void)runBundleInstall;
 
+@end
+
+@interface TKDNullApp : TKDApp
+@end
+
+@interface TKDCubalogApp : TKDApp
 @end

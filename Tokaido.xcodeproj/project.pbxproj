@@ -72,6 +72,7 @@
 		D7CC34AC1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34AB1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m */; };
 		D7CC34AF191350F4001AD694 /* TKDLoadingTokaidoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */; };
 		D7CC34B11913517C001AD694 /* LoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34B01913517C001AD694 /* LoadingWindow.xib */; };
+		D7CC34B419135207001AD694 /* TKDTokaidoControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,8 @@
 		D7CC34AD191350F4001AD694 /* TKDLoadingTokaidoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDLoadingTokaidoController.h; sourceTree = "<group>"; };
 		D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDLoadingTokaidoController.m; sourceTree = "<group>"; };
 		D7CC34B01913517C001AD694 /* LoadingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingWindow.xib; sourceTree = "<group>"; };
+		D7CC34B219135207001AD694 /* TKDTokaidoControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDTokaidoControllerHelper.h; sourceTree = "<group>"; };
+		D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTokaidoControllerHelper.m; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -281,7 +284,6 @@
 				3AD694E3163A1457005AF81E /* Models */,
 				D7CC348519134809001AD694 /* Helpers */,
 				D7CC348119134771001AD694 /* Loaders */,
-				D7CC34B01913517C001AD694 /* LoadingWindow.xib */,
 				D7CC347C191345BC001AD694 /* Tasks */,
 				CD5A8935170CC4E800217D8A /* TKDMuxrManager.h */,
 				CD5A8936170CC4E900217D8A /* TKDMuxrManager.m */,
@@ -449,6 +451,7 @@
 		D7CC348119134771001AD694 /* Loaders */ = {
 			isa = PBXGroup;
 			children = (
+				D7CC34B01913517C001AD694 /* LoadingWindow.xib */,
 				D7CC34A91913501A001AD694 /* TKDActivationProgress.h */,
 				D7CC348219134783001AD694 /* Launch */,
 			);
@@ -476,6 +479,8 @@
 				D7CC348A19134843001AD694 /* TKDFileUtilities.m */,
 				D7CC34A619134DDE001AD694 /* TKDUtilities.h */,
 				D7CC34A719134DDE001AD694 /* TKDUtilities.m */,
+				D7CC34B219135207001AD694 /* TKDTokaidoControllerHelper.h */,
+				D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -664,6 +669,7 @@
 				3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */,
 				D7CC3492191349CB001AD694 /* TKDEnsureAppSupportUpdated.m in Sources */,
 				D7CC349C19134AD6001AD694 /* TKDInstallRuby.m in Sources */,
+				D7CC34B419135207001AD694 /* TKDTokaidoControllerHelper.m in Sources */,
 				D7CC349F19134B20001AD694 /* TKDRubyConfigPatches.m in Sources */,
 				3AD694E6163A1475005AF81E /* TKDApp.m in Sources */,
 				D7CC348019134636001AD694 /* TKDStartTokaido.m in Sources */,
