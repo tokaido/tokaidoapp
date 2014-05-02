@@ -1,11 +1,3 @@
-//
-//  TKDTask.h
-//  Tokaido
-//
-//  Created by Martin Schürrer on 02.07.13.
-//  Copyright (c) 2013 Martin Schürrer. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, TKDTaskState) {
@@ -45,4 +37,5 @@ typedef NS_ENUM(NSInteger, TKDTaskState) {
 
 - (void)launch;
 - (void)waitUntilExit;
+- (int)terminationStatus;
 @end
