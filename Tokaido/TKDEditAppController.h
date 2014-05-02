@@ -1,11 +1,3 @@
-//
-//  TKDEditAppController.h
-//  Tokaido
-//
-//  Created by Patrick B. Gibson on 4/8/13.
-//  Copyright (c) 2013 Tilde. All rights reserved.
-//
-
 #import <Cocoa/Cocoa.h>
 
 #import "TKDApp.h"
