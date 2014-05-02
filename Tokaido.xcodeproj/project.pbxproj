@@ -74,6 +74,7 @@
 		D7CC34CD1913653D001AD694 /* TKDAppLogViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34CC1913653D001AD694 /* TKDAppLogViewerController.m */; };
 		D7CC34CF19136581001AD694 /* LogViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34CE19136581001AD694 /* LogViewerWindow.xib */; };
 		D7CC34D219136A93001AD694 /* Tokaido.icns in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34D119136A93001AD694 /* Tokaido.icns */; };
+		D7CC3A8E19136F4C001AD694 /* Pods.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D7CC397319136F4C001AD694 /* Pods.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +207,7 @@
 		D7CC34CC1913653D001AD694 /* TKDAppLogViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppLogViewerController.m; sourceTree = "<group>"; };
 		D7CC34CE19136581001AD694 /* LogViewerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogViewerWindow.xib; sourceTree = "<group>"; };
 		D7CC34D119136A93001AD694 /* Tokaido.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Tokaido.icns; sourceTree = "<group>"; };
+		D7CC397319136F4C001AD694 /* Pods.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -341,6 +343,7 @@
 			children = (
 				3AD6933016373C9F005AF81E /* TokaidoTests-Info.plist */,
 				3AD6933116373C9F005AF81E /* InfoPlist.strings */,
+				D7CC397319136F4C001AD694 /* Pods.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AD6933316373C9F005AF81E /* InfoPlist.strings in Resources */,
+				D7CC3A8E19136F4C001AD694 /* Pods.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,6 +768,7 @@
 /* Begin XCBuildConfiguration section */
 		3AD6933716373C9F005AF81E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -815,7 +820,6 @@
 		};
 		3AD6933A16373C9F005AF81E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
