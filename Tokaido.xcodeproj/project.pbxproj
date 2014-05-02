@@ -68,6 +68,7 @@
 		D7CC349F19134B20001AD694 /* TKDRubyConfigPatches.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */; };
 		D7CC34A219134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A119134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m */; };
 		D7CC34A519134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A419134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m */; };
+		D7CC34A819134DDE001AD694 /* TKDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A719134DDE001AD694 /* TKDUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,8 @@
 		D7CC34A119134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureTokaidoBootstrapIsInstalled.m; sourceTree = "<group>"; };
 		D7CC34A319134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEnsureTokaidoInstallIsInstalled.h; sourceTree = "<group>"; };
 		D7CC34A419134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureTokaidoInstallIsInstalled.m; sourceTree = "<group>"; };
+		D7CC34A619134DDE001AD694 /* TKDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDUtilities.h; sourceTree = "<group>"; };
+		D7CC34A719134DDE001AD694 /* TKDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDUtilities.m; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -456,6 +459,8 @@
 				D7CC348719134823001AD694 /* TKDConfiguration.m */,
 				D7CC348919134843001AD694 /* TKDFileUtilities.h */,
 				D7CC348A19134843001AD694 /* TKDFileUtilities.m */,
+				D7CC34A619134DDE001AD694 /* TKDUtilities.h */,
+				D7CC34A719134DDE001AD694 /* TKDUtilities.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -651,6 +656,7 @@
 				3AD69509163B4093005AF81E /* TKDAppViewItem.m in Sources */,
 				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
 				CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */,
+				D7CC34A819134DDE001AD694 /* TKDUtilities.m in Sources */,
 				CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */,
 				D7CC34A219134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m in Sources */,
 				D7CC34A519134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m in Sources */,
