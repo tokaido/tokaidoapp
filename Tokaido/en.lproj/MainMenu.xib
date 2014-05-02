@@ -668,7 +668,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="784">
-                        <rect key="frame" x="366.99999786975479" y="3" width="72" height="25"/>
+                        <rect key="frame" x="366.99999505530775" y="3" width="72" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Boot App" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="785">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
