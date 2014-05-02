@@ -6,7 +6,7 @@ then
   echo "Tokaido Ruby is unzipped"
 else
   echo "Unzipping Tokaido Ruby"
-  unzip "Tokaido/2.1.1-p76.zip" -d tmp
+  unzip "Tokaido/Rubies/2.1.1-p76.zip" -d tmp
 fi
 
 export PATH=$tmp/2.1.1-p76/bin:$PATH
