@@ -22,6 +22,7 @@ b/
 tmp/
 
 # Build Artifacts
-Tokaido/tokaido-bin.zip
-Tokaido/tokaido-bootstrap.zip
-Tokaido/tokaido-gems.zip
+# do not ignore these yet until there is practical way to build ruby
+# Tokaido/tokaido-bin.zip
+# Tokaido/tokaido-bootstrap.zip
+# Tokaido/tokaido-gems.zip
