@@ -61,6 +61,11 @@
 		D7CC348819134823001AD694 /* TKDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348719134823001AD694 /* TKDConfiguration.m */; };
 		D7CC348B19134843001AD694 /* TKDFileUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348A19134843001AD694 /* TKDFileUtilities.m */; };
 		D7CC348E19134944001AD694 /* TKDStopTokaido.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348D19134944001AD694 /* TKDStopTokaido.m */; };
+		D7CC3492191349CB001AD694 /* TKDEnsureAppSupportUpdated.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC3491191349CB001AD694 /* TKDEnsureAppSupportUpdated.m */; };
+		D7CC349519134A2C001AD694 /* TKDRubyBinary.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349419134A2C001AD694 /* TKDRubyBinary.m */; };
+		D7CC349919134A94001AD694 /* TKDRubyBinaryFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349819134A94001AD694 /* TKDRubyBinaryFinder.m */; };
+		D7CC349C19134AD6001AD694 /* TKDInstallRuby.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349B19134AD6001AD694 /* TKDInstallRuby.m */; };
+		D7CC349F19134B20001AD694 /* TKDRubyConfigPatches.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +172,16 @@
 		D7CC348A19134843001AD694 /* TKDFileUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDFileUtilities.m; sourceTree = "<group>"; };
 		D7CC348C19134944001AD694 /* TKDStopTokaido.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDStopTokaido.h; sourceTree = "<group>"; };
 		D7CC348D19134944001AD694 /* TKDStopTokaido.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDStopTokaido.m; sourceTree = "<group>"; };
+		D7CC3490191349CB001AD694 /* TKDEnsureAppSupportUpdated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEnsureAppSupportUpdated.h; sourceTree = "<group>"; };
+		D7CC3491191349CB001AD694 /* TKDEnsureAppSupportUpdated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureAppSupportUpdated.m; sourceTree = "<group>"; };
+		D7CC349319134A2C001AD694 /* TKDRubyBinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRubyBinary.h; sourceTree = "<group>"; };
+		D7CC349419134A2C001AD694 /* TKDRubyBinary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRubyBinary.m; sourceTree = "<group>"; };
+		D7CC349719134A94001AD694 /* TKDRubyBinaryFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRubyBinaryFinder.h; sourceTree = "<group>"; };
+		D7CC349819134A94001AD694 /* TKDRubyBinaryFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRubyBinaryFinder.m; sourceTree = "<group>"; };
+		D7CC349A19134AD6001AD694 /* TKDInstallRuby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDInstallRuby.h; sourceTree = "<group>"; };
+		D7CC349B19134AD6001AD694 /* TKDInstallRuby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDInstallRuby.m; sourceTree = "<group>"; };
+		D7CC349D19134B20001AD694 /* TKDRubyConfigPatches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRubyConfigPatches.h; sourceTree = "<group>"; };
+		D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRubyConfigPatches.m; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -243,6 +258,7 @@
 		3AD6931116373C9F005AF81E /* Tokaido */ = {
 			isa = PBXGroup;
 			children = (
+				3AD694E3163A1457005AF81E /* Models */,
 				D7CC348519134809001AD694 /* Helpers */,
 				D7CC348119134771001AD694 /* Loaders */,
 				D7CC347C191345BC001AD694 /* Tasks */,
@@ -258,7 +274,6 @@
 				CD5A8981171380E500217D8A /* EditAppWindow.xib */,
 				C545BDB9178346D900DACCBD /* TKDTask.h */,
 				C545BDBA178346D900DACCBD /* TKDTask.m */,
-				3AD694E3163A1457005AF81E /* Model */,
 				3AD694DC1639E905005AF81E /* Images */,
 				3AD6935B1639C6FE005AF81E /* Custom Views */,
 				3AD6934E1637557D005AF81E /* Ruby Bundles */,
@@ -358,13 +373,15 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		3AD694E3163A1457005AF81E /* Model */ = {
+		3AD694E3163A1457005AF81E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3AD694E4163A1475005AF81E /* TKDApp.h */,
 				3AD694E5163A1475005AF81E /* TKDApp.m */,
+				D7CC349319134A2C001AD694 /* TKDRubyBinary.h */,
+				D7CC349419134A2C001AD694 /* TKDRubyBinary.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		CD1FCB86169D047B00FB7E36 /* Icon */ = {
@@ -391,6 +408,8 @@
 		D7CC347C191345BC001AD694 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				D7CC349619134A7B001AD694 /* Ruby */,
+				D7CC348F19134987001AD694 /* Consistency */,
 				D7CC347D191345E6001AD694 /* Tokaido */,
 				D7CC3484191347F5001AD694 /* TKDControlTask.h */,
 			);
@@ -433,6 +452,28 @@
 				D7CC348A19134843001AD694 /* TKDFileUtilities.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		D7CC348F19134987001AD694 /* Consistency */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC3490191349CB001AD694 /* TKDEnsureAppSupportUpdated.h */,
+				D7CC3491191349CB001AD694 /* TKDEnsureAppSupportUpdated.m */,
+			);
+			name = Consistency;
+			sourceTree = "<group>";
+		};
+		D7CC349619134A7B001AD694 /* Ruby */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC349719134A94001AD694 /* TKDRubyBinaryFinder.h */,
+				D7CC349819134A94001AD694 /* TKDRubyBinaryFinder.m */,
+				D7CC349A19134AD6001AD694 /* TKDInstallRuby.h */,
+				D7CC349B19134AD6001AD694 /* TKDInstallRuby.m */,
+				D7CC349D19134B20001AD694 /* TKDRubyConfigPatches.h */,
+				D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */,
+			);
+			name = Ruby;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -585,11 +626,16 @@
 			files = (
 				D7CC348B19134843001AD694 /* TKDFileUtilities.m in Sources */,
 				3AD6931816373C9F005AF81E /* main.m in Sources */,
+				D7CC349919134A94001AD694 /* TKDRubyBinaryFinder.m in Sources */,
 				3AD6931F16373C9F005AF81E /* TKDAppDelegate.m in Sources */,
 				D7CC348819134823001AD694 /* TKDConfiguration.m in Sources */,
 				3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */,
+				D7CC3492191349CB001AD694 /* TKDEnsureAppSupportUpdated.m in Sources */,
+				D7CC349C19134AD6001AD694 /* TKDInstallRuby.m in Sources */,
+				D7CC349F19134B20001AD694 /* TKDRubyConfigPatches.m in Sources */,
 				3AD694E6163A1475005AF81E /* TKDApp.m in Sources */,
 				D7CC348019134636001AD694 /* TKDStartTokaido.m in Sources */,
+				D7CC349519134A2C001AD694 /* TKDRubyBinary.m in Sources */,
 				C5E21F8317882F94002B24B5 /* TKDAppViewItemView.m in Sources */,
 				3AD69509163B4093005AF81E /* TKDAppViewItem.m in Sources */,
 				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
