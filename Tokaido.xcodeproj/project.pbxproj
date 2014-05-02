@@ -70,6 +70,8 @@
 		D7CC34A519134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A419134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m */; };
 		D7CC34A819134DDE001AD694 /* TKDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A719134DDE001AD694 /* TKDUtilities.m */; };
 		D7CC34AC1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34AB1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m */; };
+		D7CC34AF191350F4001AD694 /* TKDLoadingTokaidoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */; };
+		D7CC34B11913517C001AD694 /* LoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34B01913517C001AD694 /* LoadingWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +197,9 @@
 		D7CC34A91913501A001AD694 /* TKDActivationProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDActivationProgress.h; sourceTree = "<group>"; };
 		D7CC34AA1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEnsureTokaidoAppSupportUpdatedProgress.h; sourceTree = "<group>"; };
 		D7CC34AB1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureTokaidoAppSupportUpdatedProgress.m; sourceTree = "<group>"; };
+		D7CC34AD191350F4001AD694 /* TKDLoadingTokaidoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDLoadingTokaidoController.h; sourceTree = "<group>"; };
+		D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDLoadingTokaidoController.m; sourceTree = "<group>"; };
+		D7CC34B01913517C001AD694 /* LoadingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingWindow.xib; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -276,6 +281,7 @@
 				3AD694E3163A1457005AF81E /* Models */,
 				D7CC348519134809001AD694 /* Helpers */,
 				D7CC348119134771001AD694 /* Loaders */,
+				D7CC34B01913517C001AD694 /* LoadingWindow.xib */,
 				D7CC347C191345BC001AD694 /* Tasks */,
 				CD5A8935170CC4E800217D8A /* TKDMuxrManager.h */,
 				CD5A8936170CC4E900217D8A /* TKDMuxrManager.m */,
@@ -455,6 +461,8 @@
 				D7CC3483191347A7001AD694 /* TKDAppSupportEnsure.h */,
 				D7CC34AA1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.h */,
 				D7CC34AB1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m */,
+				D7CC34AD191350F4001AD694 /* TKDLoadingTokaidoController.h */,
+				D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */,
 			);
 			name = Launch;
 			sourceTree = "<group>";
@@ -578,6 +586,7 @@
 				3AD6931C16373C9F005AF81E /* Credits.rtf in Resources */,
 				08783A301785D7250071AC1C /* power-control.png in Resources */,
 				3AD6932216373C9F005AF81E /* MainMenu.xib in Resources */,
+				D7CC34B11913517C001AD694 /* LoadingWindow.xib in Resources */,
 				3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */,
 				3AD694E21639F9D5005AF81E /* TKDAppViewItem.xib in Resources */,
 				3A19ECE91640734F0035ABA2 /* TKAppIconBackground.png in Resources */,
@@ -661,6 +670,7 @@
 				D7CC349519134A2C001AD694 /* TKDRubyBinary.m in Sources */,
 				C5E21F8317882F94002B24B5 /* TKDAppViewItemView.m in Sources */,
 				3AD69509163B4093005AF81E /* TKDAppViewItem.m in Sources */,
+				D7CC34AF191350F4001AD694 /* TKDLoadingTokaidoController.m in Sources */,
 				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
 				CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */,
 				D7CC34A819134DDE001AD694 /* TKDUtilities.m in Sources */,
