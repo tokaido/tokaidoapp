@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.9" systemVersion="12E55" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4457.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKDAppViewItem">
             <connections>
-                <action selector="showLogs:" destination="157" id="158"/>
                 <outlet property="activatedMenuItem" destination="143" id="154"/>
                 <outlet property="appController" destination="99" id="101"/>
                 <outlet property="appIcon" destination="109" id="110"/>
@@ -60,12 +59,12 @@
                 <menuItem title="Activate" enabled="NO" id="143">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Activate on Launch" state="on" id="147">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
                 <menuItem isSeparatorItem="YES" id="144"/>
                 <menuItem title="Show Logs" id="157">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showLogs:" target="-2" id="158"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Show in Finder" id="146">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -81,52 +80,4 @@
             </items>
         </menu>
     </objects>
-    <classes>
-        <class className="NSCollectionViewItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSCollectionViewItem.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="NSImageView"/>
-                <relationship kind="outlet" name="textField" candidateClass="NSTextField"/>
-            </relationships>
-        </class>
-        <class className="TKDAppViewItem" superclassName="NSCollectionViewItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppViewItem.h"/>
-            <relationships>
-                <relationship kind="action" name="doubleClick:"/>
-                <relationship kind="action" name="showLogs:"/>
-                <relationship kind="outlet" name="activatedMenuItem" candidateClass="NSMenuItem"/>
-                <relationship kind="outlet" name="appController" candidateClass="NSObjectController"/>
-                <relationship kind="outlet" name="appIcon" candidateClass="TKDSelectableIcon"/>
-                <relationship kind="outlet" name="appMenu" candidateClass="NSMenu"/>
-                <relationship kind="outlet" name="editMenuItem" candidateClass="NSMenuItem"/>
-                <relationship kind="outlet" name="openInBrowserMenuItem" candidateClass="NSMenuItem"/>
-                <relationship kind="outlet" name="removeMenuItem" candidateClass="NSMenuItem"/>
-                <relationship kind="outlet" name="shouldActivateOnLaunchMenuItem" candidateClass="NSMenuItem"/>
-                <relationship kind="outlet" name="showInFinderMenuItem" candidateClass="NSMenuItem"/>
-                <relationship kind="outlet" name="tokaidoController" candidateClass="TKDTokaidoController"/>
-                <relationship kind="outlet" name="tokenField" candidateClass="TKDRailsAppTokenField"/>
-            </relationships>
-        </class>
-        <class className="TKDAppViewItemView" superclassName="NSView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDAppViewItemView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate" candidateClass="TKDAppViewItem"/>
-            </relationships>
-        </class>
-        <class className="TKDRailsAppTokenField" superclassName="NSView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDRailsAppTokenField.h"/>
-        </class>
-        <class className="TKDSelectableIcon" superclassName="NSControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDSelectableIcon.h"/>
-        </class>
-        <class className="TKDTokaidoController" superclassName="NSWindowController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKDTokaidoController.h"/>
-            <relationships>
-                <relationship kind="action" name="addAppPressed:"/>
-                <relationship kind="action" name="openTerminalPressed:"/>
-                <relationship kind="outlet" name="appsArrayController" candidateClass="NSArrayController"/>
-                <relationship kind="outlet" name="railsAppsView" candidateClass="NSCollectionView"/>
-            </relationships>
-        </class>
-    </classes>
 </document>

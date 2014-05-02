@@ -1,14 +1,7 @@
-//
-//  TKDRailsAppIcon.h
-//  Tokaido
-//
-//  Created by Mucho Besos on 10/26/12.
-//  Copyright (c) 2012 Tilde. All rights reserved.
-//
-
 #import <Cocoa/Cocoa.h>
 
 #import "TKDTokaidoController.h"
+#import "TKDAppLogViewerController.h"
 
 #import "TKDApp.h"
 #import "TKDSelectableIcon.h"
@@ -18,6 +11,7 @@
 
 @property (nonatomic, weak) IBOutlet TKDTokaidoController *tokaidoController;
 
+@property (nonatomic, strong) IBOutlet TKDAppLogViewerController *appLogViewerController;
 @property (nonatomic, strong) IBOutlet NSObjectController *appController;
 @property (nonatomic, strong) IBOutlet TKDSelectableIcon *appIcon;
 @property (nonatomic, strong) IBOutlet TKDRailsAppTokenField *tokenField;

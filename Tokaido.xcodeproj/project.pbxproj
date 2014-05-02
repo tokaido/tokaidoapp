@@ -10,9 +10,6 @@
 		08783A2A1784A9AC0071AC1C /* uninstall.sh in Resources */ = {isa = PBXBuildFile; fileRef = 08783A291784A9AC0071AC1C /* uninstall.sh */; };
 		08783A2E1785D5450071AC1C /* gnome-terminal.png in Resources */ = {isa = PBXBuildFile; fileRef = 08783A2D1785D5450071AC1C /* gnome-terminal.png */; };
 		08783A301785D7250071AC1C /* power-control.png in Resources */ = {isa = PBXBuildFile; fileRef = 08783A2F1785D7250071AC1C /* power-control.png */; };
-		089C2B971776194D001530DF /* tokaido-bin.zip in Resources */ = {isa = PBXBuildFile; fileRef = 089C2B961776194D001530DF /* tokaido-bin.zip */; };
-		08A60A6417564F6A00197C27 /* 2.0.0-p195.zip in Resources */ = {isa = PBXBuildFile; fileRef = 08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */; };
-		08A60A6517564F7900197C27 /* 2.0.0-p195.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */; };
 		2ED0D0CF3BDF47DBAFB3E8FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7523D448445F475BB439A142 /* libPods.a */; };
 		3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCC163F5B5C0035ABA2 /* Security.framework */; };
 		3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */; };
@@ -40,7 +37,6 @@
 		C545BDBB178346D900DACCBD /* TKDTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C545BDBA178346D900DACCBD /* TKDTask.m */; };
 		C545BDBC178346D900DACCBD /* TKDTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C545BDBA178346D900DACCBD /* TKDTask.m */; };
 		C5E21F8317882F94002B24B5 /* TKDAppViewItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E21F8217882F94002B24B5 /* TKDAppViewItemView.m */; };
-		CD1FCB88169D066C00FB7E36 /* Tokaido.icns in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB87169D066C00FB7E36 /* Tokaido.icns */; };
 		CD1FCB8C169D0DCF00FB7E36 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB89169D0DCE00FB7E36 /* Green@2x.png */; };
 		CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB8A169D0DCF00FB7E36 /* Red@2x.png */; };
 		CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */; };
@@ -49,14 +45,36 @@
 		CD5A8980171380A600217D8A /* TKDEditAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5A897F171380A500217D8A /* TKDEditAppController.m */; };
 		CD5A8982171380E500217D8A /* EditAppWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5A8981171380E500217D8A /* EditAppWindow.xib */; };
 		CD5A898A1714F0AC00217D8A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5A89891714F0AC00217D8A /* Quartz.framework */; };
-		CD5A898E171CC96000217D8A /* tokaido-bootstrap.zip in Resources */ = {isa = PBXBuildFile; fileRef = CD5A898D171CC96000217D8A /* tokaido-bootstrap.zip */; };
 		CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */; };
 		CD8285AD16559D96000CB252 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AA16559D96000CB252 /* Green.png */; };
 		CD8285AE16559D96000CB252 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285AB16559D96000CB252 /* Red.png */; };
 		CD8285B11655A696000CB252 /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8285B01655A696000CB252 /* down_arrow.png */; };
 		CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */; };
-		CDA9B856172B42E30027E78B /* llvm-gcc-4.2.zip in Resources */ = {isa = PBXBuildFile; fileRef = CDA9B855172B42E30027E78B /* llvm-gcc-4.2.zip */; };
-		CDB963F617288901002A8A43 /* tokaido-gems.zip in Resources */ = {isa = PBXBuildFile; fileRef = CDB963F517288901002A8A43 /* tokaido-gems.zip */; };
+		D7CC348019134636001AD694 /* TKDStartTokaido.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC347F19134636001AD694 /* TKDStartTokaido.m */; };
+		D7CC348819134823001AD694 /* TKDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348719134823001AD694 /* TKDConfiguration.m */; };
+		D7CC348B19134843001AD694 /* TKDFileUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348A19134843001AD694 /* TKDFileUtilities.m */; };
+		D7CC348E19134944001AD694 /* TKDStopTokaido.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC348D19134944001AD694 /* TKDStopTokaido.m */; };
+		D7CC3492191349CB001AD694 /* TKDEnsureAppSupportUpdated.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC3491191349CB001AD694 /* TKDEnsureAppSupportUpdated.m */; };
+		D7CC349519134A2C001AD694 /* TKDRubyBinary.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349419134A2C001AD694 /* TKDRubyBinary.m */; };
+		D7CC349919134A94001AD694 /* TKDRubyBinaryFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349819134A94001AD694 /* TKDRubyBinaryFinder.m */; };
+		D7CC349C19134AD6001AD694 /* TKDInstallRuby.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349B19134AD6001AD694 /* TKDInstallRuby.m */; };
+		D7CC349F19134B20001AD694 /* TKDRubyConfigPatches.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */; };
+		D7CC34A219134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A119134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m */; };
+		D7CC34A519134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A419134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m */; };
+		D7CC34A819134DDE001AD694 /* TKDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34A719134DDE001AD694 /* TKDUtilities.m */; };
+		D7CC34AC1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34AB1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m */; };
+		D7CC34AF191350F4001AD694 /* TKDLoadingTokaidoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */; };
+		D7CC34B11913517C001AD694 /* LoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34B01913517C001AD694 /* LoadingWindow.xib */; };
+		D7CC34B419135207001AD694 /* TKDTokaidoControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */; };
+		D7CC34B71913533B001AD694 /* TKDTerminalSessions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34B61913533B001AD694 /* TKDTerminalSessions.m */; };
+		D7CC34C4191361D3001AD694 /* Rubies in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34C3191361D3001AD694 /* Rubies */; };
+		D7CC34C81913624B001AD694 /* tokaido-bin.zip in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34C51913624B001AD694 /* tokaido-bin.zip */; };
+		D7CC34C91913624B001AD694 /* tokaido-gems.zip in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34C61913624B001AD694 /* tokaido-gems.zip */; };
+		D7CC34CA1913624B001AD694 /* tokaido-bootstrap.zip in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34C71913624B001AD694 /* tokaido-bootstrap.zip */; };
+		D7CC34CD1913653D001AD694 /* TKDAppLogViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34CC1913653D001AD694 /* TKDAppLogViewerController.m */; };
+		D7CC34CF19136581001AD694 /* LogViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34CE19136581001AD694 /* LogViewerWindow.xib */; };
+		D7CC34D219136A93001AD694 /* Tokaido.icns in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34D119136A93001AD694 /* Tokaido.icns */; };
+		D7CC3A8E19136F4C001AD694 /* Pods.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D7CC397319136F4C001AD694 /* Pods.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +94,6 @@
 			dstPath = Rubies;
 			dstSubfolderSpec = 7;
 			files = (
-				08A60A6517564F7900197C27 /* 2.0.0-p195.zip in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,8 +103,6 @@
 		08783A291784A9AC0071AC1C /* uninstall.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstall.sh; sourceTree = "<group>"; };
 		08783A2D1785D5450071AC1C /* gnome-terminal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gnome-terminal.png"; sourceTree = "<group>"; };
 		08783A2F1785D7250071AC1C /* power-control.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "power-control.png"; sourceTree = "<group>"; };
-		089C2B961776194D001530DF /* tokaido-bin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-bin.zip"; sourceTree = "<group>"; };
-		08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "2.0.0-p195.zip"; sourceTree = "<group>"; };
 		3A19ECCC163F5B5C0035ABA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSelectableIcon.h; sourceTree = "<group>"; };
@@ -121,7 +136,6 @@
 		3AD69349163746B7005AF81E /* Terminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terminal.h; sourceTree = "<group>"; };
 		3AD6934A16374795005AF81E /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		3AD6934C16374989005AF81E /* SetupTokaido.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SetupTokaido.sh; sourceTree = "<group>"; };
-		3AD6934F16375589005AF81E /* 1.9.3-p194.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "1.9.3-p194.zip"; sourceTree = "<group>"; };
 		3AD694E11639F9D5005AF81E /* TKDAppViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDAppViewItem.xib; sourceTree = "<group>"; };
 		3AD694E4163A1475005AF81E /* TKDApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDApp.h; sourceTree = "<group>"; };
 		3AD694E5163A1475005AF81E /* TKDApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDApp.m; sourceTree = "<group>"; };
@@ -132,7 +146,6 @@
 		C545BDBA178346D900DACCBD /* TKDTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTask.m; sourceTree = "<group>"; };
 		C5E21F8117882F94002B24B5 /* TKDAppViewItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppViewItemView.h; sourceTree = "<group>"; };
 		C5E21F8217882F94002B24B5 /* TKDAppViewItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppViewItemView.m; sourceTree = "<group>"; };
-		CD1FCB87169D066C00FB7E36 /* Tokaido.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Tokaido.icns; sourceTree = SOURCE_ROOT; };
 		CD1FCB89169D0DCE00FB7E36 /* Green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green@2x.png"; sourceTree = "<group>"; };
 		CD1FCB8A169D0DCF00FB7E36 /* Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red@2x.png"; sourceTree = "<group>"; };
 		CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow@2x.png"; sourceTree = "<group>"; };
@@ -143,7 +156,6 @@
 		CD5A897F171380A500217D8A /* TKDEditAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEditAppController.m; sourceTree = "<group>"; };
 		CD5A8981171380E500217D8A /* EditAppWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditAppWindow.xib; sourceTree = "<group>"; };
 		CD5A89891714F0AC00217D8A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		CD5A898D171CC96000217D8A /* tokaido-bootstrap.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-bootstrap.zip"; sourceTree = "<group>"; };
 		CD8285A716559A9D000CB252 /* TKDRailsAppTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRailsAppTokenField.h; sourceTree = "<group>"; };
 		CD8285A816559A9D000CB252 /* TKDRailsAppTokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRailsAppTokenField.m; sourceTree = "<group>"; };
 		CD8285AA16559D96000CB252 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
@@ -151,8 +163,51 @@
 		CD8285B01655A696000CB252 /* down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_arrow.png; sourceTree = "<group>"; };
 		CD8285DC1655B670000CB252 /* TKDAppCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppCollectionView.h; sourceTree = "<group>"; };
 		CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppCollectionView.m; sourceTree = "<group>"; };
-		CDA9B855172B42E30027E78B /* llvm-gcc-4.2.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "llvm-gcc-4.2.zip"; sourceTree = "<group>"; };
-		CDB963F517288901002A8A43 /* tokaido-gems.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-gems.zip"; sourceTree = "<group>"; };
+		D7CC347E19134636001AD694 /* TKDStartTokaido.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDStartTokaido.h; sourceTree = "<group>"; };
+		D7CC347F19134636001AD694 /* TKDStartTokaido.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDStartTokaido.m; sourceTree = "<group>"; };
+		D7CC3483191347A7001AD694 /* TKDAppSupportEnsure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppSupportEnsure.h; sourceTree = "<group>"; };
+		D7CC3484191347F5001AD694 /* TKDControlTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDControlTask.h; sourceTree = "<group>"; };
+		D7CC348619134823001AD694 /* TKDConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDConfiguration.h; sourceTree = "<group>"; };
+		D7CC348719134823001AD694 /* TKDConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDConfiguration.m; sourceTree = "<group>"; };
+		D7CC348919134843001AD694 /* TKDFileUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDFileUtilities.h; sourceTree = "<group>"; };
+		D7CC348A19134843001AD694 /* TKDFileUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDFileUtilities.m; sourceTree = "<group>"; };
+		D7CC348C19134944001AD694 /* TKDStopTokaido.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDStopTokaido.h; sourceTree = "<group>"; };
+		D7CC348D19134944001AD694 /* TKDStopTokaido.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDStopTokaido.m; sourceTree = "<group>"; };
+		D7CC3490191349CB001AD694 /* TKDEnsureAppSupportUpdated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEnsureAppSupportUpdated.h; sourceTree = "<group>"; };
+		D7CC3491191349CB001AD694 /* TKDEnsureAppSupportUpdated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureAppSupportUpdated.m; sourceTree = "<group>"; };
+		D7CC349319134A2C001AD694 /* TKDRubyBinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRubyBinary.h; sourceTree = "<group>"; };
+		D7CC349419134A2C001AD694 /* TKDRubyBinary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRubyBinary.m; sourceTree = "<group>"; };
+		D7CC349719134A94001AD694 /* TKDRubyBinaryFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRubyBinaryFinder.h; sourceTree = "<group>"; };
+		D7CC349819134A94001AD694 /* TKDRubyBinaryFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRubyBinaryFinder.m; sourceTree = "<group>"; };
+		D7CC349A19134AD6001AD694 /* TKDInstallRuby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDInstallRuby.h; sourceTree = "<group>"; };
+		D7CC349B19134AD6001AD694 /* TKDInstallRuby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDInstallRuby.m; sourceTree = "<group>"; };
+		D7CC349D19134B20001AD694 /* TKDRubyConfigPatches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDRubyConfigPatches.h; sourceTree = "<group>"; };
+		D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDRubyConfigPatches.m; sourceTree = "<group>"; };
+		D7CC34A019134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEnsureTokaidoBootstrapIsInstalled.h; sourceTree = "<group>"; };
+		D7CC34A119134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureTokaidoBootstrapIsInstalled.m; sourceTree = "<group>"; };
+		D7CC34A319134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEnsureTokaidoInstallIsInstalled.h; sourceTree = "<group>"; };
+		D7CC34A419134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureTokaidoInstallIsInstalled.m; sourceTree = "<group>"; };
+		D7CC34A619134DDE001AD694 /* TKDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDUtilities.h; sourceTree = "<group>"; };
+		D7CC34A719134DDE001AD694 /* TKDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDUtilities.m; sourceTree = "<group>"; };
+		D7CC34A91913501A001AD694 /* TKDActivationProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDActivationProgress.h; sourceTree = "<group>"; };
+		D7CC34AA1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDEnsureTokaidoAppSupportUpdatedProgress.h; sourceTree = "<group>"; };
+		D7CC34AB1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDEnsureTokaidoAppSupportUpdatedProgress.m; sourceTree = "<group>"; };
+		D7CC34AD191350F4001AD694 /* TKDLoadingTokaidoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDLoadingTokaidoController.h; sourceTree = "<group>"; };
+		D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDLoadingTokaidoController.m; sourceTree = "<group>"; };
+		D7CC34B01913517C001AD694 /* LoadingWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingWindow.xib; sourceTree = "<group>"; };
+		D7CC34B219135207001AD694 /* TKDTokaidoControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDTokaidoControllerHelper.h; sourceTree = "<group>"; };
+		D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTokaidoControllerHelper.m; sourceTree = "<group>"; };
+		D7CC34B51913533B001AD694 /* TKDTerminalSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDTerminalSessions.h; sourceTree = "<group>"; };
+		D7CC34B61913533B001AD694 /* TKDTerminalSessions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTerminalSessions.m; sourceTree = "<group>"; };
+		D7CC34C3191361D3001AD694 /* Rubies */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Rubies; sourceTree = "<group>"; };
+		D7CC34C51913624B001AD694 /* tokaido-bin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-bin.zip"; sourceTree = "<group>"; };
+		D7CC34C61913624B001AD694 /* tokaido-gems.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-gems.zip"; sourceTree = "<group>"; };
+		D7CC34C71913624B001AD694 /* tokaido-bootstrap.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "tokaido-bootstrap.zip"; sourceTree = "<group>"; };
+		D7CC34CB1913653D001AD694 /* TKDAppLogViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppLogViewerController.h; sourceTree = "<group>"; };
+		D7CC34CC1913653D001AD694 /* TKDAppLogViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppLogViewerController.m; sourceTree = "<group>"; };
+		D7CC34CE19136581001AD694 /* LogViewerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogViewerWindow.xib; sourceTree = "<group>"; };
+		D7CC34D119136A93001AD694 /* Tokaido.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Tokaido.icns; sourceTree = "<group>"; };
+		D7CC397319136F4C001AD694 /* Pods.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -229,22 +284,29 @@
 		3AD6931116373C9F005AF81E /* Tokaido */ = {
 			isa = PBXGroup;
 			children = (
+				D7CC34D019136589001AD694 /* UI */,
+				D7CC34C3191361D3001AD694 /* Rubies */,
+				3AD6934E1637557D005AF81E /* Ruby Bundles */,
+				3AD694E3163A1457005AF81E /* Models */,
+				D7CC348119134771001AD694 /* Loaders */,
+				D7CC347C191345BC001AD694 /* Tasks */,
+				D7CC348519134809001AD694 /* Helpers */,
 				3AD6931D16373C9F005AF81E /* TKDAppDelegate.h */,
 				3AD6931E16373C9F005AF81E /* TKDAppDelegate.m */,
 				CD5A8935170CC4E800217D8A /* TKDMuxrManager.h */,
 				CD5A8936170CC4E900217D8A /* TKDMuxrManager.m */,
 				3AD693431637436E005AF81E /* TKDTokaidoController.h */,
 				3AD693441637436E005AF81E /* TKDTokaidoController.m */,
-				3AD6932016373C9F005AF81E /* MainMenu.xib */,
 				CD5A897E171380A500217D8A /* TKDEditAppController.h */,
 				CD5A897F171380A500217D8A /* TKDEditAppController.m */,
-				CD5A8981171380E500217D8A /* EditAppWindow.xib */,
+				D7CC34CB1913653D001AD694 /* TKDAppLogViewerController.h */,
+				D7CC34CC1913653D001AD694 /* TKDAppLogViewerController.m */,
+				D7CC34B51913533B001AD694 /* TKDTerminalSessions.h */,
+				D7CC34B61913533B001AD694 /* TKDTerminalSessions.m */,
 				C545BDB9178346D900DACCBD /* TKDTask.h */,
 				C545BDBA178346D900DACCBD /* TKDTask.m */,
-				3AD694E3163A1457005AF81E /* Model */,
 				3AD694DC1639E905005AF81E /* Images */,
 				3AD6935B1639C6FE005AF81E /* Custom Views */,
-				3AD6934E1637557D005AF81E /* Ruby Bundles */,
 				3AD6931216373C9F005AF81E /* Supporting Files */,
 			);
 			path = Tokaido;
@@ -281,6 +343,7 @@
 			children = (
 				3AD6933016373C9F005AF81E /* TokaidoTests-Info.plist */,
 				3AD6933116373C9F005AF81E /* InfoPlist.strings */,
+				D7CC397319136F4C001AD694 /* Pods.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -297,12 +360,9 @@
 		3AD6934E1637557D005AF81E /* Ruby Bundles */ = {
 			isa = PBXGroup;
 			children = (
-				089C2B961776194D001530DF /* tokaido-bin.zip */,
-				08A60A6317564F6A00197C27 /* 2.0.0-p195.zip */,
-				CDA9B855172B42E30027E78B /* llvm-gcc-4.2.zip */,
-				CDB963F517288901002A8A43 /* tokaido-gems.zip */,
-				CD5A898D171CC96000217D8A /* tokaido-bootstrap.zip */,
-				3AD6934F16375589005AF81E /* 1.9.3-p194.zip */,
+				D7CC34C51913624B001AD694 /* tokaido-bin.zip */,
+				D7CC34C61913624B001AD694 /* tokaido-gems.zip */,
+				D7CC34C71913624B001AD694 /* tokaido-bootstrap.zip */,
 			);
 			name = "Ruby Bundles";
 			sourceTree = "<group>";
@@ -312,7 +372,6 @@
 			children = (
 				CD8285DC1655B670000CB252 /* TKDAppCollectionView.h */,
 				CD8285DD1655B670000CB252 /* TKDAppCollectionView.m */,
-				3AD694E11639F9D5005AF81E /* TKDAppViewItem.xib */,
 				3AD69507163B4093005AF81E /* TKDAppViewItem.h */,
 				3AD69508163B4093005AF81E /* TKDAppViewItem.m */,
 				C5E21F8117882F94002B24B5 /* TKDAppViewItemView.h */,
@@ -341,19 +400,21 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		3AD694E3163A1457005AF81E /* Model */ = {
+		3AD694E3163A1457005AF81E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3AD694E4163A1475005AF81E /* TKDApp.h */,
 				3AD694E5163A1475005AF81E /* TKDApp.m */,
+				D7CC349319134A2C001AD694 /* TKDRubyBinary.h */,
+				D7CC349419134A2C001AD694 /* TKDRubyBinary.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		CD1FCB86169D047B00FB7E36 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				CD1FCB87169D066C00FB7E36 /* Tokaido.icns */,
+				D7CC34D119136A93001AD694 /* Tokaido.icns */,
 			);
 			name = Icon;
 			sourceTree = "<group>";
@@ -369,6 +430,102 @@
 				CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */,
 			);
 			name = Gems;
+			sourceTree = "<group>";
+		};
+		D7CC347C191345BC001AD694 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC349619134A7B001AD694 /* Ruby */,
+				D7CC348F19134987001AD694 /* Setup */,
+				D7CC347D191345E6001AD694 /* Tokaido */,
+				D7CC3484191347F5001AD694 /* TKDControlTask.h */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		D7CC347D191345E6001AD694 /* Tokaido */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC347E19134636001AD694 /* TKDStartTokaido.h */,
+				D7CC347F19134636001AD694 /* TKDStartTokaido.m */,
+				D7CC348C19134944001AD694 /* TKDStopTokaido.h */,
+				D7CC348D19134944001AD694 /* TKDStopTokaido.m */,
+			);
+			name = Tokaido;
+			sourceTree = "<group>";
+		};
+		D7CC348119134771001AD694 /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC34A91913501A001AD694 /* TKDActivationProgress.h */,
+				D7CC348219134783001AD694 /* Launch */,
+			);
+			name = Loaders;
+			sourceTree = "<group>";
+		};
+		D7CC348219134783001AD694 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC3483191347A7001AD694 /* TKDAppSupportEnsure.h */,
+				D7CC34AA1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.h */,
+				D7CC34AB1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m */,
+				D7CC34AD191350F4001AD694 /* TKDLoadingTokaidoController.h */,
+				D7CC34AE191350F4001AD694 /* TKDLoadingTokaidoController.m */,
+			);
+			name = Launch;
+			sourceTree = "<group>";
+		};
+		D7CC348519134809001AD694 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC348619134823001AD694 /* TKDConfiguration.h */,
+				D7CC348719134823001AD694 /* TKDConfiguration.m */,
+				D7CC348919134843001AD694 /* TKDFileUtilities.h */,
+				D7CC348A19134843001AD694 /* TKDFileUtilities.m */,
+				D7CC34A619134DDE001AD694 /* TKDUtilities.h */,
+				D7CC34A719134DDE001AD694 /* TKDUtilities.m */,
+				D7CC34B219135207001AD694 /* TKDTokaidoControllerHelper.h */,
+				D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		D7CC348F19134987001AD694 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC3490191349CB001AD694 /* TKDEnsureAppSupportUpdated.h */,
+				D7CC3491191349CB001AD694 /* TKDEnsureAppSupportUpdated.m */,
+				D7CC34A019134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.h */,
+				D7CC34A119134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m */,
+				D7CC34A319134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.h */,
+				D7CC34A419134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m */,
+			);
+			name = Setup;
+			sourceTree = "<group>";
+		};
+		D7CC349619134A7B001AD694 /* Ruby */ = {
+			isa = PBXGroup;
+			children = (
+				D7CC349719134A94001AD694 /* TKDRubyBinaryFinder.h */,
+				D7CC349819134A94001AD694 /* TKDRubyBinaryFinder.m */,
+				D7CC349A19134AD6001AD694 /* TKDInstallRuby.h */,
+				D7CC349B19134AD6001AD694 /* TKDInstallRuby.m */,
+				D7CC349D19134B20001AD694 /* TKDRubyConfigPatches.h */,
+				D7CC349E19134B20001AD694 /* TKDRubyConfigPatches.m */,
+			);
+			name = Ruby;
+			sourceTree = "<group>";
+		};
+		D7CC34D019136589001AD694 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3AD6932016373C9F005AF81E /* MainMenu.xib */,
+				D7CC34B01913517C001AD694 /* LoadingWindow.xib */,
+				3AD694E11639F9D5005AF81E /* TKDAppViewItem.xib */,
+				CD5A8981171380E500217D8A /* EditAppWindow.xib */,
+				D7CC34CE19136581001AD694 /* LogViewerWindow.xib */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +576,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TKD;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Tilde;
 			};
@@ -446,12 +604,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				08783A2E1785D5450071AC1C /* gnome-terminal.png in Resources */,
+				D7CC34C81913624B001AD694 /* tokaido-bin.zip in Resources */,
 				3AD6931616373C9F005AF81E /* InfoPlist.strings in Resources */,
 				3AD6931C16373C9F005AF81E /* Credits.rtf in Resources */,
 				08783A301785D7250071AC1C /* power-control.png in Resources */,
+				D7CC34C4191361D3001AD694 /* Rubies in Resources */,
+				D7CC34CF19136581001AD694 /* LogViewerWindow.xib in Resources */,
 				3AD6932216373C9F005AF81E /* MainMenu.xib in Resources */,
+				D7CC34B11913517C001AD694 /* LoadingWindow.xib in Resources */,
 				3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */,
+				D7CC34D219136A93001AD694 /* Tokaido.icns in Resources */,
 				3AD694E21639F9D5005AF81E /* TKDAppViewItem.xib in Resources */,
+				D7CC34C91913624B001AD694 /* tokaido-gems.zip in Resources */,
 				3A19ECE91640734F0035ABA2 /* TKAppIconBackground.png in Resources */,
 				3A19ECEA1640734F0035ABA2 /* TKAppIconBackground@2x.png in Resources */,
 				3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */,
@@ -459,18 +623,13 @@
 				CD8285AD16559D96000CB252 /* Green.png in Resources */,
 				CD8285AE16559D96000CB252 /* Red.png in Resources */,
 				CD8285B11655A696000CB252 /* down_arrow.png in Resources */,
-				CD1FCB88169D066C00FB7E36 /* Tokaido.icns in Resources */,
 				CD1FCB8C169D0DCF00FB7E36 /* Green@2x.png in Resources */,
+				D7CC34CA1913624B001AD694 /* tokaido-bootstrap.zip in Resources */,
 				CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */,
 				08783A2A1784A9AC0071AC1C /* uninstall.sh in Resources */,
 				CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */,
 				CD5A8934170B84EA00217D8A /* Yellow.png in Resources */,
 				CD5A8982171380E500217D8A /* EditAppWindow.xib in Resources */,
-				CD5A898E171CC96000217D8A /* tokaido-bootstrap.zip in Resources */,
-				CDB963F617288901002A8A43 /* tokaido-gems.zip in Resources */,
-				CDA9B856172B42E30027E78B /* llvm-gcc-4.2.zip in Resources */,
-				08A60A6417564F6A00197C27 /* 2.0.0-p195.zip in Resources */,
-				089C2B971776194D001530DF /* tokaido-bin.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AD6933316373C9F005AF81E /* InfoPlist.strings in Resources */,
+				D7CC3A8E19136F4C001AD694 /* Pods.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,18 +679,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7CC348B19134843001AD694 /* TKDFileUtilities.m in Sources */,
 				3AD6931816373C9F005AF81E /* main.m in Sources */,
+				D7CC349919134A94001AD694 /* TKDRubyBinaryFinder.m in Sources */,
 				3AD6931F16373C9F005AF81E /* TKDAppDelegate.m in Sources */,
+				D7CC348819134823001AD694 /* TKDConfiguration.m in Sources */,
 				3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */,
+				D7CC34B71913533B001AD694 /* TKDTerminalSessions.m in Sources */,
+				D7CC3492191349CB001AD694 /* TKDEnsureAppSupportUpdated.m in Sources */,
+				D7CC349C19134AD6001AD694 /* TKDInstallRuby.m in Sources */,
+				D7CC34B419135207001AD694 /* TKDTokaidoControllerHelper.m in Sources */,
+				D7CC349F19134B20001AD694 /* TKDRubyConfigPatches.m in Sources */,
 				3AD694E6163A1475005AF81E /* TKDApp.m in Sources */,
+				D7CC348019134636001AD694 /* TKDStartTokaido.m in Sources */,
+				D7CC349519134A2C001AD694 /* TKDRubyBinary.m in Sources */,
 				C5E21F8317882F94002B24B5 /* TKDAppViewItemView.m in Sources */,
 				3AD69509163B4093005AF81E /* TKDAppViewItem.m in Sources */,
+				D7CC34AF191350F4001AD694 /* TKDLoadingTokaidoController.m in Sources */,
 				3A19ECE616406F5B0035ABA2 /* TKDSelectableIcon.m in Sources */,
 				CD8285A916559A9D000CB252 /* TKDRailsAppTokenField.m in Sources */,
+				D7CC34CD1913653D001AD694 /* TKDAppLogViewerController.m in Sources */,
+				D7CC34A819134DDE001AD694 /* TKDUtilities.m in Sources */,
 				CD8285DF1655B7DF000CB252 /* TKDAppCollectionView.m in Sources */,
+				D7CC34A219134BF3001AD694 /* TKDEnsureTokaidoBootstrapIsInstalled.m in Sources */,
+				D7CC34A519134C3B001AD694 /* TKDEnsureTokaidoInstallIsInstalled.m in Sources */,
 				C545BDBB178346D900DACCBD /* TKDTask.m in Sources */,
 				CD5A8937170CC4E900217D8A /* TKDMuxrManager.m in Sources */,
+				D7CC34AC1913508E001AD694 /* TKDEnsureTokaidoAppSupportUpdatedProgress.m in Sources */,
 				CD5A8980171380A600217D8A /* TKDEditAppController.m in Sources */,
+				D7CC348E19134944001AD694 /* TKDStopTokaido.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +768,7 @@
 /* Begin XCBuildConfiguration section */
 		3AD6933716373C9F005AF81E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -642,7 +820,6 @@
 		};
 		3AD6933A16373C9F005AF81E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4032CA2B44246FFAF8D38DF /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;

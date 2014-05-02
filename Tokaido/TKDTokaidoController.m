@@ -1,29 +1,42 @@
-//
-//  TKDTokaidoController.m
-//  Tokaido
-//
-//  Created by Mucho Besos on 10/23/12.
-//  Copyright (c) 2012 Tilde. All rights reserved.
-//
-
+#import "TKDConfiguration.h"
+#import "TKDFileUtilities.h"
 #import "TKDAppDelegate.h"
 #import "TKDTokaidoController.h"
+#import "TKDTokaidoControllerHelper.h"
 #import "TKDMuxrManager.h"
 #import "TKDApp.h"
 
+#import "TKDTerminalSessions.h"
+#import "TKDEnsureAppSupportUpdated.h"
+#import "TKDEnsureTokaidoAppSupportUpdatedProgress.h"
+#import "TKDLoadingTokaidoController.h"
+
 @interface TKDTokaidoController ()
 @property NSOpenPanel *openPanel;
+@property TKDTokaidoControllerHelper *helpers;
 @end
 
 @implementation TKDTokaidoController
 
-- (void)awakeFromNib
-{
-    self.apps = [[NSMutableArray alloc] init];
+- (void)awakeFromNib {
+    
+    self.helpers = [[TKDTokaidoControllerHelper alloc] initWithController:self];
+    
     CGSize size = CGSizeMake(150, 162);
     [self.railsAppsView setMinItemSize:size];
     [self.railsAppsView setMaxItemSize:size];
-
+    
+    TKDEnsureAppSupportUpdated *task = [[TKDEnsureAppSupportUpdated alloc] init];
+    TKDEnsureTokaidoAppSupportUpdatedProgress *activationProgress = [[TKDEnsureTokaidoAppSupportUpdatedProgress alloc] init];
+    TKDLoadingTokaidoController *loadingWindow = [[TKDLoadingTokaidoController alloc] initWithWindowNibName:@"LoadingWindow" forLoader:activationProgress withTask:task];
+    
+    [self showWindow:self];
+    [NSApp beginSheet:loadingWindow.window
+       modalForWindow:self.window
+        modalDelegate:self
+       didEndSelector:@selector(didEndLoadingSheet:returnCode:contextInfo:)
+          contextInfo:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMuxrEvent:) name:kMuxrNotification object:nil];
 }
 
@@ -42,18 +55,20 @@
 
 - (IBAction)openTerminalPressed:(id)sender;
 {
-    TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
-    NSString *path;
     
-    if ([self.appsArrayController.selectedObjects count] > 0) {
-        TKDApp *selectedApp = [self.appsArrayController.selectedObjects objectAtIndex:0];
-        path = selectedApp.appDirectoryPath;
-    } else {
-        path = NSHomeDirectory();
+    if (![self.helpers didSelectAnApp]) {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"You didn't select an app. Terminal will open in your home directory."
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:@"Please choose an app if you would like the working directory set to it."];
+        [alert runModal];
     }
-
-    [delegate openTerminalWithPath:path];
+    
+    [[TKDTerminalSessions sharedTerminalSessions] openForApplication:[self.helpers selectedApp]];
 }
+
+
 
 - (IBAction)addAppPressed:(id)sender;
 {
@@ -67,28 +82,28 @@
     
     NSArrayController *ac = self.appsArrayController;
     
-    [self.openPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {                               
-       NSURL *chosenURL = [self.openPanel URL];
-       
-       if ((result == NSFileHandlingPanelOKButton && chosenURL) && [self canAddURL:chosenURL]) {
-           TKDApp *newApp = nil;
-           
-           if ([self directoryContainsTokaidoYAMLFile:chosenURL]) {
-               newApp = [[TKDApp alloc] initWithTokaidoDirectory:chosenURL];
-           } else {
-               newApp = [[TKDApp alloc] init];
-               newApp.appName = [chosenURL lastPathComponent];
-               newApp.appDirectoryPath = [chosenURL path];
-               newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
-           }
-           
-           if (newApp) {
-               [ac addObject:newApp];
-               TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
-               [delegate saveAppSettings];
-           }
-       }
-   }];
+    [self.openPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        NSURL *chosenURL = [self.openPanel URL];
+        
+        if ((result == NSFileHandlingPanelOKButton && chosenURL) && [self canAddURL:chosenURL]) {
+            TKDApp *newApp = nil;
+            
+            if ([self directoryContainsTokaidoYAMLFile:chosenURL]) {
+                newApp = [[TKDApp alloc] initWithTokaidoDirectory:chosenURL];
+            } else {
+                newApp = [[TKDApp alloc] init];
+                newApp.appName = [chosenURL lastPathComponent];
+                newApp.appDirectoryPath = [chosenURL path];
+                newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
+            }
+            
+            if (newApp) {
+                [ac addObject:newApp];
+                TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+                [delegate saveAppSettings];
+            }
+        }
+    }];
 }
 
 - (void)showEditWindowForApp:(TKDApp *)app
@@ -108,11 +123,21 @@
     [sheet orderOut:self];
 }
 
+- (void)didEndLoadingSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    [sheet orderOut:self];
+    [self activateCubalog];
+}
+
+- (void)activateCubalog {
+    [self activateApp:[self.helpers loggerApp]];
+}
 
 - (void)removeApp:(TKDApp *)app;
 {
     [self.appsArrayController removeObject:app];
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    [TKDFileUtilities removeFileIfNonExistant:[[TKDConfiguration firewallInstalledDirectoryPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@.tokaido.out", app.appName]]];
     [delegate saveAppSettings];
 }
 
@@ -122,21 +147,19 @@
     return (([self.appsArrayController.arrangedObjects count] == 1) ? @"App" : @"Apps");
 }
 
-- (void)activateApp:(TKDApp *)app;
-{
+- (void)activateApp:(TKDApp *)app {
     [app enterState:TKDAppBooting];
     [[TKDMuxrManager defaultManager] addApp:app];
 }
 
-- (void)deactivateApp:(TKDApp *)app;
-{
+- (void)deactivateApp:(TKDApp *)app {
     [app enterState:TKDAppShuttingDown];
     [[TKDMuxrManager defaultManager] removeApp:app];
 }
 
 #pragma mark NSNotification Handlers
 - (void)handleMuxrEvent:(NSNotification *)note
-{    
+{
     NSMutableString *hostname = [[[note userInfo] objectForKey:@"hostname"] mutableCopy];
     [hostname replaceOccurrencesOfString:@"\""
                               withString:@""
@@ -153,13 +176,23 @@
     // Check the event here and do the right thing.
     
     NSString *action = [[note userInfo] objectForKey:@"action"];
-
+    
     NSLog(@"ACTION: %@", action);
-
+    
     if ([action isEqualToString:@"ERR"]) {
         [app setStatus:@"Booting failed. Review the logs or \"Open in Terminal\"."];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"Booting failed. Tokaido currently uses the puma webserver. Check if `gem puma` entry is in your Gemfile and try again."];
+            
+            [alert runModal];
+        });
     }
-
+    
     if ([action isEqualToString:@"READY"]) {
         NSLog(@"Enabling App: %@", hostname);
         [app enterState:TKDAppOn];

@@ -2,11 +2,11 @@ PODS:
   - CocoaAsyncSocket (0.0.1)
   - libextobjc/EXTConcreteProtocol (0.2.5):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTKeyPathCoding (0.2.5):
+  - libextobjc/EXTKeyPathCoding (0.4):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTScope (0.2.5):
+  - libextobjc/EXTScope (0.4):
     - libextobjc/RuntimeExtensions
-  - libextobjc/RuntimeExtensions (0.2.5)
+  - libextobjc/RuntimeExtensions (0.4)
   - LibYAML (0.1.4)
   - Mantle (1.0):
     - libextobjc/EXTKeyPathCoding
@@ -29,9 +29,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 38c3fed179d70e2de3d82eb19028ef8d47fec6d4
-  libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
-  LibYAML: 49b77e5b3f4417fa512a8f1f4675a78480bf6b3d
+  libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
+  LibYAML: 66876e9cf33f78ed8985bee1234753a1f675976a
   Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7
   YAML-Framework: 4ada9225119ffb13a206f251fe4434e660bca16d
 
-COCOAPODS: 0.20.2
+COCOAPODS: 0.32.1

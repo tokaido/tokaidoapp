@@ -1,17 +1,9 @@
-//
-//  TKDMuxrManager.m
-//  Tokaido
-//
-//  Created by Patrick B. Gibson on 4/3/13.
-//  Copyright (c) 2013 Tilde. All rights reserved.
-//
-
 #import "TKDMuxrManager.h"
 
 #include <sys/socket.h>
 #include <sys/un.h>
 
-#import "TKDAppDelegate.h"
+#import "TKDConfiguration.h"
 
 #define TAG_MUXR_RESPONSE  0
 #define TAG_AWAIT_COMMAND  1
@@ -36,60 +28,86 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     return defaultManager;
 }
 
-- (void)setup
-{
+- (void)setup {
     self.backgroundQueue = dispatch_queue_create("socketQueue", DISPATCH_QUEUE_SERIAL);
     self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:self.backgroundQueue];
+    [self connect];
+}
+
+-(void)connect {
     NSError *error = nil;
-    NSURL *socketURL = [NSURL URLWithString:[TKDAppDelegate tokaidoMuxrSocketPath]];
-    if (![self.socket connectToUrl:socketURL withTimeout:-1 error:&error]) {
+    
+    if (![self.socket connectToUrl:[NSURL URLWithString:[TKDConfiguration muxrSocketPath]] withTimeout:-1 error:&error]) {
         NSLog(@"ERROR: Couldn't connect to socket: %@", [error localizedDescription]);
+        return;
     }
+    
     [self.socket readDataToData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:TAG_MUXR_RESPONSE];
+    
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;
 {
     NSString *muxrLine = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"Got back from muxr: %@", muxrLine);
-
+    
     
     if (TAG_MUXR_RESPONSE == tag) {
-      if ([muxrLine isEqualToString:@"TOKAIDO ACTIVE\n"]) {
-        NSLog(@"Muxr Manager Ready");
-        return;
-      }
+        if ([muxrLine isEqualToString:@"TOKAIDO ACTIVE\n"]) {
+            NSLog(@"Muxr Manager Ready");
+            return;
+        }
     } else if (TAG_AWAIT_COMMAND == tag) {
-      NSArray *elements = [muxrLine componentsSeparatedByString:@" "];
-      NSString *reply = [elements objectAtIndex:0];
-    
-      if ([reply isEqualToString:@"ADDED"]) {
-        NSLog(@"App added, waiting for ready...");
-        [self.socket readDataToData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1  tag:TAG_AWAIT_COMMAND];
-      } else if ([reply isEqualToString:@"READY"] || [reply isEqualToString:@"REMOVED"] || [reply isEqualToString:@"ERR"]) {
+        NSArray *elements = [muxrLine componentsSeparatedByString:@" "];
+        NSString *reply = [elements objectAtIndex:0];
         
-        // This happens on a background thread, so it should fire off UI updating notifications on
-        // the main thread.
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            NSDictionary *userInfo = @{@"action": [elements objectAtIndex:0],
-                                       @"hostname": [elements objectAtIndex:1]};
-            NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
-                                                                             object:nil
-                                                                           userInfo:userInfo];
-            [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
-         });
-      } 
+        if ([reply isEqualToString:@"ADDED"]) {
+            NSLog(@"App added, waiting for ready...");
+            [self.socket readDataToData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1  tag:TAG_AWAIT_COMMAND];
+        } else if ([reply isEqualToString:@"READY"] || [reply isEqualToString:@"REMOVED"] || [reply isEqualToString:@"ERR"]) {
+            
+            // This happens on a background thread, so it should fire off UI updating notifications on
+            // the main thread.
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                NSDictionary *userInfo = @{@"action": [elements objectAtIndex:0],
+                                           @"hostname": [elements objectAtIndex:1]};
+                NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
+                                                                                 object:nil
+                                                                               userInfo:userInfo];
+                
+                [[NSNotificationCenter defaultCenter] postNotification:muxrNotification];
+            });
+        }
     }
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url;
 {
-  NSLog(@"Connected to %@", url);
+    NSLog(@"Connected to %@", url);
 }
 
-- (void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(NSError *)error;
-{
-  NSLog(@"Closed connection: %@", error);
+- (void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(NSError *)error {
+    NSLog(@"Closed connection: %@", error);
+    
+    // socket not found? 2
+    // connection refused? 61
+    if ([error code] == 2 || [error code] == 61) {
+        [self connect];
+        return;
+    }
+    
+    // connection reset by peer
+    if ([error code] == 7) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Tokaido, we have a problem."
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"The connection with Muxr (Tokaido's app manager) was reset. Please close Tokaido and reopen."];
+            
+            [alert runModal];
+        });
+    }
 }
 
 - (void)addApp:(TKDApp *)app;
@@ -102,7 +120,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
 {
     NSDictionary *userInfo = @{@"action": message,
                                @"hostname": app.appHostname};
-
+    
     NSNotification *muxrNotification = [NSNotification notificationWithName:kMuxrNotification
                                                                      object:nil
                                                                    userInfo:userInfo];
