@@ -3,7 +3,7 @@ require "bundler/setup"
 namespace :bootstrap do
   task :zip do
     Bundler.with_clean_env do
-      sh "bash scripts/bootstrap.sh"
+      sh "bash bootstrap.sh"
     end
   end
 
@@ -15,7 +15,7 @@ end
 namespace :gems do
   task :zip do
     Bundler.with_clean_env do
-      sh "bash scripts/gems.sh"
+      sh "bash gems.sh"
     end
   end
 
@@ -27,7 +27,7 @@ end
 namespace :bins do
   task :zip do
     Bundler.with_clean_env do
-      sh "bash scripts/bin.sh"
+      sh "bash bin.sh"
     end
   end
 
