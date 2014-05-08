@@ -258,15 +258,6 @@ static NSString *kAppIconKey = @"app_icon";
 }
 
 - (NSDictionary *)environment {
-    NSLog(@"%@", @{
-                   @"GEM_HOME": [TKDConfiguration gemsInstalledDirectoryPath],
-                   @"GEM_PATH": [TKDConfiguration gemsInstalledDirectoryPath],
-                   @"PATH"    : [NSString stringWithFormat:@"%@:%@:%@/bin:%@",
-                                 [TKDConfiguration binariesInstalledDirectoryPath],
-                                 [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
-                                 [TKDConfiguration gemsInstalledDirectoryPath],
-                                 @"/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/sbin:/usr/sbin:/Applications/Postgres.app/Contents/Versions/9.3/bin"] });
-    
     return @{
              @"GEM_HOME": [TKDConfiguration gemsInstalledDirectoryPath],
              @"GEM_PATH": [TKDConfiguration gemsInstalledDirectoryPath],
