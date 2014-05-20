@@ -1,7 +1,7 @@
 # Tokaido.app
 
 ## Background
-Tokakido installs Rails into the system. A working copy of Ruby,
+Tokaido installs Rails into the system. A working copy of Ruby,
 Rubygems, Rails and all necessary gems are installed into the
 user's system, available from the Terminal.
 
