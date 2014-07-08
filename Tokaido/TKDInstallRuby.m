@@ -29,7 +29,7 @@
     NSTask *linkTask = [[NSTask alloc] init];
     [linkTask setLaunchPath:@"/bin/ln"];
     [linkTask setCurrentDirectoryPath:[self.configuration tokaidoLocalHomeDirectoryPath]];
-    [linkTask setArguments:@[ @"-s", [@"Rubies" stringByAppendingPathComponent:[[_bin name] stringByAppendingPathComponent:@"bin/ruby"]], @"ruby" ] ];
+    [linkTask setArguments:@[ @"-f", @"-s", [@"Rubies" stringByAppendingPathComponent:[[_bin name] stringByAppendingPathComponent:@"bin/ruby"]], @"ruby" ] ];
     [linkTask launch];
     [_view finished_unzipping_ruby_bundled];
 }
