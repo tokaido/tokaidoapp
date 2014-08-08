@@ -95,6 +95,7 @@
                 newApp.appName = [chosenURL lastPathComponent];
                 newApp.appDirectoryPath = [chosenURL path];
                 newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
+                newApp.appIconPath = [[[NSBundle mainBundle] URLForResource: @"TKIconRuby" withExtension:@"tiff"] absoluteString];
             }
             
             if (newApp) {

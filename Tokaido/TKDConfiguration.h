@@ -6,7 +6,8 @@
 +(NSString *) applicationName;
 +(NSString *) bundlePath;
 +(NSString *) applicationSupportDirectoryPath;
-+(NSString *) applicationSettingsDirectoryPath;
++(NSString *) tokaidoApplicationsConfigurations;
++(NSString *) assetsDirectoryInstalledPath;
 +(NSString *) tokaidoLocalHomeDirectoryPath;
 
 @end

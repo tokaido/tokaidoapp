@@ -1,11 +1,3 @@
-//
-//  TKDAppCollectionView.m
-//  Tokaido
-//
-//  Created by Mucho Besos on 11/13/12.
-//  Copyright (c) 2012 Tilde. All rights reserved.
-//
-
 #import "TKDAppCollectionView.h"
 #import "TKDAppViewItem.h"
 #import "TKDRailsAppTokenField.h"
@@ -19,6 +11,8 @@
     appIcon.tokaidoController = prototype.tokaidoController;
     [appIcon view]; // force load the view
     appIcon.tokenField.delegate = appIcon;
+    appIcon.appIcon.delegate = appIcon;
+    [appIcon.appIcon configureForRepresentedObject];
     [appIcon.tokenField configureForRepresentedObject];
     return  appIcon;
 }

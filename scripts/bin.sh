@@ -27,4 +27,5 @@ fi
 echo "Zipping the binaries"
 
 cd $zips
+
 zip -r tokaido-bin.zip bin
