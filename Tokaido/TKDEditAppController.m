@@ -1,5 +1,7 @@
 #import <Quartz/Quartz.h>
 
+#import "TKDFileUtilities.h"
+#import "TKDConfiguration.h"
 #import "TKDEditAppController.h"
 #import "TKDAppDelegate.h"
 
@@ -8,6 +10,27 @@
 @property (nonatomic, copy) NSString *prevHostname;
 @property (nonatomic, copy) NSString *prevAppIconPath;
 @property (nonatomic, assign) BOOL prevUsesYAML;
+@end
+
+@interface toNSImage : NSValueTransformer
++(Class)transformedValueClass;
+-(id)transformedValue:(id)value;
+@end
+
+@implementation toNSImage
+
++(Class)transformedValueClass {
+    return [NSImage class];
+}
+
+-(id)transformedValue:(id)value {
+    if (value == nil) {
+        return nil;
+    } else {
+        return [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:value]];
+    }
+}
+
 @end
 
 @implementation TKDEditAppController
@@ -35,13 +58,25 @@
                                       contextInfo:nil];
 }
 
-- (void)pictureTakerDidEnd:(IKPictureTaker *)pictureTaker returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
-{
-    self.appImageView.image = [pictureTaker outputImage];
+- (void)pictureTakerDidEnd:(IKPictureTaker *)pictureTaker returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    
+    if (returnCode == NSOKButton)
+        self.appImageView.image = [pictureTaker outputImage];
 }
 
-- (IBAction)savePressed:(id)sender;
-{
+- (IBAction)savePressed:(id)sender {
+    [TKDFileUtilities createDirectoryAtPathIfNonExistant:[TKDConfiguration assetsDirectoryInstalledPath]];
+    
+    NSImage *i = self.appImageView.image;
+    [i lockFocus];
+    NSBitmapImageRep *imgRep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect(0.0, 0.0, [i size].width, [i size].height)];
+    [i unlockFocus];
+    NSURL *path = [[NSURL fileURLWithPath:[TKDConfiguration assetsDirectoryInstalledPath] isDirectory:YES]URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",[self generateName]]];
+    NSData *bits = [imgRep representationUsingType: NSPNGFileType properties: nil];
+    
+    if ([bits writeToURL:path atomically:NO])
+        self.app.appIconPath = [path absoluteString];
+                                                                                                                                            
     // If we're using the YAML file, write changes to it.
     if (self.app.usesYAMLfile) {
         [self.app serializeToYAML];
@@ -62,6 +97,13 @@
     self.app.usesYAMLfile = self.prevUsesYAML;
     
     [NSApp endSheet:self.window];
+}
+
+-(NSString *) generateName {
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    return (__bridge NSString *)string;
 }
 
 @end

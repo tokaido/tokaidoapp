@@ -129,6 +129,11 @@
     return app.appHostname;
 }
 
+- (NSString *)pathForIcon:(TKDSelectableIcon *)icon {
+    TKDApp *app = (TKDApp *)self.representedObject;
+    return app.appIconPath;
+}
+
 - (void)editApp
 {
     [self.tokaidoController showEditWindowForApp:self.representedObject];

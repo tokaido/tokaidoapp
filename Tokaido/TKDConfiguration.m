@@ -139,8 +139,12 @@
     return [NSHomeDirectory() stringByAppendingPathComponent:@"/.tokaido"];
 }
 
-+(NSString *) applicationSettingsDirectoryPath {
++(NSString *) tokaidoApplicationsConfigurations {
     return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"AppSettings"];
+}
+    
++(NSString *) assetsDirectoryInstalledPath {
+    return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"/Assets"];
 }
 
 +(NSString *) rubyExecutableInstalledFile {

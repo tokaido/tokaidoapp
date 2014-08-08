@@ -41,9 +41,8 @@
 
 #pragma mark App Settings
 
-- (void)loadAppSettings
-{
-    NSString *appSettingsPath = [TKDConfiguration applicationSettingsDirectoryPath];
+- (void)loadAppSettings {
+    NSString *appSettingsPath = [TKDConfiguration tokaidoApplicationsConfigurations];
     
     NSMutableArray *apps = nil;
     @try {
@@ -61,13 +60,14 @@
     }
 }
 
-- (void)saveAppSettings
-{
-    NSString *appSettingsPath = [TKDConfiguration applicationSettingsDirectoryPath];
+- (void)saveAppSettings {
+    NSString *appSettingsPath = [TKDConfiguration tokaidoApplicationsConfigurations];
+    
     BOOL success = [NSKeyedArchiver archiveRootObject:self.tokaidoController.apps toFile:appSettingsPath];
-    if (!success) {
+    
+    if (!success)
         NSLog(@"ERROR: Couldn't save app settings.");
-    }
+    
 }
 
 #pragma mark Helper Methods

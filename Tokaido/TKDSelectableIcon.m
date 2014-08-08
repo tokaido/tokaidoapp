@@ -1,15 +1,8 @@
-//
-//  TKDSelectableIcon.m
-//  Tokaido
-//
-//  Created by Mucho Besos on 10/30/12.
-//  Copyright (c) 2012 Tilde. All rights reserved.
-//
-
 #import "TKDSelectableIcon.h"
 
 @interface TKDSelectableIcon ()
 
+@property (nonatomic, strong) NSString *appIconPath;
 @property NSImageView *iconImageView;
 @property NSImageView *backgroundImageView;
 
@@ -22,7 +15,7 @@
 - (void)awakeFromNib
 {
     self.iconImageView = [[NSImageView alloc] initWithFrame:self.bounds];
-    [self.iconImageView setImage:[NSImage imageNamed:@"TKIconRuby"]];
+    self.iconImageView.image = [NSImage imageNamed:@"TKIconRuby"];
     self.backgroundImageView = [[NSImageView alloc] initWithFrame:self.bounds];
     [self.backgroundImageView setImage:[NSImage imageNamed:@"TKAppIconBackground"]];
     [self.backgroundImageView setHidden:YES];
@@ -36,10 +29,15 @@
     self.backgroundImageView.image = backgroundImage;
 }
 
-- (void)setIconImage:(NSImage *)iconImage;
+- (void)setIconImageWithString:(NSString *)path
 {
-    self.iconImageView.image = iconImage;
+    if (path != nil) {
+        _appIconPath = path;
+        self.iconImageView.image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:path]];
+        [self setNeedsDisplay:YES];
+    }
 }
+
 
 - (void)setSelected:(BOOL)selected
 {
@@ -53,6 +51,38 @@
 - (BOOL)selected
 {
     return _selected;
+}
+
+- (void)configureForRepresentedObject
+{
+    self.appIconPath = [self.delegate pathForIcon:self];
+    
+    [[self.delegate app] addObserver:self
+                          forKeyPath:@"appIconPath"
+                             options:(NSKeyValueObservingOptionNew |
+                                      NSKeyValueObservingOptionOld |
+                                      NSKeyValueObservingOptionInitial)
+                             context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString*)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary*)change
+                       context:(void*)context
+{
+	if ([keyPath isEqualToString:@"appIconPath"]) {
+        [self setIconImageWithString:[change objectForKey:NSKeyValueChangeNewKey]];
+	} else {
+        [super observeValueForKeyPath:keyPath
+                             ofObject:object
+                               change:change
+                              context:context];
+    }
+}
+
+- (void)dealloc
+{
+    [[self.delegate app] removeObserver:self forKeyPath:@"appIconPath"];
 }
 
 

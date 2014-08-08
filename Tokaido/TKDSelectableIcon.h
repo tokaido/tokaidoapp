@@ -1,18 +1,22 @@
-//
-//  TKDSelectableIcon.h
-//  Tokaido
-//
-//  Created by Mucho Besos on 10/30/12.
-//  Copyright (c) 2012 Tilde. All rights reserved.
-//
-
 #import <Cocoa/Cocoa.h>
+#import "TKDApp.h"
+
+@class TKDSelectableIcon;
+
+@protocol TKDSelectableIconDelegate <NSObject>
+- (NSString *)pathForIcon:(TKDSelectableIcon *)icon;
+- (TKDApp *)app;
+@end
 
 @interface TKDSelectableIcon : NSControl
 
 @property (assign) BOOL selected;
 
 - (void)setSelectedBackgroundImage:(NSImage *)backgroundImage;
-- (void)setIconImage:(NSImage *)iconImage;
+- (void)setIconImageWithString:(NSString *)path;
+
+- (void)configureForRepresentedObject;
+
+@property (nonatomic, weak) id<TKDSelectableIconDelegate> delegate;
 
 @end

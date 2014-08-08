@@ -7,7 +7,7 @@
 #import "TKDSelectableIcon.h"
 #import "TKDRailsAppTokenField.h"
 
-@interface TKDAppViewItem : NSCollectionViewItem <TKDRailsAppTokenFieldDelegate>
+@interface TKDAppViewItem : NSCollectionViewItem <TKDRailsAppTokenFieldDelegate, TKDSelectableIconDelegate>
 
 @property (nonatomic, weak) IBOutlet TKDTokaidoController *tokaidoController;
 
