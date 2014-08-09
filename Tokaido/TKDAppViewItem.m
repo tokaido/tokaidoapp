@@ -7,8 +7,7 @@
 
 @implementation TKDAppViewItem
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     self.appController.content = self.representedObject;
     
@@ -36,8 +35,7 @@
                                 context:NULL];
 }
 
-- (void)activate
-{
+- (void)activate {
     TKDApp *app = self.representedObject;
     
     switch (app.state) {
@@ -58,15 +56,14 @@
     }
 }
 
-- (void)configureActivatedMenuItem
-{
-    TKDApp *app = self.representedObject;
+- (void)configureActivatedMenuItem {
+    TKDApp *app = [self app];
     
     switch (app.state) {
         case TKDAppOff:
             [self.activatedMenuItem setEnabled:YES];
             [self.activatedMenuItem setTarget:self];
-            [self.activatedMenuItem setTitle:@"Activate"];
+            [self.activatedMenuItem setTitle:NSLocalizedString(@"Activate", nil)];
             [self.activatedMenuItem setAction:@selector(activate)];
             
             
@@ -76,7 +73,7 @@
         case TKDAppBooting:
             [self.activatedMenuItem setEnabled:NO];
             [self.activatedMenuItem setTarget:nil];
-            [self.activatedMenuItem setTitle:@"Starting up..."];
+            [self.activatedMenuItem setTitle:NSLocalizedString(@"Starting up...", nil)];
             
             [self.openInBrowserMenuItem setTarget:nil];
             break;
@@ -84,7 +81,7 @@
         case TKDAppOn:
             [self.activatedMenuItem setEnabled:YES];
             [self.activatedMenuItem setTarget:self];
-            [self.activatedMenuItem setTitle:@"Deactivate"];
+            [self.activatedMenuItem setTitle:NSLocalizedString(@"Deactivate", nil)];
             
             
             [self.openInBrowserMenuItem setTarget:self.representedObject];
@@ -93,7 +90,7 @@
         case TKDAppShuttingDown:
             [self.activatedMenuItem setEnabled:NO];
             [self.activatedMenuItem setTarget:nil];
-            [self.activatedMenuItem setTitle:@"Shutting down..."];
+            [self.activatedMenuItem setTitle:NSLocalizedString(@"Shutting down...", nil)];
             
             [self.openInBrowserMenuItem setTarget:nil];
             break;
@@ -106,46 +103,40 @@
 - (void)observeValueForKeyPath:(NSString*)keyPath
                       ofObject:(id)object
                         change:(NSDictionary*)change
-                       context:(void*)context
-{
-	if ([keyPath isEqualToString:@"state"]) {
+                       context:(void*)context {
+    
+	if ([keyPath isEqualToString:@"state"])
         [self configureActivatedMenuItem];
-	} else {
+    else
         [super observeValueForKeyPath:keyPath
                              ofObject:object
                                change:change
                               context:context];
-    }
 }
 
-- (void)tokenField:(TKDRailsAppTokenField *)tokenField clickedWithEvent:(NSEvent *)event;
-{
+- (void)tokenField:(TKDRailsAppTokenField *)tokenField clickedWithEvent:(NSEvent *)event {
     [NSMenu popUpContextMenu:self.appMenu withEvent:event forView:self.view];
 }
 
-- (NSString *)titleForTokenField:(TKDRailsAppTokenField *)tokenField;
-{
-    TKDApp *app = (TKDApp *)self.representedObject;
+- (NSString *)titleForTokenField:(TKDRailsAppTokenField *)tokenField {
+    TKDApp *app = [self app];
     return app.appHostname;
 }
 
 - (NSString *)pathForIcon:(TKDSelectableIcon *)icon {
-    TKDApp *app = (TKDApp *)self.representedObject;
+    TKDApp *app = [self app];
     return app.appIconPath;
 }
 
-- (void)editApp
-{
-    [self.tokaidoController showEditWindowForApp:self.representedObject];
+- (void)editApp {
+    [self.tokaidoController showEditWindowForApp:[self app]];
 }
 
-- (void)removeApp
-{
-    [self.tokaidoController removeApp:self.representedObject];
+- (void)removeApp {
+    [self.tokaidoController removeApp:[self app]];
 }
 
-- (void)setSelected:(BOOL)selected
-{
+- (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     [self.appIcon setSelected:selected];
 }
@@ -157,14 +148,11 @@
 }
 
 - (void)doubleClick:(id)sender {
-    if (self.app.state == TKDAppOff) {
-        // boot app on double click
+    if (self.app.state == TKDAppOff)
         [self activate];
-    }
 }
 
-- (TKDApp *)app
-{
+- (TKDApp *)app {
     return self.representedObject;
 }
 

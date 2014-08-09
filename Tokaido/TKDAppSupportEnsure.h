@@ -24,7 +24,7 @@
 -(void) finished_clang_symlink;
 -(void) applying_rbconfig_patches;
 -(void) error_patching_rbconfig_with_message:(NSString *)message;
--(void) replacing_config_topdir_line;
+-(void) replacing_config_topdir_line_with:(NSString *)line;
 -(void) replacing_config_cc_line;
 -(void) patching_rbconfig_complete;
 -(void) finished_ensuring_app_support_is_updated;

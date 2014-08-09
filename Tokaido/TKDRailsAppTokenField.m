@@ -1,11 +1,3 @@
-//
-//  TKDRailsAppTokenField.m
-//  Tokaido
-//
-//  Created by Patrick B. Gibson on 11/15/12.
-//  Copyright (c) 2012 Tilde. All rights reserved.
-//
-
 #import "TKDRailsAppTokenField.h"
 
 #define kSpacing 3
@@ -22,8 +14,7 @@
 
 @implementation TKDRailsAppTokenField
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     self.gemView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 9, 9, 9)];
     [self addSubview:self.gemView];
 
@@ -55,12 +46,9 @@
     self.arrowView = [[NSImageView alloc] initWithFrame:NSMakeRect(140, 5, kArrowUpWidth, kArrowUpWidth + 1)];
     self.arrowView.image = [NSImage imageNamed:@"down_arrow.png"];
     [self addSubview:self.arrowView];
-    
-//    [self.textField bind:@"value" toObject:[self.delegate app] withKeyPath:@"appHostname" options:nil];
 }
 
-- (void)configureForRepresentedObject
-{
+- (void)configureForRepresentedObject {
     self.title = [self.delegate titleForTokenField:self];
     
     [[self.delegate app] addObserver:self
@@ -78,8 +66,8 @@
 - (void)observeValueForKeyPath:(NSString*)keyPath
                       ofObject:(id)object
                         change:(NSDictionary*)change
-                       context:(void*)context
-{
+                       context:(void*)context {
+    
 	if ([keyPath isEqualToString:@"state"]) {
         [self setState:[[change objectForKey:NSKeyValueChangeNewKey] intValue]];
     } else if ([keyPath isEqualToString:@"appHostname"]) {
@@ -92,8 +80,7 @@
     }
 }
 
-- (void)setState:(TKDAppState)newState;
-{
+- (void)setState:(TKDAppState)newState {
     if (self.state != newState) {
         _state = newState;
         
@@ -117,8 +104,7 @@
     }
 }
 
-- (void)setTitle:(NSString *)newTitle;
-{
+- (void)setTitle:(NSString *)newTitle {
     if (newTitle != self.title) {
         _title = newTitle;
         self.textField.stringValue = _title;
@@ -126,10 +112,7 @@
     }
 }
 
-// Layout
-- (void)layout
-{
-    // This method has a lot of hardcoded values. Ideally that would be addressed.
+- (void)layout {
 
     CGFloat viewWidth = self.bounds.size.width;
     CGSize gemSize = self.gemView.bounds.size;
@@ -159,10 +142,7 @@
     [super layout];
 }
 
-// Event Handling
-
-- (BOOL)acceptsFirstResponder
-{
+- (BOOL)acceptsFirstResponder {
     return YES;
 }
 
@@ -177,8 +157,7 @@
     }
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [[self.delegate app] removeObserver:self forKeyPath:@"state"];
     [[self.delegate app] removeObserver:self forKeyPath:@"appHostname"];
 }
