@@ -35,11 +35,8 @@
 
 @implementation TKDEditAppController
 
-- (void)windowDidLoad
-{
+- (void)windowDidLoad {
     [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
     self.prevAppIconPath = self.app.appIconPath;
     self.prevAppName = self.app.appName;
@@ -76,21 +73,17 @@
     
     if ([bits writeToURL:path atomically:NO])
         self.app.appIconPath = [path absoluteString];
-                                                                                                                                            
-    // If we're using the YAML file, write changes to it.
-    if (self.app.usesYAMLfile) {
-        [self.app serializeToYAML];
-    }
     
-    // Save our own settings.
+    if (self.app.usesYAMLfile)
+        [self.app serializeToYAML];
+    
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
     [delegate saveAppSettings];
     
     [NSApp endSheet:self.window];
 }
 
-- (IBAction)cancelPressed:(id)sender;
-{
+- (IBAction)cancelPressed:(id)sender {
     self.app.appIconPath = self.prevAppIconPath;
     self.app.appName = self.prevAppName;
     self.app.appHostname = self.prevHostname;

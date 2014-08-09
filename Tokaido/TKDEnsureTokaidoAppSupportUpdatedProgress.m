@@ -49,212 +49,216 @@
         }
         
         [_controller.status setStringValue:activity];
-        NSLog(@"%@", activity);
     });
 }
 
 -(void) checking_ruby_installation {
-    [self report:@"Checking Ruby Installation."];
+    [self report:NSLocalizedString(@"Checking Ruby Installation.", nil)];
 }
 
 -(void) finished_checking_ruby_installation {
-    [self report:@"Finished check."];
+    [self report:NSLocalizedString(@"Finished checking Ruby Instalation.", nil)];
 }
 
 -(void) finding_rubies_bundled {
-    [self report:@"Finding Rubies bundled with Tokaido."];
+    [self report:NSLocalizedString(@"Finding Rubies.", nil)];
 }
 
 -(void) found_ruby_not_installed:(TKDRubyBinary *)rb {
-    [self report:[NSString stringWithFormat:@"Found Ruby %@ not installed.", [rb name]]];
+    [self report:[NSString stringWithFormat:NSLocalizedString(@"Ruby %@ not installed.", nil), [rb name]]];
 }
 
 -(void) unzipping_ruby_bundled {
-    [self report:@"Unzipping Ruby bundled."];
+    [self report:NSLocalizedString(@"Unzipping Ruby.", nil)];
 }
 
 -(void) finished_unzipping_ruby_bundled {
-    [self report:@"Finished unzipping Ruby."];
+    [self report:NSLocalizedString(@"Finished unzipping Ruby.", nil)];
 }
 
 -(void) ruby_installed {
-    [self report:@"Ruby is installed!"];
+    [self report:NSLocalizedString(@"Ruby is installed!", nil)];
 }
 
 -(void) finished_ruby_installations {
-    [self report:@"Finished checking ruby installations." incrementBy:10.0];
+    [self report:NSLocalizedString(@"Finished checking ruby installations.", nil) incrementBy:10.0];
 }
 
 -(void) checking_gems_installation {
-    [self report:@"Checking Gems installation."];
+    [self report:NSLocalizedString(@"Checking Gems installation.", nil)];
 }
 
 -(void) unzipping_gems_bundled {
-    [self report:@"Unzipping Gems bundled."];
+    [self report:NSLocalizedString(@"Unzipping Gems.", nil)];
 }
 
 -(void) finished_unzipping_gems_bundled {
-    [self report:@"Finished unzipping gems bundled." incrementBy:30.0];
+    [self report:NSLocalizedString(@"Finished unzipping gems.", nil) incrementBy:30.0];
 }
 
 -(void) checking_binaries_installation {
-    [self report:@"Checking binaries installation."];
+    [self report:NSLocalizedString(@"Checking binaries installation.", nil)];
 }
 
 -(void) unzipping_binaries_bundled {
-    [self report:@"Unzipping binaries bundled."];
+    [self report:NSLocalizedString(@"Unzipping binaries.", nil)];
 }
 
 -(void) finished_unzipping_binaries_bundled {
-    [self report:@"Finished unzipping binaries bundled." incrementBy:5.0];
+    [self report:NSLocalizedString(@"Finished unzipping binaries.", nil) incrementBy:5.0];
 }
 
 -(void) starting_clang_search {
-    [self report:@"Searching for clang." incrementBy:1.0];
+    [self report:NSLocalizedString(@"Searching for clang.", nil) incrementBy:1.0];
 }
 
 -(void) clang_not_found {
-    [self report:@"Clang not found." incrementBy:1.0];
+    [self report:NSLocalizedString(@"Clang not found.", nil) incrementBy:1.0];
 }
 
 -(void) starting_clang_symlink {
-    [self report:@"Starting symlink for clang." incrementBy:2.0];
+    [self report:NSLocalizedString(@"Starting symlink for clang.", nil) incrementBy:2.0];
 }
 
 -(void) finished_clang_symlink {
-    [self report:@"Finished symlink for clang." incrementBy:2.0];
+    [self report:NSLocalizedString(@"Finished symlink for clang.", nil) incrementBy:2.0];
 }
 
 -(void) applying_rbconfig_patches {
-    [self report:@"Applying rbconfig patches." incrementBy:1.0];
+    [self report:NSLocalizedString(@"Applying rbconfig patches.", nil) incrementBy:1.0];
 }
 
 -(void) error_patching_rbconfig_with_message:(NSString *)message {
-    [self report:[NSString stringWithFormat:@"Problem patching rbconfig: %@", message] incrementBy:2.0];
+    NSLog(@"%@: %@", NSLocalizedString(@"Failed patching rbconfig.rb", nil), message);
+    [self report:[NSString stringWithFormat:NSLocalizedString(@"Failed patching rbconfig.rb", nil), message] incrementBy:2.0];
 }
 
--(void) replacing_config_topdir_line {
-    [self report:@"Replacing CONFIG[\"TOPDIR\"] rbconfig.rb" incrementBy:2.0];
+-(void) replacing_config_topdir_line_with:(NSString *)line {
+    NSLog(@"%@ with %@", NSLocalizedString(@"Replacing CONFIG[\"TOPDIR\"] rbconfig.rb", nil), line);
+    [self report:[NSString stringWithFormat:NSLocalizedString(@"Replacing CONFIG[\"TOPDIR\"] rbconfig.rb", nil), line] incrementBy:2.0];
 }
 
 -(void) replacing_config_cc_line {
-    [self report:@"Replacing CONFIG[\"CC\"] rbconfig.rb" incrementBy:2.0];
+    [self report:NSLocalizedString(@"Replacing CONFIG[\"CC\"] rbconfig.rb", nil) incrementBy:2.0];
 }
 
 -(void) patching_rbconfig_complete {
-    [self report:@"Patching rbconfig complete!" incrementBy:2.0];
+    [self report:NSLocalizedString(@"Patching rbconfig complete!", nil) incrementBy:2.0];
 }
 
 -(void) finished_ensuring_app_support_is_updated {
-    [self report:@"Finished ensuring Application Support is up to date."];
+    [self report:NSLocalizedString(@"Finished ensuring Application Support is up to date.", nil)];
 }
 
 -(void) checking_tokaido_bootstrap_installation {
-    [self report:@"Checking Tokaido Install."];
+    [self report:NSLocalizedString(@"Checking Tokaido Install.", nil)];
 }
 
 -(void) unzipping_tokaido_bootstrap_bundled {
-    [self report:@"Unzipping Tokaido Install bundled."];
+    [self report:NSLocalizedString(@"Unzipping Tokaido Install", nil)];
 }
 
 -(void) finished_unzipping_tokaido_bootstrap_bundled {
-    [self report:@"Finished unzipping Tokaido Install."];
+    [self report:NSLocalizedString(@"Finished unzipping Tokaido Install.", nil)];
 }
 
 -(void) finished_checking_tokaido_bootstrap_installation {
-    [self report:@"Finished checking Tokaido Install." incrementBy:8.0];
+    [self report:NSLocalizedString(@"Finished checking Tokaido Install.", nil) incrementBy:8.0];
 }
 
 -(void) starting_tokaido_bootstrap_detection {
-    [self report:@"Starting Tokaido Bootstrap detection."];
+    [self report:NSLocalizedString(@"Starting Tokaido Bootstrap detection.", nil)];
 }
 
 -(void) tokaido_bootstrap_detected {
-    [self report:@"Tokaido Bootstrap detected."];
+    [self report:NSLocalizedString(@"Tokaido Bootstrap detected.", nil)];
 }
 
 -(void) tokaido_bootstrap_not_detected {
-    [self report:@"Tokaido Bootstrap not detected."];
+    [self report:NSLocalizedString(@"Tokaido Bootstrap not detected.", nil)];
 }
 
 -(void) tokaido_bootstrap_installing {
-    [self report:@"Installing Tokaido Bootstrap."];
+    [self report:NSLocalizedString(@"Installing Tokaido Bootstrap.", nil)];
 }
 
 -(void) error_reading_firewall_plist_file {
-    [self report:@"Reading Firewall plist file."];
+    [self report:NSLocalizedString(@"Reading Firewall configuration.", nil)];
 }
 
 -(void) saving_firewall_plist_file {
-    [self report:@"Saving Firewall plist file."];
+    [self report:NSLocalizedString(@"Saving Firewall configuration.", nil)];
 }
 
 -(void) error_saving_firewall_plist_file {
-    [self report:@"Failed saving Firewall plist file."];
+    [self report:NSLocalizedString(@"Failed saving Firewall configuration.", nil)];
 }
 
 -(void) saved_firewall_plist_file {
-    [self report:@"Firewall plist file saved."];
+    [self report:NSLocalizedString(@"Firewall configuration saved.", nil)];
 }
 
 -(void) requesting_authorization {
-    [self report:@"Authorizing."];
+    [self report:NSLocalizedString(@"Authorizing.", nil)];
 }
 
 -(void) helper_ran_succesfully {
-    [self report:@"Helper launched succesfully."];
+    [self report:NSLocalizedString(@"Helper launched succesfully.", nil)];
 }
 
 -(void) failed_helper_authenticated_submission_with_message:(NSString *)message {
-    [self report:[NSString stringWithFormat:@"Failed submitting helper task: %@", message]];
+    NSLog(@"%@: %@", NSLocalizedString(@"Failed submitting helper task", nil), message);
+    [self report:NSLocalizedString(@"Failed submitting helper task", nil)];
 }
 
 -(void) service_management_failed_with_error:(NSString *)message {
-    [self report:[NSString stringWithFormat:@"Failed submitting helper task: %@", message]];
+    NSLog(@"%@: %@", NSLocalizedString(@"Failed submitting helper task", nil), message);
+    [self report:NSLocalizedString(NSLocalizedString(@"Failed submitting helper task", nil), nil)];
 }
 
 -(void) service_management_submission_succesfull {
-    [self report:@"Launch task submission succesful."];
+    [self report:NSLocalizedString(@"Launch task submission succesful.", nil)];
 }
 
 -(void) finished_tokaido_bootstrap_detection {
-    [self report:@"Finished Tokaido Bootstrap detection." incrementBy:30.0];
+    [self report:NSLocalizedString(@"Finished Tokaido Bootstrap detection.", nil) incrementBy:30.0];
 }
 
 -(void) starting_shutting_down_tokaido_bootstrap {
-    [self report:@"Starting Tokaido Bootstrap shutdown."];
+    [self report:NSLocalizedString(@"Starting Tokaido Bootstrap shutdown.", nil)];
 }
 
 -(void) shutting_down_tokaido_bootstrap {
-    [self report:@"Shutting down tokaido-bootstrap."];
+    [self report:NSLocalizedString(@"Shutting down tokaido-bootstrap.", nil)];
 }
 
 -(void) tokaido_boostrap_shutdown {
-    [self report:@"tokaido-bootstrap shutdown complete."];
+    [self report:NSLocalizedString(@"tokaido-bootstrap shutdown complete.", nil)];
 }
 
 -(void) finished_tokaido_boostrap_shutdown {
-    [self report:@"Finished shutting down tokaido-bootstrap." incrementBy:1.0];
+    [self report:NSLocalizedString(@"Finished shutting down tokaido-bootstrap.", nil) incrementBy:1.0];
 }
 
 -(void) starting_tokaido_bootstrap {
-    [self report:@"Staring tokaido-bootstrap."];
+    [self report:NSLocalizedString(@"Staring tokaido-bootstrap.", nil)];
 }
 
 -(void) unlinking_current_socket {
-    [self report:@"Unlinking current socket"];
+    [self report:NSLocalizedString(@"Unlinking current socket", nil)];
 }
 
 -(void) tokaido_bootstrap_started {
-    [self report:@"tokaido-bootstrap started."];
+    [self report:NSLocalizedString(@"tokaido-bootstrap started.", nil)];
 }
 
 -(void) finished_starting_tokaido_bootstrap {
-    [self report:@"Finished starting tokaido-bootstrap." incrementBy:1.0];
+    [self report:NSLocalizedString(@"Finished starting tokaido-bootstrap.", nil) incrementBy:1.0];
 }
 
 -(void) failed_starting_tokaido_bootstrap_with_error:(NSString *)message {
-    [self report:[NSString stringWithFormat:@"Failed starting tokaido-bootstrap: %@", message]];
+    NSLog(@"%@: %@", NSLocalizedString(@"Failed starting tokaido-bootstrap", nil), message);
+    [self report:NSLocalizedString(@"Failed starting tokaido-bootstrap", nil)];
 }
 
 -(void) quit_application {

@@ -66,8 +66,6 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
             [self.socket readDataToData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1  tag:TAG_AWAIT_COMMAND];
         } else if ([reply isEqualToString:@"READY"] || [reply isEqualToString:@"REMOVED"] || [reply isEqualToString:@"ERR"]) {
             
-            // This happens on a background thread, so it should fire off UI updating notifications on
-            // the main thread.
             dispatch_sync(dispatch_get_main_queue(), ^{
                 NSDictionary *userInfo = @{@"action": [elements objectAtIndex:0],
                                            @"hostname": [elements objectAtIndex:1]};
@@ -81,8 +79,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     }
 }
 
-- (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url;
-{
+- (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url {
     NSLog(@"Connected to %@", url);
 }
 
@@ -99,11 +96,11 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     // connection reset by peer
     if ([error code] == 7) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Tokaido, we have a problem."
+            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Tokaido, we have a problem.", nil)
                                              defaultButton:@"OK"
                                            alternateButton:nil
                                                otherButton:nil
-                                 informativeTextWithFormat:@"The connection with Muxr (Tokaido's app manager) was reset. Please close Tokaido and reopen."];
+                                 informativeTextWithFormat:NSLocalizedString(@"The connection with Muxr (Tokaido's app manager) was reset. Please close Tokaido and reopen.", nil)];
             
             [alert runModal];
         });

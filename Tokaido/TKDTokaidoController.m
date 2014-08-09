@@ -57,11 +57,11 @@
 {
     
     if (![self.helpers didSelectAnApp]) {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"You didn't select an app. Terminal will open in your home directory."
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"You didn't select an app. Terminal will open in your home directory.", nil)
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:@"Please choose an app if you would like the working directory set to it."];
+                             informativeTextWithFormat:NSLocalizedString(@"Please choose an app if you would like the working directory set to it.", nil)];
         [alert runModal];
     }
     
@@ -145,7 +145,7 @@
 - (NSString *)appSelectionStringForCurrentCount
 {
     
-    return (([self.appsArrayController.arrangedObjects count] == 1) ? @"App" : @"Apps");
+    return (([self.appsArrayController.arrangedObjects count] == 1) ? NSLocalizedString(@"App", nil) : NSLocalizedString(@"Apps", nil));
 }
 
 - (void)activateApp:(TKDApp *)app {
@@ -181,14 +181,14 @@
     NSLog(@"ACTION: %@", action);
     
     if ([action isEqualToString:@"ERR"]) {
-        [app setStatus:@"Booting failed. Review the logs or \"Open in Terminal\"."];
+        [app setStatus:NSLocalizedString(@"Booting failed. Review the logs or \"Open in Terminal\".", nil)];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
+            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Unable to activate app.", nil)
                                              defaultButton:@"OK"
                                            alternateButton:nil
                                                otherButton:nil
-                                 informativeTextWithFormat:@"Booting failed. Tokaido currently uses the puma webserver. Check if `gem puma` entry is in your Gemfile and try again."];
+                                 informativeTextWithFormat:NSLocalizedString(@"Booting failed. Tokaido currently uses the puma webserver. Check if `gem puma` entry is in your Gemfile and try again.", nil)];
             
             [alert runModal];
         });
@@ -206,13 +206,10 @@
 
 #pragma mark Helper Methods
 
-- (TKDApp *)appWithHostname:(NSString *)hostname
-{
-    for (TKDApp *app in self.apps) {
-        if ([app.appHostname isEqualToString:hostname]) {
+- (TKDApp *)appWithHostname:(NSString *)hostname {
+    for (TKDApp *app in self.apps)
+        if ([app.appHostname isEqualToString:hostname])
             return app;
-        }
-    }
     
     return nil;
 }
@@ -221,11 +218,11 @@
 {
     if (![self directoryContainsGemfile:url]) {
         
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Selected directory isn't a Rails app"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Selected directory isn't a Rails app", nil)
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:@"Rails app should contain a Gemfile in the directory."];
+                             informativeTextWithFormat:NSLocalizedString(@"Rails app should contain a Gemfile in the directory.", nil)];
         [alert runModal];
         
         return NO;
@@ -233,11 +230,11 @@
     
     if ([self directoryAlreadyListed:url]) {
         
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Selected directory is already in Tokaido"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Selected directory is already in Tokaido", nil)
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:@"Please choose a different directory."];
+                             informativeTextWithFormat:NSLocalizedString(@"Please choose a different directory.", nil)];
         [alert runModal];
         
         return NO;

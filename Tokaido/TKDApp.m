@@ -115,9 +115,9 @@ static NSString *kAppIconKey = @"app_icon";
 
 - (NSString *)stateMessage {
     NSMapTable *substates = [NSMapTable new];
-    [substates setObject:@"Running bundle install" forKey:[NSNumber numberWithInt:TKDAppBootingBundling]];
-    [substates setObject:@"bundle install failed" forKey:[NSNumber numberWithInt:TKDAppBootingBundleFailed]];
-    [substates setObject:@"Booting server" forKey:[NSNumber numberWithInt:TKDAppBootingStartingServer]];
+    [substates setObject:NSLocalizedString(@"Running bundle install", nil) forKey:[NSNumber numberWithInt:TKDAppBootingBundling]];
+    [substates setObject:NSLocalizedString(@"bundle install failed", nil) forKey:[NSNumber numberWithInt:TKDAppBootingBundleFailed]];
+    [substates setObject:NSLocalizedString(@"Booting server", nil) forKey:[NSNumber numberWithInt:TKDAppBootingStartingServer]];
     
     if (self.state == TKDAppBooting) {
         if (self.substate == TKDAppBootingBundling) {
@@ -130,14 +130,14 @@ static NSString *kAppIconKey = @"app_icon";
         NSString *failureReason = self.failureReason;
         
         if (failureReason == nil) {
-            return @"Not started";
+            return NSLocalizedString(@"Not started", nil);
         } else {
             return failureReason;
         }
     } else if (self.state == TKDAppOn) {
-        return @"Started";
+        return NSLocalizedString(@"Started", nil);
     } else if (self.state == TKDAppShuttingDown) {
-        return @"Shutting Down";
+        return NSLocalizedString(@"Shutting Down", nil);
     } else {
         return nil;
     }
@@ -145,11 +145,11 @@ static NSString *kAppIconKey = @"app_icon";
 
 - (NSString *)stateChangeString {
     if (self.state == TKDAppOn) {
-        return @"Shut Down";
+        return NSLocalizedString(@"Shut Down", nil);
     } else if (self.state == TKDAppOff) {
-        return @"Boot App";
+        return NSLocalizedString(@"Boot App", nil);
     } else if (self.state == TKDAppBooting) {
-        return @"Cancel Boot";
+        return NSLocalizedString(@"Cancel Boot", nil);
     } else {
         return nil;
     }
@@ -164,7 +164,7 @@ static NSString *kAppIconKey = @"app_icon";
     self.substate = substate;
     
     if (substate == TKDAppBootingBundleFailed) {
-        self.failureReason = @"Bundling failed. Try \"Open in Terminal\".";
+        self.failureReason = NSLocalizedString(@"Bundling failed. Try \"Open in Terminal\".", nil);
     }
 }
 
@@ -284,11 +284,11 @@ static NSString *kAppIconKey = @"app_icon";
     } else {
         [self enterSubstate:TKDAppBootingBundleFailed];
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Unable to activate app."
+            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Unable to activate app.", nil)
                                              defaultButton:@"OK"
                                            alternateButton:nil
                                                otherButton:nil
-                                 informativeTextWithFormat:@"`bundle install` failed. Make sure it works before proceeding. Also check if a gem added requires a compiler and install the developer tools to proceed."];
+                                 informativeTextWithFormat:NSLocalizedString(@"`bundle install` failed. Make sure it works before proceeding. Also check if a gem added requires a compiler and install the developer tools to proceed.", nil)];
             
             [alert runModal];
         });

@@ -1,0 +1,95 @@
+"Checking Ruby Installation." = "Revisando Instalación de Ruby.";
+"Finished checking Ruby Instalation." = "Revisión de Instalación de Ruby terminada.";
+"Finding Rubies." = "Buscando Rubies.";
+"Ruby %@ not installed." = "Ruby %@ no está instalado.";
+"Unzipping Ruby." = "Descomprimiendo Ruby.";
+"Finished unzipping Ruby." = "Descomprimiento de Ruby terminada.";
+"Ruby is installed!" = "Ruby está instalado!";
+"Finished checking ruby installations." = "La revisión de instalaciones de Ruby a finalizado.";
+
+"Checking Gems installation." = "Revisando instalación de gemas.";
+"Unzipping Gems." = "Descomprimiendo gemas";
+"Finished unzipping gems." = "Descomprimiento de gemas terminada.";
+
+"Checking binaries installation." = "Revisando Instalación de ejecutables.";
+"Unzipping binaries." = "Descomprimiendo ejecutables.";
+"Finished unzipping binaries." = "Descomprimiento de ejecutables terminada.";
+
+"Searching for clang." = "Buscando clang.";
+"Clang not found." = "No se encontró clang.";
+"Starting symlink for clang." = "Iniciando enlance simbólico para clang.";
+"Finished symlink for clang." = "Enlace simbólico para clang terminado.";
+
+"Applying rbconfig patches." = "Aplicando parches para rbconfig.rb";
+"Failed patching rbconfig.rb" = "Falló aplicar parche a rbconfig.rb";
+"Replacing CONFIG[\"TOPDIR\"] rbconfig.rb" = "Remplazando CONFIG[\"TOPDIR\"] en rbconfig.rb";
+"Replacing CONFIG[\"CC\"] rbconfig.rb" = "Remplazando CONFIG[\"CC\"] en rbconfig.rb";
+"Patching rbconfig complete!" = "¡Aplicación de parches completo!";
+"Finished ensuring Application Support is up to date." = "Finalizada la aseguración de modulos de soporte actualizadas.";
+
+"Checking Tokaido Install." = "Revisando Tokaido Install.";
+"Unzipping Tokaido Install." = "Descomprimiendo Tokaido Install.";
+"Finished unzipping Tokaido Install." = "Descomprimiento de Tokaido Install terminado.";
+"Finished checking Tokaido Install." = "Finalizada la revisión de Tokaido Install.";
+
+"Starting Tokaido Bootstrap detection." = "Inicio de búsqueda para Tokaido Bootstrap.";
+"Tokaido Bootstrap detected." = "Tokaido Bootstrap detectado.";
+"Tokaido Bootstrap not detected." = "Tokaido Bootstrap no fue detectado.";
+"Installing Tokaido Bootstrap." = "Instalando Tokaido Bootstrap.";
+"Reading Firewall configuration." = "Leyendo configuración del cortafuegos.";
+"Saving Firewall configuration." = "Guardando configuración del cortafuegos.";
+"Failed saving Firewall configuration." = "No se pudo guardar la configuración del cortafuegos.";
+"Firewall configuration saved." = "Configuración del cortafuegos guardada.";
+"Authorizing." = "Autorizando.";
+"Helper launched succesfully." = "Se lanzó el helper satisfactoriamente.";
+"Failed submitting helper task" = "No se pudo emitir la tarea.";
+"Launch task submission succesful." = "Emisión de la tarea fue exitosa.";
+"Finished Tokaido Bootstrap detection." = "Se ha finalizado la búsqueda de Tokaido Bootstrap.";
+
+"Starting Tokaido Bootstrap shutdown." = "Iniciando el apago de Tokaido Bootstrap";
+"Shutting down tokaido-bootstrap." = "Apagando tokaido-bootstrap.";
+"tokaido-bootstrap shutdown complete." = "tokaido-bootstrap apagado.";
+"Finished shutting down tokaido-bootstrap." = "Se ha finalizando el apagado de tokaido-bootstrap.";
+
+"Staring tokaido-bootstrap." = "Iniciando tokaido-bootstrap.";
+"Unlinking current socket" = "Desvinculando socket actual.";
+"tokaido-bootstrap started." = "tokaido-bootstrap iniciado.";
+"Finished starting tokaido-bootstrap." = "Se finalizó el inicio de tokaido-bootstrap.";
+"Failed starting tokaido-bootstrap" = "No se pudo iniciar tokaido-bootstrap";
+
+"Tokaido, we have a problem." = "Tokaido, tenemos un problema.";
+"The connection with Muxr (Tokaido's app manager) was reset. Please close Tokaido and reopen." = "La conexión con Muxr (Mantiene las aplicaciones de Tokaido) se reseteó. Por favor cierra y abre nuevamente Tokaido.";
+"You didn't select an app. Terminal will open in your home directory." = "No seleccionaste una aplicación. Se abrirá el Terminal en tu directorio de inicio";
+"Please choose an app if you would like the working directory set to it." = "Por favor selecciona una aplicación si deseas establecer el directorio de trabajo";
+
+"Selected directory isn't a Rails app" = "El directorio seleccionado no es una aplicación de Rails";
+"Rails app should contain a Gemfile in the directory." = "Tiene que existir el Gemfile en el directorio";
+
+"Selected directory is already in Tokaido" = "El directorio seleccionado ya se encuentra en Tokaido";
+"Please choose a different directory." = "Por favor escoge otro directorio";
+
+"app" = "app";
+"apps" = "apps";
+
+"Activate" = "Activar";
+"Starting up..." = "Levantando...";
+"Deactivate" = "Desactivar";
+"Shutting down..." = "Apagando...";
+
+"Running bundle install" = "Corriendo bundle install";
+"bundle install failed" = "bundle install falló";
+"Booting server" = "Montando servidor";
+
+"Not started" = "Sin iniciar";
+"Started" = "Iniciada";
+"Shutting Down" = "Apagando";
+
+"Shut Down" = "Apagar";
+"Boot App" = "Montar App";
+"Cancel Boot" = "Cancelar";
+
+"Booting failed. Review the logs or \"Open in Terminal\"." = "Falló el levantamiento. Revisa los logs o \"Abrir en Terminal\".";
+
+"Unable to activate app." = "No se puede activar la aplicación.";
+"`bundle install` failed. Make sure it works before proceeding. Also check if a gem added requires a compiler and install the developer tools to proceed." = "`bundle install` falló. Asegúrate que funcione antes de proceder. Revisa también si has agregado una gema que requiera un compilador e instala los 'developer tools' antes de proceder";
+"Booting failed. Tokaido currently uses the puma webserver. Check if `gem puma` entry is in your Gemfile and try again." = "Falló el levantamiento. Tokaido actualmente usa el servidor web puma. Revisa si `gem puma` se encuentra en el Gemfile e intenta nuevamente.";

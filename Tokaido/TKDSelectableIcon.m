@@ -12,8 +12,7 @@
 
 @synthesize selected = _selected;
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     self.iconImageView = [[NSImageView alloc] initWithFrame:self.bounds];
     self.iconImageView.image = [NSImage imageNamed:@"TKIconRuby"];
     self.backgroundImageView = [[NSImageView alloc] initWithFrame:self.bounds];
@@ -24,13 +23,11 @@
     [self addSubview:self.iconImageView];
 }
 
-- (void)setSelectedBackgroundImage:(NSImage *)backgroundImage;
-{
+- (void)setSelectedBackgroundImage:(NSImage *)backgroundImage {
     self.backgroundImageView.image = backgroundImage;
 }
 
-- (void)setIconImageWithString:(NSString *)path
-{
+- (void)setIconImageWithString:(NSString *)path {
     if (path != nil) {
         _appIconPath = path;
         self.iconImageView.image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:path]];
@@ -39,8 +36,7 @@
 }
 
 
-- (void)setSelected:(BOOL)selected
-{
+- (void)setSelected:(BOOL)selected {
     if (_selected != selected) {
         [self.backgroundImageView setHidden:!selected];
         _selected = selected;
@@ -48,13 +44,11 @@
     [self setNeedsDisplay:YES];
 }
 
-- (BOOL)selected
-{
+- (BOOL)selected {
     return _selected;
 }
 
-- (void)configureForRepresentedObject
-{
+- (void)configureForRepresentedObject {
     self.appIconPath = [self.delegate pathForIcon:self];
     
     [[self.delegate app] addObserver:self
@@ -68,8 +62,8 @@
 - (void)observeValueForKeyPath:(NSString*)keyPath
                       ofObject:(id)object
                         change:(NSDictionary*)change
-                       context:(void*)context
-{
+                       context:(void*)context {
+    
 	if ([keyPath isEqualToString:@"appIconPath"]) {
         [self setIconImageWithString:[change objectForKey:NSKeyValueChangeNewKey]];
 	} else {
@@ -80,8 +74,7 @@
     }
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [[self.delegate app] removeObserver:self forKeyPath:@"appIconPath"];
 }
 

@@ -53,7 +53,6 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
                                                                      error:&error];
         if (error) {
             [_view error_reading_firewall_plist_file];
-            NSLog(@"ERROR: Couldn't read firewall plist: %@", [error localizedDescription]);
         } else {
             [_view saving_firewall_plist_file];
             firewallPlistString = [firewallPlistString stringByReplacingOccurrencesOfString:kTokaidoBootstrapFirewallPlistCommandString
@@ -72,7 +71,6 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
         
         if (error) {
             [_view error_saving_firewall_plist_file];
-            NSLog(@"ERROR: Couldn't write the firewall plist: %@", [error localizedDescription]);
         } else {
             [_view saved_firewall_plist_file];
         }
@@ -109,17 +107,13 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
             
             CFErrorRef error;
             
-            if ( SMJobSubmit( kSMDomainSystemLaunchd, (__bridge CFDictionaryRef)plist, auth, &error) ) {
+            if ( SMJobSubmit( kSMDomainSystemLaunchd, (__bridge CFDictionaryRef)plist, auth, &error) )
                 [_view helper_ran_succesfully];
-                NSLog(@"Ran successfully.");
-            } else {
+            else
                 [_view failed_helper_authenticated_submission_with_message:[NSString stringWithFormat:@"%@", error]];
-                NSLog( @"Authenticated install submit failed with error %@", error );
-            }
             
             if (error) {
                 [_view service_management_failed_with_error:[NSString stringWithFormat:@"%@", CFErrorCopyDescription(error)]];
-                NSLog(@"SMJobSubmit ERROR: %@", CFErrorCopyDescription(error));
                 CFRelease(error);
             } else {
                 [_view service_management_submission_succesfull];
@@ -127,7 +121,6 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
             
             AuthorizationFree(auth, 0);
         } else {
-            NSLog(@"Couldn't run tokaido-install. Quitting.");
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [[NSApplication sharedApplication] terminate:nil];
             });
