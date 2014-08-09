@@ -10,7 +10,7 @@
 		08783A2A1784A9AC0071AC1C /* uninstall.sh in Resources */ = {isa = PBXBuildFile; fileRef = 08783A291784A9AC0071AC1C /* uninstall.sh */; };
 		08783A2E1785D5450071AC1C /* gnome-terminal.png in Resources */ = {isa = PBXBuildFile; fileRef = 08783A2D1785D5450071AC1C /* gnome-terminal.png */; };
 		08783A301785D7250071AC1C /* power-control.png in Resources */ = {isa = PBXBuildFile; fileRef = 08783A2F1785D7250071AC1C /* power-control.png */; };
-		0E1576FF19963C1C009204B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E1576FE19963C1C009204B2 /* Localizable.strings */; };
+		0E15770419965F1D009204B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E15770619965F1D009204B2 /* Localizable.strings */; };
 		2ED0D0CF3BDF47DBAFB3E8FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7523D448445F475BB439A142 /* libPods.a */; };
 		3A19ECCD163F5B5C0035ABA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCC163F5B5C0035ABA2 /* Security.framework */; };
 		3A19ECCF163F5B610035ABA2 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */; };
@@ -104,7 +104,12 @@
 		08783A291784A9AC0071AC1C /* uninstall.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstall.sh; sourceTree = "<group>"; };
 		08783A2D1785D5450071AC1C /* gnome-terminal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gnome-terminal.png"; sourceTree = "<group>"; };
 		08783A2F1785D7250071AC1C /* power-control.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "power-control.png"; sourceTree = "<group>"; };
-		0E1576FE19963C1C009204B2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		0E15770019965E9A009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0E15770119965E9A009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0E15770219965E9A009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = es.lproj/Credits.rtf; sourceTree = "<group>"; };
+		0E15770319965E9A009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0E15770519965F1D009204B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E15770719965F33009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A19ECCC163F5B5C0035ABA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A19ECCE163F5B610035ABA2 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		3A19ECE416406F5B0035ABA2 /* TKDSelectableIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDSelectableIcon.h; sourceTree = "<group>"; };
@@ -242,7 +247,7 @@
 		3AD692FC16373C9F005AF81E = {
 			isa = PBXGroup;
 			children = (
-				0E1576FE19963C1C009204B2 /* Localizable.strings */,
+				0E15770619965F1D009204B2 /* Localizable.strings */,
 				3AD6931116373C9F005AF81E /* Tokaido */,
 				3AD6932E16373C9F005AF81E /* TokaidoTests */,
 				3AD6930A16373C9F005AF81E /* Frameworks */,
@@ -589,6 +594,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
 			);
 			mainGroup = 3AD692FC16373C9F005AF81E;
 			productRefGroup = 3AD6930816373C9F005AF81E /* Products */;
@@ -623,7 +629,7 @@
 				3A19ECEA1640734F0035ABA2 /* TKAppIconBackground@2x.png in Resources */,
 				3A19ECED1640777E0035ABA2 /* TKIconRuby.png in Resources */,
 				3A19ECEE1640777E0035ABA2 /* TKIconRuby@2x.png in Resources */,
-				0E1576FF19963C1C009204B2 /* Localizable.strings in Resources */,
+				0E15770419965F1D009204B2 /* Localizable.strings in Resources */,
 				CD8285AD16559D96000CB252 /* Green.png in Resources */,
 				CD8285AE16559D96000CB252 /* Red.png in Resources */,
 				CD8285B11655A696000CB252 /* down_arrow.png in Resources */,
@@ -735,10 +741,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0E15770619965F1D009204B2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E15770519965F1D009204B2 /* en */,
+				0E15770719965F33009204B2 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		3AD6931416373C9F005AF81E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3AD6931516373C9F005AF81E /* en */,
+				0E15770119965E9A009204B2 /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -747,6 +763,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3AD6931B16373C9F005AF81E /* en */,
+				0E15770219965E9A009204B2 /* es */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -755,6 +772,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3AD6932116373C9F005AF81E /* en */,
+				0E15770019965E9A009204B2 /* es */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -763,6 +781,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3AD6933216373C9F005AF81E /* en */,
+				0E15770319965E9A009204B2 /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
