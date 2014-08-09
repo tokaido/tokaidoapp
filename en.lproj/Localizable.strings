@@ -8,11 +8,11 @@
 "Finished checking ruby installations." = "Finished checking ruby installations.";
 
 "Checking Gems installation." = "Checking Gems installation.";
-"Unzipping Gems." = "Unzipping Gems .";
+"Unzipping Gems." = "Unzipping Gems.";
 "Finished unzipping gems." = "Finished unzipping gems.";
 
 "Checking binaries installation." = "Checking binaries installation.";
-"Unzipping binaries." = "Unzipping binaries .";
+"Unzipping binaries." = "Unzipping binaries.";
 "Finished unzipping binaries." = "Finished unzipping binaries.";
 
 "Searching for clang." = "Searching for clang.";
@@ -36,7 +36,6 @@
 "Tokaido Bootstrap detected." = "Tokaido Bootstrap detected.";
 "Tokaido Bootstrap not detected." = "Tokaido Bootstrap not detected.";
 "Installing Tokaido Bootstrap." = "Installing Tokaido Bootstrap.";
-
 "Reading Firewall configuration." = "Reading Firewall configuration.";
 "Saving Firewall configuration." = "Saving Firewall configuration.";
 "Failed saving Firewall configuration." = "Failed saving Firewall configuration.";
@@ -46,15 +45,17 @@
 "Failed submitting helper task" = "Failed submitting helper task";
 "Launch task submission succesful." = "Launch task submission succesful.";
 "Finished Tokaido Bootstrap detection." = "Finished Tokaido Bootstrap detection.";
+
 "Starting Tokaido Bootstrap shutdown." = "Starting Tokaido Bootstrap shutdown.";
 "Shutting down tokaido-bootstrap." = "Shutting down tokaido-bootstrap.";
 "tokaido-bootstrap shutdown complete." = "tokaido-bootstrap shutdown complete.";
 "Finished shutting down tokaido-bootstrap." = "Finished shutting down tokaido-bootstrap.";
+
 "Staring tokaido-bootstrap." = "Staring tokaido-bootstrap.";
-"Unlinking current socket" = "Unlinking current socket";
+"Unlinking current socket" = "Unlinking current socket.";
 "tokaido-bootstrap started." = "tokaido-bootstrap started.";
 "Finished starting tokaido-bootstrap." = "Finished starting tokaido-bootstrap.";
-"Failed starting tokaido-bootstrap" = "Failed starting tokaido-bootstrap";
+"Failed starting tokaido-bootstrap" = "Failed starting tokaido-bootstrap.";
 
 "Tokaido, we have a problem." = "Tokaido, we have a problem.";
 "The connection with Muxr (Tokaido's app manager) was reset. Please close Tokaido and reopen." = "The connection with Muxr (Tokaido's app manager) was reset. Please close Tokaido and reopen.";
@@ -84,7 +85,7 @@
 "Started" = "Started";
 "Shutting Down" = "Shutting Down";
 
-"Shutdown" = "Shutdown";
+"Shut Down" = "Shutdown";
 "Boot App" = "Boot App";
 "Cancel Boot" = "Cancel Boot";
 

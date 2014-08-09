@@ -69,7 +69,7 @@
 }
 
 -(void) unzipping_ruby_bundled {
-    [self report:NSLocalizedString(@"Unzipping Ruby", nil)];
+    [self report:NSLocalizedString(@"Unzipping Ruby.", nil)];
 }
 
 -(void) finished_unzipping_ruby_bundled {
@@ -89,11 +89,11 @@
 }
 
 -(void) unzipping_gems_bundled {
-    [self report:NSLocalizedString(@"Unzipping Gems", nil)];
+    [self report:NSLocalizedString(@"Unzipping Gems.", nil)];
 }
 
 -(void) finished_unzipping_gems_bundled {
-    [self report:NSLocalizedString(@"Finished unzipping gems", nil) incrementBy:30.0];
+    [self report:NSLocalizedString(@"Finished unzipping gems.", nil) incrementBy:30.0];
 }
 
 -(void) checking_binaries_installation {
@@ -101,11 +101,11 @@
 }
 
 -(void) unzipping_binaries_bundled {
-    [self report:NSLocalizedString(@"Unzipping binaries", nil)];
+    [self report:NSLocalizedString(@"Unzipping binaries.", nil)];
 }
 
 -(void) finished_unzipping_binaries_bundled {
-    [self report:NSLocalizedString(@"Finished unzipping binaries", nil) incrementBy:5.0];
+    [self report:NSLocalizedString(@"Finished unzipping binaries.", nil) incrementBy:5.0];
 }
 
 -(void) starting_clang_search {
