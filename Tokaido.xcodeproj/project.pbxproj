@@ -751,7 +751,6 @@
 				0E15770719965F33009204B2 /* es */,
 			);
 			name = Localizable.strings;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		0E15770A19966B12009204B2 /* EditAppWindow.xib */ = {
