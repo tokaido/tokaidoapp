@@ -3,16 +3,16 @@ tmp=$root/tmp
 
 mkdir -p $tmp/zips
 
-if [ -d $tmp/2.1.2-p95 ]
+if [ -d $tmp/2.1.1-p76 ]
 then
   echo "Tokaido Ruby is unzipped"
 else
   echo "Unzipping Tokaido Ruby"
-  cp "Tokaido/Rubies/2.1.2-p95.zip" $tmp/2.1.2-p95.zip
-  unzip $tmp/2.1.2-p95.zip -d $tmp
+  cp "Tokaido/Rubies/2.1.1-p76.zip" $tmp/2.1.1-p76.zip
+  unzip $tmp/2.1.1-p76.zip -d $tmp
 fi
 
-export PATH=$tmp/2.1.2-p95/bin:$PATH
+export PATH=$tmp/2.1.1-p76/bin:$PATH
 
 gem_home="$tmp/bootstrap-gems"
 
