@@ -75,7 +75,6 @@
 		D7CC34CD1913653D001AD694 /* TKDAppLogViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CC34CC1913653D001AD694 /* TKDAppLogViewerController.m */; };
 		D7CC34CF19136581001AD694 /* LogViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34CE19136581001AD694 /* LogViewerWindow.xib */; };
 		D7CC34D219136A93001AD694 /* Tokaido.icns in Resources */ = {isa = PBXBuildFile; fileRef = D7CC34D119136A93001AD694 /* Tokaido.icns */; };
-		D7CC3A8E19136F4C001AD694 /* Pods.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D7CC397319136F4C001AD694 /* Pods.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -588,7 +587,7 @@
 			attributes = {
 				CLASSPREFIX = TKD;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Tilde;
 			};
 			buildConfigurationList = 3AD6930116373C9F005AF81E /* Build configuration list for PBXProject "Tokaido" */;
@@ -651,7 +650,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AD6933316373C9F005AF81E /* InfoPlist.strings in Resources */,
-				D7CC3A8E19136F4C001AD694 /* Pods.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
