@@ -7,7 +7,10 @@
                                     withView:(id <TKDAppSupportEnsure>)view {
     if (self = [super init]) {
         NSError *error = nil;
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 796e69b... Use ruby 2.1.2-p95 from now on
         _rbConfig = [[NSString stringWithContentsOfFile:rbConfig
                                                encoding:NSUTF8StringEncoding
                                                   error:&error] mutableCopy];
@@ -41,9 +44,15 @@
         return;
     }
     
+<<<<<<< HEAD
     NSString *newTopDir = [NSString stringWithFormat:@"TOPDIR = \"%@/2.1.2-p95\"", [self.configuration rubiesInstalledDirectoryPath]];
     [_view replacing_config_topdir_line_with:newTopDir];
     
+=======
+    [_view replacing_config_topdir_line];
+    NSLog(@"Replacing CONFIG[\"TOPDIR\"] rbconfig.rb...");
+    NSString *newTopDir = [NSString stringWithFormat:@"TOPDIR = \"%@/2.1.1-p76\"", [self.configuration rubiesInstalledDirectoryPath]];
+>>>>>>> parent of 796e69b... Use ruby 2.1.2-p95 from now on
     [topDirRegex replaceMatchesInString:_rbConfig
                                 options:0
                                   range:NSMakeRange(0, [_rbConfig length])
