@@ -53,18 +53,7 @@
     }
 }
 
-- (IBAction)openTerminalPressed:(id)sender;
-{
-    
-    if (![self.helpers didSelectAnApp]) {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"You didn't select an app. Terminal will open in your home directory.", nil)
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:NSLocalizedString(@"Please choose an app if you would like the working directory set to it.", nil)];
-        [alert runModal];
-    }
-    
+- (IBAction)openTerminalPressed:(id)sender {
     [[TKDTerminalSessions sharedTerminalSessions] openForApplication:[self.helpers selectedApp]];
 }
 

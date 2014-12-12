@@ -59,8 +59,6 @@
 
 "Tokaido, we have a problem." = "Tokaido, tenemos un problema.";
 "The connection with Muxr (Tokaido's app manager) was reset. Please close Tokaido and reopen." = "La conexión con Muxr (Mantiene las aplicaciones de Tokaido) se reseteó. Por favor cierra y abre nuevamente Tokaido.";
-"You didn't select an app. Terminal will open in your home directory." = "No seleccionaste una aplicación. Se abrirá el Terminal en tu directorio de inicio";
-"Please choose an app if you would like the working directory set to it." = "Por favor selecciona una aplicación si deseas establecer el directorio de trabajo";
 
 "Selected directory isn't a Rails app" = "El directorio seleccionado no es una aplicación de Rails";
 "Rails app should contain a Gemfile in the directory." = "Tiene que existir el Gemfile en el directorio";
