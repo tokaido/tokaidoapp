@@ -55,14 +55,14 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 	[plist setObject:@[executablePath, @"-r", setupScriptPath, tokaidoBootstrapScriptPath]
               forKey:@"ProgramArguments"];
     
-    CFErrorRef error;
+    CFErrorRef error = NULL;
 	
 	if ( SMJobSubmit( kSMDomainUserLaunchd, (__bridge CFDictionaryRef)plist, NULL, &error) )
         [_view tokaido_bootstrap_started];
 	else
         [_view failed_starting_tokaido_bootstrap_with_error:[NSString stringWithFormat:@"%@", error]];
     
-	if (error) {
+	if (error != NULL) {
         [_view failed_starting_tokaido_bootstrap_with_error:[NSString stringWithFormat:@"%@", CFErrorCopyDescription(error)]];
 		CFRelease(error);
 	}

@@ -105,14 +105,14 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
             [plist setObject:@"/var/log/tokaido-install.log" forKey:@"StandardOutPath"];
             [plist setObject:@"/var/log/tokaido-install.error" forKey:@"StandardErrorPath"];
             
-            CFErrorRef error;
+            CFErrorRef error = NULL;
             
             if ( SMJobSubmit( kSMDomainSystemLaunchd, (__bridge CFDictionaryRef)plist, auth, &error) )
                 [_view helper_ran_succesfully];
             else
                 [_view failed_helper_authenticated_submission_with_message:[NSString stringWithFormat:@"%@", error]];
             
-            if (error) {
+            if (error != NULL) {
                 [_view service_management_failed_with_error:[NSString stringWithFormat:@"%@", CFErrorCopyDescription(error)]];
                 CFRelease(error);
             } else {
