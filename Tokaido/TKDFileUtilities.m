@@ -42,6 +42,7 @@
 +(void) unzipFileAtPath:(NSString *)path inDirectoryPath:(NSString *)directory {
     NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
     [arguments addObject:@"-u"];
+    [arguments addObject:@"-o"];
     [arguments addObject:path];
     
     NSTask *unzipTask = [[NSTask alloc] init];

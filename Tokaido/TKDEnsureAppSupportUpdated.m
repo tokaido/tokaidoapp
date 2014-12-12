@@ -4,7 +4,6 @@
 #import "TKDEnsureAppSupportUpdated.h"
 #import "TKDInstallRuby.h"
 #import "TKDRubyBinary.h"
-#import "TKDRubyConfigPatches.h"
 
 @interface TKDEnsureAppSupportUpdated(InstallationTasks)
 -(void) installRubiesBundled;
@@ -71,14 +70,11 @@
     NSString *bundledGemsZipfile = [[self configuration] bundledGemsFile];
 	
     [_view checking_gems_installation];
-    if (![self.fileManager directoryExists:gemsInstalledDirectoryPath]) {
-        [self.fileManager createDirectoryAtPathIfNonExistant:gemsInstalledDirectoryPath];
-        
-        [_view unzipping_gems_bundled];
-        [self.fileManager unzipFileAtPath:bundledGemsZipfile
-                          inDirectoryPath:[[self configuration] tokaidoLocalHomeDirectoryPath]];
-        [_view finished_unzipping_gems_bundled];
-    }
+    [self.fileManager createDirectoryAtPathIfNonExistant:gemsInstalledDirectoryPath];
+    [_view unzipping_gems_bundled];
+    [self.fileManager unzipFileAtPath:bundledGemsZipfile
+                      inDirectoryPath:[[self configuration] tokaidoLocalHomeDirectoryPath]];
+    [_view finished_unzipping_gems_bundled];
 }
 
 -(void) installBinariesBundled {
@@ -86,14 +82,11 @@
 	NSString *bundledBinariesfile = [[self configuration] bundledBinariesFile];
 	
     [_view checking_binaries_installation];
-    if (![self.fileManager directoryExists:binariesInstalledDirectoryPath]) {
-        [self.fileManager createDirectoryAtPathIfNonExistant:binariesInstalledDirectoryPath];
-        
-        [_view unzipping_binaries_bundled];
-        [self.fileManager unzipFileAtPath:bundledBinariesfile
-                          inDirectoryPath:[[self configuration] tokaidoLocalHomeDirectoryPath]];
-        [_view finished_unzipping_binaries_bundled];
-    }
+    [self.fileManager createDirectoryAtPathIfNonExistant:binariesInstalledDirectoryPath];
+    [_view unzipping_binaries_bundled];
+    [self.fileManager unzipFileAtPath:bundledBinariesfile
+                      inDirectoryPath:[[self configuration] tokaidoLocalHomeDirectoryPath]];
+    [_view finished_unzipping_binaries_bundled];
 }
 
 -(void) applyRubyConfigPatches {
@@ -111,9 +104,6 @@
     } else {
         [_view clang_not_found];
     }
-    
-    TKDRubyConfigPatches *patches = [[TKDRubyConfigPatches alloc] initWithConfigFile:[self.configuration rubyConfigInstalledFile] withView:_view];
-    [patches execute];
 }
 
 -(NSArray *) rubyInstallations {
