@@ -10,6 +10,7 @@
 
 +(id) sharedTerminalSessions;
 
+-(void) open;
 -(void) openForApplication:(TKDApp *)app;
 
 @end

@@ -55,6 +55,10 @@
     return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Gems"];
 }
 
++(NSString *) temporalWorkingSpace {
+    return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Tmp"];
+}
+
 +(NSString *) gemsBinaryInstalledDirectoryPath {
     return [[self gemsInstalledDirectoryPath] stringByAppendingPathComponent:@"bin"];
 }
@@ -73,6 +77,10 @@
 
 +(NSString *) bootstrapInstalledDirectoryPath {
     return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Bootstrap"];
+}
+
++(NSString *) temporalBootstrapInstalledDirectoryPath {
+    return [[self temporalWorkingSpace] stringByAppendingPathComponent:@"Bootstrap"];
 }
 
 +(NSString *) firewallInstalledDirectoryPath {
@@ -101,6 +109,10 @@
 
 +(NSString *) bootstrapFirewallScriptInstalledFile {
     return [[self bootstrapInstalledDirectoryPath] stringByAppendingPathComponent:@"firewall/firewall_rules.rb"];
+}
+
++(NSString *) temporalBootstrapFirewallScriptInstalledFile {
+    return [[self temporalBootstrapInstalledDirectoryPath] stringByAppendingPathComponent:@"firewall/firewall_rules.rb"];
 }
 
 +(NSString *) boostrapScriptInstalledFile {

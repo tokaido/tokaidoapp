@@ -10,6 +10,8 @@
 +(NSString *) assetsDirectoryInstalledPath;
 +(NSString *) tokaidoLocalHomeDirectoryPath;
 
++(NSString *) temporalWorkingSpace;
+
 @end
 
 @interface TKDConfiguration(BundledFilesAndPaths)
@@ -41,6 +43,9 @@
 +(NSString *) boostrapScriptInstalledFile;
 +(NSString *) bootstrapInstalledDirectoryPath;
 +(NSString *) cubalogInstalledDirectoryPath;
+
++(NSString *) temporalBootstrapInstalledDirectoryPath;
++(NSString *) temporalBootstrapFirewallScriptInstalledFile;
 @end
 
 @interface TKDConfiguration(InstalledPaths)

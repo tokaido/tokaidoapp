@@ -33,9 +33,9 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
 -(void) execute {
     [_view starting_tokaido_bootstrap_detection];
     
-    if ([[self fileManager] fileExists:[self.configuration bootstrapLaunchDaemonPlistFile]])
+    if ([[self fileManager] fileExists:[self.configuration bootstrapLaunchDaemonPlistFile]]) {    
         [_view tokaido_bootstrap_detected];
-    else {
+    } else {
         [_view tokaido_bootstrap_not_detected];
         [_view tokaido_bootstrap_installing];
         

@@ -3,14 +3,12 @@
 #import "TKDApp.h"
 #import "TKDEditAppController.h"
 
-@interface TKDTokaidoController : NSWindowController
+@interface TKDTokaidoController : NSWindowController <NSWindowDelegate>
 
 @property IBOutlet NSCollectionView *railsAppsView;
 @property IBOutlet NSArrayController *appsArrayController;
 
 @property (nonatomic, strong) TKDEditAppController *editAppController;
-
-@property (nonatomic, strong) NSMutableArray *apps;
 
 - (IBAction)openTerminalPressed:(id)sender;
 - (IBAction)addAppPressed:(id)sender;

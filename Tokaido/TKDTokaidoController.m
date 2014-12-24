@@ -7,9 +7,6 @@
 #import "TKDApp.h"
 
 #import "TKDTerminalSessions.h"
-#import "TKDEnsureAppSupportUpdated.h"
-#import "TKDEnsureTokaidoAppSupportUpdatedProgress.h"
-#import "TKDLoadingTokaidoController.h"
 
 @interface TKDTokaidoController ()
 @property NSOpenPanel *openPanel;
@@ -18,25 +15,29 @@
 
 @implementation TKDTokaidoController
 
+- (id)init {
+    if (self = [super initWithWindowNibName:@"MainMenu" owner:self])
+        return self;
+    
+    return nil;
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+    TKDAppDelegate *del = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    if ([[_appsArrayController arrangedObjects] count] == 0) {
+        [del.window makeKeyAndOrderFront:del.window];
+        [NSApp activateIgnoringOtherApps:YES];
+    }
+}
+
 - (void)awakeFromNib {
     
     self.helpers = [[TKDTokaidoControllerHelper alloc] initWithController:self];
     
     CGSize size = CGSizeMake(150, 162);
     [self.railsAppsView setMinItemSize:size];
-    [self.railsAppsView setMaxItemSize:size];
-    
-    TKDEnsureAppSupportUpdated *task = [[TKDEnsureAppSupportUpdated alloc] init];
-    TKDEnsureTokaidoAppSupportUpdatedProgress *activationProgress = [[TKDEnsureTokaidoAppSupportUpdatedProgress alloc] init];
-    TKDLoadingTokaidoController *loadingWindow = [[TKDLoadingTokaidoController alloc] initWithWindowNibName:@"LoadingWindow" forLoader:activationProgress withTask:task];
-    
-    [self showWindow:self];
-    [NSApp beginSheet:loadingWindow.window
-       modalForWindow:self.window
-        modalDelegate:self
-       didEndSelector:@selector(didEndLoadingSheet:returnCode:contextInfo:)
-          contextInfo:nil];
-    
+      
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMuxrEvent:) name:kMuxrNotification object:nil];
 }
 
@@ -56,8 +57,6 @@
 - (IBAction)openTerminalPressed:(id)sender {
     [[TKDTerminalSessions sharedTerminalSessions] openForApplication:[self.helpers selectedApp]];
 }
-
-
 
 - (IBAction)addAppPressed:(id)sender;
 {
@@ -91,6 +90,12 @@
                 [ac addObject:newApp];
                 TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
                 [delegate saveAppSettings];
+                NSNotification *menuBarNotification = [NSNotification notificationWithName:kMenuBarNotification
+                                                                                 object:nil
+                                                                                  userInfo:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotification:menuBarNotification];
+                });
             }
         }
     }];
@@ -108,8 +113,12 @@
           contextInfo:nil];
 }
 
-- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
-{
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    NSNotification *menuBarNotification = [NSNotification notificationWithName:kMenuBarNotification
+                                                                        object:nil
+                                                                      userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:menuBarNotification];
     [sheet orderOut:self];
 }
 
@@ -122,13 +131,20 @@
     [self activateApp:[self.helpers loggerApp]];
 }
 
-- (void)removeApp:(TKDApp *)app;
-{
+- (void)removeApp:(TKDApp *)app {
     [self.appsArrayController removeObject:app];
+    NSLog(@"Deleted app... (%p) = %@", app, app.appDirectoryPath);
+    
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
+    [delegate saveAppSettings];
+    
+    NSNotification *menuBarNotification = [NSNotification notificationWithName:kMenuBarNotification
+                                                                        object:nil
+                                                                      userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:menuBarNotification];
     
     [TKDFileUtilities removeFileIfNonExistant:[[TKDConfiguration firewallInstalledDirectoryPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@.tokaido.out", app.appName]]];
-    [delegate saveAppSettings];
 }
 
 - (NSString *)appSelectionStringForCurrentCount
@@ -196,7 +212,7 @@
 #pragma mark Helper Methods
 
 - (TKDApp *)appWithHostname:(NSString *)hostname {
-    for (TKDApp *app in self.apps)
+    for (TKDApp *app in self.appsArrayController.arrangedObjects)
         if ([app.appHostname isEqualToString:hostname])
             return app;
     
@@ -234,10 +250,9 @@
 
 - (BOOL)directoryAlreadyListed:(NSURL *)url
 {
-    for (TKDApp *app in self.apps) {
-        if ([app.appDirectoryPath isEqual:[url path]]) {
+    for (TKDApp *app in self.appsArrayController.arrangedObjects) {
+        if ([app.appDirectoryPath isEqual:[url path]])
             return YES;
-        }
     }
     return NO;
 }

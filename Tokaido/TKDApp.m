@@ -261,7 +261,7 @@ static NSString *kAppIconKey = @"app_icon";
     return @{
              @"GEM_HOME": [TKDConfiguration gemsInstalledDirectoryPath],
              @"GEM_PATH": [TKDConfiguration gemsInstalledDirectoryPath],
-             @"PATH"    : [NSString stringWithFormat:@"%@:%@:%@/bin:%@",
+             @"PATH"    : [NSString stringWithFormat:@"%@:%@:%@:/bin:%@",
                            [TKDConfiguration binariesInstalledDirectoryPath],
                            [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
                            [TKDConfiguration gemsInstalledDirectoryPath],

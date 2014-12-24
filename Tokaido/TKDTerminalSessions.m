@@ -47,4 +47,8 @@
     window.frontmost = [NSNumber numberWithBool:YES];
 }
 
+-(void)open {
+    [self openForApplication:[[TKDNullApp alloc] init]];
+}
+
 @end

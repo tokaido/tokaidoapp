@@ -3,6 +3,7 @@
 #import "Terminal.h"
 #import "TKDConfiguration.h"
 #import "TKDFileUtilities.h"
+#import "TKDTerminalSessions.h"
 
 #import "TKDEnsureAppSupportUpdated.h"
 #import "TKDEnsureTokaidoInstallIsInstalled.h"
@@ -10,16 +11,178 @@
 #import "TKDStopTokaido.h"
 #import "TKDStartTokaido.h"
 
+#import "TKDApp.h"
+
+NSString * const kMenuBarNotification = @"kMenuBarNotification";
+
+@interface TKDAppDelegate()
+@property NSOpenPanel *openPanel;
+@end
 
 @implementation TKDAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [self loadAppSettings];
+- (void) home:(id) sender {
+    [self.window makeKeyAndOrderFront:self];
+    [NSApp activateIgnoringOtherApps:YES];
 }
 
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification {
+    [self.window makeKeyAndOrderFront:self];
+    [NSApp activateIgnoringOtherApps:YES];
+}
+
+-(void) openTerminal:(id) sender {
+    [[TKDTerminalSessions sharedTerminalSessions] open];
+}
+
+-(void) add:(id)sender {
+    
+    if (!self.openPanel) {
+        self.openPanel = [NSOpenPanel openPanel];
+    
+        [self.openPanel setCanChooseDirectories:YES];
+        [self.openPanel setCanChooseFiles:NO];
+        [self.openPanel setCanCreateDirectories:NO];
+        [self.openPanel setAllowsMultipleSelection:NO];
+    }
+        
+    [self.openPanel beginWithCompletionHandler:^(NSInteger result) {
+        NSURL *chosenURL = [self.openPanel URL];
+        
+        if ((result == NSFileHandlingPanelOKButton && chosenURL) && [self canAddURL:chosenURL]) {
+            TKDApp *newApp = nil;
+            
+            newApp = [[TKDApp alloc] init];
+            newApp.appName = [chosenURL lastPathComponent];
+            newApp.appDirectoryPath = [chosenURL path];
+            newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
+            newApp.appIconPath = [[[NSBundle mainBundle] URLForResource: @"TKIconRuby" withExtension:@"tiff"] absoluteString];
+            
+            [(TKDAppDelegate *) [[NSApplication sharedApplication] delegate] record:chosenURL];
+        }
+    }];
+}
+
+-(void)record:(NSURL *)chosenURL {
+    TKDApp *newApp = [[TKDApp alloc] init];
+    newApp.appName = [chosenURL lastPathComponent];
+    newApp.appDirectoryPath = [chosenURL path];
+    newApp.appHostname = [[newApp.appName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByAppendingString:@".tokaido"];
+    newApp.appIconPath = [[[NSBundle mainBundle] URLForResource: @"TKIconRuby" withExtension:@"tiff"] absoluteString];
+    
+    [self.apps addObject:newApp];
+    [self saveAppSettings];
+}
+
+- (BOOL)canAddURL:(NSURL *)url
 {
+    if (![self directoryContainsGemfile:url]) {
+        
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Selected directory isn't a Rails app", nil)
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:NSLocalizedString(@"Rails app should contain a Gemfile in the directory.", nil)];
+        [alert runModal];
+        
+        return NO;
+    }
+    
+    if ([self directoryAlreadyListed:url]) {
+        
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Selected directory is already in Tokaido", nil)
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:NSLocalizedString(@"Please choose a different directory.", nil)];
+        [alert runModal];
+        
+        return NO;
+    }
+    
     return YES;
+}
+
+
+- (BOOL)directoryAlreadyListed:(NSURL *)url
+{
+    for (TKDApp *app in self.apps) {
+        if ([app.appDirectoryPath isEqual:[url path]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)directoryContainsGemfile:(NSURL *)url
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *gemfilePath = [[url path] stringByAppendingPathComponent:@"Gemfile"];
+    return [fm fileExistsAtPath:gemfilePath];
+}
+
+
+-(void) menuBar {
+    NSMenu *tkdMenu = [[NSMenu alloc] init];
+    
+    [tkdMenu addItemWithTitle:@"Home" action:@selector(home:) keyEquivalent:@"H"];
+    [tkdMenu addItem:[NSMenuItem separatorItem]];
+    
+    
+    NSMenuItem *totalApps = [[NSMenuItem alloc] init];
+    totalApps.enabled = NO;
+    
+    if ([self.apps count] == 0)
+        [tkdMenu addItem:[NSMenuItem separatorItem]];
+    else {
+        for (TKDApp *tkdApp in self.apps)
+            [tkdMenu addItemWithTitle:tkdApp.appName action:@selector(edit:) keyEquivalent:@""];
+    
+        [tkdMenu addItem:[NSMenuItem separatorItem]];
+    }
+    
+    [tkdMenu addItemWithTitle:@"Manage Apps..." action:@selector(manage:) keyEquivalent:@"A"];
+    [tkdMenu addItemWithTitle:@"Open Terminal..." action:@selector(openTerminal:) keyEquivalent:@"T"];
+    [tkdMenu addItem:[NSMenuItem separatorItem]];
+    
+    NSMenuItem *rubyVersion = [[NSMenuItem alloc] init];
+    rubyVersion.title = [NSString stringWithFormat:@"Using Ruby %@", [TKDConfiguration rubyVersion]];
+    rubyVersion.enabled = NO;
+    
+    [tkdMenu addItem:rubyVersion];
+    
+    _statusItem.menu = tkdMenu;
+}
+
+#pragma mark NSNotification Handlers
+- (void)handleMenuBarEvent:(NSNotification *)note  {
+    [self menuBar];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    _statusItem.title = @"";
+    _statusItem.image = [NSImage imageNamed:@"TKIconRubyStatusBar"];
+    
+    NSNib *tokaidoControllerNibs = [[NSNib alloc] initWithNibNamed:@"MainWindow" bundle:[NSBundle mainBundle]];
+    [tokaidoControllerNibs instantiateWithOwner:self topLevelObjects:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuBarEvent:) name:kMenuBarNotification object:nil];
+    
+    [self loadAppSettings];
+    [self menuBar];
+    
+    if ([self.apps count] == 0)
+        [self.window makeKeyAndOrderFront:self];
+}
+
+-(void) manage:(id) sender {
+    [self.tokaidoController.window makeKeyAndOrderFront:self];
+    [NSApp activateIgnoringOtherApps:YES];
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+    return NO;
 }
 
 -(void) starting_shutting_down_tokaido_bootstrap {
@@ -31,7 +194,7 @@
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
-    for (TKDApp *app in self.tokaidoController.apps)
+    for (TKDApp *app in self.apps)
         [app enterState:TKDAppOff];
     
     [self saveAppSettings];
@@ -44,29 +207,35 @@
 - (void)loadAppSettings {
     NSString *appSettingsPath = [TKDConfiguration tokaidoApplicationsConfigurations];
     
-    NSMutableArray *apps = nil;
+    NSMutableArray *savedApps;
+    
     @try {
-        apps = [NSKeyedUnarchiver unarchiveObjectWithFile:appSettingsPath];
+        savedApps = [NSKeyedUnarchiver unarchiveObjectWithFile:appSettingsPath];
     }
     @catch (NSException *exception) {
         NSLog(@"ERROR: Couldn't load app settings: %@", exception);
     }
     
-    if (apps) {
-        self.tokaidoController.apps = apps;
+    if (savedApps) {
+        self.apps = savedApps;
     } else {
-        self.tokaidoController.apps = [[NSMutableArray alloc] init];
+        self.apps = [[NSMutableArray alloc] init];
         NSLog(@"ERROR: Could not load app settings.");
     }
 }
 
 - (void)saveAppSettings {
     NSString *appSettingsPath = [TKDConfiguration tokaidoApplicationsConfigurations];
+
+    BOOL success = [NSKeyedArchiver archiveRootObject:self.apps toFile:appSettingsPath];
     
-    BOOL success = [NSKeyedArchiver archiveRootObject:self.tokaidoController.apps toFile:appSettingsPath];
+    for(TKDApp *a in self.apps)
+        NSLog(@"%p={%@}", a, a.appDirectoryPath);
     
     if (!success)
         NSLog(@"ERROR: Couldn't save app settings.");
+    else
+        NSLog(@"GRABADO");
     
 }
 
@@ -76,8 +245,7 @@
 {
     NSString *fullPathToRubyZip = [[TKDConfiguration rubiesBundledDirectoryPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip", rubyName]];
     [TKDFileUtilities unzipFileAtPath:fullPathToRubyZip inDirectoryPath:[TKDConfiguration rubiesInstalledDirectoryPath]];
-    
-    // We need a better way to decide what the default ruby should be. Right now we only have one, so just set it as default.
+
     NSTask *linkTask = [[NSTask alloc] init];
     [linkTask setLaunchPath:@"/bin/ln"];
     [linkTask setCurrentDirectoryPath:[TKDConfiguration applicationSupportDirectoryPath]];
@@ -94,13 +262,9 @@
     [app enterSubstate:TKDAppBootingBundling];
     
     NSString *executablePath = [TKDConfiguration rubyExecutableInstalledFile];
-    NSLog(@"%@", executablePath);
     NSString *setupScriptPath = [TKDConfiguration setupScriptGemsInstalledFile];
-    NSLog(@"%@", setupScriptPath);
     NSString *bundlerPath = [TKDConfiguration gemsBundlerInstalledDirectoryPath];
-    NSLog(@"%@", bundlerPath);
     NSString *gemHome = [TKDConfiguration gemsInstalledDirectoryPath];
-    NSLog(@"%@", gemHome);
     
     NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
     [arguments addObject:@"-r"];

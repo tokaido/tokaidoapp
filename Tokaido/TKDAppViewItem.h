@@ -15,6 +15,7 @@
 @property (nonatomic, strong) IBOutlet NSObjectController *appController;
 @property (nonatomic, strong) IBOutlet TKDSelectableIcon *appIcon;
 @property (nonatomic, strong) IBOutlet TKDRailsAppTokenField *tokenField;
+@property (nonatomic, strong) IBOutlet NSTextField *appNameTextField;
 
 @property (nonatomic, strong) IBOutlet NSMenu *appMenu;
 
