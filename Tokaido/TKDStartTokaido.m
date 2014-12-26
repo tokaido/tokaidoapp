@@ -1,6 +1,7 @@
 #import "TKDStartTokaido.h"
 #import "TKDConfiguration.h"
 #import "TKDFileUtilities.h"
+#import "TKDUtilities.h"
 
 #import <ServiceManagement/ServiceManagement.h>
 
@@ -33,8 +34,17 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 	NSString *outPath = [[self configuration] firewallStandardOutInstalledFile];
 	NSString *errPath = [[self configuration] firewallStandardErrorInstalledFile];
 	NSString *gemHome = [[self configuration] gemsInstalledDirectoryPath];
-	NSString *gemPath = [[self configuration] gemsBinaryInstalledDirectoryPath];
-	NSString *path = [executableDirectory stringByAppendingFormat:@":%@", gemPath];
+    NSString *path = [NSString stringWithFormat:@"%@:%@:%@:%@:%@:%@:%@:%@:%@",
+                      [executableDirectory stringByAppendingString:@"bin"],
+                      [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
+                      [TKDConfiguration gemsBinaryInstalledDirectoryPath],
+                      @"/Applications/Postgres.app/Contents/Versions/9.3/bin",
+                      @"/bin",
+                      @"/usr/local/bin",
+                      @"/usr/bin",
+                      @"/sbin",
+                      @"/usr/sbin"];
+    
     
 	[_view unlinking_current_socket];
 	unlink([[self.configuration muxrSocketPath] UTF8String]);

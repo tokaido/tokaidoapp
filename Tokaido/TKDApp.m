@@ -261,11 +261,16 @@ static NSString *kAppIconKey = @"app_icon";
     return @{
              @"GEM_HOME": [TKDConfiguration gemsInstalledDirectoryPath],
              @"GEM_PATH": [TKDConfiguration gemsInstalledDirectoryPath],
-             @"PATH"    : [NSString stringWithFormat:@"%@:%@:%@:%@",
+             @"PATH"    : [NSString stringWithFormat:@"%@:%@:%@:%@:%@:%@:%@:%@:%@",
                            [TKDConfiguration binariesInstalledDirectoryPath],
                            [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
                            [TKDConfiguration gemsBinaryInstalledDirectoryPath],
-                           @"/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/sbin:/usr/sbin:/Applications/Postgres.app/Contents/Versions/9.3/bin"] };
+                           @"/Applications/Postgres.app/Contents/Versions/9.3/bin",
+                           @"/bin",
+                           @"/usr/local/bin",
+                           @"/usr/bin",
+                           @"/sbin",
+                           @"/usr/sbin"] };
 }
 
 #pragma mark - TKDTaskDelegate methods

@@ -56,6 +56,7 @@
 +(NSString *) rubiesInstalledDirectoryPath;
 +(NSString *) gemsInstalledDirectoryPath;
 +(NSString *) gemsBinaryInstalledDirectoryPath;
++(NSString *) magickInstalledDirectoryPath;
 
 +(NSString *) binariesInstalledDirectoryPath;
 

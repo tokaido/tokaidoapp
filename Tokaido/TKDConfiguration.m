@@ -5,11 +5,11 @@
 @implementation TKDConfiguration
 
 +(NSString *) rubyVersion {
-    return @"2.1.5-p273";
+    return @"2.2.0-p0";
 }
 
 +(NSArray *) rubiesBundled {
-    return @[[[TKDRubyBinary alloc] initWithName:@"2.1.5-p273"]];
+    return @[[[TKDRubyBinary alloc] initWithName:@"2.2.0-p0"]];
 }
 
 +(NSArray *) rubiesInstalled {
@@ -28,7 +28,7 @@
 }
 
 +(NSString *) rubyConfigInstalledFile {
-    return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.1.5-p273/lib/ruby/2.1.0/x86_64-darwin12.0/rbconfig.rb"];
+    return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.2.0-p0/lib/ruby/2.2.0/x86_64-darwin12.0/rbconfig.rb"];
 }
 
 +(NSString *) applicationName {
@@ -73,6 +73,10 @@
 
 +(NSString *) compilerInstalledDirectoryPath {
     return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Clang"];
+}
+
++(NSString *) magickInstalledDirectoryPath {
+    return [[self gemsInstalledDirectoryPath] stringByAppendingPathComponent:@"/bin_files/magick"];
 }
 
 +(NSString *) bootstrapInstalledDirectoryPath {

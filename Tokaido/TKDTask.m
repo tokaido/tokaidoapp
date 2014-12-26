@@ -73,6 +73,7 @@
 
 - (NSDictionary *)environment {
     if (self.app) {
+        NSLog(@"%@", self.app.environment);
         return self.app.environment;
     } else {
         return _environment;

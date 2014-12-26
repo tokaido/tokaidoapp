@@ -98,12 +98,18 @@
         NSTask *linkTask = [[NSTask alloc] init];
         [linkTask setLaunchPath:@"/bin/ln"];
         [linkTask setCurrentDirectoryPath:[self.configuration compilerInstalledDirectoryPath]];
-        [linkTask setArguments:@[ @"-s", @"/usr/bin/clang", @"clang" ] ];
+        [linkTask setArguments:@[ @"-f", @"-s", @"/usr/bin/clang", @"clang" ] ];
         [linkTask launch];
         [_view finished_clang_symlink];
     } else {
         [_view clang_not_found];
     }
+    
+    NSTask *linkTask = [[NSTask alloc] init];
+    [linkTask setLaunchPath:@"/bin/ln"];
+    [linkTask setCurrentDirectoryPath:NSHomeDirectory()];
+    [linkTask setArguments:@[ @"-f", @"-s", [self.configuration magickInstalledDirectoryPath], @".magick" ] ];
+    [linkTask launch];
 }
 
 -(NSArray *) rubyInstallations {
