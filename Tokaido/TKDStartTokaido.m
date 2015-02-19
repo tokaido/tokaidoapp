@@ -35,7 +35,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
 	NSString *errPath = [[self configuration] firewallStandardErrorInstalledFile];
 	NSString *gemHome = [[self configuration] gemsInstalledDirectoryPath];
     NSString *path = [NSString stringWithFormat:@"%@:%@:%@:%@:%@:%@:%@:%@:%@",
-                      [executableDirectory stringByAppendingString:@"bin"],
+                      [TKDConfiguration binariesInstalledDirectoryPath],
                       [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
                       [TKDConfiguration gemsBinaryInstalledDirectoryPath],
                       @"/Applications/Postgres.app/Contents/Versions/9.3/bin",

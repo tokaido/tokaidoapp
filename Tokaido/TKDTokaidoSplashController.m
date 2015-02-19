@@ -15,6 +15,8 @@
 - (id)initWithWindowNibName:(NSString *)windowNibName {
     
     if (self = [super initWithWindowNibName:windowNibName]) {
+        _logger = [[TKDCubalogApp alloc] init];
+        
         _progress.indeterminate = YES;
         _progress.displayedWhenStopped = YES;
         return self;
@@ -54,8 +56,8 @@
         [_status setStringValue:@"Ready. Find me in the bar and start managing apps."];
     });
     
-    _logger = [[TKDCubalogApp alloc] init];
-    [[TKDMuxrManager defaultManager] addApp:_logger];
+    // Force connection attempt with Muxr
+    [TKDMuxrManager defaultManager];
 }
 
 -(IBAction)openTerminal:(id)sender {

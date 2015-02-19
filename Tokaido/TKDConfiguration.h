@@ -3,6 +3,7 @@
 @interface TKDConfiguration : NSObject
 
 +(NSString *) rubyVersion;
++(NSString *) rubyNamespace;
 +(NSString *) applicationName;
 +(NSString *) bundlePath;
 +(NSString *) applicationSupportDirectoryPath;
@@ -54,6 +55,7 @@
 +(NSString *) compilerExecutableInstalledFile;
 
 +(NSString *) rubiesInstalledDirectoryPath;
++(NSString *) gemsGlobalInstalledDirectoryPath;
 +(NSString *) gemsInstalledDirectoryPath;
 +(NSString *) gemsBinaryInstalledDirectoryPath;
 +(NSString *) magickInstalledDirectoryPath;

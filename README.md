@@ -6,7 +6,7 @@ Rubygems, Rails and all necessary gems are installed into the
 user's system, available from the Terminal.
 
 ## Getting Started
-1. Visit https://github.com/tokaido/tokaidoapp/releases/tag/v1.0
+1. Visit https://github.com/tokaido/tokaidoapp/releases/tag/v2.1
 2. Click on the Tokaido.zip button to download the app
 3. When the Application downloads, drag it to your Applications folder
 4. Double Click Tokaido.app

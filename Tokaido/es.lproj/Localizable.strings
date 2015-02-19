@@ -90,4 +90,4 @@
 
 "Unable to activate app." = "No se puede activar la aplicación.";
 "`bundle install` failed. Make sure it works before proceeding. Also check if a gem added requires a compiler and install the developer tools to proceed." = "`bundle install` falló. Asegúrate que funcione antes de proceder. Revisa también si has agregado una gema que requiera un compilador e instala los 'developer tools' antes de proceder";
-"Booting failed. Tokaido currently uses the puma webserver. Check if `gem puma` entry is in your Gemfile and try again." = "Falló el levantamiento. Tokaido actualmente usa el servidor web puma. Revisa si `gem puma` se encuentra en el Gemfile e intenta nuevamente.";
+"Booting failed." = "Falló el levantamiento.";
