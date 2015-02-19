@@ -72,12 +72,10 @@
 }
 
 - (NSDictionary *)environment {
-    if (self.app) {
-        NSLog(@"%@", self.app.environment);
+    if (self.app)
         return self.app.environment;
-    } else {
+    else
         return _environment;
-    }
 }
 
 - (void)setLaunchPath:(NSString *)launchPath {

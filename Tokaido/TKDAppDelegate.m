@@ -27,8 +27,10 @@ NSString * const kMenuBarNotification = @"kMenuBarNotification";
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification {
-    [self.window makeKeyAndOrderFront:self];
-    [NSApp activateIgnoringOtherApps:YES];
+    if (!_tokaidoController.window.visible) {
+        [self.window makeKeyAndOrderFront:self];
+        [NSApp activateIgnoringOtherApps:YES];
+    }
 }
 
 -(void) openTerminal:(id) sender {
@@ -229,13 +231,8 @@ NSString * const kMenuBarNotification = @"kMenuBarNotification";
 
     BOOL success = [NSKeyedArchiver archiveRootObject:self.apps toFile:appSettingsPath];
     
-    for(TKDApp *a in self.apps)
-        NSLog(@"%p={%@}", a, a.appDirectoryPath);
-    
     if (!success)
         NSLog(@"ERROR: Couldn't save app settings.");
-    else
-        NSLog(@"GRABADO");
     
 }
 

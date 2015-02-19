@@ -2,7 +2,6 @@
 #import "TKDApp.h"
 
 @interface TKDAppLogViewerController ()
-
 @end
 
 @implementation TKDAppLogViewerController
@@ -18,7 +17,7 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    [[self.viewer mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://cubalog.tokaido/logs/%@?path=%@", self.app.appName, self.app.appDirectoryPath]]]];
+    [[self.viewer mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://cubalog.tokaido/logs/%@/raw?path=%@", self.app.appName, self.app.appDirectoryPath]]]];
 }
 
 -(NSArray *)webView:(WebView *)sender

@@ -55,6 +55,7 @@ NSString * const kMuxrNotification = @"kMuxrNotification";
     if (TAG_MUXR_RESPONSE == tag) {
         if ([muxrLine isEqualToString:@"TOKAIDO ACTIVE\n"]) {
             NSLog(@"Muxr Manager Ready");
+            [self addApp:[[TKDCubalogApp alloc] init]];
             return;
         }
     } else if (TAG_AWAIT_COMMAND == tag) {

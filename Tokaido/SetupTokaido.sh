@@ -10,7 +10,7 @@ clear
 
 BIN="$HOME/.tokaido/bin"
 
-export TOKAIDO_GEM_HOME=$HOME/.tokaido/Gems
+export TOKAIDO_GEM_HOME=$HOME/.tokaido/Gems/2.1.0
 export GEM_HOME=$TOKAIDO_GEM_HOME
 export GEM_PATH=$TOKAIDO_GEM_HOME
 export PATH=$BIN:$TOKAIDO_PATH:$GEM_HOME/bin:$PATH

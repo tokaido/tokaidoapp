@@ -124,7 +124,6 @@
 
 - (void)didEndLoadingSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     [sheet orderOut:self];
-    [self activateCubalog];
 }
 
 - (void)activateCubalog {
@@ -133,7 +132,6 @@
 
 - (void)removeApp:(TKDApp *)app {
     [self.appsArrayController removeObject:app];
-    NSLog(@"Deleted app... (%p) = %@", app, app.appDirectoryPath);
     
     TKDAppDelegate *delegate = (TKDAppDelegate *)[[NSApplication sharedApplication] delegate];
     [delegate saveAppSettings];
@@ -183,8 +181,6 @@
     
     NSString *action = [[note userInfo] objectForKey:@"action"];
     
-    NSLog(@"ACTION: %@", action);
-    
     if ([action isEqualToString:@"ERR"]) {
         [app setStatus:NSLocalizedString(@"Booting failed. Review the logs or \"Open in Terminal\".", nil)];
         
@@ -193,7 +189,7 @@
                                              defaultButton:@"OK"
                                            alternateButton:nil
                                                otherButton:nil
-                                 informativeTextWithFormat:NSLocalizedString(@"Booting failed. Tokaido currently uses the puma webserver. Check if `gem puma` entry is in your Gemfile and try again.", nil)];
+                                 informativeTextWithFormat:NSLocalizedString(@"Booting failed.", nil)];
             
             [alert runModal];
         });

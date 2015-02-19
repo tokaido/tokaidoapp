@@ -10,6 +10,7 @@
 -(void) installGemsBundled;
 -(void) installBinariesBundled;
 -(void) applyRubyConfigPatches;
+-(void) guaranteeRubySymlinkToCurrent;
 @end
 
 @implementation TKDEnsureAppSupportUpdated
@@ -39,6 +40,8 @@
     [self installBinariesBundled];
     [self applyRubyConfigPatches];
     
+    [self guaranteeRubySymlinkToCurrent];
+    
     [_view finished_ensuring_app_support_is_updated];
 }
 
@@ -65,12 +68,19 @@
     [_view finished_ruby_installations];
 }
 
+-(void) guaranteeRubySymlinkToCurrent {
+    TKDRubyBinary *binary = [[TKDRubyBinary alloc] initWithName:[[self configuration] rubyVersion]];
+    TKDInstallRuby *current = [[TKDInstallRuby alloc] initWithRubyBinary:binary withView:_view];
+
+    [current symlink];
+}
+
 -(void) installGemsBundled {
-    NSString *gemsInstalledDirectoryPath = [[self configuration] gemsInstalledDirectoryPath];
+    NSString *gemsGlobalInstalledDirectoryPath = [[self configuration] gemsGlobalInstalledDirectoryPath];
     NSString *bundledGemsZipfile = [[self configuration] bundledGemsFile];
 	
     [_view checking_gems_installation];
-    [self.fileManager createDirectoryAtPathIfNonExistant:gemsInstalledDirectoryPath];
+    [self.fileManager createDirectoryAtPathIfNonExistant:gemsGlobalInstalledDirectoryPath];
     [_view unzipping_gems_bundled];
     [self.fileManager unzipFileAtPath:bundledGemsZipfile
                       inDirectoryPath:[[self configuration] tokaidoLocalHomeDirectoryPath]];

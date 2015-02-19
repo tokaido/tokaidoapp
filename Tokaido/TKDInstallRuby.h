@@ -12,5 +12,6 @@
 -(TKDInstallRuby *) initWithRubyBinary:(TKDRubyBinary *)bin withView:(id <TKDAppSupportEnsure>)view;
 
 -(void) install;
+-(void) symlink;
 
 @end

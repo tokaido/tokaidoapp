@@ -5,11 +5,15 @@
 @implementation TKDConfiguration
 
 +(NSString *) rubyVersion {
-    return @"2.2.0-p0";
+    return @"2.1.5-p273";
+}
+
++(NSString *) rubyNamespace {
+    return @"2.1.0";
 }
 
 +(NSArray *) rubiesBundled {
-    return @[[[TKDRubyBinary alloc] initWithName:@"2.2.0-p0"]];
+    return @[[[TKDRubyBinary alloc] initWithName:@"2.1.5-p273"]];
 }
 
 +(NSArray *) rubiesInstalled {
@@ -28,7 +32,7 @@
 }
 
 +(NSString *) rubyConfigInstalledFile {
-    return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.2.0-p0/lib/ruby/2.2.0/x86_64-darwin12.0/rbconfig.rb"];
+    return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.1.5-p273/lib/ruby/2.1.0/x86_64-darwin12.0/rbconfig.rb"];
 }
 
 +(NSString *) applicationName {
@@ -51,8 +55,12 @@
     return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Rubies"];
 }
 
-+(NSString *) gemsInstalledDirectoryPath {
++(NSString *) gemsGlobalInstalledDirectoryPath {
     return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:@"Gems"];
+}
+
++(NSString *) gemsInstalledDirectoryPath {
+    return [[self tokaidoLocalHomeDirectoryPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"Gems/%@", [self rubyNamespace]]];
 }
 
 +(NSString *) temporalWorkingSpace {

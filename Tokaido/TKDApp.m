@@ -231,7 +231,6 @@ static NSString *kAppIconKey = @"app_icon";
             NSString *setupScriptPath = [TKDConfiguration setupScriptGemsInstalledFile];
             NSString *bundlerPath = [TKDConfiguration gemsBundlerInstalledDirectoryPath];
             check.arguments = @[ @"-r", setupScriptPath, bundlerPath, @"check" ];
-            
             [check launch];
             
             if ([check terminationStatus] == 0) {
