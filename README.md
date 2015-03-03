@@ -1,9 +1,10 @@
 # Tokaido.app
 
 ## Background
-Tokaido installs Rails into the system. A working copy of Ruby,
-Rubygems, Rails and all necessary gems are installed into the
-user's system, available from the Terminal.
+[Tokaido](http://yehudakatz.com/2012/04/13/tokaido-my-hopes-and-dreams)
+installs Rails as a Mac OS X application.
+Working copies of Ruby, Rubygems, Rails and all necessary gems
+are installed into the user's system, available from the Terminal.
 
 ## Getting Started
 1. Visit https://github.com/tokaido/tokaidoapp/releases/tag/v2.1
