@@ -1,4 +1,0 @@
-Documentation set was installed to Xcode!
-
-Path: /Users/patrick/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.LibYAML-0.1.4.docset
-Time: 2013-04-02 21:09:59 +0000

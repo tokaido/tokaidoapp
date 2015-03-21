@@ -1,4 +1,0 @@
-Documentation set was installed to Xcode!
-
-Path: /Users/patrick/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.YAML-Framework-0.0.1.docset
-Time: 2013-04-02 21:10:04 +0000
