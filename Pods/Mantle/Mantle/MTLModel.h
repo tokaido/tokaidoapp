@@ -27,6 +27,10 @@
 // Initializes the receiver using key-value coding, setting the keys and values
 // in the given dictionary.
 //
+// Subclass implementations may override this method, calling the super
+// implementation, in order to perform further processing and initialization
+// after deserialization.
+//
 // dictionaryValue - Property keys and values to set on the receiver. Any NSNull
 //                   values will be converted to nil before being used. KVC
 //                   validation methods will automatically be invoked for all of
@@ -63,6 +67,43 @@
 //
 // `model` must be an instance of the receiver's class or a subclass thereof.
 - (void)mergeValuesForKeysFromModel:(MTLModel *)model;
+
+// Compares the receiver with another object for equality.
+//
+// The default implementation is equivalent to comparing both models'
+// -dictionaryValue.
+//
+// Note that this may lead to infinite loops if the receiver holds a circular
+// reference to another MTLModel and both use the default behavior.
+// It is recommended to override -isEqual: in this scenario.
+- (BOOL)isEqual:(id)object;
+
+// A string that describes the contents of the receiver.
+//
+// The default implementation is based on the receiver's class and its
+// -dictionaryValue.
+//
+// Note that this may lead to infinite loops if the receiver holds a circular
+// reference to another MTLModel and both use the default behavior.
+// It is recommended to override -description in this scenario.
+- (NSString *)description;
+
+@end
+
+// Implements validation logic for MTLModel.
+@interface MTLModel (Validation)
+
+// Validates the model.
+//
+// The default implementation simply invokes -validateValue:forKey:error: with
+// all +propertyKeys and their current value. If -validateValue:forKey:error:
+// returns a new value, the property is set to that new value.
+//
+// error - If not NULL, this may be set to any error that occurs during
+//         validation
+//
+// Returns YES if the model is valid, or NO if the validation failed.
+- (BOOL)validate:(NSError **)error;
 
 @end
 

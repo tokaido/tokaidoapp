@@ -44,6 +44,36 @@ extern NSString * const MTLBooleanValueTransformerName;
 // array elements back and forth.
 + (NSValueTransformer *)mtl_JSONArrayTransformerWithModelClass:(Class)modelClass;
 
+// A reversible value transformer to transform between the keys and objects of a
+// dictionary.
+//
+// dictionary          - The dictionary whose keys and values should be
+//                       transformed between. This argument must not be nil.
+// defaultValue        - The result to fall back to, in case no key matching the
+//                       input value was found during a forward transformation.
+// reverseDefaultValue - The result to fall back to, in case no value matching
+//                       the input value was found during a reverse
+//                       transformation.
+//
+// Can for example be used for transforming between enum values and their string
+// representation.
+//
+//   NSValueTransformer *valueTransformer = [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
+//     @"foo": @(EnumDataTypeFoo),
+//     @"bar": @(EnumDataTypeBar),
+//   } defaultValue: @(EnumDataTypeUndefined) reverseDefaultValue: @"undefined"];
+//
+// Returns a transformer that will map from keys to values in dictionary
+// for forward transformation, and from values to keys for reverse
+// transformations. If no matching key or value can be found, the respective
+// default value is returned.
++ (NSValueTransformer *)mtl_valueMappingTransformerWithDictionary:(NSDictionary *)dictionary defaultValue:(id)defaultValue reverseDefaultValue:(id)reverseDefaultValue;
+
+// Returns a value transformer created by calling
+// `+mtl_valueMappingTransformerWithDictionary:defaultValue:reverseDefaultValue:`
+// with a default value of `nil` and a reverse default value of `nil`.
++ (NSValueTransformer *)mtl_valueMappingTransformerWithDictionary:(NSDictionary *)dictionary;
+
 @end
 
 @interface NSValueTransformer (UnavailableMTLPredefinedTransformerAdditions)
