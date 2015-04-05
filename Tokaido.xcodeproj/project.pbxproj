@@ -13,6 +13,7 @@
 		0E15770419965F1D009204B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E15770619965F1D009204B2 /* Localizable.strings */; };
 		0E15770819966B12009204B2 /* EditAppWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E15770A19966B12009204B2 /* EditAppWindow.xib */; };
 		0E15770C19966C55009204B2 /* TKDAppViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E15770E19966C55009204B2 /* TKDAppViewItem.xib */; };
+		0EB290131ABD6313009123E9 /* Installation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB290121ABD6313009123E9 /* Installation.swift */; };
 		0EB415F81A4A040000C34900 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0EB415F71A4A040000C34900 /* LICENSE */; };
 		0EFE99AE1A42E307000FC33D /* SplashWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE99AD1A42E307000FC33D /* SplashWindow.xib */; };
 		0EFE99B11A42E4C3000FC33D /* TKDTokaidoSplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE99B01A42E4C3000FC33D /* TKDTokaidoSplashController.m */; };
@@ -32,17 +33,12 @@
 		3AD6931C16373C9F005AF81E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6931A16373C9F005AF81E /* Credits.rtf */; };
 		3AD6931F16373C9F005AF81E /* TKDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6931E16373C9F005AF81E /* TKDAppDelegate.m */; };
 		3AD6932216373C9F005AF81E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6932016373C9F005AF81E /* MainWindow.xib */; };
-		3AD6932A16373C9F005AF81E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6932916373C9F005AF81E /* SenTestingKit.framework */; };
-		3AD6932B16373C9F005AF81E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6930B16373C9F005AF81E /* Cocoa.framework */; };
-		3AD6933316373C9F005AF81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6933116373C9F005AF81E /* InfoPlist.strings */; };
-		3AD6933616373C9F005AF81E /* TokaidoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD6933516373C9F005AF81E /* TokaidoTests.m */; };
 		3AD693451637436E005AF81E /* TKDTokaidoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD693441637436E005AF81E /* TKDTokaidoController.m */; };
 		3AD6934B16374795005AF81E /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD6934A16374795005AF81E /* ScriptingBridge.framework */; };
 		3AD6934D16374989005AF81E /* SetupTokaido.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3AD6934C16374989005AF81E /* SetupTokaido.sh */; };
 		3AD694E6163A1475005AF81E /* TKDApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD694E5163A1475005AF81E /* TKDApp.m */; };
 		3AD69509163B4093005AF81E /* TKDAppViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69508163B4093005AF81E /* TKDAppViewItem.m */; };
 		C545BDBB178346D900DACCBD /* TKDTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C545BDBA178346D900DACCBD /* TKDTask.m */; };
-		C545BDBC178346D900DACCBD /* TKDTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C545BDBA178346D900DACCBD /* TKDTask.m */; };
 		C5E21F8317882F94002B24B5 /* TKDAppViewItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E21F8217882F94002B24B5 /* TKDAppViewItemView.m */; };
 		CD1FCB8C169D0DCF00FB7E36 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB89169D0DCE00FB7E36 /* Green@2x.png */; };
 		CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB8A169D0DCF00FB7E36 /* Red@2x.png */; };
@@ -79,7 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3AD6932C16373C9F005AF81E /* PBXContainerItemProxy */ = {
+		0EB290141ABD6313009123E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3AD692FE16373C9F005AF81E /* Project object */;
 			proxyType = 1;
@@ -107,13 +103,15 @@
 		0E15770019965E9A009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		0E15770119965E9A009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0E15770219965E9A009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = es.lproj/Credits.rtf; sourceTree = "<group>"; };
-		0E15770319965E9A009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0E15770519965F1D009204B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0E15770719965F33009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0E15770919966B12009204B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/EditAppWindow.xib; sourceTree = "<group>"; };
 		0E15770B19966B19009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/EditAppWindow.xib; sourceTree = "<group>"; };
 		0E15770D19966C55009204B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TKDAppViewItem.xib; sourceTree = "<group>"; };
 		0E15770F19966C5C009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/TKDAppViewItem.xib; sourceTree = "<group>"; };
+		0EB2900E1ABD6313009123E9 /* TokaidoAcceptanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TokaidoAcceptanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EB290111ABD6313009123E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EB290121ABD6313009123E9 /* Installation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Installation.swift; sourceTree = "<group>"; };
 		0EB415F71A4A040000C34900 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		0EFE99AD1A42E307000FC33D /* SplashWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashWindow.xib; sourceTree = "<group>"; };
 		0EFE99AF1A42E4C3000FC33D /* TKDTokaidoSplashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDTokaidoSplashController.h; sourceTree = "<group>"; };
@@ -141,12 +139,6 @@
 		3AD6931D16373C9F005AF81E /* TKDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKDAppDelegate.h; sourceTree = "<group>"; };
 		3AD6931E16373C9F005AF81E /* TKDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKDAppDelegate.m; sourceTree = "<group>"; };
 		3AD6932116373C9F005AF81E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		3AD6932816373C9F005AF81E /* TokaidoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TokaidoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AD6932916373C9F005AF81E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		3AD6933016373C9F005AF81E /* TokaidoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TokaidoTests-Info.plist"; sourceTree = "<group>"; };
-		3AD6933216373C9F005AF81E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3AD6933416373C9F005AF81E /* TokaidoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokaidoTests.h; sourceTree = "<group>"; };
-		3AD6933516373C9F005AF81E /* TokaidoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TokaidoTests.m; sourceTree = "<group>"; };
 		3AD693431637436E005AF81E /* TKDTokaidoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDTokaidoController.h; sourceTree = "<group>"; };
 		3AD693441637436E005AF81E /* TKDTokaidoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTokaidoController.m; sourceTree = "<group>"; };
 		3AD69348163746B7005AF81E /* SystemEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemEvents.h; sourceTree = "<group>"; };
@@ -220,6 +212,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0EB2900B1ABD6313009123E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AD6930416373C9F005AF81E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -233,23 +232,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3AD6932416373C9F005AF81E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3AD6932A16373C9F005AF81E /* SenTestingKit.framework in Frameworks */,
-				3AD6932B16373C9F005AF81E /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EB2900F1ABD6313009123E9 /* TokaidoAcceptanceTests */ = {
+			isa = PBXGroup;
+			children = (
+				0EB290121ABD6313009123E9 /* Installation.swift */,
+				0EB290101ABD6313009123E9 /* Supporting Files */,
+			);
+			path = TokaidoAcceptanceTests;
+			sourceTree = "<group>";
+		};
+		0EB290101ABD6313009123E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EB290111ABD6313009123E9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		3AD692FC16373C9F005AF81E = {
 			isa = PBXGroup;
 			children = (
 				3AD6931116373C9F005AF81E /* Tokaido */,
-				3AD6932E16373C9F005AF81E /* TokaidoTests */,
+				0EB2900F1ABD6313009123E9 /* TokaidoAcceptanceTests */,
 				3AD6930A16373C9F005AF81E /* Frameworks */,
 				3AD6930816373C9F005AF81E /* Products */,
 				628C02124ECA27D179059706 /* Pods */,
@@ -260,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				3AD6930716373C9F005AF81E /* Tokaido.app */,
-				3AD6932816373C9F005AF81E /* TokaidoTests.octest */,
+				0EB2900E1ABD6313009123E9 /* TokaidoAcceptanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,7 +280,6 @@
 				3A19ECCC163F5B5C0035ABA2 /* Security.framework */,
 				3AD6934A16374795005AF81E /* ScriptingBridge.framework */,
 				3AD6930B16373C9F005AF81E /* Cocoa.framework */,
-				3AD6932916373C9F005AF81E /* SenTestingKit.framework */,
 				3AD6930D16373C9F005AF81E /* Other Frameworks */,
 				7523D448445F475BB439A142 /* libPods.a */,
 			);
@@ -335,25 +341,6 @@
 				3AD6931716373C9F005AF81E /* main.m */,
 				3AD6931916373C9F005AF81E /* Tokaido-Prefix.pch */,
 				3AD6931A16373C9F005AF81E /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3AD6932E16373C9F005AF81E /* TokaidoTests */ = {
-			isa = PBXGroup;
-			children = (
-				3AD6933416373C9F005AF81E /* TokaidoTests.h */,
-				3AD6933516373C9F005AF81E /* TokaidoTests.m */,
-				3AD6932F16373C9F005AF81E /* Supporting Files */,
-			);
-			path = TokaidoTests;
-			sourceTree = "<group>";
-		};
-		3AD6932F16373C9F005AF81E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3AD6933016373C9F005AF81E /* TokaidoTests-Info.plist */,
-				3AD6933116373C9F005AF81E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -547,6 +534,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0EB2900D1ABD6313009123E9 /* TokaidoAcceptanceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EB290161ABD6313009123E9 /* Build configuration list for PBXNativeTarget "TokaidoAcceptanceTests" */;
+			buildPhases = (
+				0EB2900A1ABD6313009123E9 /* Sources */,
+				0EB2900B1ABD6313009123E9 /* Frameworks */,
+				0EB2900C1ABD6313009123E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0EB290151ABD6313009123E9 /* PBXTargetDependency */,
+			);
+			name = TokaidoAcceptanceTests;
+			productName = TokaidoAcceptanceTests;
+			productReference = 0EB2900E1ABD6313009123E9 /* TokaidoAcceptanceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3AD6930616373C9F005AF81E /* Tokaido */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AD6933916373C9F005AF81E /* Build configuration list for PBXNativeTarget "Tokaido" */;
@@ -566,25 +571,6 @@
 			productReference = 3AD6930716373C9F005AF81E /* Tokaido.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3AD6932716373C9F005AF81E /* TokaidoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3AD6933C16373C9F005AF81E /* Build configuration list for PBXNativeTarget "TokaidoTests" */;
-			buildPhases = (
-				3AD6932316373C9F005AF81E /* Sources */,
-				3AD6932416373C9F005AF81E /* Frameworks */,
-				3AD6932516373C9F005AF81E /* Resources */,
-				3AD6932616373C9F005AF81E /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3AD6932D16373C9F005AF81E /* PBXTargetDependency */,
-			);
-			name = TokaidoTests;
-			productName = TokaidoTests;
-			productReference = 3AD6932816373C9F005AF81E /* TokaidoTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -594,7 +580,13 @@
 				CLASSPREFIX = TKD;
 				LastTestingUpgradeCheck = 0620;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = Tilde;
+				ORGANIZATIONNAME = Andrab;
+				TargetAttributes = {
+					0EB2900D1ABD6313009123E9 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 3AD6930616373C9F005AF81E;
+					};
+				};
 			};
 			buildConfigurationList = 3AD6930116373C9F005AF81E /* Build configuration list for PBXProject "Tokaido" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -610,12 +602,19 @@
 			projectRoot = "";
 			targets = (
 				3AD6930616373C9F005AF81E /* Tokaido */,
-				3AD6932716373C9F005AF81E /* TokaidoTests */,
+				0EB2900D1ABD6313009123E9 /* TokaidoAcceptanceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0EB2900C1ABD6313009123E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AD6930516373C9F005AF81E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -654,14 +653,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3AD6932516373C9F005AF81E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3AD6933316373C9F005AF81E /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -679,22 +670,17 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 		};
-		3AD6932616373C9F005AF81E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0EB2900A1ABD6313009123E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EB290131ABD6313009123E9 /* Installation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AD6930316373C9F005AF81E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -729,22 +715,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3AD6932316373C9F005AF81E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C545BDBC178346D900DACCBD /* TKDTask.m in Sources */,
-				3AD6933616373C9F005AF81E /* TokaidoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3AD6932D16373C9F005AF81E /* PBXTargetDependency */ = {
+		0EB290151ABD6313009123E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3AD6930616373C9F005AF81E /* Tokaido */;
-			targetProxy = 3AD6932C16373C9F005AF81E /* PBXContainerItemProxy */;
+			targetProxy = 0EB290141ABD6313009123E9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -803,18 +780,76 @@
 			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
-		3AD6933116373C9F005AF81E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3AD6933216373C9F005AF81E /* en */,
-				0E15770319965E9A009204B2 /* es */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0EB290171ABD6313009123E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = TokaidoAcceptanceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tokaido.app/Contents/MacOS/Tokaido";
+			};
+			name = Debug;
+		};
+		0EB290181ABD6313009123E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = TokaidoAcceptanceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tokaido.app/Contents/MacOS/Tokaido";
+			};
+			name = Release;
+		};
 		3AD6933716373C9F005AF81E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -825,6 +860,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -838,7 +874,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULE_NAME = Tokaido;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -855,13 +892,15 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULE_NAME = Tokaido;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -873,11 +912,14 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULE_NAME = Tokaido;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -888,48 +930,29 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULE_NAME = Tokaido;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		3AD6933D16373C9F005AF81E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tokaido.app/Contents/MacOS/Tokaido";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
-				INFOPLIST_FILE = "TokaidoTests/TokaidoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		3AD6933E16373C9F005AF81E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tokaido.app/Contents/MacOS/Tokaido";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
-				INFOPLIST_FILE = "TokaidoTests/TokaidoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0EB290161ABD6313009123E9 /* Build configuration list for PBXNativeTarget "TokaidoAcceptanceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EB290171ABD6313009123E9 /* Debug */,
+				0EB290181ABD6313009123E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		3AD6930116373C9F005AF81E /* Build configuration list for PBXProject "Tokaido" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -944,15 +967,6 @@
 			buildConfigurations = (
 				3AD6933A16373C9F005AF81E /* Debug */,
 				3AD6933B16373C9F005AF81E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3AD6933C16373C9F005AF81E /* Build configuration list for PBXNativeTarget "TokaidoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3AD6933D16373C9F005AF81E /* Debug */,
-				3AD6933E16373C9F005AF81E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
