@@ -4,6 +4,7 @@
 
 + (NSString *)rubyBinDirectory:(NSString *)version;
 + (NSString *)sanitizePath:(NSString *)input;
++ (BOOL) isAppRunning:(NSString *)appName;
 
 
 @end

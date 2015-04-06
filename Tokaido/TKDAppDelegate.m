@@ -12,6 +12,7 @@
 #import "TKDStartTokaido.h"
 
 #import "TKDApp.h"
+#import "TKDPostgresApp.h"
 
 NSString * const kMenuBarNotification = @"kMenuBarNotification";
 
@@ -151,7 +152,26 @@ NSString * const kMenuBarNotification = @"kMenuBarNotification";
     rubyVersion.title = [NSString stringWithFormat:@"Using Ruby %@", [TKDConfiguration rubyVersion]];
     rubyVersion.enabled = NO;
     
+    NSMenuItem *postgresApp = [[NSMenuItem alloc] init];
+    
+    NSMutableString *postgresAppReport = [[NSMutableString alloc] initWithString:@"Postgres.app "];
+    
+    if ([TKDPostgresApp isInstalled]) {
+        [postgresAppReport appendString:[TKDPostgresApp latestVersion]];
+        
+        if ([TKDUtilities isAppRunning:@"com.postgresapp.Postgres"])
+            [postgresAppReport appendString:@" running"];
+        else
+            [postgresAppReport appendString:@" installed"];
+    } else
+        [postgresAppReport appendString:@"not installed"];
+    
+    
+    postgresApp.title = postgresAppReport;
+    postgresApp.enabled = NO;
+    
     [tkdMenu addItem:rubyVersion];
+    [tkdMenu addItem:postgresApp];
     
     _statusItem.menu = tkdMenu;
 }

@@ -15,6 +15,14 @@
     return [input stringByReplacingOccurrencesOfString:@" " withString:@"\\ "];
 }
 
-
++ (BOOL) isAppRunning:(NSString *)appBundleIdentifier {
+    NSArray *runningApplications = [[NSWorkspace sharedWorkspace] runningApplications];
+    
+    for (NSRunningApplication *cod in runningApplications)
+        if ([appBundleIdentifier isEqualToString:[cod bundleIdentifier]])
+            return YES;
+    
+    return NO;
+}
 
 @end

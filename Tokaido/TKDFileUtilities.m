@@ -16,6 +16,21 @@
     return [[NSFileManager defaultManager] enumeratorAtPath:path];
 }
 
++(NSArray *) directories:(NSString *) path {
+    NSMutableArray *directories = [[NSMutableArray alloc] init];
+    
+    NSDirectoryEnumerator *candidates = [self lookIn:path];
+    NSString *directoryCandidate;
+    
+    while (directoryCandidate = [candidates nextObject]) {
+        if ([self directoryExists:[path stringByAppendingPathComponent:directoryCandidate]]) {
+            [candidates skipDescendants];
+            [directories addObject:directoryCandidate];
+        }
+    }
+    return directories;
+}
+
 +(void) removeFileIfNonExistant:(NSString *)filePath {
     NSError *error = nil;
     

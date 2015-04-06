@@ -12,4 +12,6 @@
 +(void) createDirectoryAtPathIfNonExistant:(NSString *)path;
 +(void) unzipFileAtPath:(NSString *)path inDirectoryPath:(NSString *)directory;
 
++(NSArray *) directories:(NSString *) path;
+
 @end

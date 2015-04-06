@@ -2,6 +2,7 @@
 #import "TKDConfiguration.h"
 #import "TKDFileUtilities.h"
 #import "TKDUtilities.h"
+#import "TKDPostgresApp.h"
 
 #import <ServiceManagement/ServiceManagement.h>
 
@@ -38,7 +39,7 @@ static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
                       [TKDConfiguration binariesInstalledDirectoryPath],
                       [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
                       [TKDConfiguration gemsBinaryInstalledDirectoryPath],
-                      @"/Applications/Postgres.app/Contents/Versions/9.3/bin",
+                      [TKDPostgresApp path],
                       @"/bin",
                       @"/usr/local/bin",
                       @"/usr/bin",

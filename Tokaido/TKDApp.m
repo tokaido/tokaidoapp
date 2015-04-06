@@ -4,6 +4,7 @@
 #import "TKDAppDelegate.h"
 #import "TKDMuxrManager.h"
 #import "TKDTask.h"
+#import "TKDPostgresApp.h"
 #import <YAML-Framework/YAMLSerialization.h>
 
 static NSString *kAppNameKey = @"app_name";
@@ -264,7 +265,7 @@ static NSString *kAppIconKey = @"app_icon";
                            [TKDConfiguration binariesInstalledDirectoryPath],
                            [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
                            [TKDConfiguration gemsBinaryInstalledDirectoryPath],
-                           @"/Applications/Postgres.app/Contents/Versions/9.3/bin",
+                           [TKDPostgresApp path],
                            @"/bin",
                            @"/usr/local/bin",
                            @"/usr/bin",
