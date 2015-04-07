@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSUIElement</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -28,16 +26,20 @@
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
+	<key>LSUIElement</key>
+	<false/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2012 Tilde. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>SplashWindow</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>Objective-C Bridging Header</key>
+	<string>Tokaido-Bridging-Header.h</string>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>io.tilde.tokaido-bootstrap</key>
-		<string>identifier io.tilde.tokaido-bootstrap and certificate leaf[subject.CN] = &quot;Developer ID Application: Tilde Inc.&quot;</string>
+		<string>identifier io.tilde.tokaido-bootstrap and certificate leaf[subject.CN] = "Developer ID Application: Tilde Inc."</string>
 	</dict>
 </dict>
 </plist>

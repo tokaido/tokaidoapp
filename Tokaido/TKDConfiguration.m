@@ -84,7 +84,7 @@
 }
 
 +(NSString *) magickInstalledDirectoryPath {
-    return [[self gemsInstalledDirectoryPath] stringByAppendingPathComponent:@"/bin_files/magick"];
+    return [[self gemsGlobalInstalledDirectoryPath] stringByAppendingPathComponent:@"/bin_files/magick"];
 }
 
 +(NSString *) bootstrapInstalledDirectoryPath {

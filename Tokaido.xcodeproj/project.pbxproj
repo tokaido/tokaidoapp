@@ -15,6 +15,8 @@
 		0E15770C19966C55009204B2 /* TKDAppViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E15770E19966C55009204B2 /* TKDAppViewItem.xib */; };
 		0EB290131ABD6313009123E9 /* Installation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB290121ABD6313009123E9 /* Installation.swift */; };
 		0EB415F81A4A040000C34900 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0EB415F71A4A040000C34900 /* LICENSE */; };
+		0EEBFA521AD2159200862B3D /* TKDPostgresApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBFA511AD2159200862B3D /* TKDPostgresApp.m */; };
+		0EEBFA571AD3AACD00862B3D /* tokyo-railway-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBFA561AD3AACD00862B3D /* tokyo-railway-bg.png */; };
 		0EFE99AE1A42E307000FC33D /* SplashWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE99AD1A42E307000FC33D /* SplashWindow.xib */; };
 		0EFE99B11A42E4C3000FC33D /* TKDTokaidoSplashController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE99B01A42E4C3000FC33D /* TKDTokaidoSplashController.m */; };
 		0EFE99B31A42EEE6000FC33D /* TKIconRubyStatusBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EFE99B21A42EEE6000FC33D /* TKIconRubyStatusBar.png */; };
@@ -113,6 +115,9 @@
 		0EB290111ABD6313009123E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EB290121ABD6313009123E9 /* Installation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Installation.swift; sourceTree = "<group>"; };
 		0EB415F71A4A040000C34900 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0EEBFA511AD2159200862B3D /* TKDPostgresApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDPostgresApp.m; sourceTree = "<group>"; };
+		0EEBFA531AD215AF00862B3D /* TKDPostgresApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDPostgresApp.h; sourceTree = "<group>"; };
+		0EEBFA561AD3AACD00862B3D /* tokyo-railway-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tokyo-railway-bg.png"; sourceTree = "<group>"; };
 		0EFE99AD1A42E307000FC33D /* SplashWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashWindow.xib; sourceTree = "<group>"; };
 		0EFE99AF1A42E4C3000FC33D /* TKDTokaidoSplashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDTokaidoSplashController.h; sourceTree = "<group>"; };
 		0EFE99B01A42E4C3000FC33D /* TKDTokaidoSplashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTokaidoSplashController.m; sourceTree = "<group>"; };
@@ -314,6 +319,8 @@
 				3AD693441637436E005AF81E /* TKDTokaidoController.m */,
 				CD5A897E171380A500217D8A /* TKDEditAppController.h */,
 				CD5A897F171380A500217D8A /* TKDEditAppController.m */,
+				0EFE99AF1A42E4C3000FC33D /* TKDTokaidoSplashController.h */,
+				0EFE99B01A42E4C3000FC33D /* TKDTokaidoSplashController.m */,
 				D7CC34CB1913653D001AD694 /* TKDAppLogViewerController.h */,
 				D7CC34CC1913653D001AD694 /* TKDAppLogViewerController.m */,
 				D7CC34B51913533B001AD694 /* TKDTerminalSessions.h */,
@@ -323,8 +330,6 @@
 				3AD694DC1639E905005AF81E /* Images */,
 				3AD6935B1639C6FE005AF81E /* Custom Views */,
 				3AD6931216373C9F005AF81E /* Supporting Files */,
-				0EFE99AF1A42E4C3000FC33D /* TKDTokaidoSplashController.h */,
-				0EFE99B01A42E4C3000FC33D /* TKDTokaidoSplashController.m */,
 			);
 			path = Tokaido;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 		3AD694DC1639E905005AF81E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0EEBFA561AD3AACD00862B3D /* tokyo-railway-bg.png */,
 				0EFE99B81A43097F000FC33D /* TokaidoBig.png */,
 				0EFE99B21A42EEE6000FC33D /* TKIconRubyStatusBar.png */,
 				08783A2D1785D5450071AC1C /* gnome-terminal.png */,
@@ -490,6 +496,8 @@
 				D7CC34A719134DDE001AD694 /* TKDUtilities.m */,
 				D7CC34B219135207001AD694 /* TKDTokaidoControllerHelper.h */,
 				D7CC34B319135207001AD694 /* TKDTokaidoControllerHelper.m */,
+				0EEBFA511AD2159200862B3D /* TKDPostgresApp.m */,
+				0EEBFA531AD215AF00862B3D /* TKDPostgresApp.h */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -644,6 +652,7 @@
 				CD8285B11655A696000CB252 /* down_arrow.png in Resources */,
 				CD1FCB8C169D0DCF00FB7E36 /* Green@2x.png in Resources */,
 				D7CC34CA1913624B001AD694 /* tokaido-bootstrap.zip in Resources */,
+				0EEBFA571AD3AACD00862B3D /* tokyo-railway-bg.png in Resources */,
 				CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */,
 				08783A2A1784A9AC0071AC1C /* uninstall.sh in Resources */,
 				CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */,
@@ -711,6 +720,7 @@
 				CD5A8937170CC4E900217D8A /* TKDMuxrManager.m in Sources */,
 				0EFE99B11A42E4C3000FC33D /* TKDTokaidoSplashController.m in Sources */,
 				CD5A8980171380A600217D8A /* TKDEditAppController.m in Sources */,
+				0EEBFA521AD2159200862B3D /* TKDPostgresApp.m in Sources */,
 				D7CC348E19134944001AD694 /* TKDStopTokaido.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -811,6 +821,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TokaidoAcceptanceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -844,6 +855,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TokaidoAcceptanceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tokaido.app/Contents/MacOS/Tokaido";
@@ -874,7 +886,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MODULE_NAME = Tokaido;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -899,7 +911,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MODULE_NAME = Tokaido;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -912,12 +924,12 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULE_NAME = Tokaido;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MODULE_NAME = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
@@ -930,12 +942,12 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYING_PRESERVES_HFS_DATA = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULE_NAME = Tokaido;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MODULE_NAME = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
@@ -952,6 +964,7 @@
 				0EB290181ABD6313009123E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3AD6930116373C9F005AF81E /* Build configuration list for PBXProject "Tokaido" */ = {
 			isa = XCConfigurationList;

@@ -32,6 +32,7 @@
 }
 
 -(void) start {
+    
     [_progress startAnimation:self];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -46,6 +47,9 @@
         
         [self finish];
     });
+     
+     
+    [self finish];
 }
 
 -(void) finish {
@@ -57,7 +61,7 @@
     });
     
     // Force connection attempt with Muxr
-    [TKDMuxrManager defaultManager];
+    //[TKDMuxrManager defaultManager];
 }
 
 -(IBAction)openTerminal:(id)sender {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -338,37 +338,17 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Font" systemMenu="font" id="388">
                                     <items>
-                                        <menuItem title="Show Fonts" keyEquivalent="t" id="389">
-                                            <connections>
-                                                <action selector="orderFrontFontPanel:" target="420" id="424"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Bold" tag="2" keyEquivalent="b" id="390">
-                                            <connections>
-                                                <action selector="addFontTrait:" target="420" id="421"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Italic" tag="1" keyEquivalent="i" id="391">
-                                            <connections>
-                                                <action selector="addFontTrait:" target="420" id="422"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Show Fonts" keyEquivalent="t" id="389"/>
+                                        <menuItem title="Bold" tag="2" keyEquivalent="b" id="390"/>
+                                        <menuItem title="Italic" tag="1" keyEquivalent="i" id="391"/>
                                         <menuItem title="Underline" keyEquivalent="u" id="392">
                                             <connections>
                                                 <action selector="underline:" target="-1" id="432"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="393"/>
-                                        <menuItem title="Bigger" tag="3" keyEquivalent="+" id="394">
-                                            <connections>
-                                                <action selector="modifyFont:" target="420" id="425"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Smaller" tag="4" keyEquivalent="-" id="395">
-                                            <connections>
-                                                <action selector="modifyFont:" target="420" id="423"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Bigger" tag="3" keyEquivalent="+" id="394"/>
+                                        <menuItem title="Smaller" tag="4" keyEquivalent="-" id="395"/>
                                         <menuItem isSeparatorItem="YES" id="396"/>
                                         <menuItem title="Kern" id="397">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -656,6 +636,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="718" height="277"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZED-zg-Ug6">
+                        <rect key="frame" x="0.0" y="-20" width="718" height="277"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="axesIndependently" image="tokyo-railway-bg" id="84n-ny-fAg"/>
+                    </imageView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wut-71-1hJ">
                         <rect key="frame" x="26" y="67" width="72" height="72"/>
                         <contentFilters>
@@ -673,7 +657,7 @@
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" baseWritingDirection="leftToRight" title="Find me in the menu bar!" id="IqR-dz-cqV">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" red="0.22352941176470589" green="0.6705882352941176" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLf-zj-gIF">
@@ -689,9 +673,6 @@
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2OR-v8-VdF">
                         <rect key="frame" x="28" y="131" width="72" height="72"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="TKIconRuby" id="5sh-zV-KQ2"/>
-                    </imageView>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZED-zg-Ug6">
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSBonjour" id="84n-ny-fAg"/>
                     </imageView>
                     <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iIm-W2-KgR">
                         <rect key="frame" x="243" y="-125" width="512" height="512"/>
@@ -726,9 +707,9 @@
         </customObject>
     </objects>
     <resources>
-        <image name="NSBonjour" width="32" height="32"/>
         <image name="TKIconRuby" width="72" height="72"/>
         <image name="TokaidoBig" width="512" height="512"/>
         <image name="gnome-terminal" width="48" height="48"/>
+        <image name="tokyo-railway-bg" width="1912" height="1425"/>
     </resources>
 </document>
