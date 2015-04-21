@@ -48,7 +48,7 @@
         [self finish];
     });
      
-     
+    
     [self finish];
 }
 
@@ -61,7 +61,7 @@
     });
     
     // Force connection attempt with Muxr
-    //[TKDMuxrManager defaultManager];
+    [TKDMuxrManager defaultManager];
 }
 
 -(IBAction)openTerminal:(id)sender {
