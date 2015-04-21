@@ -15,5 +15,5 @@ fi
 
 cd "$TOKAIDO_APP_DIR"
 
-echo -e "\033[0;32mThis terminal is now ready use with Tokaido.\033[00m"
+echo -e "\033[0;32mThis terminal is now ready to use with Tokaido.\033[00m"
 echo

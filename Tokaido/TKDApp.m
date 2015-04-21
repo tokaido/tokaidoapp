@@ -285,6 +285,7 @@ static NSString *kAppIconKey = @"app_icon";
     if (terminationStatus == 0) {
         [self enterSubstate:TKDAppBootingStartingServer];
         NSString *command = [NSString stringWithFormat:@"ADD \"%@\" \"%@\"\n", self.appHostname, self.appDirectoryPath];
+        
         [[TKDMuxrManager defaultManager] issueCommand:command];
     } else {
         [self enterSubstate:TKDAppBootingBundleFailed];
