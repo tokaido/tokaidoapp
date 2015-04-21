@@ -1,21 +1,6 @@
-root=$PWD
-tmp=$root/tmp
+#!/bin/sh
 
-mkdir -p $tmp/zips
-
-if [ -d $tmp/2.2.0-p0 ]
-then
-  echo "Tokaido Ruby is unzipped"
-else
-  echo "Unzipping Tokaido Ruby"
-  cp "Tokaido/Rubies/2.2.0-p0.zip" $tmp/2.2.0-p0.zip
-  unzip $tmp/2.2.0-p0.zip -d $tmp
-fi
-
-export PATH=$tmp/2.2.0-p0/bin:$PATH
-gem update --system --no-ri --no-rdoc
-gem uninstall rubygems-update
-gem_home="$tmp/bootstrap-gems"
+gem_home="$TKD_TMP_PATH/bootstrap-gems"
 
 export GEM_HOME=$gem_home
 export GEM_PATH=$gem_home
@@ -30,90 +15,34 @@ else
   gem install bundler -E --no-ri --no-rdoc
 fi
 
-export PATH=$tmp/bootstrap-gems/bin:$PATH
+export PATH=$TKD_TMP_PATH/bootstrap-gems/bin:$PATH
 
-zips="$tmp/zips"
-sqlite3="$zips/sqlite-autoconf-3080704"
-libiconv="$zips/libiconv-1.14"
-puma="$zips/puma"
-
-mkdir -p $zips
-cp Tokaido/Gemfile $zips/Gemfile
-
-cd $zips
-
-if [ -d $libiconv ]
-then
-  echo "libiconv already built"
-else
-  echo "Downloading and extracting libiconv (You are at: `pwd`)"
-  curl -O http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz
-  tar -xf libiconv-1.14.tar.gz
-
-  echo "Building static libiconv"
-  cd $libiconv
-
-  ./configure --enable-static --prefix=$zips/libiconv --build=x86_64-darwin12.0
-  make
-  make install
-
-  mkdir -p $zips/Gems/supps
-  mkdir -p $zips/Supps
-
-  cd $zips/libiconv
-  rm lib/*.la
-  rm lib/*.dylib
-  rm -Rf share
-  rm -Rf bin
-
-  cd $zips
-  cp -R libiconv $zips/Gems/supps/iconv
-  cp -R libiconv $zips/Supps/iconv  
-  cd $zips
-fi
-
-cd $zips
-
-if [ -d $sqlite3 ]
-then
-  echo "SQLite3 already built"
-else
-  echo "Downloading and extracting SQLite3"
-  curl -O http://www.sqlite.org/2014/sqlite-autoconf-3080704.tar.gz
-  tar -xf sqlite-autoconf-3080704.tar.gz
-
-  echo "Building static SQLite3"
-  cd $sqlite3
-
-  ./configure --disable-shared --enable-static
-  make
-
-  cd ..
-fi
-
-if [ -d $puma ]
-then
-  cd $puma
-  gem build puma.gemspec
-fi
-
-cd $zips
-
-bundle config --local build.sqlite3 --with-sqlite3-lib=$sqlite3/.libs --with-sqlite3-include=$sqlite3
+cp Tokaido/Gemfile $TKD_TMP_PATH/Gemfile
+cd $TKD_TMP_PATH
 
 echo "Removing existing GEM_HOME to rebuild it"
 rm -rf gem_home
 
 echo "Building new GEM_HOME"
+mkdir -p $TKD_TMP_PATH/gem_home/ruby/$TKD_RUBY_NAMESPACE
+
+bundle config --local build.nokogiri --with-opt-dir=$(pkg-config iconv --variable=prefix)
+bundle config --local build.sqlite3 --with-opt-dir=$(pkg-config sqlite3 --variable=prefix)
 bundle --path gem_home --gemfile Gemfile
 
-gem install $puma/puma-2.10.2.gem -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.2.0
-gem install bundler -E --no-ri --no-rdoc -i $zips/gem_home/ruby/2.2.0
+gem install bundler -E --no-ri --no-rdoc -i gem_home/ruby/$TKD_RUBY_NAMESPACE
 
 rm -f tokaido-gems.zip
-rm -rf Gems
-cp -R gem_home/ruby/2.2.0 Gems
+rm -Rf Gems
 
-
+mkdir Gems
+cd Gems
+cp -R ../gem_home/ruby/$TKD_RUBY_NAMESPACE .
+cd ..
 mkdir -p Gems/supps
+cp $TKD_EXTENSIONS_PATH/railties-4.2.0_app_base.rb Gems/$TKD_RUBY_NAMESPACE/gems/railties-4.2.0/lib/rails/generators/app_base.rb
+
+cp -R $TKD_SUPPLEMENTS_PATH/iconv Gems/supps/iconv
+cp -R $TKD_SUPPLEMENTS_PATH/bin_files Gems/bin_files
+
 zip -r tokaido-gems.zip Gems
