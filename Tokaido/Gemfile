@@ -17,4 +17,3 @@ group :development, :test do
 end
 
 gem 'cuba'
-gem 'puma'
