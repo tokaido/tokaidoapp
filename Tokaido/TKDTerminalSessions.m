@@ -25,8 +25,10 @@
     
     NSString *rubyBinPath  = [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]];
     NSString *appDirectory = [TKDUtilities sanitizePath:app.appDirectoryPath];
+    NSString *rubyNamespace = [TKDConfiguration rubyNamespace];
     
     NSArray *commands = @[
+                          [NSString stringWithFormat:@"export TOKAIDO_GEM_NAMESPACE=%@", rubyNamespace],
                           [NSString stringWithFormat:@"export TOKAIDO_PATH=%@", rubyBinPath],
                           [NSString stringWithFormat:@"export TOKAIDO_APP_DIR=%@", appDirectory],
                           [NSString stringWithFormat:@"source %@", [TKDConfiguration terminalSetupScriptInstalledDirectoryPath]]
