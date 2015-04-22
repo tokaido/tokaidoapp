@@ -1,3 +1,5 @@
+#!/bin/sh
+
 export root=$PWD
 
 export RUBY_BINARY_PATH="$root/dist"

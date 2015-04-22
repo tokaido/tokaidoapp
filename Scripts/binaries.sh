@@ -1,3 +1,5 @@
+#!/bin/sh
+
 REDIS_VERSION="3.0.0"
 REDIS_PATH="$TKD_TMP_PATH/redis-$REDIS_VERSION"
 

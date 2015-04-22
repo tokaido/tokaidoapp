@@ -1,3 +1,5 @@
+#!/bin/sh
+
 TKD_BOOTSTRAP_PATH=$TKD_TMP_PATH/Bootstrap
 TKD_CUBALOG_PATH=$TKD_TMP_PATH/Cubalog
 
