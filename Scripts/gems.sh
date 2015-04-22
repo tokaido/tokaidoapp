@@ -1,22 +1,5 @@
 #!/bin/sh
 
-gem_home="$TKD_TMP_PATH/bootstrap-gems"
-
-export GEM_HOME=$gem_home
-export GEM_PATH=$gem_home
-
-if [ -d $gem_home ]
-then
-  echo "Bootstrap gems already installed"
-else
-  mkdir -p $gem_home
-
-  echo "Installing Bundler"
-  gem install bundler -E --no-ri --no-rdoc
-fi
-
-export PATH=$TKD_TMP_PATH/bootstrap-gems/bin:$PATH
-
 cp Tokaido/Gemfile $TKD_TMP_PATH/Gemfile
 cd $TKD_TMP_PATH
 
