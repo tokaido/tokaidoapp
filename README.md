@@ -18,7 +18,7 @@ If you get a warning about the app not being loaded because it is from an unknow
 
 ![Unknown Developer Error](https://cloud.githubusercontent.com/assets/22501/2796617/7526189c-cc12-11e3-963e-78a89d0cd66b.png)
 
-You can fix this by following the directions provided by Apple at http://support.apple.com/kb/ht5290.
+You can fix this by following the directions under "How to open an app from a unidentified developer and exempt it from Gatekeeper" [here](http://support.apple.com/kb/ht5290).
 
 ## Developer Setup
 
