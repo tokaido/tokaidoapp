@@ -47,9 +47,7 @@
         
         [self finish];
     });
-     
     
-    [self finish];
 }
 
 -(void) finish {
