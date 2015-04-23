@@ -9,8 +9,10 @@ rm -rf gem_home
 echo "Building new GEM_HOME"
 mkdir -p $TKD_TMP_PATH/gem_home/ruby/$TKD_RUBY_NAMESPACE
 
-bundle config --local build.nokogiri --with-opt-dir=$(pkg-config iconv --variable=prefix)
-bundle config --local build.sqlite3 --with-opt-dir=$(pkg-config sqlite3 --variable=prefix)
+
+command -v pkg-config >/dev/null 2>&1 && bundle config --local build.nokogiri --with-opt-dir=$(pkg-config iconv --variable=prefix)
+command -v pkg-config >/dev/null 2>&1 && bundle config --local build.sqlite3 --with-opt-dir=$(pkg-config sqlite3 --variable=prefix)
+
 bundle --path gem_home --gemfile Gemfile
 
 gem install bundler -E --no-ri --no-rdoc -i gem_home/ruby/$TKD_RUBY_NAMESPACE
@@ -23,7 +25,8 @@ cd Gems
 cp -R ../gem_home/ruby/$TKD_RUBY_NAMESPACE .
 cd ..
 mkdir -p Gems/supps
-cp $TKD_EXTENSIONS_PATH/railties-4.2.0_app_base.rb Gems/$TKD_RUBY_NAMESPACE/gems/railties-4.2.0/lib/rails/generators/app_base.rb
+#FIXME
+cp $TKD_EXTENSIONS_PATH/railties-4.2.1_app_base.rb Gems/$TKD_RUBY_NAMESPACE/gems/railties-4.2.1/lib/rails/generators/app_base.rb
 
 cp -R $TKD_SUPPLEMENTS_PATH/iconv Gems/supps/iconv
 cp -R $TKD_SUPPLEMENTS_PATH/bin_files Gems/bin_files
