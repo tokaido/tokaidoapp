@@ -13,7 +13,7 @@
 		0E15770419965F1D009204B2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E15770619965F1D009204B2 /* Localizable.strings */; };
 		0E15770819966B12009204B2 /* EditAppWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E15770A19966B12009204B2 /* EditAppWindow.xib */; };
 		0E15770C19966C55009204B2 /* TKDAppViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E15770E19966C55009204B2 /* TKDAppViewItem.xib */; };
-		0EB290131ABD6313009123E9 /* Installation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB290121ABD6313009123E9 /* Installation.swift */; };
+		0E4FA4941AF2FEC2009216B1 /* PostgresApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4FA4931AF2FEC2009216B1 /* PostgresApp.swift */; };
 		0EB415F81A4A040000C34900 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0EB415F71A4A040000C34900 /* LICENSE */; };
 		0EEBFA521AD2159200862B3D /* TKDPostgresApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBFA511AD2159200862B3D /* TKDPostgresApp.m */; };
 		0EEBFA571AD3AACD00862B3D /* tokyo-railway-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBFA561AD3AACD00862B3D /* tokyo-railway-bg.png */; };
@@ -77,7 +77,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0EB290141ABD6313009123E9 /* PBXContainerItemProxy */ = {
+		0E4FA4891AF2FCBF009216B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3AD692FE16373C9F005AF81E /* Project object */;
 			proxyType = 1;
@@ -111,9 +111,10 @@
 		0E15770B19966B19009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/EditAppWindow.xib; sourceTree = "<group>"; };
 		0E15770D19966C55009204B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TKDAppViewItem.xib; sourceTree = "<group>"; };
 		0E15770F19966C5C009204B2 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/TKDAppViewItem.xib; sourceTree = "<group>"; };
-		0EB2900E1ABD6313009123E9 /* TokaidoAcceptanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TokaidoAcceptanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0EB290111ABD6313009123E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0EB290121ABD6313009123E9 /* Installation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Installation.swift; sourceTree = "<group>"; };
+		0E4FA4831AF2FCBF009216B1 /* TokaidoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TokaidoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E4FA4861AF2FCBF009216B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E4FA48E1AF2FCF3009216B1 /* Tokaido-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tokaido-Bridging-Header.h"; sourceTree = "<group>"; };
+		0E4FA4931AF2FEC2009216B1 /* PostgresApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostgresApp.swift; sourceTree = "<group>"; };
 		0EB415F71A4A040000C34900 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		0EEBFA511AD2159200862B3D /* TKDPostgresApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDPostgresApp.m; sourceTree = "<group>"; };
 		0EEBFA531AD215AF00862B3D /* TKDPostgresApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDPostgresApp.h; sourceTree = "<group>"; };
@@ -217,7 +218,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0EB2900B1ABD6313009123E9 /* Frameworks */ = {
+		0E4FA4801AF2FCBF009216B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -240,28 +241,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0EB2900F1ABD6313009123E9 /* TokaidoAcceptanceTests */ = {
+		0E4FA4841AF2FCBF009216B1 /* TokaidoTests */ = {
 			isa = PBXGroup;
 			children = (
-				0EB290121ABD6313009123E9 /* Installation.swift */,
-				0EB290101ABD6313009123E9 /* Supporting Files */,
+				0E4FA4911AF2FDD5009216B1 /* Acceptance */,
+				0E4FA4921AF2FDD5009216B1 /* Unit */,
+				0E4FA4851AF2FCBF009216B1 /* Supporting Files */,
 			);
-			path = TokaidoAcceptanceTests;
+			path = TokaidoTests;
 			sourceTree = "<group>";
 		};
-		0EB290101ABD6313009123E9 /* Supporting Files */ = {
+		0E4FA4851AF2FCBF009216B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0EB290111ABD6313009123E9 /* Info.plist */,
+				0E4FA4861AF2FCBF009216B1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0E4FA4911AF2FDD5009216B1 /* Acceptance */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Acceptance;
+			sourceTree = "<group>";
+		};
+		0E4FA4921AF2FDD5009216B1 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				0E4FA4931AF2FEC2009216B1 /* PostgresApp.swift */,
+			);
+			path = Unit;
 			sourceTree = "<group>";
 		};
 		3AD692FC16373C9F005AF81E = {
 			isa = PBXGroup;
 			children = (
 				3AD6931116373C9F005AF81E /* Tokaido */,
-				0EB2900F1ABD6313009123E9 /* TokaidoAcceptanceTests */,
+				0E4FA4841AF2FCBF009216B1 /* TokaidoTests */,
 				3AD6930A16373C9F005AF81E /* Frameworks */,
 				3AD6930816373C9F005AF81E /* Products */,
 				628C02124ECA27D179059706 /* Pods */,
@@ -272,7 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				3AD6930716373C9F005AF81E /* Tokaido.app */,
-				0EB2900E1ABD6313009123E9 /* TokaidoAcceptanceTests.xctest */,
+				0E4FA4831AF2FCBF009216B1 /* TokaidoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,6 +347,7 @@
 				3AD694DC1639E905005AF81E /* Images */,
 				3AD6935B1639C6FE005AF81E /* Custom Views */,
 				3AD6931216373C9F005AF81E /* Supporting Files */,
+				0E4FA48E1AF2FCF3009216B1 /* Tokaido-Bridging-Header.h */,
 			);
 			path = Tokaido;
 			sourceTree = "<group>";
@@ -542,22 +560,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0EB2900D1ABD6313009123E9 /* TokaidoAcceptanceTests */ = {
+		0E4FA4821AF2FCBF009216B1 /* TokaidoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0EB290161ABD6313009123E9 /* Build configuration list for PBXNativeTarget "TokaidoAcceptanceTests" */;
+			buildConfigurationList = 0E4FA48B1AF2FCBF009216B1 /* Build configuration list for PBXNativeTarget "TokaidoTests" */;
 			buildPhases = (
-				0EB2900A1ABD6313009123E9 /* Sources */,
-				0EB2900B1ABD6313009123E9 /* Frameworks */,
-				0EB2900C1ABD6313009123E9 /* Resources */,
+				0E4FA47F1AF2FCBF009216B1 /* Sources */,
+				0E4FA4801AF2FCBF009216B1 /* Frameworks */,
+				0E4FA4811AF2FCBF009216B1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0EB290151ABD6313009123E9 /* PBXTargetDependency */,
+				0E4FA48A1AF2FCBF009216B1 /* PBXTargetDependency */,
 			);
-			name = TokaidoAcceptanceTests;
-			productName = TokaidoAcceptanceTests;
-			productReference = 0EB2900E1ABD6313009123E9 /* TokaidoAcceptanceTests.xctest */;
+			name = TokaidoTests;
+			productName = TokaidoTests;
+			productReference = 0E4FA4831AF2FCBF009216B1 /* TokaidoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		3AD6930616373C9F005AF81E /* Tokaido */ = {
@@ -590,8 +608,8 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Andrab;
 				TargetAttributes = {
-					0EB2900D1ABD6313009123E9 = {
-						CreatedOnToolsVersion = 6.2;
+					0E4FA4821AF2FCBF009216B1 = {
+						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 3AD6930616373C9F005AF81E;
 					};
 				};
@@ -610,13 +628,13 @@
 			projectRoot = "";
 			targets = (
 				3AD6930616373C9F005AF81E /* Tokaido */,
-				0EB2900D1ABD6313009123E9 /* TokaidoAcceptanceTests */,
+				0E4FA4821AF2FCBF009216B1 /* TokaidoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0EB2900C1ABD6313009123E9 /* Resources */ = {
+		0E4FA4811AF2FCBF009216B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -682,11 +700,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0EB2900A1ABD6313009123E9 /* Sources */ = {
+		0E4FA47F1AF2FCBF009216B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EB290131ABD6313009123E9 /* Installation.swift in Sources */,
+				0E4FA4941AF2FEC2009216B1 /* PostgresApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,10 +746,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0EB290151ABD6313009123E9 /* PBXTargetDependency */ = {
+		0E4FA48A1AF2FCBF009216B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3AD6930616373C9F005AF81E /* Tokaido */;
-			targetProxy = 0EB290141ABD6313009123E9 /* PBXContainerItemProxy */;
+			targetProxy = 0E4FA4891AF2FCBF009216B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -793,7 +811,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0EB290171ABD6313009123E9 /* Debug */ = {
+		0E4FA48C1AF2FCBF009216B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -806,11 +824,13 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -819,7 +839,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = TokaidoAcceptanceTests/Info.plist;
+				INFOPLIST_FILE = TokaidoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -829,7 +849,7 @@
 			};
 			name = Debug;
 		};
-		0EB290181ABD6313009123E9 /* Release */ = {
+		0E4FA48D1AF2FCBF009216B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -849,11 +869,12 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = TokaidoAcceptanceTests/Info.plist;
+				INFOPLIST_FILE = TokaidoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -890,6 +911,7 @@
 				MODULE_NAME = Tokaido;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tokaido/Tokaido-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -915,6 +937,7 @@
 				MODULE_NAME = Tokaido;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tokaido/Tokaido-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -957,11 +980,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0EB290161ABD6313009123E9 /* Build configuration list for PBXNativeTarget "TokaidoAcceptanceTests" */ = {
+		0E4FA48B1AF2FCBF009216B1 /* Build configuration list for PBXNativeTarget "TokaidoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0EB290171ABD6313009123E9 /* Debug */,
-				0EB290181ABD6313009123E9 /* Release */,
+				0E4FA48C1AF2FCBF009216B1 /* Debug */,
+				0E4FA48D1AF2FCBF009216B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
