@@ -75,7 +75,7 @@ static NSString * const kTokaidoBootstrapFirewallPlistScriptString = @"TOKAIDO_F
             [_view saved_firewall_plist_file];
         }
         
-        NSString *tokaidoLabel = @"io.tilde.tokaido-install";
+        NSString *tokaidoLabel = @"io.tilde.andrab.tokaido-install";
         NSString *tokadioInstallScriptPath = [self.configuration firewallInstallScriptInstalledFile];
         
         AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };

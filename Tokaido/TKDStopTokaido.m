@@ -4,7 +4,7 @@
 
 #import <ServiceManagement/ServiceManagement.h>
 
-static NSString * const kTokaidoBootstrapLabel = @"io.tilde.tokaido.bootstrap";
+static NSString * const kTokaidoBootstrapLabel = @"io.tilde.andrab.tokaido.bootstrap";
 
 @implementation TKDStopTokaido
 

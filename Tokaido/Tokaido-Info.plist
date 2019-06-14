@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>Tokaido</string>
 	<key>CFBundleIdentifier</key>
-	<string>io.tilde.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -29,7 +29,7 @@
 	<key>LSUIElement</key>
 	<false/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2012 Tilde. All rights reserved.</string>
+	<string>Copyright © 2012-2019 Tilde. 2013-2019 Andrab. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>SplashWindow</string>
 	<key>NSPrincipalClass</key>
@@ -38,8 +38,8 @@
 	<string>Tokaido-Bridging-Header.h</string>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
-		<key>io.tilde.tokaido-bootstrap</key>
-		<string>identifier io.tilde.tokaido-bootstrap and certificate leaf[subject.CN] = &quot;Developer ID Application: Tilde Inc.&quot;</string>
+		<key>io.tilde.andrab.tokaido-bootstrap</key>
+		<string>identifier io.tilde.andrab.tokaido-bootstrap and certificate leaf[subject.CN] = &quot;Developer ID Application: Tilde Inc. Andrab S.A.&quot;</string>
 	</dict>
 </dict>
 </plist>
