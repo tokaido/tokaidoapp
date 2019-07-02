@@ -20,15 +20,14 @@ DerivedData
 .bundle/
 b/
 tmp/
+Supplements/Versions
+Supplements/src
+Supplements/tarballs
 Tokaido/Gemfile
 
 # Build Artifacts
 Tokaido/tokaido-bin.zip
 Tokaido/tokaido-bootstrap.zip
 Tokaido/tokaido-gems.zip
-
-Supplements/Versions
-
+Tokaido/Versions
 Pods/
-
-Supplements/redis*
