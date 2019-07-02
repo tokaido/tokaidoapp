@@ -20,6 +20,7 @@ DerivedData
 .bundle/
 b/
 tmp/
+Tokaido/Gemfile
 
 # Build Artifacts
 Tokaido/tokaido-bin.zip
