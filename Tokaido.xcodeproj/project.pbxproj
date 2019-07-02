@@ -42,6 +42,7 @@
 		3AD69509163B4093005AF81E /* TKDAppViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD69508163B4093005AF81E /* TKDAppViewItem.m */; };
 		C545BDBB178346D900DACCBD /* TKDTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C545BDBA178346D900DACCBD /* TKDTask.m */; };
 		C5E21F8317882F94002B24B5 /* TKDAppViewItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E21F8217882F94002B24B5 /* TKDAppViewItemView.m */; };
+		C69788DE22BEBE320003A007 /* Versions in Resources */ = {isa = PBXBuildFile; fileRef = C69788DD22BEBE310003A007 /* Versions */; };
 		CD1FCB8C169D0DCF00FB7E36 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB89169D0DCE00FB7E36 /* Green@2x.png */; };
 		CD1FCB8D169D0DCF00FB7E36 /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB8A169D0DCF00FB7E36 /* Red@2x.png */; };
 		CD1FCB8E169D0DCF00FB7E36 /* Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */; };
@@ -161,6 +162,7 @@
 		C545BDBA178346D900DACCBD /* TKDTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDTask.m; sourceTree = "<group>"; };
 		C5E21F8117882F94002B24B5 /* TKDAppViewItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDAppViewItemView.h; sourceTree = "<group>"; };
 		C5E21F8217882F94002B24B5 /* TKDAppViewItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDAppViewItemView.m; sourceTree = "<group>"; };
+		C69788DD22BEBE310003A007 /* Versions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Versions; sourceTree = "<group>"; };
 		CD1FCB89169D0DCE00FB7E36 /* Green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green@2x.png"; sourceTree = "<group>"; };
 		CD1FCB8A169D0DCF00FB7E36 /* Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red@2x.png"; sourceTree = "<group>"; };
 		CD1FCB8B169D0DCF00FB7E36 /* Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow@2x.png"; sourceTree = "<group>"; };
@@ -247,7 +249,6 @@
 				0FD02C425362909B4BC38B66 /* Pods-Tokaido.debug.xcconfig */,
 				F0333669D78AA94CBF896D61 /* Pods-Tokaido.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -331,6 +332,7 @@
 		3AD6931116373C9F005AF81E /* Tokaido */ = {
 			isa = PBXGroup;
 			children = (
+				C69788DD22BEBE310003A007 /* Versions */,
 				D7CC34D019136589001AD694 /* UI */,
 				D7CC34C3191361D3001AD694 /* Rubies */,
 				3AD6934E1637557D005AF81E /* Ruby Bundles */,
@@ -650,6 +652,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C69788DE22BEBE320003A007 /* Versions in Resources */,
 				08783A2E1785D5450071AC1C /* gnome-terminal.png in Resources */,
 				D7CC34C81913624B001AD694 /* tokaido-bin.zip in Resources */,
 				3AD6931616373C9F005AF81E /* InfoPlist.strings in Resources */,
