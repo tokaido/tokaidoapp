@@ -21,12 +21,7 @@ cd $TKD_TMP_PATH
 mkdir bin
 
 cp $REDIS_PATH/src/redis-{server,cli} $TKD_TMP_PATH/bin
-
-if [ -d "$root/../../libs/imagemagik/bin" ]
-then
-  echo "Copying \'convert\' ImageMagick binary"
-  cp $root/../../libs/imagemagik/bin/convert $TKD_TMP_PATH/bin
-fi
+cp $TKD_DEPENDENCIES_HOME/magick/bin/convert $TKD_TMP_PATH/bin
 
 echo "Zipping the binaries"
 
