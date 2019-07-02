@@ -1,0 +1,13 @@
+prefix=/Users/andraswhite/code/static/tokaidoapp/Supplements/Versions/current/libiconv
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+sharedlibdir=${libdir}
+includedir=${prefix}/include
+
+Name: iconv
+Description: character set conversion
+Version: 1.16
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -liconv
+Cflags: -I${includedir}

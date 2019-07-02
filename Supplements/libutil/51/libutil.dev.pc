@@ -1,0 +1,12 @@
+prefix=/Users/andraswhite/code/static/tokaidoapp/Supplements/Versions/current/libutil
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+major_version=30
+version=30.1
+
+Name: libutil
+Description:  libutil 
+Version: ${version}
+Libs: -L${libdir}
+Cflags: -I${includedir}

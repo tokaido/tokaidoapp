@@ -1,0 +1,12 @@
+*** lib/flags.h	Wed Jun 26 04:46:02 2019
+--- lib/flags_utf8mac.h	Wed Jun 26 04:46:56 2019
+***************
+*** 14,19 ****
+--- 14,20 ----
+  
+  #define ei_ascii_oflags (0)
+  #define ei_utf8_oflags (HAVE_ACCENTS | HAVE_QUOTATION_MARKS | HAVE_HANGUL_JAMO)
++ #define ei_utf8mac_oflags (HAVE_ACCENTS | HAVE_QUOTATION_MARKS | HAVE_HANGUL_JAMO)
+  #define ei_ucs2_oflags (HAVE_ACCENTS | HAVE_QUOTATION_MARKS | HAVE_HANGUL_JAMO)
+  #define ei_ucs2be_oflags (HAVE_ACCENTS | HAVE_QUOTATION_MARKS | HAVE_HANGUL_JAMO)
+  #define ei_ucs2le_oflags (HAVE_ACCENTS | HAVE_QUOTATION_MARKS | HAVE_HANGUL_JAMO)
