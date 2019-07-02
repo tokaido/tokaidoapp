@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REDIS_VERSION="3.0.0"
+REDIS_VERSION="5.0.5"
 REDIS_PATH="$TKD_TMP_PATH/redis-$REDIS_VERSION"
 
 if [ -d $REDIS_PATH ]
