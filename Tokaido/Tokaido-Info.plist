@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -38,8 +43,8 @@
 	<string>Tokaido-Bridging-Header.h</string>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
-		<key>io.tilde.andrab.tokaido-bootstrap</key>
-		<string>identifier io.tilde.andrab.tokaido-bootstrap and certificate leaf[subject.CN] = &quot;Developer ID Application: Tilde Inc. Andrab S.A.&quot;</string>
+		<key>io.tilde.tokaido-bootstrap</key>
+		<string>identifier io.tilde.tokaido-bootstrap and certificate leaf[subject.CN] = &quot;Developer ID Application: Tilde Inc. Andrab S.A.&quot;</string>
 	</dict>
 </dict>
 </plist>

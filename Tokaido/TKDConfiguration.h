@@ -16,6 +16,8 @@
 @end
 
 @interface TKDConfiguration(BundledFilesAndPaths)
++(NSString *) rubiesLibrariesExecutablesBundledDirectoryPath;
++(NSString *) rubiesLibrariesPkgconfigBundledDirectoryPath;
 +(NSArray *) rubiesBundled;
 +(NSString *) rubyExecutableInstalledFile;
 +(NSString *) bundledGemsFile;

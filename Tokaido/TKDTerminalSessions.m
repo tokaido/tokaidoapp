@@ -23,11 +23,15 @@
 
 - (NSString *) sessionFor:(TKDApp *)app {
     
+    NSString *binPath = [TKDConfiguration rubiesLibrariesExecutablesBundledDirectoryPath];
+    NSString *pkgconfigPath = [TKDConfiguration rubiesLibrariesPkgconfigBundledDirectoryPath];
     NSString *rubyBinPath  = [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]];
     NSString *appDirectory = [TKDUtilities sanitizePath:app.appDirectoryPath];
     NSString *rubyNamespace = [TKDConfiguration rubyNamespace];
     
     NSArray *commands = @[
+                          [NSString stringWithFormat:@"export TOKAIDO_BIN_BUNDLED=%@", binPath],
+                          [NSString stringWithFormat:@"export TOKAIDO_PKG_CONFIG_PATH=%@", pkgconfigPath],
                           [NSString stringWithFormat:@"export TOKAIDO_GEM_NAMESPACE=%@", rubyNamespace],
                           [NSString stringWithFormat:@"export TOKAIDO_PATH=%@", rubyBinPath],
                           [NSString stringWithFormat:@"export TOKAIDO_APP_DIR=%@", appDirectory],

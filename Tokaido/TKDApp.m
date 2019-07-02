@@ -259,18 +259,20 @@ static NSString *kAppIconKey = @"app_icon";
 
 - (NSDictionary *)environment {
     return @{
-             @"GEM_HOME": [TKDConfiguration gemsInstalledDirectoryPath],
-             @"GEM_PATH": [TKDConfiguration gemsInstalledDirectoryPath],
-             @"PATH"    : [NSString stringWithFormat:@"%@:%@:%@:%@:%@:%@:%@:%@:%@",
-                           [TKDConfiguration binariesInstalledDirectoryPath],
-                           [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
-                           [TKDConfiguration gemsBinaryInstalledDirectoryPath],
-                           [TKDPostgresApp path],
-                           @"/bin",
-                           @"/usr/local/bin",
-                           @"/usr/bin",
-                           @"/sbin",
-                           @"/usr/sbin"] };
+             @"GEM_HOME":        [TKDConfiguration gemsInstalledDirectoryPath],
+             @"GEM_PATH":        [TKDConfiguration gemsInstalledDirectoryPath],
+             @"PKG_CONFIG_PATH": [TKDConfiguration rubiesLibrariesPkgconfigBundledDirectoryPath],
+             @"PATH"    :        [NSString stringWithFormat:@"%@:%@:%@:%@:%@:%@:%@:%@:%@:%@",
+                                   [TKDConfiguration rubiesLibrariesExecutablesBundledDirectoryPath],
+                                   [TKDConfiguration binariesInstalledDirectoryPath],
+                                   [TKDUtilities rubyBinDirectory:[TKDConfiguration rubyVersion]],
+                                   [TKDConfiguration gemsBinaryInstalledDirectoryPath],
+                                   [TKDPostgresApp path],
+                                   @"/bin",
+                                   @"/usr/local/bin",
+                                   @"/usr/bin",
+                                   @"/sbin",
+                                   @"/usr/sbin"] };
 }
 
 #pragma mark - TKDTaskDelegate methods

@@ -5,15 +5,15 @@
 @implementation TKDConfiguration
 
 +(NSString *) rubyVersion {
-    return @"2.2.2-p95";
+    return @"2.4.6-p354";
 }
 
 +(NSString *) rubyNamespace {
-    return @"2.2.0";
+    return @"2.4.0";
 }
 
 +(NSArray *) rubiesBundled {
-    return @[[[TKDRubyBinary alloc] initWithName:@"2.2.2-p95"]];
+    return @[[[TKDRubyBinary alloc] initWithName:@"2.4.6-p354"]];
 }
 
 +(NSArray *) rubiesInstalled {
@@ -32,7 +32,7 @@
 }
 
 +(NSString *) rubyConfigInstalledFile {
-    return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.2.2-p95/lib/ruby/2.2.0/x86_64-darwin12.0/rbconfig.rb"];
+    return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.4.6-p354/lib/ruby/2.4.0/x86_64-darwin12/rbconfig.rb"];
 }
 
 +(NSString *) applicationName {
@@ -45,6 +45,14 @@
 
 +(NSString *) bundlePath {
     return [[NSBundle mainBundle] resourcePath];
+}
+    
++(NSString *) rubiesLibrariesExecutablesBundledDirectoryPath {
+    return [[self bundlePath] stringByAppendingPathComponent:@"Versions/bin"];
+}
+    
++(NSString *) rubiesLibrariesPkgconfigBundledDirectoryPath {
+    return [[self bundlePath] stringByAppendingPathComponent:@"Versions/pkgconfig"];
 }
 
 +(NSString *) rubiesBundledDirectoryPath {
