@@ -67,15 +67,15 @@
                             </binding>
                         </connections>
                     </button>
-                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="596">
-                        <rect key="frame" x="8" y="3" width="34" height="25"/>
+                    <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="596">
+                        <rect key="frame" x="8" y="3" width="38" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="34" id="Sqg-LI-X5m"/>
                         </constraints>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="597">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment image="NSAddTemplate" width="32"/>
+                                <segment image="NSAddTemplate" width="36"/>
                             </segments>
                         </segmentedCell>
                         <connections>
@@ -83,7 +83,7 @@
                         </connections>
                     </segmentedControl>
                     <textField horizontalHuggingPriority="211" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="715">
-                        <rect key="frame" x="47" y="8" width="315" height="16"/>
+                        <rect key="frame" x="52" y="8" width="309" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Booting App" id="716">
                             <font key="font" metaFont="cellTitle"/>
                             <color key="textColor" red="0.47843140360000003" green="0.47843140360000003" blue="0.47843140360000003" alpha="1" colorSpace="deviceRGB"/>
@@ -176,6 +176,7 @@
             <connections>
                 <outlet property="delegate" destination="556" id="kn2-Gw-y4N"/>
             </connections>
+            <point key="canvasLocation" x="396" y="289"/>
         </window>
         <customObject id="556" customClass="TKDTokaidoController">
             <connections>

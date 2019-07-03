@@ -2,7 +2,7 @@
 
 export root=$PWD
 
-export TKD_VERSION="2.4.6-p354"
+export TKD_VERSION="2.5.5-p157"
 export TKD_HOME_DEV="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." >/dev/null 2>&1 && pwd )"
 export TKD_DEPENDENCIES_HOME="$TKD_HOME_DEV/Supplements"
 export TKD_DEPENDENCIES_TARBALLS="$TKD_DEPENDENCIES_HOME/tarballs"
@@ -24,11 +24,11 @@ else
   export TKD_RUBY_DEPENDENCIES_PATH="$TKD_DEPENDENCIES_HOME/Versions/current"
 fi 
 
-export TKD_RUBY_VERSION="2.4.6"
-export TKD_RUBY_PATCH_VERSION="p354"
+export TKD_RUBY_VERSION="2.5.5"
+export TKD_RUBY_PATCH_VERSION="p157"
 export TKD_RUBY="$TKD_RUBY_VERSION-$TKD_RUBY_PATCH_VERSION"
-export TKD_RUBY_NAMESPACE_TINY="2.4"
-export TKD_RUBY_NAMESPACE="2.4.0"
+export TKD_RUBY_NAMESPACE_TINY="2.5"
+export TKD_RUBY_NAMESPACE="2.5.0"
 export TKD_RUBY_ARCH_VERSION="$TKD_ARCH-$TKD_DARWIN_TRUNCATED"
 
 # Extra libraries
@@ -79,8 +79,8 @@ export TKD_RUBY_OPENSSL_VERSION="1.1.1c"
 export TKD_RUBY_LIBRARIES=($TKD_RUBY_ZLIB $TKD_RUBY_LIBFFI $TKD_RUBY_LIBYAML $TKD_RUBY_NCURSES $TKD_RUBY_READLINE $TKD_RUBY_OPENSSL)
 
 export TKD_RUBY_MAJOR=2
-export TKD_RUBY_MINOR=4
-export TKD_RUBY_TINY=6
+export TKD_RUBY_MINOR=5
+export TKD_RUBY_TINY=5
 
 export PKG_CONFIG_PATH="$TKD_RUBY_DEPENDENCIES_HOME/pkgconfig:$PKG_CONFIG_PATH";
 
@@ -90,7 +90,7 @@ export RUBY_BINARY_PATH="$root/b/dist"
 export COMPRESSED_SOURCE_PATH="$root/../compressed"
 export BUILD_TOOLS_PATH="/Users/andraswhite/Code/static/builds"
 
-export TKD_RAILS_VERSION="5.2.3"
+export TKD_RAILS_VERSION="5.1.7"
 export RAILS_GEMFILE="rails-$TKD_RAILS_VERSION";
 
 if [ $TKD_RUBY_MINOR -gt 3 ]; then
