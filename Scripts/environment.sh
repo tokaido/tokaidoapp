@@ -90,7 +90,7 @@ export RUBY_BINARY_PATH="$root/b/dist"
 export COMPRESSED_SOURCE_PATH="$root/../compressed"
 export BUILD_TOOLS_PATH="/Users/andraswhite/Code/static/builds"
 
-export TKD_RAILS_VERSION="5.1.7"
+export TKD_RAILS_VERSION="5.2.3"
 export RAILS_GEMFILE="rails-$TKD_RAILS_VERSION";
 
 if [ $TKD_RUBY_MINOR -gt 3 ]; then
