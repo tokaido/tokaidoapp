@@ -1,4 +1,4 @@
-arch=x86_64-darwin12
+arch=x86_64-darwin15
 sitearch=${arch}
 prefix=/Applications/Tokaido.app/Contents/Resources/Versions/2.4.6-p354
 exec_prefix=${prefix}
@@ -45,7 +45,7 @@ LIBRUBYARG_SHARED=
 LIBRUBYARG_STATIC=-l${RUBY_SO_NAME}-static -framework Foundation
 LIBRUBYARG=${LIBRUBYARG_STATIC}
 LIBS=-lpthread -ldl -lobjc
-DLDFLAGS=-Bstatic -L/Applications/Tokaido.app/Contents/Resources/Versions/libs -L/Applications/Tokaido.app/Contents/Resources/Versions/current/openssl/lib -lssl -lcrypto  -L/Applications/Tokaido.app/Contents/Resources/Versions/current/libutil/lib  -L/Applications/Tokaido.app/Contents/Resources/Versions/current/ncurses/lib -lncurses  -L/Applications/Tokaido.app/Contents/Resources/Versions/current/yaml/lib -lyaml  -L/Applications/Tokaido.app/Contents/Resources/Versions/current/libffi/lib -lffi  -L/Applications/Tokaido.app/Contents/Resources/Versions/current/zlib/lib -lz    -arch x86_64 -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress
+DLDFLAGS=-Bstatic -L/Applications/Tokaido.app/Contents/Resources/Versions/libs -L/Applications/Tokaido.app/Contents/Resources/Versions/current/openssl/lib -lssl -lcrypto -L/Applications/Tokaido.app/Contents/Resources/Versions/current/libutil/lib -L/Applications/Tokaido.app/Contents/Resources/Versions/current/ncurses/lib -lncurses -L/Applications/Tokaido.app/Contents/Resources/Versions/current/yaml/lib -lyaml -L/Applications/Tokaido.app/Contents/Resources/Versions/current/libffi/lib -lffi -L/Applications/Tokaido.app/Contents/Resources/Versions/current/zlib/lib -lz   -arch x86_64 -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress
 
 Name: Ruby
 Description: Object Oriented Script Language

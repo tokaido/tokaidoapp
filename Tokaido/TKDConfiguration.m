@@ -32,7 +32,7 @@
 }
 
 +(NSString *) rubyConfigInstalledFile {
-    return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.4.6-p354/lib/ruby/2.4.0/x86_64-darwin12/rbconfig.rb"];
+    return [[self rubiesInstalledDirectoryPath] stringByAppendingPathComponent:@"/2.4.6-p354/lib/ruby/2.4.0/x86_64-darwin15/rbconfig.rb"];
 }
 
 +(NSString *) applicationName {

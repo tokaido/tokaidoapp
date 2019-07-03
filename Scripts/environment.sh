@@ -11,9 +11,9 @@ export TKD_DEPENDENCIES_CODE="$TKD_DEPENDENCIES_HOME/src"
 export TKD_DEPENDENCIES_PATCHES="$TKD_DEPENDENCIES_HOME/patches"
 
 export TKD_ARCH="x86_64"
-export TKD_DARWIN="darwin12.5"
-export TKD_DARWIN_TRUNCATED="darwin12"
-export TKD_DARWIN_WITH_TINY="darwin12.5.0"
+export TKD_DARWIN="darwin15.6"
+export TKD_DARWIN_TRUNCATED="darwin15"
+export TKD_DARWIN_WITH_TINY="darwin15.6.0"
 export TKD_ARCH_DARWIN="$TKD_ARCH-$TKD_DARWIN"
 
 if [ ! -z "$TKD_RELEASE" ]; then  

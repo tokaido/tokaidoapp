@@ -696,15 +696,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Tokaido-checkManifestLockResult.txt",
 			);
@@ -1015,7 +1011,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = "";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tilde.andrab.Tokaido;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1036,7 +1032,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tokaido/Tokaido-Prefix.pch";
 				INFOPLIST_FILE = "Tokaido/Tokaido-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = "";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tilde.andrab.Tokaido;
 				PRODUCT_NAME = "$(TARGET_NAME)";
