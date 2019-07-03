@@ -78,5 +78,4 @@ if [ -d "b" ]; then
   rm -Rf src
 fi
 
-#rm -Rf $RUBY_BINARY_PATH
 Scripts/copy_tokaido_dependencies.sh
